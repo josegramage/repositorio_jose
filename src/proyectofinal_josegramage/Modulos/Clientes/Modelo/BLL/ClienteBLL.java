@@ -7,7 +7,7 @@ import javax.swing.JOptionPane;
 import proyectofinal_josegramage.Main;
 import proyectofinal_josegramage.Modulos.Clientes.Clases.Cliente;
 import proyectofinal_josegramage.Modulos.Clientes.Clases.SimpleTableModel_cliente;
-import proyectofinal_josegramage.Modulos.Clientes.Clases.Singletons;
+import proyectofinal_josegramage.Librerias.Singletons;
 import proyectofinal_josegramage.Modulos.Clientes.Modelo.DAO.ClienteDAO;
 import proyectofinal_josegramage.Modulos.Clientes.Modelo.pager.pagina;
 import proyectofinal_josegramage.Modulos.Clientes.Vista.Vtna_cli_Crear;
@@ -214,9 +214,12 @@ public class ClienteBLL {
         Singletons.cli.setPassword(ClienteDAO.pidePasswordM());
         Singletons.cli.setTipo(ClienteDAO.pideTipoM());
 
+        if (Singletons.PATH_auto != null) {
+            Singletons.cli.setAvatar(Singletons.PATH_auto);
+        }
         
       //      FileUploader.leer_imag(1);
-            Singletons.cli.setAvatar(Singletons.PATH_auto);
+   //         Singletons.cli.setAvatar(Singletons.PATH_auto);
         
 
         if ((Vtna_cli_Modif.errorNombreM.isVisible() == false) && (Vtna_cli_Modif.errorApellidosM.isVisible() == false) && (Vtna_cli_Modif.errorTelfM.isVisible() == false)

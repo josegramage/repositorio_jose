@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 
 import proyectofinal_josegramage.Modulos.Clientes.Modelo.BLL.ClienteBLL;
-import proyectofinal_josegramage.Modulos.Clientes.Clases.Singletons;
+import proyectofinal_josegramage.Librerias.Singletons;
 import proyectofinal_josegramage.Utiles.Apariencia;
 import javax.swing.JOptionPane;
 import proyectofinal_josegramage.Modulos.Clientes.Clases.Cliente;

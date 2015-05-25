@@ -23,7 +23,6 @@ import com.google.gson.stream.JsonReader;
 import com.thoughtworks.xstream.XStream;
 import com.thoughtworks.xstream.io.json.JettisonMappedXmlDriver;
 import proyectofinal_josegramage.Modulos.Clientes.Clases.Cliente;
-import proyectofinal_josegramage.Modulos.Clientes.Clases.Singletons;
 
 
 

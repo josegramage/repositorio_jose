@@ -15,7 +15,6 @@ import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 import javax.swing.filechooser.FileNameExtensionFilter;
 import proyectofinal_josegramage.Modulos.Clientes.Clases.Cliente;
-import proyectofinal_josegramage.Modulos.Clientes.Clases.Singletons;
 
 
 public class Txt {

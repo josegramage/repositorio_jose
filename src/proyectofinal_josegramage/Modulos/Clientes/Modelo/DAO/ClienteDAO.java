@@ -13,7 +13,7 @@ import proyectofinal_josegramage.Librerias.Validate;
 import proyectofinal_josegramage.Modulos.Clientes.Clases.Cliente;
 import proyectofinal_josegramage.Modulos.Clientes.Clases.DAOgenerico;
 import proyectofinal_josegramage.Modulos.Clientes.Modelo.BLL.ClienteBLL;
-import proyectofinal_josegramage.Modulos.Clientes.Clases.Singletons;
+import proyectofinal_josegramage.Librerias.Singletons;
 import proyectofinal_josegramage.Modulos.Clientes.Vista.Vtna_cli_Crear;
 import proyectofinal_josegramage.Modulos.Clientes.Vista.Vtna_cli_Modif;
 
@@ -563,7 +563,7 @@ public class ClienteDAO {
     public static void CreaCliente() {
 
         String nombre = "", apellidos = "", dni = "", telefono = "", email = "", direccion = "", login = "", password = "", tipo = "", avatar = "";
-        int estado = 0;
+        String estado = "inactivado";
         Fecha Fnacimiento = null;
 
         nombre = pideNombre();
@@ -590,14 +590,15 @@ public class ClienteDAO {
     }
 
     public static void modificar() {
-        
-         if (Singletons.cliLog.getTipo().equals("admin")) {
-        if (Singletons.cli.getAvatar().isEmpty()){
-            FileUploader.leer_imag_defecto(3);
-             }else{
-            FileUploader.leer_imag(1);
-            }
-        }
+
+   //     if (Singletons.cliLog.getTipo().equals("admin")) {
+
+         //   if (Singletons.cli.getAvatar().isEmpty()) {
+           //     FileUploader.leer_imag_defecto(3);
+         //   } else {
+                FileUploader.leer_imag(1);
+           // }
+       // }
 
         Vtna_cli_Modif.txtNombreM.setText((Singletons.cli).getNombre());
         Vtna_cli_Modif.txtApellidosM.setText((Singletons.cli).getApellidos());
@@ -610,14 +611,14 @@ public class ClienteDAO {
     }
 
     public static void modificarLogeado() {
-        
-        if (Singletons.cliLog.getTipo().equals("admin")) {
-        if (Singletons.cli.getAvatar().isEmpty()){
-            FileUploader.leer_imag_defecto(3);
-             }else{
-            FileUploader.leer_imag(1);
-            }
-        }
+
+    //    if (Singletons.cliLog.getTipo().equals("admin")) {
+      //      if (Singletons.cli.getAvatar().isEmpty()) {
+     //           FileUploader.leer_imag_defecto(3);
+     //       } else {
+                FileUploader.leer_imag(1);
+     //       }
+     //   }
 
         Vtna_cli_Modif.txtNombreM.setText((Singletons.cliLog).getNombre());
         Vtna_cli_Modif.txtApellidosM.setText((Singletons.cliLog).getApellidos());

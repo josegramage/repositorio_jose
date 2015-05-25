@@ -5,17 +5,20 @@
  */
 package proyectofinal_josegramage.Modulos.Login.Modelo.BLL;
 
+import java.awt.Color;
 import proyectofinal_josegramage.Clases.ConexionBD;
 import proyectofinal_josegramage.Clases.JavaMail;
 import proyectofinal_josegramage.Librerias.Encriptador;
 import proyectofinal_josegramage.Librerias.Funciones;
 import proyectofinal_josegramage.Librerias.Validate;
 import proyectofinal_josegramage.Modulos.Clientes.Modelo.BLL.ClienteBLL_bd;
-import proyectofinal_josegramage.Modulos.Clientes.Clases.Singletons;
+import proyectofinal_josegramage.Librerias.Singletons;
 import proyectofinal_josegramage.Modulos.Clientes.Modelo.DAO.ClienteDAO;
 import proyectofinal_josegramage.Modulos.Login.Modelo.DAO.LoginDAO;
 import proyectofinal_josegramage.Modulos.Login.Vista.Vtna_Recuperar;
 import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
 import javax.swing.JOptionPane;
 import proyectofinal_josegramage.Modulos.Clientes.Clases.Cliente;
 
@@ -39,74 +42,7 @@ public class LoginBLL {
         }
         return aux;//retorna aux, si lo ha encontrado dara la posicion, si no devolvera -1 lo cual significa que no hay dni que concuadre
     }
-
-    public static void pideUsuario() {
-        LoginDAO.PideUsuario();
-    }
-
-    public static void pidePassword() {
-        LoginDAO.PidePassword();
-    }
-
-    public static void UsuarioOlvidar() {
-        LoginDAO.PideUsuarioOlvidar();
-    }
-
-    public static void PasswordOlvidar() {
-        LoginDAO.PidePasswordOlvidar();
-    }
-
-    public static void ValidaDatosOlvidar() {
-        UsuarioOlvidar();
-        PasswordOlvidar();
-    }
-
-    public static void recogeDatosRestablecerPass() {
-
-        dni = Vtna_Recuperar.txtDniRecuperar.getText();
-        email = Vtna_Recuperar.txtemailRecuperar.getText();
-    }
-
-    public static void RecuperarPassword() {
-
-        recogeDatosRestablecerPass();
-
-        if (Validate.validaDNI(dni) != false) {
-            Cliente cli = ClienteDAO.pidednivacio(dni);
-            Singletons.posEmp = ClienteDAO.BuscarEmpleados(cli);
-/*
-            if (Singletons.posEmp != -1) {
-                cli = Singletons.cliArray.get(Singletons.posEmp);
-
-                cli.setLogin(Funciones.getCadenaAleatoria1(6));
-                cli.setPassword(Encriptador.getCadenaAleatoria(10));
-                //Singletons.emp.setLogin(Funciones.getCadenaAleatoria1(6));
-                //Singletons.emp.setPassword(Encriptador.getCadenaAleatoria(10));
-
-                Singletons.cliArray.set(Singletons.pos, Singletons.cli);
-                ClienteBLL_bd.modificarClienteBLL();
-
-                JavaMail mail = new JavaMail(email);
-
-                String error = mail.send(1);
-                if (error.equals("")) {
-                    JOptionPane.showMessageDialog(null, "Se ha enviado un email con su nuevo nombre de usuario y contraseña," + "\n podrá cambiarlos en su perfil", "Email enviado", JOptionPane.INFORMATION_MESSAGE);
-
-                } else {
-                    JOptionPane.showMessageDialog(null, "Error de envio:\n" + error, "Error", JOptionPane.ERROR_MESSAGE);
-                }
-
-            } else {
-                JOptionPane.showMessageDialog(null, "El dni no coresponde a ningun usuario registrado");
-            }
-*/
-        } else {
-            JOptionPane.showMessageDialog(null, "no se que saldra");
-            return;
-        }
-
-    }
-
+    
     public boolean loginUsuarioBLL(String usuario, String password) {
 
         Connection _con;
@@ -118,14 +54,74 @@ public class LoginBLL {
         LoginDAO _loginDAO = new LoginDAO();
 
         _resul = _loginDAO.loginUsuarioDAO(_con, usuario, password);
-    
+
         _conexion_DB.CerrarConexion(_con);
 
         return _resul;
-
     }
 
-     // -------------------------------------------------------------------------------
+    
+    public int RecuperarPassword() {
+
+        Connection _con = null;
+        int correcto;
+        
+        String dni = Singletons.recu.txtDniRecuperar.getText();
+        String email = Singletons.recu.txtemailRecuperar.getText();
+        String password = Encriptador.getCadenaAleatoria(10);
+        String passwordEn = Encriptador.encriptarTokenMD5(password);
+        String asunto="Recuperacion de contraseña - Mundo Virtual -";
+        String mensaje="Tu nueva contraseña es: "+ password + "\n<p> Podrás cambiarla en tu perfil";
+      
+        ConexionBD _conexion_DB = new ConexionBD();
+
+        _con = _conexion_DB.AbrirConexion();
+
+        LoginDAO _empleadoDAO = new LoginDAO();
+
+        correcto = _empleadoDAO.actualizarPasswordDAO(_con, dni, passwordEn);
+
+        _conexion_DB.CerrarConexion(_con);
+
+        if (correcto == 1) {
+    
+
+            JavaMail mail = new JavaMail(email, password, asunto, mensaje);
+            String error = mail.send();
+            if (error.equals("")) {
+                JOptionPane.showMessageDialog(null, "Se ha enviado un email con su nueva contraseña, \n podrá cambiarla en su perfil", "Correcto", JOptionPane.INFORMATION_MESSAGE);
+                JOptionPane.showMessageDialog(null, "-TEST CLASE- \n Tu nueva contraseña es: "+ password + "\n Podrás cambiarla en tu perfil");
+            } else {
+                JOptionPane.showMessageDialog(null, "Error de envio:\n" + error, "Error", JOptionPane.ERROR_MESSAGE);
+            }
+        } else {
+            JOptionPane.showMessageDialog(null, "El dni no coresponde a ningun usuario registrado");
+        }
+       return correcto;
+    }
+    
+    
+  
+     public static String activarUsuario(String dni) {
+
+        Connection _con;
+        String tipo;
+        ConexionBD _conexion_DB = new ConexionBD();
+
+        _con = _conexion_DB.AbrirConexion();
+
+        LoginDAO _loginDAO = new LoginDAO();
+
+        tipo = _loginDAO.ActivarUsuarioDAO(_con, dni);
+
+        _conexion_DB.CerrarConexion(_con);
+
+        return tipo;
+    }
+    
+    
+    
+    // -------------------------------------------------------------------------------
     //  PARA EL ALTA DEL CLIENTE
     // -------------------------------------------------------------------------------
     public static void pideNombre() {

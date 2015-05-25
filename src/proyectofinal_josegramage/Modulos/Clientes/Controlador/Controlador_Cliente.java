@@ -11,7 +11,7 @@ import proyectofinal_josegramage.Clases.JPanel_Fondo;
 import proyectofinal_josegramage.Modulos.Clientes.Modelo.BLL.ClienteBLL;
 import proyectofinal_josegramage.Modulos.Clientes.Modelo.BLL.ClienteBLL_bd;
 import proyectofinal_josegramage.Modulos.Clientes.Clases.SimpleTableModel_cliente;
-import proyectofinal_josegramage.Modulos.Clientes.Clases.Singletons;
+import proyectofinal_josegramage.Librerias.Singletons;
 import proyectofinal_josegramage.Modulos.Clientes.Modelo.DAO.ClienteDAO;
 import proyectofinal_josegramage.Modulos.Clientes.Modelo.autocomplete.AutocompleteJComboBox;
 import proyectofinal_josegramage.Modulos.Clientes.Modelo.autocomplete.StringSearchable;

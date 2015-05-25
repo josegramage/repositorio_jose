@@ -31,7 +31,7 @@ public class Cliente implements Comparable<Cliente>, Serializable {
     @XStreamAlias("password")
     public String password;
     @XStreamAlias("estado")
-    public int estado;
+    public String estado;
     @XStreamAlias("tipo")
     public String tipo;
     @XStreamAlias("avatar")
@@ -43,7 +43,7 @@ public class Cliente implements Comparable<Cliente>, Serializable {
 
     @SuppressWarnings("OverridableMethodCallInConstructor")
     public Cliente(String nombre, String apellidos, String dni, String telefono, String direccion, String email, Fecha fnacimiento,
-            Fecha fechaalta, String login, String password, int estado, String tipo, String avatar) {
+            Fecha fechaalta, String login, String password, String estado, String tipo, String avatar) {
 
         this.nombre = nombre;
         this.apellidos = apellidos;
@@ -164,11 +164,11 @@ public class Cliente implements Comparable<Cliente>, Serializable {
     }
      
     
-    public int getEstado (){
+    public String getEstado (){
         return estado;
     }
     
-    public void setEstado(int estado) {
+    public void setEstado(String estado) {
         this.estado = estado;
     }
     

@@ -73,8 +73,19 @@ public class Validate {
 	
 	// Validar numeros positivos
 		public static boolean validaNumPositivo(String numPositivo) {
-			return numPositivo.matches("");
+			return numPositivo.matches("[0-9]");
 		}
+                
+                
+        private static boolean validaFloat(String cadena){
+    	try {
+    		Integer.parseInt(cadena);
+    		return true;
+    	} catch (NumberFormatException nfe){
+    		return false;
+    	}
+    }
+                
 }
 /*
 	public static void main(String[] args) {

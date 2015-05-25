@@ -9,7 +9,7 @@ import com.toedter.calendar.JTextFieldDateEditor;
 import proyectofinal_josegramage.Clases.Fecha;
 import proyectofinal_josegramage.Librerias.Encriptador;
 import proyectofinal_josegramage.Librerias.Validate;
-import proyectofinal_josegramage.Modulos.Clientes.Clases.Singletons;
+import proyectofinal_josegramage.Librerias.Singletons;
 import proyectofinal_josegramage.Modulos.Login.Vista.Vtna_Recuperar;
 import proyectofinal_josegramage.Modulos.Login.Vista.Vtna_SignIN;
 import java.awt.Color;
@@ -30,66 +30,6 @@ import proyectofinal_josegramage.Modulos.Clientes.Clases.DAOgenerico;
  */
 public class LoginDAO {
 
-    public static void PideUsuario() {
-       
-        if (Vtna_SignIN.txtUsuario.getText().isEmpty()) {
-            Vtna_SignIN.txtUsuario.setForeground(Color.red);
-            Vtna_SignIN.txtUsuario.setText("Introduzca usuario");
-            Vtna_SignIN.txtUsuario.requestFocus();
-            return;
-        }
-
-        if (Validate.validaDNI(Vtna_SignIN.txtUsuario.getText()) == false) {
-            Vtna_SignIN.txtUsuario.setForeground(Color.red);
-            Vtna_SignIN.txtUsuario.setText("Usuario inválido");
-            Vtna_SignIN.txtUsuario.requestFocus();
-            return;
-        }
-        Vtna_SignIN.txtPassword.requestFocus();
-    }
-
-    public static void PidePassword() {
-
-        if (Vtna_SignIN.txtPassword.getText().isEmpty()) {
-            Vtna_SignIN.txtPassword.setForeground(Color.red);
-            Vtna_SignIN.txtPassword.setText("Introduzca password");
-            Vtna_SignIN.txtPassword.requestFocus();
-            return;
-        }
-
-        Vtna_SignIN.btnAceptar.requestFocus();
-    }
-
-    public static void PideUsuarioOlvidar() {
-
-        if (Vtna_Recuperar.txtDniRecuperar.getText().isEmpty()) {
-            Vtna_Recuperar.txtDniRecuperar.setForeground(Color.red);
-            Vtna_Recuperar.txtDniRecuperar.setText("Introduzca usuario");
-            Vtna_Recuperar.txtDniRecuperar.requestFocus();
-            return;
-        }
-
-        if (Validate.validaDNI(Vtna_Recuperar.txtDniRecuperar.getText()) == false) {
-            Vtna_Recuperar.txtDniRecuperar.setForeground(Color.red);
-            Vtna_Recuperar.txtDniRecuperar.setText("Usuario inválido");
-            Vtna_Recuperar.txtDniRecuperar.requestFocus();
-            return;
-        }
-        Vtna_Recuperar.txtemailRecuperar.requestFocus();
-    }
-
-    public static void PidePasswordOlvidar() {
-
-        if (Vtna_Recuperar.txtemailRecuperar.getText().isEmpty()) {
-            Vtna_Recuperar.txtemailRecuperar.setForeground(Color.red);
-            Vtna_Recuperar.txtemailRecuperar.setText("Introduzca password");
-            Vtna_Recuperar.txtemailRecuperar.requestFocus();
-            return;
-        }
-
-        Vtna_Recuperar.btnAceptarRecu.requestFocus();
-    }
-
     public boolean loginUsuarioDAO(Connection con, String login, String password) {
 
         boolean resultado = false;
@@ -101,6 +41,7 @@ public class LoginDAO {
 
             stmt.setString(1, login);
             stmt.setString(2, Encriptador.encriptarTokenMD5(password));
+            
 
             rs = stmt.executeQuery();
 
@@ -116,14 +57,14 @@ public class LoginDAO {
                 Singletons.cliLog.setFechaalta(Fecha.muestraFecha(rs.getString("Fechaalta")));
                 Singletons.cliLog.setLogin(rs.getString("Login"));
                 Singletons.cliLog.setPassword(rs.getString("Password"));           
-                Singletons.cliLog.setEstado(rs.getInt("Estado"));
+                Singletons.cliLog.setEstado(rs.getString("Estado"));
                 Singletons.cliLog.setTipo(rs.getString("Tipo"));
                 Singletons.cliLog.setAvatar(rs.getString("Avatar"));
 
                 resultado = true;
                 Singletons.conectado = true;
                 
-        //        Singletons.cliLog.setTipo("1");
+               con.prepareStatement("UPDATE proyectofinal_josegramage.clientes SET estado='activado'");
                 
                 
             }
@@ -147,7 +88,133 @@ public class LoginDAO {
         }
         return resultado;
     }
+    
+    public boolean recuPasswordDAO(Connection con, String dni, String email) {
 
+        boolean resultado = false;
+        ResultSet rs = null;
+        PreparedStatement stmt = null;
+
+        try {
+            stmt = con.prepareStatement("SELECT * FROM proyectofinal_josegramage.clientes WHERE dni=? AND email=?");
+
+            stmt.setString(1, dni);
+            stmt.setString(2, email);
+
+            rs = stmt.executeQuery();
+
+            while (rs.next()) {
+
+                Singletons.cliLog.setNombre(rs.getString("Nombre"));
+                Singletons.cliLog.setApellidos(rs.getString("Apellidos"));
+                Singletons.cliLog.setDni(rs.getString("Dni"));
+                Singletons.cliLog.setTelefono(rs.getString("Telefono"));
+                Singletons.cliLog.setDireccion (rs.getString("Direccion"));
+                Singletons.cliLog.setEmail(rs.getString("Email"));
+                Singletons.cliLog.setFnacimiento(Fecha.muestraFecha(rs.getString("Fnacimiento")));
+                Singletons.cliLog.setFechaalta(Fecha.muestraFecha(rs.getString("Fechaalta")));
+                Singletons.cliLog.setLogin(rs.getString("Login"));
+                Singletons.cliLog.setPassword(rs.getString("Password"));           
+                Singletons.cliLog.setEstado(rs.getString("Estado"));
+                Singletons.cliLog.setTipo(rs.getString("Tipo"));
+                Singletons.cliLog.setAvatar(rs.getString("Avatar"));
+
+                resultado = true;
+                Singletons.conectado = true;
+                      
+            }
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Error Logger1");
+        } finally {
+            if (rs != null) {
+                try {
+                    rs.close();
+                } catch (SQLException ex) {
+                    JOptionPane.showMessageDialog(null, "Error Logger2");
+                }
+            }
+            if (stmt != null) {
+                try {
+                    stmt.close();
+                } catch (SQLException ex) {
+                    JOptionPane.showMessageDialog(null, "Error Logger3");
+                }
+            }
+        }
+        return resultado;
+    }
+    
+           
+    public int actualizarPasswordDAO(Connection con, String dni, String password) {
+
+        PreparedStatement stmt = null;
+        int correcto = 0;
+
+        try {
+            stmt = con.prepareStatement("UPDATE proyectofinal_josegramage.clientes SET password=? WHERE dni=?");
+            
+            stmt.setString(1, password);
+            stmt.setString(2, dni);
+            
+            correcto = stmt.executeUpdate();
+
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Ha habido un problema al actualizar la contraseña!");
+        } finally {
+            if (stmt != null) {
+                try {
+                    stmt.close();
+                } catch (SQLException ex) {
+                    JOptionPane.showMessageDialog(null, "Ha habido un error Logger!");
+                }
+            }
+        }
+        return correcto;
+    }
+    
+    
+    
+    public String ActivarUsuarioDAO(Connection con, String dni) {
+
+        String estado = null;
+        ResultSet rs = null;
+        PreparedStatement stmt = null;
+
+        try {
+            stmt = con.prepareStatement("UPDATE proyectofinal_josegramage.clientes SET estado='activado' WHERE dni=?");
+
+            stmt.setString(1, dni);
+
+            rs = stmt.executeQuery();
+
+            while (rs.next()) {
+
+                estado = rs.getString("Estado");
+
+            }
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Error Logger");
+        } finally {
+            if (rs != null) {
+                try {
+                    rs.close();
+                } catch (SQLException ex) {
+                    JOptionPane.showMessageDialog(null, "Error Logger");
+                }
+            }
+            if (stmt != null) {
+                try {
+                    stmt.close();
+                } catch (SQLException ex) {
+                    JOptionPane.showMessageDialog(null, "Error Logger");
+                }
+            }
+        }
+        return estado;
+    }
+    
+        
+    
     // -------------------------------------------------------------------------------
     //  PARA EL ALTA DEL CLIENTE
     // -------------------------------------------------------------------------------
@@ -365,7 +432,7 @@ public class LoginDAO {
     public static String pideDireccionKey() {
         String direccion = Singletons.alta.txtDireccionL.getText();
 
-        if (Validate.validaEmail(direccion) != true) {
+        if (Validate.validaDireccion(direccion) != true) {
             Singletons.alta.etiDireccionError.setVisible(true);
             Singletons.alta.errorDireccion.setVisible(true);
         } else {
@@ -406,10 +473,10 @@ public class LoginDAO {
     
     public static void AltaUsuario() {
 
-        String nombre = "", apellidos = "", dni = "", telefono = "", email = "", direccion = "", login = "", password = "", tipo = "tipo", avatar = "";
-        int estado = 0;
+        String nombre = "", apellidos = "", dni = "", telefono = "", email = "", direccion = "", login = "", password = "", tipo = "usuario", avatar = "";
+        String estado = "inactivo";
         Fecha Fnacimiento = null;
-
+        
         nombre = pideNombre();
         apellidos = pideApellidos();
         dni = pideDni();
@@ -420,18 +487,27 @@ public class LoginDAO {
         email = pideEmail();
         login = Funciones.getCadenaAleatoria1(6);
         password = Encriptador.getCadenaAleatoria(10);
+        
+        String asunto="Bienvenido/a al Mundo Virtual";
+        String mensaje="Bienvenido/a " + nombre + " a la web del futuro, aquí podrás encontrar todo lo necesario para entrar en el fascinante mundo de la Realidad Virtual"+
+            "<p> El usuario es: "+ login +"\n<br> La contraseña es: "
+            + password +"\n<p> Podrás cambiarlos en tu perfil <p>" +
+            "\"'Nuestra memoria no es más que una imagen de la realidad, por lo que nuestra realidad es sólo nuestra imaginación'. Michael Ende.";
+        
 
         if ((Singletons.alta.errorNombre.isVisible() == false) && (Singletons.alta.errorDni.isVisible() == false) && (Singletons.alta.errorApellidos.isVisible() == false)
                 && (Singletons.alta.errorTelf.isVisible() == false) && (Singletons.alta.errorFnacimiento.isVisible() == false)) {
 
             Singletons.cli = new Cliente(nombre, apellidos, dni, telefono, direccion, email, Fnacimiento, Fechaalta, login, password, estado, tipo, avatar);
 
-            JavaMail mail = new JavaMail(email);
-
-            //enviamos el mensaje
-            String error = mail.send(0);
+            JavaMail mail = new JavaMail(email, password, asunto, mensaje);
+            String error = mail.send();
+            
             if (error.equals("")) {
                 JOptionPane.showMessageDialog(null, "Se ha enviado un email con su nombre de usuario y contraseña," + "\n podrá cambiarlos en su perfil", "Email enviado", JOptionPane.INFORMATION_MESSAGE);
+                 JOptionPane.showMessageDialog(null,"- TEST CLASE - \n Bienvenido/a " + nombre + " a la web del futuro, aquí podrás encontrar todo lo necesario para entrar en el fascinante mundo de la Realidad Virtual"+
+            " El usuario es: "+ login +"\n La contraseña es: "
+            + password +"\n Podrás cambiarlos en tu perfil");
             } else {
                 JOptionPane.showMessageDialog(null, "Error de envio:\n" + error, "Error", JOptionPane.ERROR_MESSAGE);
             }   

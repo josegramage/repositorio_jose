@@ -1,6 +1,6 @@
 package proyectofinal_josegramage.Modulos.Clientes.Modelo.pager;
 import proyectofinal_josegramage.Modulos.Clientes.Clases.SimpleTableModel_cliente;
-import proyectofinal_josegramage.Modulos.Clientes.Clases.Singletons;
+import proyectofinal_josegramage.Librerias.Singletons;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.event.ActionEvent;

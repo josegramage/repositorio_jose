@@ -5,7 +5,7 @@
  */
 package proyectofinal_josegramage.Modulos.Inicio.Vista;
 
-import proyectofinal_josegramage.Modulos.Clientes.Clases.Singletons;
+import proyectofinal_josegramage.Librerias.Singletons;
 
 /**
  *

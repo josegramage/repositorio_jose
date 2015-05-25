@@ -9,7 +9,7 @@ import proyectofinal_josegramage.Clases.FileUploader;
 import proyectofinal_josegramage.Clases.JPanel_Fondo;
 import proyectofinal_josegramage.Modulos.Clientes.Controlador.Controlador_Cliente;
 import proyectofinal_josegramage.Modulos.Clientes.Modelo.BLL.ClienteBLL;
-import proyectofinal_josegramage.Modulos.Clientes.Clases.Singletons;
+import proyectofinal_josegramage.Librerias.Singletons;
 import proyectofinal_josegramage.Modulos.Clientes.Modelo.DAO.ClienteDAO;
 import proyectofinal_josegramage.Modulos.Clientes.Vista.Vtna_cli_Pager;
 import proyectofinal_josegramage.Modulos.Inicio.Vista.Vtna_Config;

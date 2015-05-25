@@ -7,7 +7,7 @@ package proyectofinal_josegramage.Clases;
 
 import static com.oracle.jrockit.jfr.ContentType.Address;
 import proyectofinal_josegramage.Librerias.Funciones;
-import proyectofinal_josegramage.Modulos.Clientes.Clases.Singletons;
+import proyectofinal_josegramage.Librerias.Singletons;
 import java.util.Properties;
 import javax.activation.DataHandler;
 import javax.activation.DataSource;
@@ -29,29 +29,28 @@ import javax.swing.JOptionPane;
  */
 public class JavaMail {
     
- //   private String email="";
- //   private String pass="";
     private String email="1erdaw2015@gmail.com";
     private String pass="villadaw";
-    private String asunto="Bienvenido/a al Mundo Virtual";
-    private String asunto_recu="Codigo de activacion";
+    private String asunto;
     private String emailUsu;
-    private String mensaje="Bienvenido/a " + Singletons.cli.getNombre()+ " a la web del futuro, aquí podrás encontrar todo lo necesario para entrar en el fascinante mundo de la Realidad Virtual"+
-            "<p> El usuario es: "+ Singletons.cli.getLogin()+"\n<br> La contraseña es: "
-            +Singletons.cli.getPassword()+"\n<p> Podrás cambiarlos en tu perfil <p>" +
-            "\"'Nuestra memoria no es más que una imagen de la realidad, por lo que nuestra realidad es sólo nuestra imaginación'. Michael Ende.";
-    private String mensaje_recu="El codigo de activacion para su cuenta es: "+ Funciones.getCadenaAleatoria1(100);
+    private String password;
+    private String mensaje;
     private Properties props;
+      
 
     
-     public JavaMail(String vemailUsu) {
+     public JavaMail(String vemailUsu, String vpassword, String vasunto, String vmensaje) {
       
         emailUsu = vemailUsu;
-        props = new Properties();  
+        password = vpassword;
+        asunto = vasunto;
+        mensaje = vmensaje;
+        props = new Properties();              
     }
         
         
-    public String send(int i) {
+    public String send() {
+        
         String error;
         try {
             props.setProperty("mail.smtp.host", "smtp.gmail.com");
@@ -85,11 +84,9 @@ public class JavaMail {
             //message.addRecipient(Message.RecipientType.TO, new InternetAddress(destino));
 
             //el asunto
-            if (i==0){
+          
             message.setSubject(asunto);
-            }else{
-            message.setSubject(asunto_recu);
-            }
+           
             //le seteamos el cuerpo del mensaje
             //message.setContent("<html><font color='#AA00FF'>"+mensaje+"<br> Mensaje enviado "+new java.util.Date()+"</font></html>", "text/html");
 
@@ -97,11 +94,9 @@ public class JavaMail {
             MimeBodyPart mimebodypart1 = new MimeBodyPart();
             //mimebodypart.setText("<html><font color='#AA00FF'>HOLA MUNDO!<br> Mensaje enviado "+new java.util.Date()+"</font></html>");
             
-            if (i==0){
+            
             mimebodypart1.setContent("<html><font color='#AA00FF'>"+mensaje+"<br> Mensaje enviado "+new java.util.Date()+"</font></html>", "text/html");
-            } else {
-            mimebodypart1.setContent("<html><font color='#AA00FF'>"+mensaje_recu+"<br> Mensaje enviado "+new java.util.Date()+"</font></html>", "text/html"); 
-            }
+           
      /*       MimeBodyPart mimebodypart2 = new MimeBodyPart();
             DataSource source = new FileDataSource("anexo.txt");
             mimebodypart2.setDataHandler(new DataHandler(source));

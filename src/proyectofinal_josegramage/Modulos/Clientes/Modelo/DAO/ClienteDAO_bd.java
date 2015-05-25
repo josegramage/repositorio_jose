@@ -5,7 +5,7 @@
  */
 package proyectofinal_josegramage.Modulos.Clientes.Modelo.DAO;
 
-import proyectofinal_josegramage.Modulos.Clientes.Clases.Singletons;
+import proyectofinal_josegramage.Librerias.Singletons;
 import proyectofinal_josegramage.Clases.Fecha;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -40,7 +40,7 @@ public class ClienteDAO_bd {
             stmt.setString(8, Singletons.cli.getFechaalta().aStringFecha());
             stmt.setString(9, Singletons.cli.getLogin());
             stmt.setString(10, Singletons.cli.getPassword());
-            stmt.setInt(11, Singletons.cli.getEstado());
+            stmt.setString(11, Singletons.cli.getEstado());
             stmt.setString(12, Singletons.cli.getTipo());
             stmt.setString(13, Singletons.cli.getAvatar());
 
@@ -84,7 +84,7 @@ public class ClienteDAO_bd {
                 _cliente.setFechaalta(Fecha.muestraFecha(rs.getString("Fechaalta")));
                 _cliente.setLogin(rs.getString("Login"));
                 _cliente.setPassword(rs.getString("Password"));
-                _cliente.setEstado(rs.getInt("Estado"));
+                _cliente.setEstado(rs.getString("Estado"));
                 _cliente.setTipo(rs.getString("Tipo"));
                 _cliente.setAvatar(rs.getString("Avatar"));
 
@@ -120,7 +120,7 @@ public class ClienteDAO_bd {
             stmt.setString(8, Singletons.cli.getFechaalta().aStringFecha());
             stmt.setString(9, Singletons.cli.getLogin());
             stmt.setString(10, Singletons.cli.getPassword());
-            stmt.setInt(11, Singletons.cli.getEstado());
+            stmt.setString(11, Singletons.cli.getEstado());
             stmt.setString(12, Singletons.cli.getTipo());
             stmt.setString(13, Singletons.cli.getAvatar());
 
@@ -212,7 +212,7 @@ public class ClienteDAO_bd {
             Singletons.cli.setFechaalta(Fecha.muestraFecha(rs.getString("Fechaalta")));
             Singletons.cli.setLogin(rs.getString("Login"));
             Singletons.cli.setPassword(rs.getString("Password"));
-            Singletons.cli.setEstado(rs.getInt("Estado"));
+            Singletons.cli.setEstado(rs.getString("Estado"));
             Singletons.cli.setTipo(rs.getString("Tipo"));
             Singletons.cli.setAvatar(rs.getString("Avatar"));
 

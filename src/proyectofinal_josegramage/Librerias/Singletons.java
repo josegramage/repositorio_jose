@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package proyectofinal_josegramage.Modulos.Clientes.Clases;
+package proyectofinal_josegramage.Librerias;
 
 import proyectofinal_josegramage.Clases.JDKP_Fondo;
 import proyectofinal_josegramage.Clases.JPanel_Fondo;
@@ -19,7 +19,10 @@ import java.util.ArrayList;
 import javax.swing.table.TableModel;
 import javax.swing.table.TableRowSorter;
 import proyectofinal_josegramage.Modulos.Clientes.Clases.Cliente;
+import proyectofinal_josegramage.Modulos.Clientes.Clases.Cliente;
+import proyectofinal_josegramage.Modulos.Clientes.Clases.SimpleTableModel_cliente;
 import proyectofinal_josegramage.Modulos.Inicio.Vista.Vtna_Inicio;
+import proyectofinal_josegramage.Modulos.Juegos.Clases.Juego;
 import proyectofinal_josegramage.Modulos.Login.Vista.Vtna_SignUP;
 
 /**
@@ -55,6 +58,16 @@ public class Singletons {
     public static ArrayList<Cliente> client = new ArrayList<Cliente>();
     public static String PATH_auto="";
     public static String ruta_avatar;
+    
+    //MODULO JUEGOS
+    public static ArrayList<Juego> jueArray;
+    public static Juego jue;
+    public static int posJ;
+    public static int posJue=-1;
+    public static ArrayList<Juego> jueg = new ArrayList<Juego>();
+    public static String PATH_auto_Img="";
+    public static String ruta_imagen;
+    
     
     //FONDO / PANEL / TABLA / COMBO
     public static JPanel_Fondo panel;

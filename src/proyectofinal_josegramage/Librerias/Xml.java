@@ -16,7 +16,6 @@ import javax.swing.filechooser.FileNameExtensionFilter;
 import com.thoughtworks.xstream.XStream;
 import com.thoughtworks.xstream.annotations.Annotations;
 import proyectofinal_josegramage.Modulos.Clientes.Clases.Cliente;
-import proyectofinal_josegramage.Modulos.Clientes.Clases.Singletons;
 
 
 public class Xml {

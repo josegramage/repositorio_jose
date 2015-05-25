@@ -6,7 +6,7 @@
 package proyectofinal_josegramage.Modulos.Clientes.Modelo.BLL;
 
 import proyectofinal_josegramage.Clases.ConexionBD;
-import proyectofinal_josegramage.Modulos.Clientes.Clases.Singletons;
+import proyectofinal_josegramage.Librerias.Singletons;
 import proyectofinal_josegramage.Modulos.Clientes.Modelo.DAO.ClienteDAO_bd;
 import java.sql.Connection;
 import javax.swing.JOptionPane;

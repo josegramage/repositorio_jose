@@ -1,4 +1,5 @@
 package proyectofinal_josegramage.Modulos.Clientes.Clases;
+import proyectofinal_josegramage.Librerias.Singletons;
 import proyectofinal_josegramage.Modulos.Clientes.Clases.DAOgenerico;
 import proyectofinal_josegramage.Modulos.Clientes.Modelo.BLL.ClienteBLL;
 import proyectofinal_josegramage.Modulos.Clientes.Modelo.BLL.ClienteBLL_bd;

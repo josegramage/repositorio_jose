@@ -10,7 +10,7 @@ import proyectofinal_josegramage.Clases.FileUploader;
 import proyectofinal_josegramage.Clases.JPanel_Fondo;
 import proyectofinal_josegramage.Modulos.Clientes.Controlador.Controlador_Cliente;
 import proyectofinal_josegramage.Modulos.Clientes.Modelo.BLL.ClienteBLL;
-import proyectofinal_josegramage.Modulos.Clientes.Clases.Singletons;
+import proyectofinal_josegramage.Librerias.Singletons;
 import proyectofinal_josegramage.Modulos.Clientes.Modelo.DAO.ClienteDAO;
 import proyectofinal_josegramage.Modulos.Clientes.Vista.Vtna_cli_Pager;
 import proyectofinal_josegramage.Modulos.Inicio.Vista.Vtna_Config;
@@ -26,6 +26,8 @@ import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
+import javax.swing.Icon;
+import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
@@ -107,7 +109,9 @@ public class Controlador_Inicio implements ActionListener, MouseListener {
 
             Image icono = Toolkit.getDefaultToolkit().getImage("src/Img/icono.png");
             Singletons.ini.setIconImage(icono);
-
+            
+       
+            
             Singletons.ini.addWindowListener(new WindowAdapter() {
                 public void windowClosing(WindowEvent e) {
                     JOptionPane.showMessageDialog(null, "Saliendo de la aplicacion");
@@ -133,9 +137,9 @@ public class Controlador_Inicio implements ActionListener, MouseListener {
             Singletons.ini.etiProductos.addMouseListener(this);
             Singletons.ini.etiProductos.setForeground(Color.black);
 
-            Singletons.ini.etiExp.setName("_EXPERIENCIASINICIO");
-            Singletons.ini.etiExp.addMouseListener(this);
-            Singletons.ini.etiExp.setForeground(Color.black);
+            Singletons.ini.etiJuegos.setName("_EXPERIENCIASINICIO");
+            Singletons.ini.etiJuegos.addMouseListener(this);
+            Singletons.ini.etiJuegos.setForeground(Color.black);
 
             Singletons.ini.etiHistoria.setName("_HISTORIA");
             Singletons.ini.etiHistoria.addMouseListener(this);

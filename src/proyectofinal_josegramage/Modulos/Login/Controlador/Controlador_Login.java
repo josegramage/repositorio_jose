@@ -8,7 +8,7 @@ package proyectofinal_josegramage.Modulos.Login.Controlador;
 import proyectofinal_josegramage.Clases.JPanel_Fondo;
 import proyectofinal_josegramage.Modulos.Clientes.Controlador.Controlador_Cliente;
 import proyectofinal_josegramage.Modulos.Clientes.Modelo.BLL.ClienteBLL;
-import proyectofinal_josegramage.Modulos.Clientes.Clases.Singletons;
+import proyectofinal_josegramage.Librerias.Singletons;
 import proyectofinal_josegramage.Modulos.Clientes.Vista.Vtna_cli_Crear;
 import proyectofinal_josegramage.Modulos.Inicio.Controlador.Controlador_Admin;
 import proyectofinal_josegramage.Modulos.Inicio.Vista.Vtna_Menu_Admin;
@@ -55,7 +55,7 @@ public class Controlador_Login implements ActionListener, MouseListener, KeyList
         _TXT_APELLIDOS,
         _TXT_DNI,
         _TXT_TELEFONO,
-              _TXT_DIRECCION,
+        _TXT_DIRECCION,
         _TXT_EMAIL,
         _TXT_FNACIMIENTO,
         _BTN_CARGAR_IMG,
@@ -160,7 +160,6 @@ public class Controlador_Login implements ActionListener, MouseListener, KeyList
 
         if (i == 2) {   //  vtna olvidar password
 
-            
             Singletons.recu.btnAceptarRecu.setActionCommand("_BTN_ACEPTAR_RECU");
             Singletons.recu.btnAceptarRecu.setName("_BTN_ACEPTAR_RECU");
             Singletons.recu.btnAceptarRecu.addActionListener(this);
@@ -180,24 +179,22 @@ public class Controlador_Login implements ActionListener, MouseListener, KeyList
 
             // ----------- Login ------------------------  
             case _BTN_ACEPTAR_login:
-                
+
                 String usuario = Vtna_SignIN.txtUsuario.getText();
                 String password = Vtna_SignIN.txtPassword.getText();
                 boolean login;
-                
+
                 LoginBLL _login = new LoginBLL();
 
                 login = _login.loginUsuarioBLL(usuario, password);
                 
-             //   Singletons.cli.setTipo("1");
-                
-                if (login == true) {
+            if (login == true) {
                     Singletons.conectado = true;
 
                     Singletons.ini.eti_Entrar_Usuario.setText(Singletons.cliLog.getLogin());
                     Singletons.ini.eti_Reg_Perfil.setText("Mi perfil");
                     FileUploader.leer_imag(0);
-                    
+
                     if (Singletons.cliLog.getTipo().equals("admin")) {
 
                         Singletons.login.dispose();
@@ -206,12 +203,12 @@ public class Controlador_Login implements ActionListener, MouseListener, KeyList
                         JPanel p4 = new JPanel();
                         p4.add(Singletons.menu.panelMenu);
                         Singletons.ini.internalFrame.setContentPane(p4);
-                        
+
                     } else if (Singletons.cliLog.getTipo().equals("usuario")) {
-                        
+
                         Singletons.login.dispose();
                         new Controlador_Inicio(new Vtna_Inicio(), 0).iniciar(0);
-                   
+                        FileUploader.leer_imag_defecto(2);
                     }
 
                 } else {
@@ -221,8 +218,6 @@ public class Controlador_Login implements ActionListener, MouseListener, KeyList
                     return;
                 }
                 break;
-
-           
 
             // ------------ alta cliente --------------
             case _TXT_NOMBRE:
@@ -263,10 +258,19 @@ public class Controlador_Login implements ActionListener, MouseListener, KeyList
                 LoginBLL.limpiar();
                 break;
 
-            
             // ------------ Recuperar contraseña --------------
             case _BTN_ACEPTAR_RECU:
-                LoginBLL.RecuperarPassword();
+
+                LoginBLL _loginRecu = new LoginBLL();
+                _loginRecu.RecuperarPassword();
+
+                Singletons.conectado = true;
+
+                Singletons.recu.dispose();
+                new Controlador_Login(new Vtna_SignIN(), 0).iniciar(0);
+                JPanel panLog = new JPanel();
+                panLog.add(Singletons.login.panelLogin);
+                Singletons.ini.internalFrame.setContentPane(panLog);
                 break;
 
             case _BTN_VOLVER_RECU:
@@ -281,25 +285,23 @@ public class Controlador_Login implements ActionListener, MouseListener, KeyList
     public void mouseClicked(MouseEvent me) {
         switch (Accion.valueOf(me.getComponent().getName())) {
 
-                  
-             case _BTN_REGISTRO:
-            new Controlador_Login(new Vtna_SignUP(), 1).iniciar(1);
+            case _BTN_REGISTRO:
+                new Controlador_Login(new Vtna_SignUP(), 1).iniciar(1);
 
-                    JPanel regis = new JPanel();
-                    regis.add(Singletons.alta.panelCrear);
-                    Singletons.ini.internalFrame.setContentPane(regis);
-                     Singletons.login.dispose();
-             break;
-            
+                JPanel regis = new JPanel();
+                regis.add(Singletons.alta.panelCrear);
+                Singletons.ini.internalFrame.setContentPane(regis);
+                Singletons.login.dispose();
+                break;
+
             case _BTN_PASSW_OLVID:
                 new Controlador_Login(new Vtna_Recuperar(), 2).iniciar(2);
 
-                    JPanel recu = new JPanel();
-                    recu.add(Singletons.recu.panelRecuperar);
-                    Singletons.ini.internalFrame.setContentPane(recu);
-                     Singletons.login.dispose();
+                JPanel recu = new JPanel();
+                recu.add(Singletons.recu.panelRecuperar);
+                Singletons.ini.internalFrame.setContentPane(recu);
+                Singletons.login.dispose();
                 break;
-
         }
     }
 
@@ -307,22 +309,22 @@ public class Controlador_Login implements ActionListener, MouseListener, KeyList
     public void mousePressed(MouseEvent me) {
         switch (Accion.valueOf(me.getComponent().getName())) {
 
-           case _BTN_REGISTRO:
-            new Controlador_Login(new Vtna_SignUP(), 1).iniciar(1);
+            case _BTN_REGISTRO:
+                new Controlador_Login(new Vtna_SignUP(), 1).iniciar(1);
 
-                    JPanel regis = new JPanel();
-                    regis.add(Singletons.alta.panelCrear);
-                    Singletons.ini.internalFrame.setContentPane(regis);
-                     Singletons.login.dispose();
-             break;
-            
+                JPanel regis = new JPanel();
+                regis.add(Singletons.alta.panelCrear);
+                Singletons.ini.internalFrame.setContentPane(regis);
+                Singletons.login.dispose();
+                break;
+
             case _BTN_PASSW_OLVID:
                 new Controlador_Login(new Vtna_Recuperar(), 2).iniciar(2);
 
-                    JPanel recu = new JPanel();
-                    recu.add(Singletons.recu.panelRecuperar);
-                    Singletons.ini.internalFrame.setContentPane(recu);
-                     Singletons.login.dispose();
+                JPanel recu = new JPanel();
+                recu.add(Singletons.recu.panelRecuperar);
+                Singletons.ini.internalFrame.setContentPane(recu);
+                Singletons.login.dispose();
                 break;
         }
     }
@@ -400,7 +402,8 @@ public class Controlador_Login implements ActionListener, MouseListener, KeyList
             case _TXT_EMAIL:
                 LoginBLL.pideEmailKey();
                 break;
-        }
+                
+             }
     }
 
     @Override
@@ -436,5 +439,4 @@ public class Controlador_Login implements ActionListener, MouseListener, KeyList
                 break;
         }
     }
-
 }
