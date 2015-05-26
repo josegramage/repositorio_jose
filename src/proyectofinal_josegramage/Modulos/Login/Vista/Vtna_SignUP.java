@@ -53,11 +53,8 @@ public class Vtna_SignUP extends javax.swing.JFrame {
         etiDireccionError = new javax.swing.JLabel();
         etiEmail = new javax.swing.JLabel();
         txtEmailL = new javax.swing.JTextField();
-        etiLogin = new javax.swing.JLabel();
-        txtLoginL = new javax.swing.JTextField();
         errorEmail = new javax.swing.JButton();
         etiEmailError = new javax.swing.JLabel();
-        errorLogin = new javax.swing.JButton();
         jLabel7 = new javax.swing.JLabel();
         txtDireccionL = new javax.swing.JTextField();
         errorFnacimiento = new javax.swing.JButton();
@@ -128,19 +125,12 @@ public class Vtna_SignUP extends javax.swing.JFrame {
         panelCrear.add(etiEmail, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 220, -1, -1));
         panelCrear.add(txtEmailL, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 220, 129, -1));
 
-        etiLogin.setText("Usuario:");
-        panelCrear.add(etiLogin, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 280, -1, -1));
-        panelCrear.add(txtLoginL, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 280, 130, -1));
-
         errorEmail.setIcon(new javax.swing.ImageIcon(getClass().getResource("/proyectofinal_josegramage/Img/iconos/error.png"))); // NOI18N
         panelCrear.add(errorEmail, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 220, 22, 20));
 
         etiEmailError.setForeground(new java.awt.Color(255, 0, 0));
         etiEmailError.setText("Introduce un email válido");
         panelCrear.add(etiEmailError, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 220, -1, -1));
-
-        errorLogin.setIcon(new javax.swing.ImageIcon(getClass().getResource("/proyectofinal_josegramage/Img/iconos/error.png"))); // NOI18N
-        panelCrear.add(errorLogin, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 280, 22, 20));
 
         jLabel7.setText("Direccion:");
         panelCrear.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 190, -1, -1));
@@ -184,7 +174,6 @@ public class Vtna_SignUP extends javax.swing.JFrame {
     public static javax.swing.JButton errorDni;
     public static javax.swing.JButton errorEmail;
     public static javax.swing.JButton errorFnacimiento;
-    public static javax.swing.JButton errorLogin;
     public static javax.swing.JButton errorNombre;
     public static javax.swing.JButton errorTelf;
     public static javax.swing.JLabel etiApellidoError;
@@ -192,7 +181,6 @@ public class Vtna_SignUP extends javax.swing.JFrame {
     public static javax.swing.JLabel etiDniError;
     private javax.swing.JLabel etiEmail;
     public static javax.swing.JLabel etiEmailError;
-    public static javax.swing.JLabel etiLogin;
     public static javax.swing.JLabel etiNombreError;
     public static javax.swing.JLabel etiTelefonoError;
     private javax.swing.JLabel jLabel1;
@@ -207,7 +195,6 @@ public class Vtna_SignUP extends javax.swing.JFrame {
     public static javax.swing.JTextField txtDniL;
     public static javax.swing.JTextField txtEmailL;
     public static com.toedter.calendar.JDateChooser txtFnacimiento;
-    public static javax.swing.JTextField txtLoginL;
     public static javax.swing.JTextField txtNombreL;
     public static javax.swing.JTextField txtTelefonoL;
     // End of variables declaration//GEN-END:variables

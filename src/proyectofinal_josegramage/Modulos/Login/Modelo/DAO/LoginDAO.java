@@ -506,7 +506,7 @@ public class LoginDAO {
             if (error.equals("")) {
                 JOptionPane.showMessageDialog(null, "Se ha enviado un email con su nombre de usuario y contraseña," + "\n podrá cambiarlos en su perfil", "Email enviado", JOptionPane.INFORMATION_MESSAGE);
                  JOptionPane.showMessageDialog(null,"- TEST CLASE - \n Bienvenido/a " + nombre + " a la web del futuro, aquí podrás encontrar todo lo necesario para entrar en el fascinante mundo de la Realidad Virtual"+
-            " El usuario es: "+ login +"\n La contraseña es: "
+            "\n El usuario es: "+ login +"\n La contraseña es: "
             + password +"\n Podrás cambiarlos en tu perfil");
             } else {
                 JOptionPane.showMessageDialog(null, "Error de envio:\n" + error, "Error", JOptionPane.ERROR_MESSAGE);
@@ -528,13 +528,12 @@ public class LoginDAO {
         Singletons.alta.errorTelf.setVisible(false);
         Singletons.alta.errorFnacimiento.setVisible(false);
         Singletons.alta.errorDireccion.setVisible(false);
-        Singletons.alta.errorLogin.setVisible(false);
         Singletons.alta.etiNombreError.setVisible(false);
         Singletons.alta.etiApellidoError.setVisible(false);
         Singletons.alta.etiDniError.setVisible(false);
         Singletons.alta.etiTelefonoError.setVisible(false);
         Singletons.alta.etiDireccionError.setVisible(false);
-        Singletons.alta.txtLoginL.setText("");
+        
     
     }
 
@@ -560,7 +559,6 @@ public class LoginDAO {
 
         Singletons.alta.errorFnacimiento.setVisible(false);
 
-        Singletons.alta.errorLogin.setVisible(false);
 
     }
 

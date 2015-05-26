@@ -50,7 +50,7 @@ public class Controlador_Inicio implements ActionListener, MouseListener {
         // panel Menu
         _INICIO,
         _PRODUCTOS,
-        _EXPERIENCIAS,
+        _JUEGOS,
         _HISTORIA,
         _NOSOTROS,
         // panel Login
@@ -109,9 +109,7 @@ public class Controlador_Inicio implements ActionListener, MouseListener {
 
             Image icono = Toolkit.getDefaultToolkit().getImage("src/Img/icono.png");
             Singletons.ini.setIconImage(icono);
-            
-       
-            
+
             Singletons.ini.addWindowListener(new WindowAdapter() {
                 public void windowClosing(WindowEvent e) {
                     JOptionPane.showMessageDialog(null, "Saliendo de la aplicacion");
@@ -127,7 +125,7 @@ public class Controlador_Inicio implements ActionListener, MouseListener {
             } else {
                 Singletons.ini.eti_Entrar_Usuario.setText("Entrar");
                 Singletons.ini.eti_Reg_Perfil.setText("Regístrate");
-                            }
+            }
 
             Singletons.ini.etiInicio.setName("_INICIO");
             Singletons.ini.etiInicio.addMouseListener(this);
@@ -137,7 +135,7 @@ public class Controlador_Inicio implements ActionListener, MouseListener {
             Singletons.ini.etiProductos.addMouseListener(this);
             Singletons.ini.etiProductos.setForeground(Color.black);
 
-            Singletons.ini.etiJuegos.setName("_EXPERIENCIASINICIO");
+            Singletons.ini.etiJuegos.setName("_JUEGOS");
             Singletons.ini.etiJuegos.addMouseListener(this);
             Singletons.ini.etiJuegos.setForeground(Color.black);
 
@@ -237,100 +235,21 @@ public class Controlador_Inicio implements ActionListener, MouseListener {
                 break;
 
             case _PRODUCTOS:
-                new Controlador_Inicio(new Vtna_Config(), 1).iniciar(1);
-                Singletons.menu.dispose();
+
                 break;
 
-            case _EXPERIENCIAS:
-                Singletons.conectado = false;
-                new Controlador_Login(new Vtna_SignIN(), 4).iniciar(0);
-                Singletons.menu.dispose();
-                Singletons.conectado = false;
+            case _JUEGOS:
+
                 break;
 
             case _HISTORIA:
-                new Controlador_Inicio(new Vtna_Menu_Admin(), 0).iniciar(0);
-                Singletons.config.dispose();
+
                 break;
 
             case _NOSOTROS:
-                Main.conf.setMoneda('€');
+
                 break;
 
-            // ----------- Login ------------------------ 
-            /*
-                
-             case _moneda_dolar:
-             Main.conf.setMoneda('$');
-             break;
-
-             case _moneda_libra:
-             Main.conf.setMoneda('£');
-             break;
-
-             case _moneda_yen:
-             Main.conf.setMoneda('¥');
-             break;
-
-             case _apariencia1:
-             //         Ppal_Main.conf.setApariencia("0");
-             try {
-             UIManager.setLookAndFeel("com.sun.java.swing.plaf.windows.WindowsLookAndFeel");
-             SwingUtilities.updateComponentTreeUI(Singletons.config);
-             } catch (Exception e) {
-             }
-             break;
-
-             case _apariencia2:
-             //       Ppal_Main.conf.setApariencia("1");  
-
-             try {
-             UIManager.setLookAndFeel("javax.swing.plaf.metal.MetalLookAndFeel");
-             SwingUtilities.updateComponentTreeUI(Singletons.config);
-             } catch (Exception e) {
-             }
-             break;
-
-             case _apariencia3:
-             //      Ppal_Main.conf.setApariencia("2"); 
-
-             try {
-             UIManager.LookAndFeelInfo[] lafs = UIManager.getInstalledLookAndFeels();
-             for (UIManager.LookAndFeelInfo laf : lafs) {
-             if ("Nimbus".equals(laf.getName())) {
-             UIManager.setLookAndFeel(laf.getClassName());
-             }
-             }
-             SwingUtilities.updateComponentTreeUI(Singletons.config);
-             } catch (Exception e) {
-             }
-             break;
-
-             case _fecha1:
-             Main.conf.setFormatoFecha("1");
-             break;
-
-             case _fecha2:
-             Main.conf.setFormatoFecha("2");
-             break;
-
-             case _fecha3:
-             Main.conf.setFormatoFecha("3");
-             break;
-
-             case _fecha4:
-             Main.conf.setFormatoFecha("4");
-             break;
-
-             case _fecha5:
-             Main.conf.setFormatoFecha("5");
-             break;
-
-             case _fecha6:
-             Main.conf.setFormatoFecha("6");
-             break;
-             */
-            // throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
         }
     }
 
@@ -359,12 +278,12 @@ public class Controlador_Inicio implements ActionListener, MouseListener {
                     cli.listarClienteBLL();
 
                     new Controlador_Cliente(new Vtna_cli_Modif(), 2).iniciar(2);
-                    
+
                     JPanel panel_modif = new JPanel();
-                        panel_modif.add(Singletons.efModif.panelModif);
-                        Singletons.ini.internalFrame.setContentPane(panel_modif);
-                        ClienteDAO.modificarLogeado();
-                     
+                    panel_modif.add(Singletons.efModif.panelModif);
+                    Singletons.ini.internalFrame.setContentPane(panel_modif);
+                    ClienteDAO.modificarLogeado();
+
                 } else {
                     new Controlador_Login(new Vtna_SignUP(), 1).iniciar(1);
 
@@ -404,37 +323,71 @@ public class Controlador_Inicio implements ActionListener, MouseListener {
 
     @Override
     public void mouseEntered(MouseEvent e) {
- //       switch (Accion.valueOf(e.getComponent().getName())) {
-            /*
-         case _BTN_CONFIG:
-         Singletons.menu.btnConfig.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Img/config2.png")));
-         break;
+        switch (Accion.valueOf(e.getComponent().getName())) {
 
-         case _BTN_EMPFIJO:
-         Singletons.menu.btnEmpFijo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Img/empfijo2.png")));
-         break;
-                
-         case _BTN_REGISTRO:
-         break;
-         */     //   }
+            case _INICIO:
+                Singletons.ini.etiInicio.setForeground(Color.blue);
+                break;
+
+            case _PRODUCTOS:
+                Singletons.ini.etiProductos.setForeground(Color.blue);
+                break;
+
+            case _JUEGOS:
+                Singletons.ini.etiJuegos.setForeground(Color.blue);
+                break;
+
+            case _HISTORIA:
+                Singletons.ini.etiHistoria.setForeground(Color.blue);
+                break;
+
+            case _NOSOTROS:
+                Singletons.ini.etiNosotros.setForeground(Color.blue);
+                break;
+
+            case _BTN_ENTRAR_USUARIO:
+                Singletons.ini.eti_Entrar_Usuario.setForeground(Color.blue);
+                break;
+
+            case _BTN_REG_PERFIL:
+                Singletons.ini.eti_Reg_Perfil.setForeground(Color.blue);
+                break;
+        }
     }
 
     @Override
     public void mouseExited(MouseEvent me) {
 
-//        switch (Accion.valueOf(me.getComponent().getName())) {
-            /*
-         case _BTN_CONFIG:
-         Singletons.menu.btnConfig.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Img/config1.png")));
-         break;
+        switch (Accion.valueOf(me.getComponent().getName())) {
 
-         case _BTN_EMPFIJO:
-         Singletons.menu.btnEmpFijo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Img/empfijo1.png")));
-         break;
+            case _INICIO:
+                Singletons.ini.etiInicio.setForeground(Color.black);
+                break;
 
-         case _BTN_REGISTRO:
-         break;
-         */        }
-    //   }
+            case _PRODUCTOS:
+                Singletons.ini.etiProductos.setForeground(Color.black);
+                break;
+
+            case _JUEGOS:
+                Singletons.ini.etiJuegos.setForeground(Color.black);
+                break;
+
+            case _HISTORIA:
+                Singletons.ini.etiHistoria.setForeground(Color.black);
+                break;
+
+            case _NOSOTROS:
+                Singletons.ini.etiNosotros.setForeground(Color.black);
+                break;
+
+            case _BTN_ENTRAR_USUARIO:
+                Singletons.ini.eti_Entrar_Usuario.setForeground(Color.black);
+                break;
+
+            case _BTN_REG_PERFIL:
+                Singletons.ini.eti_Reg_Perfil.setForeground(Color.black);
+                break;
+        }
+    }
 
 }
