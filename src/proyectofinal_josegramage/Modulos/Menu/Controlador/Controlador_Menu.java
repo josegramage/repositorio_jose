@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package proyectofinal_josegramage.Modulos.Inicio.Controlador;
+package proyectofinal_josegramage.Modulos.Menu.Controlador;
 
 import proyectofinal_josegramage.Clases.FileUploader;
 import proyectofinal_josegramage.Clases.JPanel_Fondo;
@@ -12,8 +12,8 @@ import proyectofinal_josegramage.Modulos.Clientes.Modelo.BLL.ClienteBLL;
 import proyectofinal_josegramage.Librerias.Singletons;
 import proyectofinal_josegramage.Modulos.Clientes.Modelo.DAO.ClienteDAO;
 import proyectofinal_josegramage.Modulos.Clientes.Vista.Vtna_cli_Pager;
-import proyectofinal_josegramage.Modulos.Inicio.Vista.Vtna_Config;
-import proyectofinal_josegramage.Modulos.Inicio.Vista.Vtna_Menu_Admin;
+import proyectofinal_josegramage.Modulos.Menu.Vista.Vtna_Config;
+import proyectofinal_josegramage.Modulos.Menu.Vista.Vtna_Menu_Admin;
 import proyectofinal_josegramage.Modulos.Login.Controlador.Controlador_Login;
 import proyectofinal_josegramage.Modulos.Login.Vista.Vtna_SignIN;
 import proyectofinal_josegramage.Main;
@@ -35,7 +35,7 @@ import javax.swing.UIManager;
  *
  * @author Joso
  */
-public class Controlador_Admin implements ActionListener, MouseListener {
+public class Controlador_Menu implements ActionListener, MouseListener {
 
     public enum Accion {
 
@@ -63,7 +63,7 @@ public class Controlador_Admin implements ActionListener, MouseListener {
 
     }
 
-    public Controlador_Admin(JFrame menu, int i) {
+    public Controlador_Menu(JFrame menu, int i) {
 
         if (i == 0) {
             Singletons.menu = (Vtna_Menu_Admin) menu;
@@ -77,14 +77,14 @@ public class Controlador_Admin implements ActionListener, MouseListener {
             Singletons.efPager = (Vtna_cli_Pager) menu;
             new Controlador_Cliente(new Vtna_cli_Pager(), 0).iniciar(0);
         }
-        
+
         if (i == 3) {
-            
+
         }
-        
+
         if (i == 4) {
       //     Singletons.login = (Vtna_SignIN) menu;
-       //     new Controlador_Login(new Vtna_SignIN(),0).iniciar(0);
+            //     new Controlador_Login(new Vtna_SignIN(),0).iniciar(0);
         }
 
     }
@@ -93,77 +93,40 @@ public class Controlador_Admin implements ActionListener, MouseListener {
 
         if (i == 0) {   //  vtna_menu
 
-    /*        Singletons.panel = new JPanel_Fondo();
-            Singletons.menu.setVisible(true);
-            Singletons.menu.setResizable(false);
-
-            Singletons.menu.setLocation(2, 30);
-            Singletons.menu.setSize(692, 435);
-
-            Singletons.menu.setContentPane(Singletons.panel);
-            Singletons.menu.panelMenu.setOpaque(false);//para que deje mostrar la imagen de fondo
-            Singletons.panel.add(Singletons.menu.panelMenu);
-
-            Image icono = Toolkit.getDefaultToolkit().getImage("src/Img/icono.png");
-            Singletons.menu.setIconImage(icono);
-
-            Singletons.menu.addWindowListener(new WindowAdapter() {
-                public void windowClosing(WindowEvent e) {
-                    JOptionPane.showMessageDialog(null, "Saliendo de la aplicacion");
-                    System.exit(0);
-                }
-            });
-      */               
-            
             Singletons.menu.btnClientesA.setActionCommand("_BTN_CLIENTES");
             Singletons.menu.btnClientesA.setName("_BTN_CLIENTES");
             Singletons.menu.btnClientesA.addActionListener(this);
             Singletons.menu.btnClientesA.addMouseListener(this);
-            
+
             Singletons.menu.btnProductosA.setActionCommand("_BTN_PRODUCTOS");
             Singletons.menu.btnProductosA.setName("_BTN_PRODUCTOS");
             Singletons.menu.btnProductosA.addActionListener(this);
             Singletons.menu.btnProductosA.addMouseListener(this);
-            
+
             Singletons.menu.btnJuegosA.setActionCommand("_BTN_JUEGOS");
             Singletons.menu.btnJuegosA.setName("_BTN_JUEGOS");
             Singletons.menu.btnJuegosA.addActionListener(this);
             Singletons.menu.btnJuegosA.addMouseListener(this);
-            
+
             Singletons.menu.btnEstadA.setActionCommand("_BTN_ESTADISTICA");
             Singletons.menu.btnEstadA.setName("_BTN_ESTADISTICA");
             Singletons.menu.btnEstadA.addActionListener(this);
             Singletons.menu.btnEstadA.addMouseListener(this);
-            
+
             Singletons.menu.btnConfigA.setActionCommand("_BTN_CONFIG");
             Singletons.menu.btnConfigA.setName("_BTN_CONFIG");
             Singletons.menu.btnConfigA.addActionListener(this);
             Singletons.menu.btnConfigA.addMouseListener(this);
-            
 
         }
 
         if (i == 1) {     // Ventana configuracion
-
-            Singletons.config.setVisible(true);
-            Singletons.config.setResizable(false);
-            Singletons.config.setLocation(2, 30);
-            Singletons.config.setSize(692, 435);
 
             Singletons.panel = new JPanel_Fondo();
             Singletons.config.setContentPane(Singletons.panel);
             Singletons.config.panelConfig.setOpaque(false);//para que deje mostrar la imagen de fondo
             Singletons.panel.add(Singletons.config.panelConfig);
 
-            Image icono = Toolkit.getDefaultToolkit().getImage("src/Img/icono.png");
-            Singletons.config.setIconImage(icono);
-
-            Singletons.config.addWindowListener(new WindowAdapter() {
-                public void windowClosing(WindowEvent e) {
-                    JOptionPane.showMessageDialog(null, "Saliendo de la aplicación");
-                    System.exit(0);
-                }
-            });
             Singletons.config.btnVolverC.setActionCommand("_BTN_VOLVER");
             Singletons.config.btnVolverC.addActionListener(this);
 
@@ -206,8 +169,7 @@ public class Controlador_Admin implements ActionListener, MouseListener {
             Singletons.config.fecha6.setActionCommand("_fecha6");
             Singletons.config.fecha6.addActionListener(this);
         }
-        
-        
+
     }
 
     @Override
@@ -224,17 +186,29 @@ public class Controlador_Admin implements ActionListener, MouseListener {
                 Singletons.ini.internalFrame.setContentPane(p4);
                 break;
 
-                
             case _BTN_CONFIG:
-                new Controlador_Admin(new Vtna_Config(), 1).iniciar(1);
+                new Controlador_Menu(new Vtna_Config(), 1).iniciar(1);
                 Singletons.menu.dispose();
+                JPanel pConfig = new JPanel();
+                pConfig.add(Singletons.config.panelConfig);
+                Singletons.ini.internalFrame.setContentPane(pConfig);
                 break;
-                
-           
+
+            case _BTN_JUEGOS:
+                JOptionPane.showMessageDialog(null, "En construcción");
+                break;
+
+            case _BTN_PRODUCTOS:
+                JOptionPane.showMessageDialog(null, "En construcción");
+                break;
+
+            case _BTN_ESTADISTICA:
+                JOptionPane.showMessageDialog(null, "En construcción");
+                break;
 
             // ----------- Configuracion ----------------            
             case _BTN_VOLVER:
-                new Controlador_Admin(new Vtna_Menu_Admin(), 0).iniciar(0);
+                new Controlador_Menu(new Vtna_Menu_Admin(), 0).iniciar(0);
                 Singletons.config.dispose();
                 break;
 
@@ -266,7 +240,7 @@ public class Controlador_Admin implements ActionListener, MouseListener {
             case _apariencia2:
                 //       Ppal_Main.conf.setApariencia("1");  
 
-               try {
+                try {
                     UIManager.setLookAndFeel("javax.swing.plaf.metal.MetalLookAndFeel");
                     SwingUtilities.updateComponentTreeUI(Singletons.config);
                 } catch (Exception e) {
@@ -318,7 +292,7 @@ public class Controlador_Admin implements ActionListener, MouseListener {
 
     @Override
     public void mouseClicked(MouseEvent me) {
-  //      throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        //      throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
@@ -331,13 +305,13 @@ public class Controlador_Admin implements ActionListener, MouseListener {
         switch (Accion.valueOf(e.getComponent().getName())) {
 
             case _BTN_CONFIG:
-       //         Singletons.menu.btnConfigA.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Img/config1.png")));
+                //         Singletons.menu.btnConfigA.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Img/config1.png")));
                 break;
 
             case _BTN_CLIENTES:
-     //           Singletons.menu.btnClientesA.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Img/empfijo1.png")));
+                //           Singletons.menu.btnClientesA.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Img/empfijo1.png")));
                 break;
-                 
+
         }
 
         // throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
@@ -348,14 +322,14 @@ public class Controlador_Admin implements ActionListener, MouseListener {
         switch (Accion.valueOf(e.getComponent().getName())) {
 
             case _BTN_CONFIG:
-  //              Singletons.menu.btnConfigA.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Img/config2.png")));
+                //              Singletons.menu.btnConfigA.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Img/config2.png")));
                 break;
 
             case _BTN_CLIENTES:
-  //              Singletons.menu.btnClientesA.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Img/empfijo2.png")));
+                //              Singletons.menu.btnClientesA.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Img/empfijo2.png")));
                 break;
-                
-             }
+
+        }
     }
 
     @Override
@@ -364,14 +338,14 @@ public class Controlador_Admin implements ActionListener, MouseListener {
         switch (Accion.valueOf(me.getComponent().getName())) {
 
             case _BTN_CONFIG:
-     //           Singletons.menu.btnConfigA.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Img/config1.png")));
+                //           Singletons.menu.btnConfigA.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Img/config1.png")));
                 break;
 
             case _BTN_CLIENTES:
-     //           Singletons.menu.btnClientesA.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Img/empfijo1.png")));
+                //           Singletons.menu.btnClientesA.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Img/empfijo1.png")));
                 break;
 
-       }
+        }
     }
 
 }

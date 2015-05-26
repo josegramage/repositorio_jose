@@ -31,105 +31,53 @@ public class Vtna_jue_Modif extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
-        etiNombreErrorM = new javax.swing.JLabel();
-        etiApellidoErrorM = new javax.swing.JLabel();
-        etiTelefonoErrorM = new javax.swing.JLabel();
         etiGuardadoM = new javax.swing.JLabel();
         etiEmailM = new javax.swing.JLabel();
-        etiEmailErrorM = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
-        jLabel7 = new javax.swing.JLabel();
         etiAvatarM = new javax.swing.JLabel();
-        etiTipoM = new javax.swing.JLabel();
         etiDireccionM = new javax.swing.JLabel();
-        etiDireccionErrorM = new javax.swing.JLabel();
         txtNombreM = new javax.swing.JTextField();
-        txtApellidosM = new javax.swing.JTextField();
-        txtEmailM = new javax.swing.JTextField();
-        txtLoginM = new javax.swing.JTextField();
-        txtPasswordM = new javax.swing.JTextField();
-        txtFnacimientoM = new com.toedter.calendar.JDateChooser();
+        txtCompanyiaM = new javax.swing.JTextField();
         btnAceptarM = new javax.swing.JButton();
         btnCancelarM = new javax.swing.JButton();
         errorNombreM = new javax.swing.JButton();
-        errorApellidosM = new javax.swing.JButton();
-        errorTelfM = new javax.swing.JButton();
-        errorFnacimientoM = new javax.swing.JButton();
+        errorCompanyiaM = new javax.swing.JButton();
+        errorTipoM = new javax.swing.JButton();
         btnOKM = new javax.swing.JButton();
         btnVolverM = new javax.swing.JButton();
-        errorEmailM = new javax.swing.JButton();
+        errorDescripcionM = new javax.swing.JButton();
         btnCambiarImgM = new javax.swing.JButton();
-        errorPasswordM = new javax.swing.JButton();
-        errorDireccionM = new javax.swing.JButton();
-        comboTipoM = new javax.swing.JComboBox();
-        txtTelefonoM = new javax.swing.JTextField();
-        txtDireccionM = new javax.swing.JTextField();
+        errorPrecioM = new javax.swing.JButton();
+        txtTipoM = new javax.swing.JTextField();
+        txtPrecioM = new javax.swing.JTextField();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        txtDescripcionM = new javax.swing.JTextArea();
 
         panelModif.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel1.setText("Nombre:");
         panelModif.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 30, -1, -1));
 
-        jLabel2.setText("Apellidos:");
+        jLabel2.setText("Companyia:");
         panelModif.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 60, -1, -1));
 
-        jLabel4.setText("Telefono:");
+        jLabel4.setText("Tipo:");
         panelModif.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 90, -1, -1));
-
-        jLabel5.setText("Fecha de nacimiento:");
-        panelModif.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 180, -1, -1));
-
-        etiNombreErrorM.setForeground(new java.awt.Color(255, 0, 0));
-        etiNombreErrorM.setText("Introduce un nombre valido");
-        panelModif.add(etiNombreErrorM, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 30, -1, -1));
-
-        etiApellidoErrorM.setForeground(new java.awt.Color(255, 0, 0));
-        etiApellidoErrorM.setText("Introduce apellidos validos");
-        panelModif.add(etiApellidoErrorM, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 60, -1, -1));
-
-        etiTelefonoErrorM.setForeground(new java.awt.Color(255, 0, 0));
-        etiTelefonoErrorM.setText("Introduce un telefono valido");
-        panelModif.add(etiTelefonoErrorM, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 90, -1, -1));
 
         etiGuardadoM.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         etiGuardadoM.setForeground(new java.awt.Color(0, 204, 102));
-        etiGuardadoM.setText("Cliente modificado con éxito");
+        etiGuardadoM.setText("Juego modificado con éxito");
         panelModif.add(etiGuardadoM, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 260, -1, -1));
 
-        etiEmailM.setText("Email:");
+        etiEmailM.setText("Descripcion:");
         panelModif.add(etiEmailM, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 150, -1, -1));
-
-        etiEmailErrorM.setForeground(new java.awt.Color(255, 0, 0));
-        etiEmailErrorM.setText("Introduce un email valido");
-        panelModif.add(etiEmailErrorM, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 150, -1, -1));
-
-        jLabel3.setText("Login:");
-        panelModif.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 220, -1, -1));
-
-        jLabel7.setText("Password:");
-        panelModif.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 220, -1, -1));
 
         etiAvatarM.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         panelModif.add(etiAvatarM, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 30, 90, 90));
 
-        etiTipoM.setText("Tipo:");
-        panelModif.add(etiTipoM, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 250, -1, -1));
-
-        etiDireccionM.setText("Dirección:");
+        etiDireccionM.setText("Precio:");
         panelModif.add(etiDireccionM, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 120, -1, -1));
-
-        etiDireccionErrorM.setForeground(new java.awt.Color(255, 0, 0));
-        etiDireccionErrorM.setText("Introduce una direccion valida");
-        panelModif.add(etiDireccionErrorM, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 120, -1, -1));
         panelModif.add(txtNombreM, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 30, 129, -1));
-        panelModif.add(txtApellidosM, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 60, 129, -1));
-        panelModif.add(txtEmailM, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 150, 130, -1));
-        panelModif.add(txtLoginM, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 220, 120, -1));
-        panelModif.add(txtPasswordM, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 220, 130, -1));
-
-        txtFnacimientoM.setDateFormatString("dd/MM/yyyy");
-        panelModif.add(txtFnacimientoM, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 180, -1, -1));
+        panelModif.add(txtCompanyiaM, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 60, 129, -1));
 
         btnAceptarM.setText("Aceptar");
         panelModif.add(btnAceptarM, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 290, -1, -1));
@@ -140,14 +88,11 @@ public class Vtna_jue_Modif extends javax.swing.JFrame {
         errorNombreM.setIcon(new javax.swing.ImageIcon(getClass().getResource("/proyectofinal_josegramage/Img/iconos/error.png"))); // NOI18N
         panelModif.add(errorNombreM, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 30, 22, 20));
 
-        errorApellidosM.setIcon(new javax.swing.ImageIcon(getClass().getResource("/proyectofinal_josegramage/Img/iconos/error.png"))); // NOI18N
-        panelModif.add(errorApellidosM, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 60, 22, 20));
+        errorCompanyiaM.setIcon(new javax.swing.ImageIcon(getClass().getResource("/proyectofinal_josegramage/Img/iconos/error.png"))); // NOI18N
+        panelModif.add(errorCompanyiaM, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 60, 22, 20));
 
-        errorTelfM.setIcon(new javax.swing.ImageIcon(getClass().getResource("/proyectofinal_josegramage/Img/iconos/error.png"))); // NOI18N
-        panelModif.add(errorTelfM, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 90, 22, 20));
-
-        errorFnacimientoM.setIcon(new javax.swing.ImageIcon(getClass().getResource("/proyectofinal_josegramage/Img/iconos/error.png"))); // NOI18N
-        panelModif.add(errorFnacimientoM, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 180, 22, 20));
+        errorTipoM.setIcon(new javax.swing.ImageIcon(getClass().getResource("/proyectofinal_josegramage/Img/iconos/error.png"))); // NOI18N
+        panelModif.add(errorTipoM, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 90, 22, 20));
 
         btnOKM.setIcon(new javax.swing.ImageIcon(getClass().getResource("/proyectofinal_josegramage/Img/iconos/acierto.png"))); // NOI18N
         panelModif.add(btnOKM, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 250, 30, 30));
@@ -156,23 +101,23 @@ public class Vtna_jue_Modif extends javax.swing.JFrame {
         btnVolverM.setText("VOLVER");
         panelModif.add(btnVolverM, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 290, 100, -1));
 
-        errorEmailM.setIcon(new javax.swing.ImageIcon(getClass().getResource("/proyectofinal_josegramage/Img/iconos/error.png"))); // NOI18N
-        panelModif.add(errorEmailM, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 150, 22, 20));
+        errorDescripcionM.setIcon(new javax.swing.ImageIcon(getClass().getResource("/proyectofinal_josegramage/Img/iconos/error.png"))); // NOI18N
+        panelModif.add(errorDescripcionM, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 150, 22, 20));
 
         btnCambiarImgM.setFont(new java.awt.Font("Tahoma", 0, 9)); // NOI18N
         btnCambiarImgM.setText("cambiar imagen");
         panelModif.add(btnCambiarImgM, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 125, 90, -1));
 
-        errorPasswordM.setIcon(new javax.swing.ImageIcon(getClass().getResource("/proyectofinal_josegramage/Img/iconos/error.png"))); // NOI18N
-        panelModif.add(errorPasswordM, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 220, 20, 20));
+        errorPrecioM.setIcon(new javax.swing.ImageIcon(getClass().getResource("/proyectofinal_josegramage/Img/iconos/error.png"))); // NOI18N
+        panelModif.add(errorPrecioM, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 120, 22, 20));
+        panelModif.add(txtTipoM, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 90, 130, -1));
+        panelModif.add(txtPrecioM, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 120, 130, -1));
 
-        errorDireccionM.setIcon(new javax.swing.ImageIcon(getClass().getResource("/proyectofinal_josegramage/Img/iconos/error.png"))); // NOI18N
-        panelModif.add(errorDireccionM, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 120, 22, 20));
+        txtDescripcionM.setColumns(20);
+        txtDescripcionM.setRows(5);
+        jScrollPane1.setViewportView(txtDescripcionM);
 
-        comboTipoM.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Usuario", "Admin" }));
-        panelModif.add(comboTipoM, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 250, -1, -1));
-        panelModif.add(txtTelefonoM, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 90, 130, -1));
-        panelModif.add(txtDireccionM, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 120, 130, -1));
+        panelModif.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 150, 130, 80));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -198,38 +143,24 @@ public class Vtna_jue_Modif extends javax.swing.JFrame {
     public static javax.swing.JButton btnCancelarM;
     public static javax.swing.JButton btnOKM;
     public static javax.swing.JButton btnVolverM;
-    public static javax.swing.JComboBox comboTipoM;
-    public static javax.swing.JButton errorApellidosM;
-    public static javax.swing.JButton errorDireccionM;
-    public static javax.swing.JButton errorEmailM;
-    public static javax.swing.JButton errorFnacimientoM;
+    public static javax.swing.JButton errorCompanyiaM;
+    public static javax.swing.JButton errorDescripcionM;
     public static javax.swing.JButton errorNombreM;
-    public static javax.swing.JButton errorPasswordM;
-    public static javax.swing.JButton errorTelfM;
-    public static javax.swing.JLabel etiApellidoErrorM;
+    public static javax.swing.JButton errorPrecioM;
+    public static javax.swing.JButton errorTipoM;
     public static javax.swing.JLabel etiAvatarM;
-    public static javax.swing.JLabel etiDireccionErrorM;
     private javax.swing.JLabel etiDireccionM;
-    public static javax.swing.JLabel etiEmailErrorM;
     private javax.swing.JLabel etiEmailM;
     public static javax.swing.JLabel etiGuardadoM;
-    public static javax.swing.JLabel etiNombreErrorM;
-    public static javax.swing.JLabel etiTelefonoErrorM;
-    public static javax.swing.JLabel etiTipoM;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel7;
+    private javax.swing.JScrollPane jScrollPane1;
     public static javax.swing.JPanel panelModif;
-    public static javax.swing.JTextField txtApellidosM;
-    public static javax.swing.JTextField txtDireccionM;
-    public static javax.swing.JTextField txtEmailM;
-    public static com.toedter.calendar.JDateChooser txtFnacimientoM;
-    public static javax.swing.JTextField txtLoginM;
+    public static javax.swing.JTextField txtCompanyiaM;
+    public static javax.swing.JTextArea txtDescripcionM;
     public static javax.swing.JTextField txtNombreM;
-    public static javax.swing.JTextField txtPasswordM;
-    public static javax.swing.JTextField txtTelefonoM;
+    public static javax.swing.JTextField txtPrecioM;
+    public static javax.swing.JTextField txtTipoM;
     // End of variables declaration//GEN-END:variables
 }

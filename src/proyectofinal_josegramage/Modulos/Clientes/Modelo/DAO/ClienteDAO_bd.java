@@ -139,6 +139,42 @@ public class ClienteDAO_bd {
             }
         }
     }
+    
+    public void modificarClienteLogeado(Connection con) {
+        PreparedStatement stmt = null;
+
+        try {
+
+            stmt = con.prepareStatement("UPDATE proyectofinal_josegramage.clientes SET Nombre=?, Apellidos=?, Dni=?, Telefono=?, Direccion=?, Email=?, Fnacimiento=?, Fechaalta=?, Login=?, Password=?, Estado=?, Tipo=?, Avatar=? WHERE Dni=?");
+            stmt.setString(1, Singletons.cliLog.getNombre());
+            stmt.setString(2, Singletons.cliLog.getApellidos());
+            stmt.setString(3, Singletons.cliLog.getDni());
+            stmt.setString(4, Singletons.cliLog.getTelefono());
+            stmt.setString(5, Singletons.cliLog.getDireccion());
+            stmt.setString(6, Singletons.cliLog.getEmail());
+            stmt.setString(7, Singletons.cliLog.getFnacimiento().aStringFecha());
+            stmt.setString(8, Singletons.cliLog.getFechaalta().aStringFecha());
+            stmt.setString(9, Singletons.cliLog.getLogin());
+            stmt.setString(10, Singletons.cliLog.getPassword());
+            stmt.setString(11, Singletons.cliLog.getEstado());
+            stmt.setString(12, Singletons.cliLog.getTipo());
+            stmt.setString(13, Singletons.cliLog.getAvatar());
+
+            stmt.setString(14, Singletons.cliLog.getDni());
+            stmt.executeUpdate();
+
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Ha habido un problema al actualizar el usuario!");
+        } finally {
+            if (stmt != null) {
+                try {
+                    stmt.close();
+                } catch (SQLException ex) {
+                    JOptionPane.showMessageDialog(null, "Ha habido un error Logger!");
+                }
+            }
+        }
+    }
 
     //Borrar cliente
     public Cliente borrarClienteDAO(Connection con, Cliente cli) {

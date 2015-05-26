@@ -45,7 +45,7 @@ public class Vtna_Recuperar extends javax.swing.JFrame {
 
         btnAceptarRecu.setText("Aceptar");
 
-        jLabel4.setText("un código de activación para tu cuenta");
+        jLabel4.setText("una nueva, podrás cambiarla en tu perfil");
 
         jLabel3.setText("Si has olvidado tu contraseña te enviaremos a tu correo electrónico");
 

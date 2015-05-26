@@ -10,8 +10,8 @@ import proyectofinal_josegramage.Modulos.Clientes.Controlador.Controlador_Client
 import proyectofinal_josegramage.Modulos.Clientes.Modelo.BLL.ClienteBLL;
 import proyectofinal_josegramage.Librerias.Singletons;
 import proyectofinal_josegramage.Modulos.Clientes.Vista.Vtna_cli_Crear;
-import proyectofinal_josegramage.Modulos.Inicio.Controlador.Controlador_Admin;
-import proyectofinal_josegramage.Modulos.Inicio.Vista.Vtna_Menu_Admin;
+import proyectofinal_josegramage.Modulos.Menu.Controlador.Controlador_Menu;
+import proyectofinal_josegramage.Modulos.Menu.Vista.Vtna_Menu_Admin;
 import proyectofinal_josegramage.Modulos.Login.Modelo.BLL.LoginBLL;
 import proyectofinal_josegramage.Modulos.Login.Vista.Vtna_Recuperar;
 import proyectofinal_josegramage.Modulos.Login.Vista.Vtna_SignIN;
@@ -34,6 +34,7 @@ import javax.swing.JPanel;
 import proyectofinal_josegramage.Clases.FileUploader;
 import proyectofinal_josegramage.Modulos.Inicio.Controlador.Controlador_Inicio;
 import proyectofinal_josegramage.Modulos.Inicio.Vista.Vtna_Inicio;
+import proyectofinal_josegramage.Modulos.Inicio.Vista.Vtna_panel_Inicio;
 import proyectofinal_josegramage.Modulos.Login.Modelo.DAO.LoginDAO;
 
 /**
@@ -118,7 +119,6 @@ public class Controlador_Login implements ActionListener, MouseListener, KeyList
         if (i == 1) {
 
             LoginDAO.ocultarErrores();
-            FileUploader.leer_imag_defecto(1);
 
             Singletons.alta.txtNombreL.setName("_TXT_NOMBRE");
             Singletons.alta.txtNombreL.setActionCommand("_TXT_NOMBRE");
@@ -187,19 +187,25 @@ public class Controlador_Login implements ActionListener, MouseListener, KeyList
                 LoginBLL _login = new LoginBLL();
 
                 login = _login.loginUsuarioBLL(usuario, password);
-                
-            if (login == true) {
+
+                if (login == true) {
                     Singletons.conectado = true;
 
                     Singletons.ini.eti_Entrar_Usuario.setText(Singletons.cliLog.getLogin());
                     Singletons.ini.eti_Reg_Perfil.setText("Mi perfil");
-                    FileUploader.leer_imag(0);
 
+                    if (Singletons.cliLog.getAvatar().isEmpty()) {
+                    FileUploader.leer_imag_defecto(2);
+                    }
+                    else {
+                    FileUploader.leer_imag(0);
+                    }
+                    
                     if (Singletons.cliLog.getTipo().equals("admin")) {
 
                         Singletons.login.dispose();
 
-                        new Controlador_Admin(new Vtna_Menu_Admin(), 0).iniciar(0);
+                        new Controlador_Menu(new Vtna_Menu_Admin(), 0).iniciar(0);
                         JPanel p4 = new JPanel();
                         p4.add(Singletons.menu.panelMenu);
                         Singletons.ini.internalFrame.setContentPane(p4);
@@ -207,8 +213,11 @@ public class Controlador_Login implements ActionListener, MouseListener, KeyList
                     } else if (Singletons.cliLog.getTipo().equals("usuario")) {
 
                         Singletons.login.dispose();
-                        new Controlador_Inicio(new Vtna_Inicio(), 0).iniciar(0);
-                        FileUploader.leer_imag_defecto(2);
+                        new Controlador_Inicio(new Vtna_panel_Inicio(), 1).iniciar(1);
+                        JPanel panel_Inicio = new JPanel();
+                        panel_Inicio.add(Singletons.iniPanel.panelInicio);
+                        Singletons.ini.internalFrame.setContentPane(panel_Inicio);
+
                     }
 
                 } else {
@@ -402,8 +411,8 @@ public class Controlador_Login implements ActionListener, MouseListener, KeyList
             case _TXT_EMAIL:
                 LoginBLL.pideEmailKey();
                 break;
-                
-             }
+
+        }
     }
 
     @Override

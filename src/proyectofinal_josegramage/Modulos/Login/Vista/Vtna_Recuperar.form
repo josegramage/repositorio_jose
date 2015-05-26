@@ -137,7 +137,7 @@
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel4">
           <Properties>
-            <Property name="text" type="java.lang.String" value="un c&#xf3;digo de activaci&#xf3;n para tu cuenta"/>
+            <Property name="text" type="java.lang.String" value="una nueva, podr&#xe1;s cambiarla en tu perfil"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel3">

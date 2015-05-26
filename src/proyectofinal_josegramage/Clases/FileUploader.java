@@ -141,7 +141,20 @@ public class FileUploader {
 
             } else if (i == 1) {       // para modificar
                 //pintamos la imagen en el Jlabel
+                ImageIcon icon = new ImageIcon(Singletons.cliLog.getAvatar());
+         //       ImageIcon icon = new ImageIcon(Singletons.ruta_avatar);
+                //Se extrae la imagen del icono
+                Image img = icon.getImage();
+                //Se modifica su tamaño
+                Image newimg = img.getScaledInstance(90, 90, java.awt.Image.SCALE_SMOOTH);
+                //SE GENERA EL IMAGE ICON CON LA NUEVA IMAGEN
+                ImageIcon newIcon = new ImageIcon(newimg);
+                Singletons.efModif.etiAvatarM.setIcon(newIcon);
+                
+                 } else if (i == 2) {       // para modificar
+                //pintamos la imagen en el Jlabel
                 ImageIcon icon = new ImageIcon(Singletons.cli.getAvatar());
+         //       ImageIcon icon = new ImageIcon(Singletons.ruta_avatar);
                 //Se extrae la imagen del icono
                 Image img = icon.getImage();
                 //Se modifica su tamaño
@@ -174,6 +187,7 @@ public class FileUploader {
         Image newimg = img.getScaledInstance(55, 55, java.awt.Image.SCALE_SMOOTH);
         ImageIcon newIcon = new ImageIcon(newimg);
             Singletons.ini.etiAvatarInicio.setIcon(newIcon);
+            
         }  else if (i == 3) {
              ImageIcon icon = new ImageIcon(ruta);
         Image img = icon.getImage();

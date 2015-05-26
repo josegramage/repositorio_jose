@@ -110,7 +110,10 @@ public class SimpleTableModel_cliente extends AbstractTableModel {
     public void cargar() {
         datos.clear();
         datosaux.clear();
-        ClienteBLL_bd.listarClienteBLL();
+        
+        ClienteBLL_bd _clientes = new ClienteBLL_bd();
+        _clientes.listarClienteBLL();
+        
         for (int i=0; i<= Singletons.cliArray.size() -1; i++){
             addRow(Singletons.cliArray.get(i));
             datosaux.add(Singletons.cliArray.get(i));
@@ -137,11 +140,11 @@ public class SimpleTableModel_cliente extends AbstractTableModel {
         }
         Vtna_cli_Pager.etiFILTRAR.setText(String.valueOf(cont));
         System.out.println("nombre seleccionado: "+ nombre);
-        //JOptionPane.showMessageDialog(null, cont);
         pagina.initLinkBox();
     }
     }
     
+      
     
     public Cliente buscar(String u) {
         datos.clear();

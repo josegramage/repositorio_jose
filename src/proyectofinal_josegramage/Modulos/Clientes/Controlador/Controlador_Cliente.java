@@ -19,8 +19,8 @@ import proyectofinal_josegramage.Modulos.Clientes.Modelo.pager.pagina;
 import proyectofinal_josegramage.Modulos.Clientes.Vista.Vtna_cli_Pager;
 import proyectofinal_josegramage.Modulos.Clientes.Vista.Vtna_cli_Crear;
 import proyectofinal_josegramage.Modulos.Clientes.Vista.Vtna_cli_Modif;
-import proyectofinal_josegramage.Modulos.Inicio.Controlador.Controlador_Admin;
-import proyectofinal_josegramage.Modulos.Inicio.Vista.Vtna_Menu_Admin;
+import proyectofinal_josegramage.Modulos.Menu.Controlador.Controlador_Menu;
+import proyectofinal_josegramage.Modulos.Menu.Vista.Vtna_Menu_Admin;
 import proyectofinal_josegramage.Modulos.Login.Controlador.Controlador_Login;
 import proyectofinal_josegramage.Modulos.Login.Vista.Vtna_SignIN;
 import proyectofinal_josegramage.Main;
@@ -46,6 +46,9 @@ import java.awt.Image;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import proyectofinal_josegramage.Modulos.Clientes.Clases.Cliente;
+import proyectofinal_josegramage.Modulos.Inicio.Controlador.Controlador_Inicio;
+import proyectofinal_josegramage.Modulos.Inicio.Vista.Vtna_Inicio;
+import proyectofinal_josegramage.Modulos.Inicio.Vista.Vtna_panel_Inicio;
 import proyectofinal_josegramage.Modulos.Login.Vista.Vtna_SignUP;
 
 /**
@@ -126,38 +129,18 @@ public class Controlador_Cliente implements ActionListener, KeyListener, MouseLi
     public void iniciar(int i) {
 
         if (i == 0) {
-            /*
-             Singletons.efPager.setLocationRelativeTo(null);
-             Singletons.efPager.setTitle("Empleados fijos");
-             Singletons.efPager.setResizable(false);
-             Container content = Singletons.efPager.getContentPane();
-             content.setLayout(new BorderLayout());
-             content.add(fondo, BorderLayout.CENTER);
-             Singletons.efPager.setSize(850, 550);//método obligatorio
-             Singletons.efPager.setLocation(2, 30);
-
-             Singletons.efPager.pager.setOpaque(false);//para que deje mostrar la imagen de fondo
-             Singletons.efPager.pager.setVisible(true);
-             */
+            
             Singletons.efPager.TABLA.setModel(new SimpleTableModel_cliente());
             ((SimpleTableModel_cliente) Singletons.efPager.TABLA.getModel()).cargar();
             Singletons.efPager.TABLA.setFillsViewportHeight(true);
             Singletons.efPager.TABLA.setRowSorter(Singletons.sorter);
 
-            //         Image icono = Toolkit.getDefaultToolkit().getImage("src/Img/icono.png");
-            //         Singletons.efPager.setIconImage(icono);
             pagina.inicializa();
             pagina.initLinkBox();
 
-            ClienteBLL.abrirSilencioso();
-            Singletons.efPager.etiFILTRAR.setText(String.valueOf(Singletons.client.size()));
+             Singletons.efPager.etiFILTRAR.setText(String.valueOf(Singletons.client.size()));
 
-            //          Singletons.efPager.addWindowListener(new WindowAdapter() {
-            //              public void windowClosing(WindowEvent e) {
-            //                  JOptionPane.showMessageDialog(null, "Saliendo de la aplicacion");
-            //                  System.exit(0);
-            //              }
-            //          });
+           
             List<String> myWords = new ArrayList<String>();
             for (int x = 0; x <= Singletons.client.size() - 1; x++) {
                 myWords.add(Singletons.client.get(x).getNombre());
@@ -175,9 +158,6 @@ public class Controlador_Cliente implements ActionListener, KeyListener, MouseLi
                 }
             });
 
-            //       Singletons.efPager.panelLoginPager.setOpaque(false);
-            //       Singletons.efPager.etiUsuarioPager.setText(Singletons.cliLog.getLogin());
-            //       FileUploader.leer_imag(2);
             Singletons.efPager.ANTERIOR.setActionCommand("_BTN_ANTERIOR");
             Singletons.efPager.ANTERIOR.addActionListener(this);
 
@@ -247,28 +227,7 @@ public class Controlador_Cliente implements ActionListener, KeyListener, MouseLi
 
         //     Crear empleado
         if (i == 1) {
-            /*
-             Singletons.efCrear.setVisible(true);
-             Singletons.efCrear.setResizable(false);
-             Singletons.efCrear.setLocation(2, 30);
-             Singletons.efCrear.setSize(692, 435);
-
-             Singletons.panel = new JPanel_Fondo();
-             Singletons.efCrear.setContentPane(Singletons.panel);
-             Singletons.efCrear.panelCrear.setOpaque(false);//para que deje mostrar la imagen de fondo
-             Singletons.panel.add(Singletons.efCrear.panelCrear);
-
-             Image icono = Toolkit.getDefaultToolkit().getImage("src/Img/icono.png");
-             Singletons.efCrear.setIconImage(icono);
-
-             Singletons.efCrear.addWindowListener(new WindowAdapter() {
-             public void windowClosing(WindowEvent e) {
-             JOptionPane.showMessageDialog(null, "Saliendo de la aplicación");
-             System.exit(0);
-             }
-             });
-             */
-
+            
             ClienteDAO.ocultarErrores();
             FileUploader.leer_imag_defecto(0);
 
@@ -326,13 +285,14 @@ public class Controlador_Cliente implements ActionListener, KeyListener, MouseLi
         if (i == 2) {
 
             if (Singletons.cliLog.getTipo().equals("usuario")) {
-            Singletons.efModif.etiTipoM.setVisible(false);
-            Singletons.efModif.comboTipoM.setVisible(false);
+                Singletons.efModif.etiTipoM.setVisible(false);
+                Singletons.efModif.comboTipoM.setVisible(false);
+
             }
-           ClienteDAO.modificar(); 
-        //    ClienteDAO.modificarLogeado();
+           
+    //        ClienteDAO.modificarLogeado();
             ClienteBLL.ocultaErrorM();
-                       
+
             Singletons.efModif.txtNombreM.setName("_TXT_NOMBRE_M");
             Singletons.efModif.txtNombreM.setActionCommand("_TXT_NOMBRE_M");
             Singletons.efModif.txtNombreM.addActionListener(this);
@@ -418,6 +378,15 @@ public class Controlador_Cliente implements ActionListener, KeyListener, MouseLi
                         panel_modif.add(Singletons.efModif.panelModif);
                         Singletons.ini.internalFrame.setContentPane(panel_modif);
                         ClienteDAO.modificar();
+                        
+                        if (Singletons.cli.getAvatar().isEmpty()) {
+                    FileUploader.leer_imag_defecto(3);
+                    }
+                    else {
+                    FileUploader.leer_imag(2);
+                    }
+                        
+                        
                     } else {
                         JOptionPane.showMessageDialog(null, "No hay un empleado seleccionado", "Error", JOptionPane.QUESTION_MESSAGE);
                     }
@@ -437,8 +406,11 @@ public class Controlador_Cliente implements ActionListener, KeyListener, MouseLi
                 break;
 
             case _BTN_MENU:
+                new Controlador_Menu(new Vtna_Menu_Admin(), 0).iniciar(0);
                 Singletons.efPager.dispose();
-                new Controlador_Admin(new Vtna_Menu_Admin(), 0).iniciar(0);
+                JPanel p4 = new JPanel();
+                p4.add(Singletons.menu.panelMenu);
+                Singletons.ini.internalFrame.setContentPane(p4);
                 break;
 
             case _BTN_GUARDAR:
@@ -476,27 +448,8 @@ public class Controlador_Cliente implements ActionListener, KeyListener, MouseLi
                 pagina.initLinkBox();
                 break;
 
-            /*        // MI PERFIL
-             case _BTN_PERFIL_EDITAR:
-
-             if (Singletons.conectado == true) {
-             ClienteBLL_bd emp = new ClienteBLL_bd();
-             emp.listarEmpFijoBLL();
-             Singletons.efPager.dispose();
-
-             new Controlador_Cliente(new Vtna_cli_Modif(), 2).iniciar(2);
-             ClienteDAO.modificarLogeado();
-             }
-             break;
-
-             case _BTN_PERFIL_SALIR:
-             Singletons.conectado = false;
-             Singletons.efPager.dispose();
-             Singletons.login.setVisible(true);
-             //  new Controlador_Login(new Vtna_SignIN(),0).iniciar(0);
-             break;
-             */
-            // ------- CREAR EMPLEADO -------------------               
+          
+            // ------- CREAR CLIENTE -------------------               
             case _TXT_NOMBRE:
                 ClienteBLL.pideNombre();
                 break;
@@ -516,11 +469,11 @@ public class Controlador_Cliente implements ActionListener, KeyListener, MouseLi
             case _TXT_EMAIL:
                 ClienteBLL.pideEmail();
                 break;
-                
+
             case _TXT_LOGIN:
                 ClienteBLL.pideLogin();
                 break;
-                
+
             case _TXT_PASSWORD:
                 ClienteBLL.pidePassword();
                 break;
@@ -549,7 +502,7 @@ public class Controlador_Cliente implements ActionListener, KeyListener, MouseLi
 
                 break;
 
-            // ------- MODIFICAR EMPLEADO -------------------            
+            // ------- MODIFICAR CLIENTE -------------------            
             case _TXT_NOMBRE_M:
                 ClienteBLL.pideNombreM();
                 break;
@@ -571,23 +524,39 @@ public class Controlador_Cliente implements ActionListener, KeyListener, MouseLi
                 break;
 
             case _BTN_ACEPTAR_M:
-
-                ClienteBLL.ModificarPager();
-                //FileUploader.leer_imag(0);
-               // Singletons.cliLog.setAvatar(null);
-               
                 if (Singletons.cliLog.getTipo().equals("admin")) {
+                    ClienteBLL.ModificarPagerAdmin();
+          
                     new Controlador_Cliente(new Vtna_cli_Pager(), 0).iniciar(0);
-                Singletons.efModif.dispose();
-                JPanel panelPagerM = new JPanel();
-                panelPagerM.add(Singletons.efPager.panelPager);
-                Singletons.ini.internalFrame.setContentPane(panelPagerM);
+                    Singletons.efModif.dispose();
+                    JPanel panelPagerM = new JPanel();
+                    panelPagerM.add(Singletons.efPager.panelPager);
+                    Singletons.ini.internalFrame.setContentPane(panelPagerM);
+                    
+                    Singletons.ini.eti_Entrar_Usuario.setText(Singletons.cliLog.getLogin());
+                    if (Singletons.cliLog.getAvatar().isEmpty()) {
+                        FileUploader.leer_imag_defecto(2);
+                    } else {
+                        FileUploader.leer_imag(0);
+                    }
+        //            ((SimpleTableModel_cliente) Singletons.efPager.TABLA.getModel()).cargar();
 
-                ((SimpleTableModel_cliente) Singletons.efPager.TABLA.getModel()).cargar();
                 } else if (Singletons.cliLog.getTipo().equals("usuario")) {
-                
+                    ClienteBLL.ModificarPagerUsuario();
+                    
+                    Singletons.efModif.dispose();
+                    new Controlador_Inicio(new Vtna_panel_Inicio(), 1).iniciar(1);
+                    JPanel panel_Inicio = new JPanel();
+                    panel_Inicio.add(Singletons.iniPanel.panelInicio);
+                    Singletons.ini.internalFrame.setContentPane(panel_Inicio);
+
+                    Singletons.ini.eti_Entrar_Usuario.setText(Singletons.cliLog.getLogin());
+                    if (Singletons.cliLog.getAvatar().isEmpty()) {
+                        FileUploader.leer_imag_defecto(2);
+                    } else {
+                        FileUploader.leer_imag(0);
+                    }
                 }
-                
                 break;
 
             case _BTN_CANCELAR_M:
@@ -604,18 +573,26 @@ public class Controlador_Cliente implements ActionListener, KeyListener, MouseLi
                 break;
 
             case _BTN_VOLVER_M:
-                new Controlador_Cliente(new Vtna_cli_Pager(), 0).iniciar(0);
-                Singletons.efModif.dispose();
-                JPanel p4 = new JPanel();
-                p4.add(Singletons.efPager.panelPager);
-                Singletons.ini.internalFrame.setContentPane(p4);
-                
-             
+
+                if (Singletons.cliLog.getTipo().equals("admin")) {
+                    new Controlador_Cliente(new Vtna_cli_Pager(), 0).iniciar(0);
+                    Singletons.efModif.dispose();
+                    JPanel pVolver = new JPanel();
+                    pVolver.add(Singletons.efPager.panelPager);
+                    Singletons.ini.internalFrame.setContentPane(pVolver);
+
+                } else if (Singletons.cliLog.getTipo().equals("usuario")) {
+                    Singletons.efModif.dispose();
+                    new Controlador_Inicio(new Vtna_panel_Inicio(), 1).iniciar(1);
+                    JPanel panel_Inicio = new JPanel();
+                    panel_Inicio.add(Singletons.iniPanel.panelInicio);
+                    Singletons.ini.internalFrame.setContentPane(panel_Inicio);
+                }
 
                 break;
 
             case _BTN_CARGAR_IMG_M:
-                FileUploader.pintar_guardar_img(Singletons.efModif.etiAvatarM, 90, 90,1);
+                FileUploader.pintar_guardar_img(Singletons.efModif.etiAvatarM, 90, 90, 1);
 
                 break;
         }
@@ -651,7 +628,7 @@ public class Controlador_Cliente implements ActionListener, KeyListener, MouseLi
             case _TXT_TELEFONO:
                 ClienteBLL.pideTelefonoKey();
                 break;
-                
+
             case _TXT_DIRECCION:
                 ClienteBLL.pideDireccionKey();
 

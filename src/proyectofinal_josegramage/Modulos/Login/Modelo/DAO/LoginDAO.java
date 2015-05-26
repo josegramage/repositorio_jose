@@ -474,7 +474,7 @@ public class LoginDAO {
     public static void AltaUsuario() {
 
         String nombre = "", apellidos = "", dni = "", telefono = "", email = "", direccion = "", login = "", password = "", tipo = "usuario", avatar = "";
-        String estado = "inactivo";
+        String estado = "inactivado";
         Fecha Fnacimiento = null;
         
         nombre = pideNombre();

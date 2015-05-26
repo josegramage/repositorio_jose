@@ -16,6 +16,7 @@ import proyectofinal_josegramage.Modulos.Clientes.Vista.Vtna_cli_Pager;
 import proyectofinal_josegramage.Utiles.Menus;
 import java.util.ArrayList;
 import java.util.Iterator;
+import proyectofinal_josegramage.Modulos.Login.Modelo.DAO.LoginDAO;
 
 public class ClienteBLL {
 
@@ -189,8 +190,13 @@ public class ClienteBLL {
         ClienteDAO.modificar();
     }
 
-    public static void ModificarPager() {
+    //modificar Admin
+    public static void ModificarPagerAdmin() {
 
+        if (Singletons.cli!=Singletons.cliLog){
+           ModificarPagerUsuario();
+        } else  {
+        
         if (Vtna_cli_Modif.errorNombreM.isVisible() == false) {
             Singletons.cli.setNombre(ClienteDAO.pideNombreM());
         }
@@ -209,25 +215,64 @@ public class ClienteBLL {
         if (Vtna_cli_Modif.errorDireccionM.isVisible() == false) {
             Singletons.cli.setDireccion(ClienteDAO.pideDireccionM());
         }
-
+       
         Singletons.cli.setLogin(ClienteDAO.pideLoginM());
         Singletons.cli.setPassword(ClienteDAO.pidePasswordM());
         Singletons.cli.setTipo(ClienteDAO.pideTipoM());
-
+        
         if (Singletons.PATH_auto != null) {
             Singletons.cli.setAvatar(Singletons.PATH_auto);
         }
-        
-      //      FileUploader.leer_imag(1);
-   //         Singletons.cli.setAvatar(Singletons.PATH_auto);
-        
+   
 
         if ((Vtna_cli_Modif.errorNombreM.isVisible() == false) && (Vtna_cli_Modif.errorApellidosM.isVisible() == false) && (Vtna_cli_Modif.errorTelfM.isVisible() == false)
                 && (Vtna_cli_Modif.errorFnacimientoM.isVisible() == false) && (Singletons.efModif.errorPasswordM.isVisible() == false) && (Vtna_cli_Modif.errorDireccionM.isVisible() == false)) {
 
             Singletons.cliArray.set(Singletons.pos, Singletons.cli);
             ClienteBLL_bd.modificarClienteBLL();
+
             ((SimpleTableModel_cliente) Singletons.efPager.TABLA.getModel()).cargar();
+            Vtna_cli_Modif.btnOKM.setVisible(true);
+            Vtna_cli_Modif.etiGuardadoM.setVisible(true);
+            ClienteDAO.noEditableM();
+        }
+        }
+    }
+    // Modificar usuario
+    public static void ModificarPagerUsuario() {
+
+        if (Vtna_cli_Modif.errorNombreM.isVisible() == false) {
+            Singletons.cliLog.setNombre(ClienteDAO.pideNombreM());
+        }
+        if (Vtna_cli_Modif.errorApellidosM.isVisible() == false) {
+            Singletons.cliLog.setApellidos(ClienteDAO.pideApellidosM());
+        }
+        if (Vtna_cli_Modif.errorTelfM.isVisible() == false) {
+            Singletons.cliLog.setTelefono(ClienteDAO.pideTelefonoM());
+        }
+        if (Vtna_cli_Modif.errorEmailM.isVisible() == false) {
+            Singletons.cliLog.setEmail(ClienteDAO.pideEmailM());
+        }
+        if (Vtna_cli_Modif.errorFnacimientoM.isVisible() == false) {
+            Singletons.cliLog.setFnacimiento(ClienteDAO.pideFnacimientoM());
+        }
+        if (Vtna_cli_Modif.errorDireccionM.isVisible() == false) {
+            Singletons.cliLog.setDireccion(ClienteDAO.pideDireccionM());
+        }
+
+        Singletons.cliLog.setLogin(ClienteDAO.pideLoginM());
+        Singletons.cliLog.setPassword(ClienteDAO.pidePasswordM());
+
+        if (Singletons.PATH_auto != null) {
+            Singletons.cliLog.setAvatar(Singletons.PATH_auto);
+        }
+        
+        if ((Vtna_cli_Modif.errorNombreM.isVisible() == false) && (Vtna_cli_Modif.errorApellidosM.isVisible() == false) && (Vtna_cli_Modif.errorTelfM.isVisible() == false)
+                && (Vtna_cli_Modif.errorFnacimientoM.isVisible() == false) && (Singletons.efModif.errorPasswordM.isVisible() == false) && (Vtna_cli_Modif.errorDireccionM.isVisible() == false)) {
+
+            Singletons.cliArray.set(Singletons.pos, Singletons.cliLog);
+            ClienteBLL_bd.modificarClienteLogeado();
+      //      ((SimpleTableModel_cliente) Singletons.efPager.TABLA.getModel()).cargar();
 
             Vtna_cli_Modif.btnOKM.setVisible(true);
             Vtna_cli_Modif.etiGuardadoM.setVisible(true);
@@ -235,6 +280,8 @@ public class ClienteBLL {
 
         }
     }
+    
+    
 
     public static int buscar(Cliente ef) {//Buscar
         int aux = -1;

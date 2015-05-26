@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package proyectofinal_josegramage.Modulos.Inicio.Vista;
+package proyectofinal_josegramage.Modulos.Menu.Vista;
 
 import proyectofinal_josegramage.Librerias.Singletons;
 
@@ -39,9 +39,12 @@ public class Vtna_Menu_Admin extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
+        panelMenu.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
         btnClientesA.setText("Clientes");
         btnClientesA.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnClientesA.setOpaque(false);
+        panelMenu.add(btnClientesA, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 102, 110, -1));
 
         btnConfigA.setText("Configuración");
         btnConfigA.setActionCommand("");
@@ -52,48 +55,20 @@ public class Vtna_Menu_Admin extends javax.swing.JFrame {
                 btnConfigAMouseEntered(evt);
             }
         });
+        panelMenu.add(btnConfigA, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 310, 110, -1));
 
+        etiImagen.setIcon(new javax.swing.ImageIcon(getClass().getResource("/proyectofinal_josegramage/Img/fondos/img_menu_admin.jpg"))); // NOI18N
         etiImagen.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        panelMenu.add(etiImagen, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 100, 390, 230));
 
         btnProductosA.setText("Productos");
+        panelMenu.add(btnProductosA, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 200, 110, -1));
 
         btnJuegosA.setText("Juegos");
+        panelMenu.add(btnJuegosA, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 150, 110, -1));
 
         btnEstadA.setText("Estadisticas");
-
-        javax.swing.GroupLayout panelMenuLayout = new javax.swing.GroupLayout(panelMenu);
-        panelMenu.setLayout(panelMenuLayout);
-        panelMenuLayout.setHorizontalGroup(
-            panelMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelMenuLayout.createSequentialGroup()
-                .addGroup(panelMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addComponent(btnJuegosA, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btnConfigA, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btnClientesA, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btnProductosA, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btnEstadA, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 70, Short.MAX_VALUE)
-                .addComponent(etiImagen, javax.swing.GroupLayout.PREFERRED_SIZE, 351, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(22, 22, 22))
-        );
-        panelMenuLayout.setVerticalGroup(
-            panelMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelMenuLayout.createSequentialGroup()
-                .addContainerGap(102, Short.MAX_VALUE)
-                .addGroup(panelMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addComponent(etiImagen, javax.swing.GroupLayout.PREFERRED_SIZE, 231, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(panelMenuLayout.createSequentialGroup()
-                        .addComponent(btnClientesA)
-                        .addGap(28, 28, 28)
-                        .addComponent(btnProductosA)
-                        .addGap(26, 26, 26)
-                        .addComponent(btnJuegosA)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(btnEstadA)
-                        .addGap(34, 34, 34)
-                        .addComponent(btnConfigA)))
-                .addGap(91, 91, 91))
-        );
+        panelMenu.add(btnEstadA, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 253, 110, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -101,14 +76,14 @@ public class Vtna_Menu_Admin extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(32, 32, 32)
-                .addComponent(panelMenu, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(panelMenu, javax.swing.GroupLayout.PREFERRED_SIZE, 564, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(54, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(26, 26, 26)
-                .addComponent(panelMenu, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(panelMenu, javax.swing.GroupLayout.DEFAULT_SIZE, 423, Short.MAX_VALUE)
                 .addContainerGap())
         );
 

@@ -64,6 +64,19 @@ public class ClienteBLL_bd {
         _clienteDAO.modificarClienteDAO(_con);
         _conexion_DB.CerrarConexion(_con);
     }
+    
+    public static void modificarClienteLogeado() {
+    
+        Connection _con;
+   
+        ConexionBD _conexion_DB = new ConexionBD();
+
+        _con = _conexion_DB.AbrirConexion();
+        ClienteDAO_bd _clienteDAO = new ClienteDAO_bd();
+
+        _clienteDAO.modificarClienteLogeado(_con);
+        _conexion_DB.CerrarConexion(_con);
+    }
 
      // eliminar empleado
     public static void borrarUsuarioBLL() {

@@ -13,8 +13,8 @@ import proyectofinal_josegramage.Modulos.Clientes.Modelo.BLL.ClienteBLL;
 import proyectofinal_josegramage.Librerias.Singletons;
 import proyectofinal_josegramage.Modulos.Clientes.Modelo.DAO.ClienteDAO;
 import proyectofinal_josegramage.Modulos.Clientes.Vista.Vtna_cli_Pager;
-import proyectofinal_josegramage.Modulos.Inicio.Vista.Vtna_Config;
-import proyectofinal_josegramage.Modulos.Inicio.Vista.Vtna_Menu_Admin;
+import proyectofinal_josegramage.Modulos.Menu.Vista.Vtna_Config;
+import proyectofinal_josegramage.Modulos.Menu.Vista.Vtna_Menu_Admin;
 import proyectofinal_josegramage.Modulos.Login.Controlador.Controlador_Login;
 import proyectofinal_josegramage.Modulos.Login.Vista.Vtna_SignIN;
 import proyectofinal_josegramage.Main;
@@ -37,7 +37,9 @@ import javax.swing.plaf.basic.BasicInternalFrameUI;
 import proyectofinal_josegramage.Modulos.Clientes.Modelo.BLL.ClienteBLL_bd;
 import proyectofinal_josegramage.Modulos.Clientes.Vista.Vtna_cli_Modif;
 import proyectofinal_josegramage.Modulos.Inicio.Vista.Vtna_Inicio;
+import proyectofinal_josegramage.Modulos.Inicio.Vista.Vtna_panel_Inicio;
 import proyectofinal_josegramage.Modulos.Login.Vista.Vtna_SignUP;
+import proyectofinal_josegramage.Modulos.Menu.Controlador.Controlador_Menu;
 
 /**
  *
@@ -66,7 +68,7 @@ public class Controlador_Inicio implements ActionListener, MouseListener {
         }
 
         if (i == 1) {
-            Singletons.config = (Vtna_Config) inicio;
+            Singletons.iniPanel = (Vtna_panel_Inicio) inicio;
         }
 
         if (i == 2) {
@@ -93,8 +95,6 @@ public class Controlador_Inicio implements ActionListener, MouseListener {
             Singletons.ini.setResizable(false);
             Singletons.ini.setTitle("Mundo Virtual");
             Singletons.ini.setLocationRelativeTo(null);
-            //       Singletons.ini.setLocation(2, 30);
-            //     Singletons.ini.setSize(692, 435);
 
             Singletons.ini.setContentPane(Singletons.panel);
             Singletons.ini.panel_inicio.setOpaque(false);//para que deje mostrar la imagen de fondo
@@ -107,7 +107,7 @@ public class Controlador_Inicio implements ActionListener, MouseListener {
 
             ((BasicInternalFrameUI) Singletons.ini.internalFrame.getUI()).setNorthPane(null);
 
-            Image icono = Toolkit.getDefaultToolkit().getImage("src/Img/icono.png");
+            Image icono = Toolkit.getDefaultToolkit().getImage("src/proyectofinal_josegramage/Img/icono_bajo.jpg");
             Singletons.ini.setIconImage(icono);
 
             Singletons.ini.addWindowListener(new WindowAdapter() {
@@ -157,69 +157,6 @@ public class Controlador_Inicio implements ActionListener, MouseListener {
 
         }
 
-        if (i == 1) {     // Ventana configuracion
-
-            Singletons.config.setVisible(true);
-            Singletons.config.setResizable(false);
-            Singletons.config.setLocation(2, 30);
-            Singletons.config.setSize(692, 435);
-
-            Singletons.panel = new JPanel_Fondo();
-            Singletons.config.setContentPane(Singletons.panel);
-            Singletons.config.panelConfig.setOpaque(false);//para que deje mostrar la imagen de fondo
-            Singletons.panel.add(Singletons.config.panelConfig);
-
-            Image icono = Toolkit.getDefaultToolkit().getImage("src/Img/icono.png");
-            Singletons.config.setIconImage(icono);
-
-            Singletons.config.addWindowListener(new WindowAdapter() {
-                public void windowClosing(WindowEvent e) {
-                    JOptionPane.showMessageDialog(null, "Saliendo de la aplicación");
-                    System.exit(0);
-                }
-            });
-            Singletons.config.btnVolverC.setActionCommand("_BTN_VOLVER");
-            Singletons.config.btnVolverC.addActionListener(this);
-
-            Singletons.config.euro.setActionCommand("_moneda_euro");
-            Singletons.config.euro.addActionListener(this);
-
-            Singletons.config.dolar.setActionCommand("_moneda_dolar");
-            Singletons.config.dolar.addActionListener(this);
-
-            Singletons.config.libra.setActionCommand("_moneda_libra");
-            Singletons.config.libra.addActionListener(this);
-
-            Singletons.config.yen.setActionCommand("_moneda_yen");
-            Singletons.config.yen.addActionListener(this);
-
-            Singletons.config.apariencia1.setActionCommand("_apariencia1");
-            Singletons.config.apariencia1.addActionListener(this);
-
-            Singletons.config.apariencia2.setActionCommand("_apariencia2");
-            Singletons.config.apariencia2.addActionListener(this);
-
-            Singletons.config.apariencia3.setActionCommand("_apariencia3");
-            Singletons.config.apariencia3.addActionListener(this);
-
-            Singletons.config.fecha1.setActionCommand("_fecha1");
-            Singletons.config.fecha1.addActionListener(this);
-
-            Singletons.config.fecha2.setActionCommand("_fecha2");
-            Singletons.config.fecha2.addActionListener(this);
-
-            Singletons.config.fecha3.setActionCommand("_fecha3");
-            Singletons.config.fecha3.addActionListener(this);
-
-            Singletons.config.fecha4.setActionCommand("_fecha4");
-            Singletons.config.fecha4.addActionListener(this);
-
-            Singletons.config.fecha5.setActionCommand("_fecha5");
-            Singletons.config.fecha5.addActionListener(this);
-
-            Singletons.config.fecha6.setActionCommand("_fecha6");
-            Singletons.config.fecha6.addActionListener(this);
-        }
     }
 
     @Override
@@ -229,9 +166,7 @@ public class Controlador_Inicio implements ActionListener, MouseListener {
 
             // ----------- Menu ------------------------  
             case _INICIO:
-                new Controlador_Inicio(new Vtna_cli_Pager(), 2).iniciar(0);
-                Singletons.efPager.setVisible(true);
-                Singletons.menu.dispose();
+
                 break;
 
             case _PRODUCTOS:
@@ -267,6 +202,7 @@ public class Controlador_Inicio implements ActionListener, MouseListener {
                     JPanel p4 = new JPanel();
                     p4.add(Singletons.login.panelLogin);
                     Singletons.ini.internalFrame.setContentPane(p4);
+                                        
                 }
                 break;
 
@@ -284,6 +220,13 @@ public class Controlador_Inicio implements ActionListener, MouseListener {
                     Singletons.ini.internalFrame.setContentPane(panel_modif);
                     ClienteDAO.modificarLogeado();
 
+                    if (Singletons.cliLog.getAvatar().isEmpty()) {
+                        FileUploader.leer_imag_defecto(3);
+                    } else {
+                        FileUploader.leer_imag(1);
+                    }
+
+                    
                 } else {
                     new Controlador_Login(new Vtna_SignUP(), 1).iniciar(1);
 
@@ -293,6 +236,32 @@ public class Controlador_Inicio implements ActionListener, MouseListener {
                 }
                 break;
 
+                
+                
+            case _INICIO:
+                new Controlador_Inicio(new Vtna_panel_Inicio(), 1).iniciar(1);
+
+                JPanel panel_Inicio = new JPanel();
+                panel_Inicio.add(Singletons.iniPanel.panelInicio);
+                Singletons.ini.internalFrame.setContentPane(panel_Inicio);
+
+                break;
+
+            case _PRODUCTOS:
+                JOptionPane.showMessageDialog(null, "En construcción");
+                break;
+
+            case _JUEGOS:
+                JOptionPane.showMessageDialog(null, "En construcción");
+                break;
+
+            case _HISTORIA:
+                JOptionPane.showMessageDialog(null, "En construcción");
+                break;
+
+            case _NOSOTROS:
+                JOptionPane.showMessageDialog(null, "En construcción");
+                break;
         }
     }
 

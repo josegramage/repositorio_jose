@@ -33,7 +33,6 @@ public class JuegoDAO {
             if (validar == false) {
                 Vtna_jue_Crear.txtRef.requestFocus();
             } else {
-
                 Vtna_jue_Crear.txtNombre.requestFocus();
             }
         }
@@ -103,14 +102,12 @@ public class JuegoDAO {
             Vtna_jue_Modif.errorNombreM.setVisible(true);
         }
 
-        if (Validate.validaNombre(nombre) != true) {
-            Vtna_jue_Modif.etiNombreErrorM.setVisible(true);
+        if (Validate.validaDireccion(nombre) != true) {
             Vtna_jue_Modif.errorNombreM.setVisible(true);
             Vtna_jue_Modif.txtNombreM.requestFocus();
         } else {
-            Vtna_jue_Modif.etiNombreErrorM.setVisible(false);
             Vtna_jue_Modif.errorNombreM.setVisible(false);
-            Vtna_jue_Modif.txtApellidosM.requestFocus();
+            Vtna_jue_Modif.txtCompanyiaM.requestFocus();
         }
 
         return nombre;
@@ -120,11 +117,9 @@ public class JuegoDAO {
     public static String pideNombreKeyM() {
         String nombre = Vtna_jue_Modif.txtNombreM.getText();
 
-        if (Validate.validaNombre(nombre) != true) {
-            Vtna_jue_Modif.etiNombreErrorM.setVisible(true);
+        if (Validate.validaDireccion(nombre) != true) {
             Vtna_jue_Modif.errorNombreM.setVisible(true);
         } else {
-            Vtna_jue_Modif.etiNombreErrorM.setVisible(false);
             Vtna_jue_Modif.errorNombreM.setVisible(false);
         }
 
@@ -163,38 +158,34 @@ public class JuegoDAO {
         return apellidos;
     }
 
-    //Funcion para pedir Apellidos para modificar
-    public static String pideApellidosM() {
-        String apellidos = Vtna_jue_Modif.txtApellidosM.getText();
+    //Funcion para pedir Companyia para modificar
+    public static String pideCompanyiaM() {
+        String companyia = Vtna_jue_Modif.txtCompanyiaM.getText();
 
-        if (Vtna_jue_Modif.txtApellidosM.getText().isEmpty()) {
-            JOptionPane.showMessageDialog(null, "Los apellidos no pueden estar en blanco", "Error", JOptionPane.INFORMATION_MESSAGE);
-            Vtna_jue_Modif.errorApellidosM.setVisible(true);
+        if (Vtna_jue_Modif.txtCompanyiaM.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(null, "La companyia no pueden estar en blanco", "Error", JOptionPane.INFORMATION_MESSAGE);
+            Vtna_jue_Modif.errorCompanyiaM.setVisible(true);
         }
 
-        if (Validate.validaApellido(apellidos) != true) {
-            Vtna_jue_Modif.etiApellidoErrorM.setVisible(true);
-            Vtna_jue_Modif.errorApellidosM.setVisible(true);
-            Vtna_jue_Modif.txtApellidosM.requestFocus();
+        if (Validate.validaDireccion(companyia) != true) {
+            Vtna_jue_Modif.errorCompanyiaM.setVisible(true);
+            Vtna_jue_Modif.txtCompanyiaM.requestFocus();
         } else {
-            Vtna_jue_Modif.errorApellidosM.setVisible(false);
-            Vtna_jue_Modif.etiApellidoErrorM.setVisible(false);
-            Vtna_jue_Modif.txtTelefonoM.requestFocus();
+            Vtna_jue_Modif.errorCompanyiaM.setVisible(false);
+            Vtna_jue_Modif.txtTipoM.requestFocus();
         }
-        return apellidos;
+        return companyia;
     }
 
-    //Funcion para pedir Apellidos para modificar  - Keys
-    public static String pideApellidosKeyM() {
-        String apellidos = Vtna_jue_Modif.txtApellidosM.getText();
+    //Funcion para pedir Companyia para modificar  - Keys
+    public static String pideCompanyiaKeyM() {
+        String apellidos = Vtna_jue_Modif.txtCompanyiaM.getText();
 
         if (Validate.validaApellido(apellidos) != true) {
-            Vtna_jue_Modif.etiApellidoErrorM.setVisible(true);
-            Vtna_jue_Modif.errorApellidosM.setVisible(true);
+            Vtna_jue_Modif.errorCompanyiaM.setVisible(true);
         } else {
-            Vtna_jue_Modif.errorApellidosM.setVisible(false);
-            Vtna_jue_Modif.etiApellidoErrorM.setVisible(false);
-        }
+            Vtna_jue_Modif.errorCompanyiaM.setVisible(false);
+           }
         return apellidos;
     }
 
@@ -216,7 +207,7 @@ public class JuegoDAO {
         return telefono;
     }
 
-    //Funcion para pedir telefono para crear  - KEYs
+    //Funcion para pedir TIPO para crear  - KEYs
     public static String pideTipoKey() {
         String telefono = Vtna_jue_Crear.txtTipo.getText();
 
@@ -229,38 +220,34 @@ public class JuegoDAO {
         return telefono;
     }
 
-    //Funcion para pedir telefono para modificar
-    public static String pideTelefonoM() {
-        String telefono = Vtna_jue_Modif.txtTelefonoM.getText();
+    //Funcion para pedir Tipo para modificar
+    public static String pideTipoM() {
+        String telefono = Vtna_jue_Modif.txtTipoM.getText();
 
-        if (Vtna_jue_Modif.txtTelefonoM.getText().isEmpty()) {
-            JOptionPane.showMessageDialog(null, "El telefono no puede estar en blanco", "Error", JOptionPane.INFORMATION_MESSAGE);
-            Vtna_jue_Modif.errorTelfM.setVisible(true);
+        if (Vtna_jue_Modif.txtTipoM.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(null, "El tipo no puede estar en blanco", "Error", JOptionPane.INFORMATION_MESSAGE);
+            Vtna_jue_Modif.errorTipoM.setVisible(true);
         }
 
-        if (Validate.validaNumTelefono(telefono) != true) {
-            Vtna_jue_Modif.etiTelefonoErrorM.setVisible(true);
-            Vtna_jue_Modif.errorTelfM.setVisible(true);
+        if (Validate.validaDireccion(telefono) != true) {
+            Vtna_jue_Modif.errorTipoM.setVisible(true);
         } else {
-            Vtna_jue_Modif.errorTelfM.setVisible(false);
-            Vtna_jue_Modif.etiTelefonoErrorM.setVisible(false);
-        }
+            Vtna_jue_Modif.errorTipoM.setVisible(false);
+            }
         return telefono;
     }
 
-    //Funcion para pedir telefono para modificar  - Keys
-    public static String pideTelefonoKeyM() {
+    //Funcion para pedir Tipo para modificar  - Keys
+    public static String pideTipoKeyM() {
 
-        String telefono = Vtna_jue_Modif.txtTelefonoM.getText();
+        String telefono = Vtna_jue_Modif.txtTipoM.getText();
 
-        if (Validate.validaNumTelefono(telefono) != true) {
-            Vtna_jue_Modif.etiTelefonoErrorM.setVisible(true);
-            Vtna_jue_Modif.errorTelfM.setVisible(true);
-            Vtna_jue_Modif.txtTelefonoM.requestFocus();
+        if (Validate.validaDireccion(telefono) != true) {
+            Vtna_jue_Modif.errorTipoM.setVisible(true);
+            Vtna_jue_Modif.txtTipoM.requestFocus();
         } else {
-            Vtna_jue_Modif.errorTelfM.setVisible(false);
-            Vtna_jue_Modif.etiTelefonoErrorM.setVisible(false);
-            Vtna_jue_Modif.txtDireccionM.requestFocus();
+            Vtna_jue_Modif.errorTipoM.setVisible(false);
+             Vtna_jue_Modif.txtPrecioM.requestFocus();
         }
         return telefono;
     }
@@ -297,39 +284,36 @@ public class JuegoDAO {
         return precio;
     }
 
-    //para pedir email para modificar
-    public static String pideEmailM() {
-        String email = Vtna_jue_Modif.txtEmailM.getText();
+    //para pedir Precio para modificar
+    public static String pidePrecioM() {
+        String precio = Vtna_jue_Modif.txtPrecioM.getText();
 
-        if (Vtna_jue_Modif.txtEmailM.getText().isEmpty()) {
-            JOptionPane.showMessageDialog(null, "El email no puede estar en blanco", "Error", JOptionPane.INFORMATION_MESSAGE);
-            Vtna_jue_Modif.errorEmailM.setVisible(true);
+        if (Vtna_jue_Modif.txtPrecioM.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(null, "El precio no puede estar en blanco", "Error", JOptionPane.INFORMATION_MESSAGE);
+            Vtna_jue_Modif.errorPrecioM.setVisible(true);
         }
 
-        if (Validate.validaEmail(email) != true) {
-            Vtna_jue_Modif.etiEmailErrorM.setVisible(true);
-            Vtna_jue_Modif.errorEmailM.setVisible(true);
-            Vtna_jue_Modif.txtEmailM.requestFocus();
+         if (Validate.validaNumPositivo(String.valueOf(precio)) != true) {
+            Vtna_jue_Modif.errorPrecioM.setVisible(true);
+            Vtna_jue_Modif.txtPrecioM.requestFocus();
         } else {
-            Vtna_jue_Modif.errorEmailM.setVisible(false);
-            Vtna_jue_Modif.etiEmailErrorM.setVisible(false);
-            Vtna_jue_Modif.txtFnacimientoM.requestFocus();
+            Vtna_jue_Modif.errorPrecioM.setVisible(false);
+            Vtna_jue_Modif.txtDescripcionM.requestFocus();
         }
-        return email;
+        return precio;
     }
 
     //para pedir email para modificar - KEYs
-    public static String pideEmailKeyM() {
-        String email = Vtna_jue_Modif.txtEmailM.getText();
+    public static String pidePrecioKeyM() {
+        String precio = Vtna_jue_Modif.txtPrecioM.getText();
 
-        if (Validate.validaEmail(email) != true) {
-            Vtna_jue_Modif.etiEmailErrorM.setVisible(true);
-            Vtna_jue_Modif.errorEmailM.setVisible(true);
+        if (Validate.validaEmail(precio) != true) {
+            Vtna_jue_Modif.errorPrecioM.setVisible(true);
         } else {
-            Vtna_jue_Modif.errorEmailM.setVisible(false);
-            Vtna_jue_Modif.etiEmailErrorM.setVisible(false);
+            Vtna_jue_Modif.errorPrecioM.setVisible(false);
+   
         }
-        return email;
+        return precio;
     }
 
     //para pedir Descripcion para crear
@@ -363,42 +347,37 @@ public class JuegoDAO {
         return direccion;
     }
 
-    //para pedir direccion para modificar
-    public static String pideDireccionM() {
-        String direccion = Vtna_jue_Modif.txtDireccionM.getText();
+    //para pedir Descripcion para modificar
+    public static String pideDescripcionM() {
+        String direccion = Vtna_jue_Modif.txtPrecioM.getText();
 
-        if (Vtna_jue_Modif.txtDireccionM.getText().isEmpty()) {
+        if (Vtna_jue_Modif.txtDescripcionM.getText().isEmpty()) {
             JOptionPane.showMessageDialog(null, "La direccion no puede estar en blanco", "Error", JOptionPane.INFORMATION_MESSAGE);
-            Vtna_jue_Modif.errorDireccionM.setVisible(true);
+            Vtna_jue_Modif.errorDescripcionM.setVisible(true);
         }
 
         if (Validate.validaDireccion(direccion) != true) {
-            Vtna_jue_Modif.etiDireccionErrorM.setVisible(true);
-            Vtna_jue_Modif.errorDireccionM.setVisible(true);
-            Vtna_jue_Modif.txtDireccionM.requestFocus();
+            Vtna_jue_Modif.errorDescripcionM.setVisible(true);
+            Vtna_jue_Modif.txtDescripcionM.requestFocus();
         } else {
-            Vtna_jue_Modif.errorDireccionM.setVisible(false);
-            Vtna_jue_Modif.etiDireccionErrorM.setVisible(false);
-            Vtna_jue_Modif.txtEmailM.requestFocus();
+            Vtna_jue_Modif.errorDescripcionM.setVisible(false);
+            Vtna_jue_Modif.btnAceptarM.requestFocus();
         }
         return direccion;
     }
 
-    //para pedir direccion para modificar - KEYs
-    public static String pideDireccionKeyM() {
-        String direccion = Vtna_jue_Modif.txtDireccionM.getText();
+    //para pedir Descripcion para modificar - KEYs
+    public static String pideDescripcionKeyM() {
+        String direccion = Vtna_jue_Modif.txtPrecioM.getText();
 
         if (Validate.validaDireccion(direccion) != true) {
-            Vtna_jue_Modif.etiDireccionErrorM.setVisible(true);
-            Vtna_jue_Modif.errorDireccionM.setVisible(true);
+            Vtna_jue_Modif.errorDescripcionM.setVisible(true);
         } else {
-            Vtna_jue_Modif.errorDireccionM.setVisible(false);
-            Vtna_jue_Modif.etiDireccionErrorM.setVisible(false);
+            Vtna_jue_Modif.errorDescripcionM.setVisible(false);
         }
         return direccion;
     }
 
-  
 
     public static void CreaJuego() {
 
@@ -427,45 +406,22 @@ public class JuegoDAO {
         }
     }
 
-    public static void modificar() {
-
-        if (Singletons.cliLog.getTipo().equals("admin")) {
-            if (Singletons.cli.getAvatar().isEmpty()) {
+    public static void modificarJuego() {
+   
+            if (Singletons.jue.getImagen().isEmpty()) {
                 FileUploader.leer_imag_defecto(3);
             } else {
                 FileUploader.leer_imag(1);
-            }
-        }
+            }   
 
         Vtna_jue_Modif.txtNombreM.setText((Singletons.cli).getNombre());
-        Vtna_jue_Modif.txtApellidosM.setText((Singletons.cli).getApellidos());
-        Vtna_jue_Modif.txtTelefonoM.setText((Singletons.cli).getTelefono());
-        Vtna_jue_Modif.txtDireccionM.setText((Singletons.cli).getDireccion());
-        Vtna_jue_Modif.txtEmailM.setText((Singletons.cli).getEmail());
-        ((JTextFieldDateEditor) Vtna_jue_Modif.txtFnacimientoM.getDateEditor()).setText((Singletons.cli).getFnacimiento().aStringFecha());
-        Vtna_jue_Modif.txtLoginM.setText((Singletons.cli).getLogin());
-        //  Vtna_ef_Cambiar.txtPasswordM.setText((Singletons.emp).getPassword());
+        Vtna_jue_Modif.txtCompanyiaM.setText((Singletons.cli).getApellidos());
+        Vtna_jue_Modif.txtTipoM.setText((Singletons.cli).getTelefono());
+        Vtna_jue_Modif.txtPrecioM.setText((Singletons.cli).getDireccion());
+        Vtna_jue_Modif.txtDescripcionM.setText((Singletons.cli).getEmail());   
     }
 
-    public static void modificarLogeado() {
-
-        if (Singletons.cliLog.getTipo().equals("admin")) {
-            if (Singletons.cli.getAvatar().isEmpty()) {
-                FileUploader.leer_imag_defecto(3);
-            } else {
-                FileUploader.leer_imag(1);
-            }
-        }
-
-        Vtna_jue_Modif.txtNombreM.setText((Singletons.cliLog).getNombre());
-        Vtna_jue_Modif.txtApellidosM.setText((Singletons.cliLog).getApellidos());
-        Vtna_jue_Modif.txtTelefonoM.setText((Singletons.cliLog).getTelefono());
-        Vtna_jue_Modif.txtDireccionM.setText((Singletons.cliLog).getDireccion());
-        Vtna_jue_Modif.txtEmailM.setText((Singletons.cliLog).getEmail());
-        ((JTextFieldDateEditor) Vtna_jue_Modif.txtFnacimientoM.getDateEditor()).setText((Singletons.cliLog).getFnacimiento().aStringFecha());
-        Vtna_jue_Modif.txtLoginM.setText((Singletons.cliLog).getLogin());
-        //  Vtna_ef_Cambiar.txtPasswordM.setText((Singletons.emp).getPassword());
-    }
+   
 
     public static void limpiar() {
 
@@ -489,26 +445,19 @@ public class JuegoDAO {
     public static void ocultarErroresModificar() {
 
         Vtna_jue_Modif.errorNombreM.setVisible(false);
-        Vtna_jue_Modif.etiNombreErrorM.setVisible(false);
+    
 
-        Vtna_jue_Modif.errorApellidosM.setVisible(false);
-        Vtna_jue_Modif.etiApellidoErrorM.setVisible(false);
+        Vtna_jue_Modif.errorCompanyiaM.setVisible(false);
+  
+        Vtna_jue_Modif.errorTipoM.setVisible(false);
 
-        Vtna_jue_Modif.errorTelfM.setVisible(false);
-        Vtna_jue_Modif.etiTelefonoErrorM.setVisible(false);
+        Vtna_jue_Modif.errorDescripcionM.setVisible(false);
 
-        Vtna_jue_Modif.errorEmailM.setVisible(false);
-        Vtna_jue_Modif.etiEmailErrorM.setVisible(false);
-
-        Vtna_jue_Modif.errorDireccionM.setVisible(false);
-        Vtna_jue_Modif.etiDireccionErrorM.setVisible(false);
-
-        Vtna_jue_Modif.errorFnacimientoM.setVisible(false);
-
+        Vtna_jue_Modif.errorPrecioM.setVisible(false);
+        
         Vtna_jue_Modif.btnOKM.setVisible(false);
         Vtna_jue_Modif.etiGuardadoM.setVisible(false);
-        Vtna_jue_Modif.errorPasswordM.setVisible(false);
-
+ 
     }
 
     public static void ocultarErrores() {
@@ -550,15 +499,13 @@ public class JuegoDAO {
     public static void noEditableM() {
 
         Vtna_jue_Modif.txtNombreM.setEditable(false);
-        Vtna_jue_Modif.txtApellidosM.setEditable(false);
-        Vtna_jue_Modif.txtTelefonoM.setEditable(false);
-        Vtna_jue_Modif.txtEmailM.setEditable(false);
-        Vtna_jue_Modif.txtDireccionM.setEditable(false);
-        Vtna_jue_Modif.txtLoginM.setEditable(false);
-        Vtna_jue_Modif.txtPasswordM.setEditable(false);
+        Vtna_jue_Modif.txtCompanyiaM.setEditable(false);
+        Vtna_jue_Modif.txtTipoM.setEditable(false);
+        Vtna_jue_Modif.txtPrecioM.setEditable(false);
+
         Vtna_jue_Modif.btnCancelarM.setEnabled(false);
         Vtna_jue_Modif.btnAceptarM.setEnabled(false);
-        ((JTextFieldDateEditor) Vtna_jue_Modif.txtFnacimientoM.getDateEditor()).setEditable(false);
+
     }
 
     public static Juego pideRefvacio(String refmatch) {

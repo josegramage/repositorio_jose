@@ -11,8 +11,8 @@ import proyectofinal_josegramage.Modulos.Clientes.Modelo.autocomplete.Autocomple
 import proyectofinal_josegramage.Modulos.Clientes.Vista.Vtna_cli_Pager;
 import proyectofinal_josegramage.Modulos.Clientes.Vista.Vtna_cli_Crear;
 import proyectofinal_josegramage.Modulos.Clientes.Vista.Vtna_cli_Modif;
-import proyectofinal_josegramage.Modulos.Inicio.Vista.Vtna_Config;
-import proyectofinal_josegramage.Modulos.Inicio.Vista.Vtna_Menu_Admin;
+import proyectofinal_josegramage.Modulos.Menu.Vista.Vtna_Config;
+import proyectofinal_josegramage.Modulos.Menu.Vista.Vtna_Menu_Admin;
 import proyectofinal_josegramage.Modulos.Login.Vista.Vtna_SignIN;
 import proyectofinal_josegramage.Modulos.Login.Vista.Vtna_Recuperar;
 import java.util.ArrayList;
@@ -22,7 +22,12 @@ import proyectofinal_josegramage.Modulos.Clientes.Clases.Cliente;
 import proyectofinal_josegramage.Modulos.Clientes.Clases.Cliente;
 import proyectofinal_josegramage.Modulos.Clientes.Clases.SimpleTableModel_cliente;
 import proyectofinal_josegramage.Modulos.Inicio.Vista.Vtna_Inicio;
+import proyectofinal_josegramage.Modulos.Inicio.Vista.Vtna_panel_Inicio;
 import proyectofinal_josegramage.Modulos.Juegos.Clases.Juego;
+import proyectofinal_josegramage.Modulos.Juegos.Modelo.autocomplete.AutocompleteJComboBox_J;
+import proyectofinal_josegramage.Modulos.Juegos.Vista.Vtna_jue_Crear;
+import proyectofinal_josegramage.Modulos.Juegos.Vista.Vtna_jue_Modif;
+import proyectofinal_josegramage.Modulos.Juegos.Vista.Vtna_jue_Pager;
 import proyectofinal_josegramage.Modulos.Login.Vista.Vtna_SignUP;
 
 /**
@@ -40,10 +45,11 @@ public class Singletons {
        
     //MODULO MENU
     public static Vtna_Inicio ini;
+    public static Vtna_panel_Inicio iniPanel;
     public static Vtna_Menu_Admin menu;
     public static Vtna_Config config;
     
-    //PAGER
+    //PAGER CLIENTE
     public static Vtna_cli_Pager efPager;
     public static Vtna_cli_Crear efCrear;
     public static Vtna_cli_Modif efModif;
@@ -68,11 +74,17 @@ public class Singletons {
     public static String PATH_auto_Img="";
     public static String ruta_imagen;
     
+    //PAGER JUEGOS
+    public static Vtna_jue_Pager juePager;
+    public static Vtna_jue_Crear jueCrear;
+    public static Vtna_jue_Modif jueModif;
+    
     
     //FONDO / PANEL / TABLA / COMBO
     public static JPanel_Fondo panel;
     public static JDKP_Fondo fondo;
     public static AutocompleteJComboBox combo = null;
+    public static AutocompleteJComboBox_J combo_J = null;
     public static TableRowSorter<TableModel> sorter = new TableRowSorter<TableModel>(new SimpleTableModel_cliente());
 
     
