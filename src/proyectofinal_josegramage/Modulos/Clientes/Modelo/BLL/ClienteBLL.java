@@ -193,10 +193,13 @@ public class ClienteBLL {
     //modificar Admin
     public static void ModificarPagerAdmin() {
 
+        // E N   P R U E B A S /////////
+        
         if (Singletons.cli!=Singletons.cliLog){
+     //       JOptionPane.showMessageDialog(null,"asi es diferente cli"+ Singletons.cli.toString()+"\n cli log"+Singletons.cliLog.toString());
            ModificarPagerUsuario();
         } else  {
-        
+   //     JOptionPane.showMessageDialog(null,"asi es igual cli"+ Singletons.cli.toString()+"\n cli log"+Singletons.cliLog.toString());
         if (Vtna_cli_Modif.errorNombreM.isVisible() == false) {
             Singletons.cli.setNombre(ClienteDAO.pideNombreM());
         }
@@ -224,7 +227,6 @@ public class ClienteBLL {
             Singletons.cli.setAvatar(Singletons.PATH_auto);
         }
    
-
         if ((Vtna_cli_Modif.errorNombreM.isVisible() == false) && (Vtna_cli_Modif.errorApellidosM.isVisible() == false) && (Vtna_cli_Modif.errorTelfM.isVisible() == false)
                 && (Vtna_cli_Modif.errorFnacimientoM.isVisible() == false) && (Singletons.efModif.errorPasswordM.isVisible() == false) && (Vtna_cli_Modif.errorDireccionM.isVisible() == false)) {
 
@@ -232,6 +234,7 @@ public class ClienteBLL {
             ClienteBLL_bd.modificarClienteBLL();
 
             ((SimpleTableModel_cliente) Singletons.efPager.TABLA.getModel()).cargar();
+            
             Vtna_cli_Modif.btnOKM.setVisible(true);
             Vtna_cli_Modif.etiGuardadoM.setVisible(true);
             ClienteDAO.noEditableM();
