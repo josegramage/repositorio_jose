@@ -76,8 +76,8 @@ public class Vtna_jue_Modif extends javax.swing.JFrame {
 
         etiDireccionM.setText("Precio:");
         panelModif.add(etiDireccionM, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 120, -1, -1));
-        panelModif.add(txtNombreM, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 30, 129, -1));
-        panelModif.add(txtCompanyiaM, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 60, 129, -1));
+        panelModif.add(txtNombreM, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 30, 129, -1));
+        panelModif.add(txtCompanyiaM, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 60, 129, -1));
 
         btnAceptarM.setText("Aceptar");
         panelModif.add(btnAceptarM, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 290, -1, -1));
@@ -86,13 +86,13 @@ public class Vtna_jue_Modif extends javax.swing.JFrame {
         panelModif.add(btnCancelarM, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 290, -1, -1));
 
         errorNombreM.setIcon(new javax.swing.ImageIcon(getClass().getResource("/proyectofinal_josegramage/Img/iconos/error.png"))); // NOI18N
-        panelModif.add(errorNombreM, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 30, 22, 20));
+        panelModif.add(errorNombreM, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 30, 22, 20));
 
         errorCompanyiaM.setIcon(new javax.swing.ImageIcon(getClass().getResource("/proyectofinal_josegramage/Img/iconos/error.png"))); // NOI18N
-        panelModif.add(errorCompanyiaM, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 60, 22, 20));
+        panelModif.add(errorCompanyiaM, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 60, 22, 20));
 
         errorTipoM.setIcon(new javax.swing.ImageIcon(getClass().getResource("/proyectofinal_josegramage/Img/iconos/error.png"))); // NOI18N
-        panelModif.add(errorTipoM, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 90, 22, 20));
+        panelModif.add(errorTipoM, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 90, 22, 20));
 
         btnOKM.setIcon(new javax.swing.ImageIcon(getClass().getResource("/proyectofinal_josegramage/Img/iconos/acierto.png"))); // NOI18N
         panelModif.add(btnOKM, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 250, 30, 30));
@@ -102,22 +102,22 @@ public class Vtna_jue_Modif extends javax.swing.JFrame {
         panelModif.add(btnVolverM, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 290, 100, -1));
 
         errorDescripcionM.setIcon(new javax.swing.ImageIcon(getClass().getResource("/proyectofinal_josegramage/Img/iconos/error.png"))); // NOI18N
-        panelModif.add(errorDescripcionM, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 150, 22, 20));
+        panelModif.add(errorDescripcionM, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 150, 22, 20));
 
         btnCambiarImgM.setFont(new java.awt.Font("Tahoma", 0, 9)); // NOI18N
         btnCambiarImgM.setText("cambiar imagen");
         panelModif.add(btnCambiarImgM, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 125, 90, -1));
 
         errorPrecioM.setIcon(new javax.swing.ImageIcon(getClass().getResource("/proyectofinal_josegramage/Img/iconos/error.png"))); // NOI18N
-        panelModif.add(errorPrecioM, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 120, 22, 20));
-        panelModif.add(txtTipoM, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 90, 130, -1));
-        panelModif.add(txtPrecioM, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 120, 130, -1));
+        panelModif.add(errorPrecioM, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 120, 22, 20));
+        panelModif.add(txtTipoM, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 90, 130, -1));
+        panelModif.add(txtPrecioM, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 120, 130, -1));
 
         txtDescripcionM.setColumns(20);
         txtDescripcionM.setRows(5);
         jScrollPane1.setViewportView(txtDescripcionM);
 
-        panelModif.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 150, 130, 80));
+        panelModif.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 150, 130, 80));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);

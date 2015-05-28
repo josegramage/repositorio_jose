@@ -181,8 +181,23 @@ public class Funciones {
         return cadenaAleatoria;
     }
 
-    public static String getCadenaAleatoriaTelefonos(int longitud) {
+    public static String getCadenaAleatoriaTelefono(int longitud) {
         String cadenaAleatoria = "";
+        long milis = new java.util.GregorianCalendar().getTimeInMillis();
+        Random r = new Random(milis);
+        int i = 0;
+        while (i < longitud) {
+            char c = (char) r.nextInt(255);
+            if (c >= '0' && c <= '9') {
+                cadenaAleatoria += c;
+                i++;
+            }
+        }
+        return cadenaAleatoria;
+    }
+    
+    public static int getCadenaAleatoriaNumeros(int longitud) {
+        int cadenaAleatoria = 0;
         long milis = new java.util.GregorianCalendar().getTimeInMillis();
         Random r = new Random(milis);
         int i = 0;

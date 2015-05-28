@@ -97,7 +97,7 @@ public class JuegoBLL {
 
         if (Singletons.jue != null) {
             Singletons.jueArray.add(Singletons.jue);
-            JuegoBLL_bd.nuevoUsuarioBLL();
+            JuegoBLL_bd.nuevoJuegoBLL();
             ((SimpleTableModel_juegos) Singletons.juePager.TABLA.getModel()).cargar();
         }
     }
@@ -167,35 +167,34 @@ public class JuegoBLL {
         JuegoDAO.modificarJuego();
     }
 
-    public static void ModificarPager() {
+    public static void ModificarPagerJuegos() {
 
         if (Vtna_jue_Modif.errorNombreM.isVisible() == false) {
-            Singletons.cli.setNombre(JuegoDAO.pideNombreM());
+            Singletons.jue.setNombre(JuegoDAO.pideNombreM());
         }
         if (Vtna_jue_Modif.errorCompanyiaM.isVisible() == false) {
-            Singletons.cli.setApellidos(JuegoDAO.pideCompanyiaM());
+            Singletons.jue.setCompanyia(JuegoDAO.pideCompanyiaM());
         }
         if (Vtna_jue_Modif.errorTipoM.isVisible() == false) {
-            Singletons.cli.setTelefono(JuegoDAO.pideTipoM());
+            Singletons.jue.setTipo(JuegoDAO.pideTipoM());
         }
         if (Vtna_jue_Modif.errorDescripcionM.isVisible() == false) {
-            Singletons.cli.setEmail(JuegoDAO.pideDescripcionM());
+            Singletons.jue.setDescripcion(JuegoDAO.pideDescripcionM());
         }
         if (Vtna_jue_Modif.errorPrecioM.isVisible() == false) {
-            Singletons.cli.setDireccion(JuegoDAO.pidePrecioM());
+            Singletons.jue.setPrecio(JuegoDAO.pidePrecioM());
         }
 
-
         if (Singletons.jue.getImagen().isEmpty()) {
-            Singletons.jue.setImagen(Singletons.PATH_auto);
+            Singletons.jue.setImagen(Singletons.PATH_auto_Img);
         }
         
       
         if ((Vtna_jue_Modif.errorNombreM.isVisible() == false) && (Vtna_jue_Modif.errorCompanyiaM.isVisible() == false) && (Vtna_jue_Modif.errorTipoM.isVisible() == false)
-            && (Singletons.efModif.errorPasswordM.isVisible() == false) && (Vtna_jue_Modif.errorPrecioM.isVisible() == false)) {
+           && (Vtna_jue_Modif.errorPrecioM.isVisible() == false)) {
 
-            Singletons.jueArray.set(Singletons.posJue, Singletons.jue);
-            JuegoBLL_bd.modificarClienteBLL();
+            Singletons.jueArray.set(Singletons.posJ, Singletons.jue);
+            JuegoBLL_bd.modificarJuegoBLL();
             ((SimpleTableModel_juegos) Singletons.juePager.TABLA.getModel()).cargar();
 
             Vtna_jue_Modif.btnOKM.setVisible(true);
@@ -205,11 +204,11 @@ public class JuegoBLL {
         }
     }
 
-    public static int buscar(Juego ef) {//Buscar
+    public static int buscar(Juego jue) {//Buscar
         int aux = -1;
 
-        for (int i = 0; i <= (Singletons.cliArray.size() - 1); i++) {
-            if ((Singletons.cliArray.get(i)).equals(ef)) {
+        for (int i = 0; i <= (Singletons.jueArray.size() - 1); i++) {
+            if ((Singletons.jueArray.get(i)).equals(jue)) {
                 aux = i;
             }
         }
@@ -232,7 +231,7 @@ public class JuegoBLL {
                 opc = JOptionPane.showConfirmDialog(null, "¿Deseas eliminar a " + nombre + " " + companyia + "?", "Info", JOptionPane.WARNING_MESSAGE);
                 if (opc == 0) {
                     ((SimpleTableModel_juegos) Vtna_jue_Pager.TABLA.getModel()).removeRow(selection1);
-                    JuegoBLL_bd.borrarUsuarioBLL();
+                    JuegoBLL_bd.borrarJuegoBLL();
                     ((SimpleTableModel_juegos) Singletons.juePager.TABLA.getModel()).cargar();
                 }
             }
@@ -270,7 +269,7 @@ public class JuegoBLL {
     }
 */
     public static void guardar() {//Guardar en el formato elegido por el usuario previamente en configuracion
-        if (Singletons.cliArray.size() != 0) {
+        if (Singletons.jueArray.size() != 0) {
 
             if (Main.conf.getGuardar() == "1") {
                 proyectofinal_josegramage.Librerias.Json.guardarJSON();//Genera un archivo json con todos los datos del Arraylist de empleados fijos
@@ -285,9 +284,7 @@ public class JuegoBLL {
             JOptionPane.showMessageDialog(null, "ArrayList vacio", "Error", JOptionPane.ERROR_MESSAGE);
         }
     }
-
-    
-  
+ 
 
     public static void GuardarAntesSalir() {
         int op2 = 0;

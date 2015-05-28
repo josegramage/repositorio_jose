@@ -34,11 +34,15 @@ import javax.swing.JPanel;
 import javax.swing.SwingUtilities;
 import javax.swing.UIManager;
 import javax.swing.plaf.basic.BasicInternalFrameUI;
+import proyectofinal_josegramage.Librerias.FrasesCelebres;
 import proyectofinal_josegramage.Modulos.Clientes.Modelo.BLL.ClienteBLL_bd;
 import proyectofinal_josegramage.Modulos.Clientes.Vista.Vtna_cli_MiPerfil;
 import proyectofinal_josegramage.Modulos.Clientes.Vista.Vtna_cli_Modif;
 import proyectofinal_josegramage.Modulos.Inicio.Vista.Vtna_Inicio;
 import proyectofinal_josegramage.Modulos.Inicio.Vista.Vtna_panel_Inicio;
+import proyectofinal_josegramage.Modulos.Juegos.Controlador.Controlador_Juegos;
+import proyectofinal_josegramage.Modulos.Juegos.Vista.Vtna_jue_Crear;
+import proyectofinal_josegramage.Modulos.Juegos.Vista.Vtna_jue_Pager;
 import proyectofinal_josegramage.Modulos.Login.Vista.Vtna_SignUP;
 import proyectofinal_josegramage.Modulos.Menu.Controlador.Controlador_Menu;
 
@@ -108,6 +112,8 @@ public class Controlador_Inicio implements ActionListener, MouseListener {
 
             ((BasicInternalFrameUI) Singletons.ini.internalFrame.getUI()).setNorthPane(null);
 
+            FrasesCelebres.ponerFrases();
+            
             Image icono = Toolkit.getDefaultToolkit().getImage("src/proyectofinal_josegramage/Img/icono_bajo.jpg");
             Singletons.ini.setIconImage(icono);
 
@@ -251,7 +257,11 @@ public class Controlador_Inicio implements ActionListener, MouseListener {
                 break;
 
             case _JUEGOS:
-                JOptionPane.showMessageDialog(null, "En construcción");
+                new Controlador_Juegos(new Vtna_jue_Pager(), 0).iniciar(0);
+               
+                JPanel pJuegos = new JPanel();
+                pJuegos.add(Singletons.juePager.panelPager);
+                Singletons.ini.internalFrame.setContentPane(pJuegos);
                 break;
 
             case _HISTORIA:
@@ -259,7 +269,7 @@ public class Controlador_Inicio implements ActionListener, MouseListener {
                 break;
 
             case _NOSOTROS:
-                JOptionPane.showMessageDialog(null, "En construcción");
+          JOptionPane.showMessageDialog(null, "En construcción");
                 break;
         }
     }

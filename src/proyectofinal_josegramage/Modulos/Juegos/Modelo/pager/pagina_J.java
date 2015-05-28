@@ -12,7 +12,7 @@ import javax.swing.ButtonModel;
 import javax.swing.JRadioButton;
 import javax.swing.RowFilter;
 import javax.swing.table.TableModel;
-import proyectofinal_josegramage.Modulos.Clientes.Vista.Vtna_cli_Pager;
+import proyectofinal_josegramage.Modulos.Juegos.Vista.Vtna_jue_Pager;
 
 
 
@@ -28,7 +28,7 @@ public class pagina_J {
     public static void inicializa() {
         int rowCount = 0;
 
-        rowCount = ((SimpleTableModel_juegos)Vtna_cli_Pager.TABLA.getModel()).getRowCount();
+        rowCount = ((SimpleTableModel_juegos)Vtna_jue_Pager.TABLA.getModel()).getRowCount();
    
         
         int v = rowCount%itemsPerPage==0 ? 0 : 1;
@@ -36,8 +36,8 @@ public class pagina_J {
         
         box.setBorder(BorderFactory.createEmptyBorder(2,2,2,2));
 
-                    Vtna_cli_Pager.jPanel4.setLayout(new BorderLayout());
-                    Vtna_cli_Pager.jPanel4.add(pagina_J.box);
+                    Vtna_jue_Pager.jPanel4.setLayout(new BorderLayout());
+                    Vtna_jue_Pager.jPanel4.add(pagina_J.box);
     }
     
     public static void initLinkBox() {
@@ -57,7 +57,7 @@ public class pagina_J {
 
         int rowCount = 0;
 
-                rowCount = ((SimpleTableModel_juegos)Vtna_cli_Pager.TABLA.getModel()).getRowCount();
+                rowCount = ((SimpleTableModel_juegos)Vtna_jue_Pager.TABLA.getModel()).getRowCount();
 
 
         int v = rowCount%itemsPerPage==0 ? 0 : 1;
@@ -71,11 +71,11 @@ public class pagina_J {
         if(  (rowCount<=itemsPerPage) && (rowCount>0)  ){ //caben todos los datos en la misma página
 
                 //actualizar botones y caja: desactivarlos
-                Vtna_cli_Pager.primero.setEnabled(false);
-                Vtna_cli_Pager.ANTERIOR.setEnabled(false);
-                Vtna_cli_Pager.SIGUIENTE.setEnabled(false);
-                Vtna_cli_Pager.ultimo.setEnabled(false);
-                Vtna_cli_Pager.CAJA.setText("");
+                Vtna_jue_Pager.primero.setEnabled(false);
+                Vtna_jue_Pager.ANTERIOR.setEnabled(false);
+                Vtna_jue_Pager.SIGUIENTE.setEnabled(false);
+                Vtna_jue_Pager.ultimo.setEnabled(false);
+                Vtna_jue_Pager.CAJA.setText("");
 
             //actualizar enlaces: sólo 1 enlace
             ButtonGroup bg = new ButtonGroup();
@@ -90,11 +90,11 @@ public class pagina_J {
         }else if(rowCount==0) { //no hay rdos
 
                 //actualizar botones y caja: desactivarlos
-                Vtna_cli_Pager.primero.setEnabled(false);
-                Vtna_cli_Pager.ANTERIOR.setEnabled(false);
-                Vtna_cli_Pager.SIGUIENTE.setEnabled(false);
-                Vtna_cli_Pager.ultimo.setEnabled(false);
-                Vtna_cli_Pager.CAJA.setText("");
+                Vtna_jue_Pager.primero.setEnabled(false);
+                Vtna_jue_Pager.ANTERIOR.setEnabled(false);
+                Vtna_jue_Pager.SIGUIENTE.setEnabled(false);
+                Vtna_jue_Pager.ultimo.setEnabled(false);
+                Vtna_jue_Pager.CAJA.setText("");
 
             //actualizar enlaces: no hay enlaces
             ButtonGroup bg = new ButtonGroup();
@@ -108,11 +108,11 @@ public class pagina_J {
             
         }else if(rowCount>itemsPerPage) {
 
-                    Vtna_cli_Pager.primero.setEnabled(currentPageIndex>1);
-                    Vtna_cli_Pager.ANTERIOR.setEnabled(currentPageIndex>1);
-                    Vtna_cli_Pager.SIGUIENTE.setEnabled(currentPageIndex<maxPageIndex);
-                    Vtna_cli_Pager.ultimo.setEnabled(currentPageIndex<maxPageIndex);
-                    Vtna_cli_Pager.CAJA.setText(Integer.toString(currentPageIndex) + String.format(" / %d", maxPageIndex));
+                    Vtna_jue_Pager.primero.setEnabled(currentPageIndex>1);
+                    Vtna_jue_Pager.ANTERIOR.setEnabled(currentPageIndex>1);
+                    Vtna_jue_Pager.SIGUIENTE.setEnabled(currentPageIndex<maxPageIndex);
+                    Vtna_jue_Pager.ultimo.setEnabled(currentPageIndex<maxPageIndex);
+                    Vtna_jue_Pager.CAJA.setText(Integer.toString(currentPageIndex) + String.format(" / %d", maxPageIndex));
 
             ButtonGroup bg = new ButtonGroup();
             box.add(Box.createHorizontalGlue());

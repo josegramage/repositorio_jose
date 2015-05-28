@@ -21,35 +21,36 @@ public class JuegoDAO {
 
     //Funcion para pedir Ref
     public static String pideRef() {
-        String dni = Vtna_jue_Crear.txtRef.getText();
+        String ref = Vtna_jue_Crear.txtRef.getText();
         boolean validar;
 
         if (Vtna_jue_Crear.txtRef.getText().isEmpty()) {
             JOptionPane.showMessageDialog(null, "La referencia no puede estar en blanco", "Error", JOptionPane.INFORMATION_MESSAGE);
-
+            Singletons.jueCrear.errorRef.setVisible(true);
         } else {
-            dni = Vtna_jue_Crear.txtRef.getText();
-            validar = Validate.validaDireccion(dni);
+            ref = Vtna_jue_Crear.txtRef.getText();
+            validar = Validate.validaNomNum(ref);
             if (validar == false) {
                 Vtna_jue_Crear.txtRef.requestFocus();
+                Singletons.jueCrear.errorRef.setVisible(true);
             } else {
                 Vtna_jue_Crear.txtNombre.requestFocus();
+                Singletons.jueCrear.errorRef.setVisible(false);
             }
-        }
-        return dni;
+         }
+        return ref;
     }
 
     //Funcion para pedir Ref  - KEYs
     public static String pideRefKey() {
-        String dni = Vtna_jue_Crear.txtRef.getText();
+        String ref = Vtna_jue_Crear.txtRef.getText();
         boolean validar;
 
-        if (dni.isEmpty()) {
-            //     Vtna_jue_Crear.etiDniError.setVisible(true);
+        if (ref.isEmpty()) {
             Vtna_jue_Crear.errorRef.setVisible(true);
         } else {
-            dni = Vtna_jue_Crear.txtRef.getText();
-            validar = Validate.validaDireccion(dni);
+            ref = Vtna_jue_Crear.txtRef.getText();
+            validar = Validate.validaNomNum(ref);
             if (validar == false) {
                 Vtna_jue_Crear.errorRef.setVisible(true);
             } else {
@@ -57,7 +58,7 @@ public class JuegoDAO {
                 Vtna_jue_Crear.errorRef.setVisible(false);
             }
         }
-        return dni;
+        return ref;
     }
 
     //Funcion para pedir Nombre para crear
@@ -69,7 +70,7 @@ public class JuegoDAO {
             Vtna_jue_Crear.errorNombre.setVisible(true);
         }
 
-        if (Validate.validaDireccion(nombre) != true) {
+        if (Validate.validaNomNum(nombre) != true) {
 
             Vtna_jue_Crear.txtNombre.requestFocus();
             Vtna_jue_Crear.errorNombre.setVisible(true);
@@ -83,8 +84,11 @@ public class JuegoDAO {
     //Funcion para pedir Nombre para crear -KEYs
     public static String pideNombreKey() {
         String nombre = Vtna_jue_Crear.txtNombre.getText();
+         if (Vtna_jue_Crear.txtNombre.getText().isEmpty()) {
+             Vtna_jue_Crear.errorNombre.setVisible(true);
+        }
 
-        if (Validate.validaDireccion(nombre) != true) {
+        if (Validate.validaNomNum(nombre) != true) {
             Vtna_jue_Crear.errorNombre.setVisible(true);
         } else {
             Vtna_jue_Crear.errorNombre.setVisible(false);
@@ -102,7 +106,7 @@ public class JuegoDAO {
             Vtna_jue_Modif.errorNombreM.setVisible(true);
         }
 
-        if (Validate.validaDireccion(nombre) != true) {
+        if (Validate.validaNomNum(nombre) != true) {
             Vtna_jue_Modif.errorNombreM.setVisible(true);
             Vtna_jue_Modif.txtNombreM.requestFocus();
         } else {
@@ -117,25 +121,24 @@ public class JuegoDAO {
     public static String pideNombreKeyM() {
         String nombre = Vtna_jue_Modif.txtNombreM.getText();
 
-        if (Validate.validaDireccion(nombre) != true) {
+        if (Validate.validaNomNum(nombre) != true) {
             Vtna_jue_Modif.errorNombreM.setVisible(true);
         } else {
             Vtna_jue_Modif.errorNombreM.setVisible(false);
         }
-
         return nombre;
     }
 
     //Funcion para pedir Companyia para crear
     public static String pideCompanyia() {
-        String apellidos = Vtna_jue_Crear.txtCompanyia.getText();
+        String companyia = Vtna_jue_Crear.txtCompanyia.getText();
 
         if (Vtna_jue_Crear.txtCompanyia.getText().isEmpty()) {
             JOptionPane.showMessageDialog(null, "La companyia no puede estar en blanco", "Error", JOptionPane.INFORMATION_MESSAGE);
             Vtna_jue_Crear.errorCompanyia.setVisible(true);
         }
 
-        if (Validate.validaDireccion(apellidos) != true) {
+        if (Validate.validaNomNum(companyia) != true) {
             Vtna_jue_Crear.errorCompanyia.setVisible(true);
             Vtna_jue_Crear.txtCompanyia.requestFocus();
         } else {
@@ -143,19 +146,22 @@ public class JuegoDAO {
             Vtna_jue_Crear.errorCompanyia.setVisible(false);
             Vtna_jue_Crear.txtTipo.requestFocus();
         }
-        return apellidos;
+        return companyia;
     }
 
     //Funcion para pedir Companyia para crear   - KEYs
     public static String pideCompanyiaKey() {
-        String apellidos = Vtna_jue_Crear.txtCompanyia.getText();
+        String companyia = Vtna_jue_Crear.txtCompanyia.getText();
+        if (Vtna_jue_Crear.txtCompanyia.getText().isEmpty()) {
+           Vtna_jue_Crear.errorCompanyia.setVisible(true);
+        }
 
-        if (Validate.validaDireccion(apellidos) != true) {
+        if (Validate.validaNomNum(companyia) != true) {
             Vtna_jue_Crear.errorCompanyia.setVisible(true);
         } else {
             Vtna_jue_Crear.errorCompanyia.setVisible(false);
         }
-        return apellidos;
+        return companyia;
     }
 
     //Funcion para pedir Companyia para modificar
@@ -167,7 +173,7 @@ public class JuegoDAO {
             Vtna_jue_Modif.errorCompanyiaM.setVisible(true);
         }
 
-        if (Validate.validaDireccion(companyia) != true) {
+        if (Validate.validaNomNum(companyia) != true) {
             Vtna_jue_Modif.errorCompanyiaM.setVisible(true);
             Vtna_jue_Modif.txtCompanyiaM.requestFocus();
         } else {
@@ -179,82 +185,81 @@ public class JuegoDAO {
 
     //Funcion para pedir Companyia para modificar  - Keys
     public static String pideCompanyiaKeyM() {
-        String apellidos = Vtna_jue_Modif.txtCompanyiaM.getText();
+        String companyia = Vtna_jue_Modif.txtCompanyiaM.getText();
 
-        if (Validate.validaApellido(apellidos) != true) {
+        if (Validate.validaNomNum(companyia) != true) {
             Vtna_jue_Modif.errorCompanyiaM.setVisible(true);
         } else {
             Vtna_jue_Modif.errorCompanyiaM.setVisible(false);
            }
-        return apellidos;
+        return companyia;
     }
 
     //Funcion para pedir Tipo para crear
     public static String pideTipo() {
-        String telefono = Vtna_jue_Crear.txtTipo.getText();
+        String tipo = Vtna_jue_Crear.txtTipo.getText();
         if (Vtna_jue_Crear.txtTipo.getText().isEmpty()) {
-            JOptionPane.showMessageDialog(null, "El tipo no puede estar en blanco", "Error", JOptionPane.INFORMATION_MESSAGE);
+            JOptionPane.showMessageDialog(null, "El tipo de juego no puede estar en blanco", "Error", JOptionPane.INFORMATION_MESSAGE);
             Vtna_jue_Crear.errorTipo.setVisible(true);
         }
 
-        if (Validate.validaNumTelefono(telefono) != true) {
+        if (Validate.validaNomNum(tipo) != true) {
             Vtna_jue_Crear.errorTipo.setVisible(true);
             Vtna_jue_Crear.txtTipo.requestFocus();
         } else {
             Vtna_jue_Crear.errorTipo.setVisible(false);
                Vtna_jue_Crear.txtPrecio.requestFocus();
         }
-        return telefono;
+        return tipo;
     }
 
     //Funcion para pedir TIPO para crear  - KEYs
     public static String pideTipoKey() {
-        String telefono = Vtna_jue_Crear.txtTipo.getText();
+        String tipo = Vtna_jue_Crear.txtTipo.getText();
 
-        if (Validate.validaNombre(telefono) != true) {
+        if (Validate.validaNomNum(tipo) != true) {
             Vtna_jue_Crear.errorTipo.setVisible(true);
         } else {
             Vtna_jue_Crear.errorTipo.setVisible(false);
 
         }
-        return telefono;
+        return tipo;
     }
 
     //Funcion para pedir Tipo para modificar
     public static String pideTipoM() {
-        String telefono = Vtna_jue_Modif.txtTipoM.getText();
+        String tipo = Vtna_jue_Modif.txtTipoM.getText();
 
         if (Vtna_jue_Modif.txtTipoM.getText().isEmpty()) {
             JOptionPane.showMessageDialog(null, "El tipo no puede estar en blanco", "Error", JOptionPane.INFORMATION_MESSAGE);
             Vtna_jue_Modif.errorTipoM.setVisible(true);
         }
 
-        if (Validate.validaDireccion(telefono) != true) {
+        if (Validate.validaNomNum(tipo) != true) {
             Vtna_jue_Modif.errorTipoM.setVisible(true);
         } else {
             Vtna_jue_Modif.errorTipoM.setVisible(false);
             }
-        return telefono;
+        return tipo;
     }
 
     //Funcion para pedir Tipo para modificar  - Keys
     public static String pideTipoKeyM() {
 
-        String telefono = Vtna_jue_Modif.txtTipoM.getText();
+        String tipo = Vtna_jue_Modif.txtTipoM.getText();
 
-        if (Validate.validaDireccion(telefono) != true) {
+        if (Validate.validaNomNum(tipo) != true) {
             Vtna_jue_Modif.errorTipoM.setVisible(true);
-            Vtna_jue_Modif.txtTipoM.requestFocus();
         } else {
             Vtna_jue_Modif.errorTipoM.setVisible(false);
-             Vtna_jue_Modif.txtPrecioM.requestFocus();
         }
-        return telefono;
+        return tipo;
     }
 
     //para pedir Precio para crear
-    public static float pidePrecio() {
+ /*   public static float pidePrecio() {
         float precio = Float.parseFloat(Vtna_jue_Crear.txtPrecio.getText());
+    //    float precio = ((Juego)).setPrecio(Float.parseFloat(value.toString()));
      //   String precio = Vtna_jue_Crear.txtPrecio.getText();
 
         if (Vtna_jue_Crear.txtPrecio.getText().isEmpty()) {
@@ -271,13 +276,51 @@ public class JuegoDAO {
         }
         return precio;
     }
-
+*/
+    /*
     //para pedir Precio para crear - KEYs
-    public static String pidePrecioKey() {
+    public static float pidePrecioKey() {
+       // JOptionPane.showMessageDialog(null,Vtna_jue_Crear.txtPrecio.getText());
+        float precio = Float.parseFloat(Vtna_jue_Crear.txtPrecio.getText());
+      //  float precio = Vtna_jue_Crear.txtPrecio.getText();
+//float precio=0.0f;
+        
+        if (Validate.validaNumPositivo(Vtna_jue_Crear.txtPrecio.getText()) != true) {
+             Vtna_jue_Crear.errorPrecio.setVisible(true);
+        } else {
+            Vtna_jue_Crear.errorPrecio.setVisible(false);
+         }
+        return precio;
+    }
+    */
+    
+     //para pedir Precio para crear
+      public static String pidePrecio() {
         String precio = Vtna_jue_Crear.txtPrecio.getText();
+   
+        if (Vtna_jue_Crear.txtPrecio.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(null, "El precio no puede estar en blanco", "Error", JOptionPane.INFORMATION_MESSAGE);
+            Vtna_jue_Crear.txtPrecio.requestFocus();
+            Vtna_jue_Crear.errorPrecio.setVisible(true);
+        }
 
         if (Validate.validaNumPositivo(precio) != true) {
+            Vtna_jue_Crear.errorPrecio.setVisible(true);
+            Vtna_jue_Crear.txtPrecio.requestFocus();
+        } else {
+            Vtna_jue_Crear.errorPrecio.setVisible(false);
+            Vtna_jue_Crear.txtDescripcion.requestFocus();
+        }
+        return precio;
+      }
+        
+     public static String pidePrecioKey() {
+      
+        String precio = Vtna_jue_Crear.txtPrecio.getText();
+        
+        if (Validate.validaNumPositivo(precio) != true) {
              Vtna_jue_Crear.errorPrecio.setVisible(true);
+             Vtna_jue_Crear.txtPrecio.requestFocus();
         } else {
             Vtna_jue_Crear.errorPrecio.setVisible(false);
          }
@@ -307,11 +350,10 @@ public class JuegoDAO {
     public static String pidePrecioKeyM() {
         String precio = Vtna_jue_Modif.txtPrecioM.getText();
 
-        if (Validate.validaEmail(precio) != true) {
+        if (Validate.validaNumPositivo(String.valueOf(precio)) != true) {
             Vtna_jue_Modif.errorPrecioM.setVisible(true);
         } else {
-            Vtna_jue_Modif.errorPrecioM.setVisible(false);
-   
+            Vtna_jue_Modif.errorPrecioM.setVisible(false);  
         }
         return precio;
     }
@@ -319,70 +361,30 @@ public class JuegoDAO {
     //para pedir Descripcion para crear
     public static String pideDescripcion() {
         String direccion = Vtna_jue_Crear.txtDescripcion.getText();
-
-        if (Vtna_jue_Crear.txtDescripcion.getText().isEmpty()) {
-            JOptionPane.showMessageDialog(null, "La direccion no puede estar en blanco", "Error", JOptionPane.INFORMATION_MESSAGE);
-            Vtna_jue_Crear.errorDescripcion.setVisible(true);
-        }
-
-        if (Validate.validaDireccion(direccion) != true) {
-            Vtna_jue_Crear.errorDescripcion.setVisible(true);
-            Vtna_jue_Crear.txtDescripcion.requestFocus();
-        } else {
-            Vtna_jue_Crear.errorDescripcion.setVisible(false);
-            Vtna_jue_Crear.btnAceptar.requestFocus();
-        }
         return direccion;
     }
 
     //para pedir Descripcion para crear - KEYs
     public static String pideDescripcionKey() {
-        String direccion = Vtna_jue_Crear.txtPrecio.getText();
-
-        if (Validate.validaDireccion(direccion) != true) {
-            Vtna_jue_Crear.errorDescripcion.setVisible(true);
-        } else {
-            Vtna_jue_Crear.errorDescripcion.setVisible(false);
-        }
-        return direccion;
+        String descripcion = Vtna_jue_Crear.txtDescripcion.getText();
+        return descripcion;
     }
 
     //para pedir Descripcion para modificar
     public static String pideDescripcionM() {
-        String direccion = Vtna_jue_Modif.txtPrecioM.getText();
-
-        if (Vtna_jue_Modif.txtDescripcionM.getText().isEmpty()) {
-            JOptionPane.showMessageDialog(null, "La direccion no puede estar en blanco", "Error", JOptionPane.INFORMATION_MESSAGE);
-            Vtna_jue_Modif.errorDescripcionM.setVisible(true);
-        }
-
-        if (Validate.validaDireccion(direccion) != true) {
-            Vtna_jue_Modif.errorDescripcionM.setVisible(true);
-            Vtna_jue_Modif.txtDescripcionM.requestFocus();
-        } else {
-            Vtna_jue_Modif.errorDescripcionM.setVisible(false);
-            Vtna_jue_Modif.btnAceptarM.requestFocus();
-        }
-        return direccion;
+        String descripcion = Vtna_jue_Modif.txtDescripcionM.getText();
+        return descripcion;
     }
 
     //para pedir Descripcion para modificar - KEYs
     public static String pideDescripcionKeyM() {
-        String direccion = Vtna_jue_Modif.txtPrecioM.getText();
-
-        if (Validate.validaDireccion(direccion) != true) {
-            Vtna_jue_Modif.errorDescripcionM.setVisible(true);
-        } else {
-            Vtna_jue_Modif.errorDescripcionM.setVisible(false);
-        }
-        return direccion;
+        String descripcion = Vtna_jue_Modif.txtDescripcionM.getText();
+        return descripcion;
     }
-
 
     public static void CreaJuego() {
 
-        String ref = "", nombre = "", companyia = "", descripcion = "", tipo = "", imagen = "";
-        float precio = 0.0f;
+        String ref = "", nombre = "", companyia = "", descripcion = "", precio="", tipo = "", imagen = "";
         Fecha fecha_alta = null;
 
         ref = pideRef();
@@ -392,13 +394,11 @@ public class JuegoDAO {
         precio = pidePrecio();
         tipo = pideTipo();   
         fecha_alta = Fecha.fechaHoy();
-        imagen = Singletons.ruta_imagen;
-  
-        
+                  
         if ((Vtna_jue_Crear.errorNombre.isVisible() == false) && (Vtna_jue_Crear.errorRef.isVisible() == false) && (Vtna_jue_Crear.errorCompanyia.isVisible() == false)
                 && (Vtna_jue_Crear.errorTipo.isVisible() == false) && (Vtna_jue_Crear.errorPrecio.isVisible() == false) && (Vtna_jue_Crear.errorDescripcion.isVisible() == false)) {
 
-            Singletons.jue = new Juego(ref, nombre, companyia, descripcion, fecha_alta, tipo, precio, imagen);
+            Singletons.jue = new Juego(ref, nombre, companyia, fecha_alta, tipo, precio, imagen, descripcion);
 
             Vtna_jue_Crear.btnOK.setVisible(true);
             Vtna_jue_Crear.etiGuardado.setVisible(true);
@@ -409,20 +409,19 @@ public class JuegoDAO {
     public static void modificarJuego() {
    
             if (Singletons.jue.getImagen().isEmpty()) {
-                FileUploader.leer_imag_defecto(3);
+                FileUploader.leer_img_defecto_J(1);
             } else {
-                FileUploader.leer_imag(1);
+                FileUploader.leer_img_juego(0);
             }   
 
-        Vtna_jue_Modif.txtNombreM.setText((Singletons.cli).getNombre());
-        Vtna_jue_Modif.txtCompanyiaM.setText((Singletons.cli).getApellidos());
-        Vtna_jue_Modif.txtTipoM.setText((Singletons.cli).getTelefono());
-        Vtna_jue_Modif.txtPrecioM.setText((Singletons.cli).getDireccion());
-        Vtna_jue_Modif.txtDescripcionM.setText((Singletons.cli).getEmail());   
+        Vtna_jue_Modif.txtNombreM.setText((Singletons.jue).getNombre());
+        Vtna_jue_Modif.txtCompanyiaM.setText((Singletons.jue).getCompanyia());
+        Vtna_jue_Modif.txtTipoM.setText((Singletons.jue).getTipo());
+        Vtna_jue_Modif.txtPrecioM.setText(String.valueOf((Singletons.jue).getPrecio()));
+        Vtna_jue_Modif.txtDescripcionM.setText((Singletons.jue).getDescripcion());   
     }
 
-   
-
+  
     public static void limpiar() {
 
         Vtna_jue_Crear.txtRef.setText("");
@@ -438,26 +437,17 @@ public class JuegoDAO {
         Vtna_jue_Crear.errorTipo.setVisible(false);
         Vtna_jue_Crear.errorPrecio.setVisible(false);
         Vtna_jue_Crear.errorDescripcion.setVisible(false);
-        Vtna_jue_Crear.etiPrecioError.setVisible(false);
-
     }
 
     public static void ocultarErroresModificar() {
 
         Vtna_jue_Modif.errorNombreM.setVisible(false);
-    
-
         Vtna_jue_Modif.errorCompanyiaM.setVisible(false);
-  
         Vtna_jue_Modif.errorTipoM.setVisible(false);
-
         Vtna_jue_Modif.errorDescripcionM.setVisible(false);
-
         Vtna_jue_Modif.errorPrecioM.setVisible(false);
-        
         Vtna_jue_Modif.btnOKM.setVisible(false);
         Vtna_jue_Modif.etiGuardadoM.setVisible(false);
- 
     }
 
     public static void ocultarErrores() {
@@ -468,10 +458,8 @@ public class JuegoDAO {
         Vtna_jue_Crear.errorTipo.setVisible(false);
         Vtna_jue_Crear.errorPrecio.setVisible(false);
         Vtna_jue_Crear.errorDescripcion.setVisible(false);
-        Vtna_jue_Crear.etiPrecioError.setVisible(false);
         Vtna_jue_Crear.btnOK.setVisible(false);
         Vtna_jue_Crear.etiGuardado.setVisible(false);
-
     }
 
     public static void editable() {
@@ -502,10 +490,8 @@ public class JuegoDAO {
         Vtna_jue_Modif.txtCompanyiaM.setEditable(false);
         Vtna_jue_Modif.txtTipoM.setEditable(false);
         Vtna_jue_Modif.txtPrecioM.setEditable(false);
-
         Vtna_jue_Modif.btnCancelarM.setEnabled(false);
         Vtna_jue_Modif.btnAceptarM.setEnabled(false);
-
     }
 
     public static Juego pideRefvacio(String refmatch) {
@@ -521,11 +507,10 @@ public class JuegoDAO {
         return Singletons.jue;
     }
 
-    public static int BuscarEmpleados(Juego cli) {//Buscar
+    public static int BuscarJuegos(Juego jue) {//Buscar
         int aux = -1;
-
-        for (int i = 0; i <= (Singletons.cliArray.size() - 1); i++) {
-            if ((Singletons.cliArray.get(i)).equals(cli))//buclea hasta que encuentra un dni que concuadre con el comparator de la madre y lo devuelve como aux
+        for (int i = 0; i <= (Singletons.jueArray.size() - 1); i++) {
+            if ((Singletons.jueArray.get(i)).equals(jue))//buclea hasta que encuentra un dni que concuadre con el comparator de la madre y lo devuelve como aux
             {
                 aux = i;
             }

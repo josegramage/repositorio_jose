@@ -73,7 +73,7 @@ public class FileUploader {
                     Image newimg = img.getScaledInstance(ancho, alto, java.awt.Image.SCALE_SMOOTH);
                     ImageIcon newIcon = new ImageIcon(newimg);
                     Singletons.efModif.etiAvatarM.setIcon(newIcon); //pintamos la imagen en jlabel1
-                }else if (i == 2) {
+                } else if (i == 2) {
                     ImageIcon icon = new ImageIcon(ruta);
                     Image img = icon.getImage();
                     Image newimg = img.getScaledInstance(ancho, alto, java.awt.Image.SCALE_SMOOTH);
@@ -113,7 +113,6 @@ public class FileUploader {
                 ImageIcon newIcon = new ImageIcon(newimg);
                 Singletons.efModif.etiAvatarM.setIcon(newIcon);
             }
-
             try {
                 //guardamos la imagen
                 Singletons.PATH_auto = new java.io.File("") + "src/proyectofinal_josegramage/Img/avatar_cliente/icono_defecto.jpg";
@@ -125,8 +124,6 @@ public class FileUploader {
             }
         }
     }
-
-   
 
     //----------- MOSTRAR AVATAR
     public static void leer_imag(int i) {
@@ -148,7 +145,7 @@ public class FileUploader {
             } else if (i == 1) {       // para modificar
                 //pintamos la imagen en el Jlabel
                 ImageIcon icon = new ImageIcon(Singletons.cliLog.getAvatar());
-         //       ImageIcon icon = new ImageIcon(Singletons.ruta_avatar);
+                //       ImageIcon icon = new ImageIcon(Singletons.ruta_avatar);
                 //Se extrae la imagen del icono
                 Image img = icon.getImage();
                 //Se modifica su tamaño
@@ -156,11 +153,11 @@ public class FileUploader {
                 //SE GENERA EL IMAGE ICON CON LA NUEVA IMAGEN
                 ImageIcon newIcon = new ImageIcon(newimg);
                 Singletons.cliMP.etiAvatarM.setIcon(newIcon);
-                
-                 } else if (i == 2) {       // para modificar
+
+            } else if (i == 2) {       // para modificar
                 //pintamos la imagen en el Jlabel
                 ImageIcon icon = new ImageIcon(Singletons.cli.getAvatar());
-         //       ImageIcon icon = new ImageIcon(Singletons.ruta_avatar);
+                //       ImageIcon icon = new ImageIcon(Singletons.ruta_avatar);
                 //Se extrae la imagen del icono
                 Image img = icon.getImage();
                 //Se modifica su tamaño
@@ -168,45 +165,163 @@ public class FileUploader {
                 //SE GENERA EL IMAGE ICON CON LA NUEVA IMAGEN
                 ImageIcon newIcon = new ImageIcon(newimg);
                 Singletons.efModif.etiAvatarM.setIcon(newIcon);
-                      
             }
 
         } catch (Exception ex) {
-            JOptionPane.showMessageDialog(null, "Error upload imagennnn", "Error leer imagen", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(null, "Error upload imagen", "Error leer imagen", JOptionPane.ERROR_MESSAGE);
         }
     }
 
     public static void leer_imag_defecto(int i) {
 
         String ruta = "src/proyectofinal_josegramage/Img/avatar_cliente/icono_defecto.jpg";
-       
+
         if (i == 0) {
-             ImageIcon icon = new ImageIcon(ruta);
-        Image img = icon.getImage();
-        Image newimg = img.getScaledInstance(90, 90, java.awt.Image.SCALE_SMOOTH);
-        ImageIcon newIcon = new ImageIcon(newimg);
+            ImageIcon icon = new ImageIcon(ruta);
+            Image img = icon.getImage();
+            Image newimg = img.getScaledInstance(90, 90, java.awt.Image.SCALE_SMOOTH);
+            ImageIcon newIcon = new ImageIcon(newimg);
             Singletons.efCrear.etiAvatar.setIcon(newIcon); //pintamos la imagen_default en jlabel1
-              
-        }  else if (i == 2) {
-             ImageIcon icon = new ImageIcon(ruta);
-        Image img = icon.getImage();
-        Image newimg = img.getScaledInstance(55, 55, java.awt.Image.SCALE_SMOOTH);
-        ImageIcon newIcon = new ImageIcon(newimg);
+
+        } else if (i == 2) {
+            ImageIcon icon = new ImageIcon(ruta);
+            Image img = icon.getImage();
+            Image newimg = img.getScaledInstance(55, 55, java.awt.Image.SCALE_SMOOTH);
+            ImageIcon newIcon = new ImageIcon(newimg);
             Singletons.ini.etiAvatarInicio.setIcon(newIcon);
-            
-        }  else if (i == 3) {
-             ImageIcon icon = new ImageIcon(ruta);
-        Image img = icon.getImage();
-        Image newimg = img.getScaledInstance(90, 90, java.awt.Image.SCALE_SMOOTH);
-        ImageIcon newIcon = new ImageIcon(newimg);
+
+        } else if (i == 3) {
+            ImageIcon icon = new ImageIcon(ruta);
+            Image img = icon.getImage();
+            Image newimg = img.getScaledInstance(90, 90, java.awt.Image.SCALE_SMOOTH);
+            ImageIcon newIcon = new ImageIcon(newimg);
             Singletons.efModif.etiAvatarM.setIcon(newIcon);
-        
-        }  else if (i == 4) {
-             ImageIcon icon = new ImageIcon(ruta);
-        Image img = icon.getImage();
-        Image newimg = img.getScaledInstance(90, 90, java.awt.Image.SCALE_SMOOTH);
-        ImageIcon newIcon = new ImageIcon(newimg);
+
+        } else if (i == 4) {
+            ImageIcon icon = new ImageIcon(ruta);
+            Image img = icon.getImage();
+            Image newimg = img.getScaledInstance(90, 90, java.awt.Image.SCALE_SMOOTH);
+            ImageIcon newIcon = new ImageIcon(newimg);
             Singletons.cliMP.etiAvatarM.setIcon(newIcon);
+        }
+    }
+
+    //////////////// J U E G O S /////////////////////////////777
+    public static void guardar_img_J(JLabel etiAvatar, int ancho, int alto, int i) {
+        String ruta;
+        File imagen;
+        BufferedImage image;
+        String extension = "";
+        JFileChooser fileChooser = new JFileChooser();
+
+        lista_blanca(fileChooser);
+        fileChooser.setCurrentDirectory(null);
+        fileChooser.setSelectedFile(null);
+
+        int seleccion = fileChooser.showOpenDialog(null);
+        if (seleccion == JFileChooser.APPROVE_OPTION) {
+            imagen = fileChooser.getSelectedFile();
+
+            ruta = imagen.getAbsolutePath();
+            if (ruta.length() > 500) {
+                JOptionPane.showMessageDialog(null, "La ruta de la imagen debe "
+                        + "tener como máximo 500 caracteres", "Error", JOptionPane.ERROR_MESSAGE);
+            } else {
+
+                if (i == 0) {
+                    ImageIcon icon = new ImageIcon(ruta);
+                    Image img = icon.getImage();
+                    Image newimg = img.getScaledInstance(ancho, alto, java.awt.Image.SCALE_SMOOTH);
+                    ImageIcon newIcon = new ImageIcon(newimg);
+                    Singletons.jueCrear.etiAvatar.setIcon(newIcon); //pintamos la imagen en jlabel1
+                } else if (i == 1) {
+                    ImageIcon icon = new ImageIcon(ruta);
+                    Image img = icon.getImage();
+                    Image newimg = img.getScaledInstance(ancho, alto, java.awt.Image.SCALE_SMOOTH);
+                    ImageIcon newIcon = new ImageIcon(newimg);
+                    Singletons.jueModif.etiAvatarM.setIcon(newIcon); //pintamos la imagen en jlabel1
+                }
+                try {
+                    //guardamos la imagen
+                    image = ImageIO.read(fileChooser.getSelectedFile().toURL());
+                    extension = fileChooser.getSelectedFile().toURL().toString().substring(
+                            fileChooser.getSelectedFile().toURL().toString().length() - 3);
+                    String cad = Funciones.getCadenaAleatoria1(10);
+
+                    Singletons.PATH_auto = new java.io.File("") + "src/proyectofinal_josegramage/Img/avatar_cliente/" + cad + "." + extension;
+                    File f = new File(Singletons.PATH_auto);
+
+                    ImageIO.write(image, extension, f);
+
+                } catch (Exception ex) {
+                    JOptionPane.showMessageDialog(null, "Error upload imagen", "Error al cargar imagen1", JOptionPane.ERROR_MESSAGE);
+                }
+            }
+        } else { //avatar per defecte
+            ruta = "src/proyectofinal_josegramage/Img/avatar_cliente/icono_defecto.jpg";
+
+            if (i == 0) {
+                ImageIcon icon = new ImageIcon(ruta);
+                Image img = icon.getImage();
+                Image newimg = img.getScaledInstance(90, 90, java.awt.Image.SCALE_SMOOTH);
+                ImageIcon newIcon = new ImageIcon(newimg);
+                Singletons.jueCrear.etiAvatar.setIcon(newIcon); //pintamos la imagen_default 
+
+            } else if (i == 1) {
+                ImageIcon icon = new ImageIcon(ruta);
+                Image img = icon.getImage();
+                Image newimg = img.getScaledInstance(90, 90, java.awt.Image.SCALE_SMOOTH);
+                ImageIcon newIcon = new ImageIcon(newimg);
+                Singletons.jueModif.etiAvatarM.setIcon(newIcon);
+            }
+            try {
+                //guardamos la imagen
+                Singletons.PATH_auto_Img = new java.io.File("") + "src/proyectofinal_josegramage/Img/avatar_cliente/icono_defecto.jpg";
+                File f = new File(Singletons.PATH_auto_Img);
+                image = ImageIO.read(f);
+                ImageIO.write(image, "jpg", f);
+            } catch (Exception ex) {
+                JOptionPane.showMessageDialog(null, "Error upload imagen", "Error", JOptionPane.ERROR_MESSAGE);
+            }
+        }
+    }
+
+    public static void leer_img_juego(int i) {
+        Singletons.ruta_imagen = Singletons.jue.getImagen();
+        try {
+            if (i == 0) {
+                // para modificar
+                ImageIcon icon = new ImageIcon(Singletons.jue.getImagen());
+                Image img = icon.getImage();
+
+                Image newimg = img.getScaledInstance(90, 90, java.awt.Image.SCALE_SMOOTH);
+
+                ImageIcon newIcon = new ImageIcon(newimg);
+                Singletons.jueModif.etiAvatarM.setIcon(newIcon);
+            }
+
+        } catch (Exception ex) {
+            JOptionPane.showMessageDialog(null, "Error upload imagen", "Error leer imagen", JOptionPane.ERROR_MESSAGE);
+        }
+    }
+
+    public static void leer_img_defecto_J(int i) {
+
+        String ruta = "src/proyectofinal_josegramage/Img/avatar_cliente/icono_defecto.jpg";
+
+        if (i == 0) {
+            ImageIcon icon = new ImageIcon(ruta);
+            Image img = icon.getImage();
+            Image newimg = img.getScaledInstance(90, 90, java.awt.Image.SCALE_SMOOTH);
+            ImageIcon newIcon = new ImageIcon(newimg);
+            Singletons.jueCrear.etiAvatar.setIcon(newIcon); //pintamos la imagen_default en jlabel1
+        }
+        if (i == 1) {
+            ImageIcon icon = new ImageIcon(ruta);
+            Image img = icon.getImage();
+            Image newimg = img.getScaledInstance(90, 90, java.awt.Image.SCALE_SMOOTH);
+            ImageIcon newIcon = new ImageIcon(newimg);
+            Singletons.jueModif.etiAvatarM.setIcon(newIcon); //pintamos la imagen_default en jlabel1
         }
     }
 }

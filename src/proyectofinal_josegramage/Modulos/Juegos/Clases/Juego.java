@@ -4,7 +4,6 @@ import java.io.Serializable;
 
 import com.thoughtworks.xstream.annotations.XStreamAlias;
 import proyectofinal_josegramage.Clases.Fecha;
-import proyectofinal_josegramage.Main;
 
 
 @XStreamAlias("Juego")
@@ -21,7 +20,7 @@ public class Juego implements Comparable<Juego>, Serializable {
     @XStreamAlias("tipo")
     public String tipo;
     @XStreamAlias("precio")
-    public float precio;
+    public String precio;
     @XStreamAlias("imagen")
     public String imagen;
     @XStreamAlias("descripcion")
@@ -31,7 +30,7 @@ public class Juego implements Comparable<Juego>, Serializable {
     }
 
     @SuppressWarnings("OverridableMethodCallInConstructor")
-    public Juego(String ref, String nombre, String companyia, Fecha fecha_alta, String tipo, float precio, String imagen, String descripcion) {
+    public Juego(String ref, String nombre, String companyia, Fecha fecha_alta, String tipo, String precio, String imagen, String descripcion) {
 
         this.ref = ref;
         this.nombre = nombre;
@@ -104,14 +103,13 @@ public class Juego implements Comparable<Juego>, Serializable {
         this.tipo = tipo;
     }
     
-       public float getPrecio (){
+       public String getPrecio (){
         return precio;
     }
     
-    public void setPrecio(float precio) {
+    public void setPrecio(String precio) {
         this.precio = precio;
     }
-    
     
     public Fecha getFecha_alta() {
         return fecha_alta;
@@ -130,8 +128,6 @@ public class Juego implements Comparable<Juego>, Serializable {
     }
     
    
-    
-
     //   @Override
     public int compareTo(Juego jue) {//para ordenar los clientes
         if (this.getRef().compareTo(jue.getRef()) > 0) {

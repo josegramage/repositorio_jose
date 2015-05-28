@@ -43,7 +43,6 @@ public class Vtna_jue_Crear extends javax.swing.JFrame {
         btnNuevo = new javax.swing.JButton();
         btnVolver = new javax.swing.JButton();
         errorPrecio = new javax.swing.JButton();
-        etiPrecioError = new javax.swing.JLabel();
         etiAvatar = new javax.swing.JLabel();
         btnCargarImg = new javax.swing.JButton();
         etiEmail1 = new javax.swing.JLabel();
@@ -70,9 +69,9 @@ public class Vtna_jue_Crear extends javax.swing.JFrame {
 
         jLabel4.setText("Tipo:");
         panelCrear.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 150, -1, -1));
-        panelCrear.add(txtNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 90, 129, -1));
-        panelCrear.add(txtCompanyia, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 120, 129, -1));
-        panelCrear.add(txtRef, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 60, 129, -1));
+        panelCrear.add(txtNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 90, 129, -1));
+        panelCrear.add(txtCompanyia, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 120, 129, -1));
+        panelCrear.add(txtRef, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 60, 129, -1));
 
         btnAceptar.setText("Aceptar");
         panelCrear.add(btnAceptar, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 330, -1, -1));
@@ -99,11 +98,7 @@ public class Vtna_jue_Crear extends javax.swing.JFrame {
         panelCrear.add(btnVolver, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 360, 180, -1));
 
         errorPrecio.setIcon(new javax.swing.ImageIcon(getClass().getResource("/proyectofinal_josegramage/Img/iconos/error.png"))); // NOI18N
-        panelCrear.add(errorPrecio, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 180, 22, 20));
-
-        etiPrecioError.setForeground(new java.awt.Color(255, 0, 0));
-        etiPrecioError.setText("Introduce un precio válido");
-        panelCrear.add(etiPrecioError, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 180, -1, -1));
+        panelCrear.add(errorPrecio, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 180, 22, 20));
 
         etiAvatar.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         panelCrear.add(etiAvatar, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 60, 90, 90));
@@ -114,29 +109,29 @@ public class Vtna_jue_Crear extends javax.swing.JFrame {
 
         etiEmail1.setText("Descripción:");
         panelCrear.add(etiEmail1, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 210, -1, -1));
-        panelCrear.add(txtPrecio, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 180, 130, -1));
-        panelCrear.add(txtTipo, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 150, 130, -1));
+        panelCrear.add(txtPrecio, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 180, 130, -1));
+        panelCrear.add(txtTipo, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 150, 130, -1));
 
         txtDescripcion.setColumns(20);
         txtDescripcion.setRows(5);
         jScrollPane1.setViewportView(txtDescripcion);
 
-        panelCrear.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 210, 130, 70));
+        panelCrear.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 210, 130, 70));
 
         errorRef.setIcon(new javax.swing.ImageIcon(getClass().getResource("/proyectofinal_josegramage/Img/iconos/error.png"))); // NOI18N
-        panelCrear.add(errorRef, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 60, 22, 20));
+        panelCrear.add(errorRef, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 60, 22, 20));
 
         errorNombre.setIcon(new javax.swing.ImageIcon(getClass().getResource("/proyectofinal_josegramage/Img/iconos/error.png"))); // NOI18N
-        panelCrear.add(errorNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 90, 22, 20));
+        panelCrear.add(errorNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 90, 22, 20));
 
         errorCompanyia.setIcon(new javax.swing.ImageIcon(getClass().getResource("/proyectofinal_josegramage/Img/iconos/error.png"))); // NOI18N
-        panelCrear.add(errorCompanyia, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 120, 22, 20));
+        panelCrear.add(errorCompanyia, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 120, 22, 20));
 
         errorTipo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/proyectofinal_josegramage/Img/iconos/error.png"))); // NOI18N
-        panelCrear.add(errorTipo, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 150, 22, 20));
+        panelCrear.add(errorTipo, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 150, 22, 20));
 
         errorDescripcion.setIcon(new javax.swing.ImageIcon(getClass().getResource("/proyectofinal_josegramage/Img/iconos/error.png"))); // NOI18N
-        panelCrear.add(errorDescripcion, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 210, 22, 20));
+        panelCrear.add(errorDescripcion, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 210, 22, 20));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -178,7 +173,6 @@ public class Vtna_jue_Crear extends javax.swing.JFrame {
     private javax.swing.JLabel etiEmail;
     private javax.swing.JLabel etiEmail1;
     public static javax.swing.JLabel etiGuardado;
-    public static javax.swing.JLabel etiPrecioError;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

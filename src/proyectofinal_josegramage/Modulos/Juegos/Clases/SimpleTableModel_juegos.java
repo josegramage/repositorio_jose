@@ -1,38 +1,36 @@
 package proyectofinal_josegramage.Modulos.Juegos.Clases;
 
 import proyectofinal_josegramage.Modulos.Juegos.Clases.DAOgenericoJ;
-import proyectofinal_josegramage.Modulos.Juegos.Modelo.BLL.JuegoBLL;
 import proyectofinal_josegramage.Modulos.Juegos.Modelo.BLL.JuegoBLL_bd;
 import proyectofinal_josegramage.Modulos.Juegos.Vista.Vtna_jue_Pager;
 import proyectofinal_josegramage.Modulos.Juegos.Modelo.pager.pagina_J;
 import java.util.ArrayList;
 import javax.swing.JComboBox;
-import javax.swing.JOptionPane;
 import javax.swing.table.AbstractTableModel;
 import proyectofinal_josegramage.Librerias.Singletons;
 
 public class SimpleTableModel_juegos extends AbstractTableModel {
 
-    public static ArrayList<Juego> datos = new ArrayList<Juego>();
-    public static ArrayList<Juego> datosaux = new ArrayList<Juego>();
-    String[] columnas = {"Ref", "Nombre", "Companyia", "Precio", "Tipo", "Fecha de alta"};
+    public static ArrayList<Juego> datos_J = new ArrayList<Juego>();
+    public static ArrayList<Juego> datosaux_J = new ArrayList<Juego>();
+    String[] columnas_J = {"Ref", "Nombre", "Companyia", "Precio", "Tipo", "Fecha de alta"};
 
     ////////////////////estos métodos son necesarios para que jtable funcione/////////////////////
     @Override
     public String getColumnName(int col) {
-        return columnas[col].toString();
+        return columnas_J[col].toString();
     }
 
     //Devuelve el numero de filas
     @Override
     public int getRowCount() {
-        return datos.size();
+        return datos_J.size();
     }
 
     //Devuelve el numero de columnas
     @Override
     public int getColumnCount() {
-        return columnas.length;
+        return columnas_J.length;
     }
 
     //Devuelve el valor del objeto en la fila y columna
@@ -40,7 +38,7 @@ public class SimpleTableModel_juegos extends AbstractTableModel {
     public Object getValueAt(int row, int col) {
 
         Object dev = null;
-        Juego fila = (Juego) datos.get(row);
+        Juego fila = (Juego) datos_J.get(row);
 
         switch (col) {
             case 0:
@@ -80,7 +78,7 @@ public class SimpleTableModel_juegos extends AbstractTableModel {
     //Actualiza un objeto de una fila y columna
     @Override
     public void setValueAt(Object value, int row, int col) {
-        Juego fila = (Juego) datos.get(row);
+        Juego fila = (Juego) datos_J.get(row);
 
         switch (col) {
             case 0:
@@ -96,7 +94,7 @@ public class SimpleTableModel_juegos extends AbstractTableModel {
                 break;
 
             case 3:
-                ((Juego) fila).setPrecio(Float.parseFloat(value.toString()));
+                ((Juego) fila).setPrecio(value.toString());
                 break;
 
             case 4:
@@ -110,18 +108,21 @@ public class SimpleTableModel_juegos extends AbstractTableModel {
         fireTableCellUpdated(row, col);
     }
 
-    public void addRow(Juego usu) {
-        datos.add(usu);
+    public void addRow(Juego jue) {
+        datos_J.add(jue);
         fireTableDataChanged();
     }
 
     public void cargar() {
-        datos.clear();
-        datosaux.clear();
-        JuegoBLL_bd.listarJuegoBLL();
+        datos_J.clear();
+        datosaux_J.clear();
+        
+        JuegoBLL_bd _juego = new JuegoBLL_bd();
+        _juego.listarJuegoBLL();
+        
         for (int i = 0; i <= Singletons.jueArray.size() - 1; i++) {
             addRow(Singletons.jueArray.get(i));
-            datosaux.add(Singletons.jueArray.get(i));
+            datosaux_J.add(Singletons.jueArray.get(i));
         }
         try {
             Thread.sleep(1); //1 milliseconds
@@ -131,14 +132,14 @@ public class SimpleTableModel_juegos extends AbstractTableModel {
     }
 
     public void filtrar() {
-        datos.clear();
+        datos_J.clear();
         int cont = 0;
 
-        String nombre = (String) ((JComboBox) Singletons.combo).getSelectedItem();
+        String nombre = (String) ((JComboBox) Singletons.combo_J).getSelectedItem();
         if (nombre != null) {
-            for (int i = 0; i < datosaux.size(); i++) {
-                if (datosaux.get(i).getNombre().toLowerCase().startsWith(nombre.toLowerCase())) {
-                    addRow(datosaux.get(i));
+            for (int i = 0; i < datosaux_J.size(); i++) {
+                if (datosaux_J.get(i).getNombre().toLowerCase().startsWith(nombre.toLowerCase())) {
+                    addRow(datosaux_J.get(i));
                     cont++;
                 }
             }
@@ -150,25 +151,25 @@ public class SimpleTableModel_juegos extends AbstractTableModel {
     }
 
     public Juego buscar(String u) {
-        datos.clear();
+        datos_J.clear();
         cargar();
 
         String res;
-        for (int i = 0; i < datos.size(); i++) {
-            res = datos.get(i).toString();
+        for (int i = 0; i < datos_J.size(); i++) {
+            res = datos_J.get(i).toString();
             if (res.contains(u)) {
-                return datos.get(i);
+                return datos_J.get(i);
             }
         }
         return null;
     }
 
-    public int buscaUsuario(Juego u) {
-        datos.clear();
+    public int buscaJuego(Juego u) {
+        datos_J.clear();
         cargar();
 
-        for (int i = 0; i < datos.size(); i++) {
-            if (datos.get(i).equals(u)) {
+        for (int i = 0; i < datos_J.size(); i++) {
+            if (datos_J.get(i).equals(u)) {
                 return i;
             }
         }
@@ -176,7 +177,7 @@ public class SimpleTableModel_juegos extends AbstractTableModel {
     }
 
     public void removeRow(int fila) {
-        datos.remove(fila);
+        datos_J.remove(fila);
         fireTableDataChanged();
     }
 

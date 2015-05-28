@@ -7,10 +7,10 @@ package proyectofinal_josegramage.Modulos.Juegos.Modelo.BLL;
 
 import proyectofinal_josegramage.Clases.ConexionBD;
 import proyectofinal_josegramage.Librerias.Singletons;
-import proyectofinal_josegramage.Modulos.Clientes.Modelo.DAO.ClienteDAO_bd;
 import java.sql.Connection;
 import javax.swing.JOptionPane;
-import proyectofinal_josegramage.Modulos.Clientes.Clases.Cliente;
+import proyectofinal_josegramage.Modulos.Juegos.Clases.Juego;
+import proyectofinal_josegramage.Modulos.Juegos.Modelo.DAO.JuegoDAO_bd;
 
 /**
  *
@@ -18,7 +18,7 @@ import proyectofinal_josegramage.Modulos.Clientes.Clases.Cliente;
  */
 public class JuegoBLL_bd {
 
-    //crea empleado
+    //crea juegos
     public static int nuevoJuegoBLL() {
         int resultado = 0;
         Connection _con = null;
@@ -27,7 +27,7 @@ public class JuegoBLL_bd {
 
         _con = _conexion_DB.AbrirConexion();
        
-        resultado = JuegoDAO_bd.nuevoClienteDAO(_con);
+        resultado = JuegoDAO_bd.nuevoJuegoDAO(_con);
 
         _conexion_DB.CerrarConexion(_con);
         return resultado;
@@ -35,61 +35,62 @@ public class JuegoBLL_bd {
     
     
     
-    //listar empleados
+    //listar juegos
     public static void listarJuegoBLL() {
+        
         Connection _con = null;
         ConexionBD _conexion_DB = new ConexionBD();
 
         _con = _conexion_DB.AbrirConexion();
-        ClienteDAO_bd _clienteDAO = new ClienteDAO_bd();
+        JuegoDAO_bd _juegoDAO = new JuegoDAO_bd();
+ 
         try {
-            _clienteDAO.listarClienteDAO(_con);//Recuperamos los usuarios       
+
+            _juegoDAO.listarJuegoDAO(_con);//Recuperamos los juegos 
+         
         } catch (Exception ex) {
-            JOptionPane.showMessageDialog(null, "Ha habido un error Logger!");
+            JOptionPane.showMessageDialog(null, "Ha habido un error Logger -listar juego BLL-");
         }
         _conexion_DB.CerrarConexion(_con);
     }
 
     
-     // modificar empleado
-    public static void modificarClienteBLL() {
-    
+     // modificar juegos
+    public static void modificarJuegoBLL() {
         Connection _con;
-   
         ConexionBD _conexion_DB = new ConexionBD();
 
         _con = _conexion_DB.AbrirConexion();
-        ClienteDAO_bd _clienteDAO = new ClienteDAO_bd();
+        JuegoDAO_bd _juegoDAO = new JuegoDAO_bd();
 
-        _clienteDAO.modificarClienteDAO(_con);
+        _juegoDAO.modificarJuegoDAO(_con);
         _conexion_DB.CerrarConexion(_con);
     }
 
-     // eliminar empleado
-    public static void borrarUsuarioBLL() {
+     // eliminar juegos
+    public static void borrarJuegoBLL() {
         Connection _con;
-        Cliente _clienteborrado = null;
+        Juego _juegoborrado = null;
         ConexionBD _conexion_DB = new ConexionBD();
 
         _con = _conexion_DB.AbrirConexion();
-        ClienteDAO_bd _clienteDAO = new ClienteDAO_bd();
-        _clienteborrado = _clienteDAO.borrarClienteDAO(_con, Singletons.cli);
+        JuegoDAO_bd _juegoDAO = new JuegoDAO_bd();
+        _juegoborrado = _juegoDAO.borrarJuegoDAO(_con, Singletons.jue);
         _conexion_DB.CerrarConexion(_con);
     }
 
-     //buscar por dni al empleado
-    public static boolean buscarDniBLL() {
+     //buscar por ref al juegos
+    public static boolean buscarRefBLL() {
         Connection _con = null;
         boolean buscar;
         
-        
-    //    EmpleadoFijo _clienteObtenido = null;
+
         ConexionBD _conexion_DB = new ConexionBD();
 
         _con = _conexion_DB.AbrirConexion();
-        ClienteDAO_bd _clienteDAO = new ClienteDAO_bd();
+        JuegoDAO_bd _juegoDAO = new JuegoDAO_bd();
                 
-        buscar = _clienteDAO.buscarDniDAO(_con);
+        buscar = _juegoDAO.buscarRefDAO(_con);
         _conexion_DB.CerrarConexion(_con);
         return buscar;
     }

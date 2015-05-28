@@ -43,6 +43,7 @@ public class Vtna_Inicio extends javax.swing.JFrame {
         internalFrame = new javax.swing.JInternalFrame();
         panel_internal_frame = new javax.swing.JPanel();
         etiFondo_inicio = new javax.swing.JLabel();
+        etiFrasesCelebres = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -70,12 +71,10 @@ public class Vtna_Inicio extends javax.swing.JFrame {
         panelMenuLayout.setHorizontalGroup(
             panelMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelMenuLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap(14, Short.MAX_VALUE)
                 .addGroup(panelMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelMenuLayout.createSequentialGroup()
-                        .addGroup(panelMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(etiInicio)
-                            .addComponent(etiNosotros))
+                        .addComponent(etiInicio)
                         .addGap(14, 14, 14))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelMenuLayout.createSequentialGroup()
                         .addComponent(etiJuegos)
@@ -85,6 +84,9 @@ public class Vtna_Inicio extends javax.swing.JFrame {
                         .addContainerGap())
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelMenuLayout.createSequentialGroup()
                         .addComponent(etiHistoria)
+                        .addContainerGap())
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelMenuLayout.createSequentialGroup()
+                        .addComponent(etiNosotros)
                         .addContainerGap())))
         );
         panelMenuLayout.setVerticalGroup(
@@ -92,15 +94,15 @@ public class Vtna_Inicio extends javax.swing.JFrame {
             .addGroup(panelMenuLayout.createSequentialGroup()
                 .addGap(47, 47, 47)
                 .addComponent(etiInicio, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(49, 49, 49)
+                .addGap(72, 72, 72)
                 .addComponent(etiJuegos)
-                .addGap(53, 53, 53)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 82, Short.MAX_VALUE)
                 .addComponent(etiProductos)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(82, 82, 82)
                 .addComponent(etiHistoria)
-                .addGap(55, 55, 55)
+                .addGap(66, 66, 66)
                 .addComponent(etiNosotros)
-                .addGap(99, 99, 99))
+                .addGap(25, 25, 25))
         );
 
         eti_Entrar_Usuario.setHorizontalTextPosition(javax.swing.SwingConstants.LEFT);
@@ -146,29 +148,42 @@ public class Vtna_Inicio extends javax.swing.JFrame {
         etiFondo_inicio.setIcon(new javax.swing.ImageIcon(getClass().getResource("/proyectofinal_josegramage/Img/fondos/fondo_inicio.jpg"))); // NOI18N
         etiFondo_inicio.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
 
+        etiFrasesCelebres.setEditable(false);
+        etiFrasesCelebres.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        etiFrasesCelebres.setBorder(null);
+        etiFrasesCelebres.setDisabledTextColor(new java.awt.Color(0, 0, 0));
+        etiFrasesCelebres.setEnabled(false);
+
         javax.swing.GroupLayout panel_internal_frameLayout = new javax.swing.GroupLayout(panel_internal_frame);
         panel_internal_frame.setLayout(panel_internal_frameLayout);
         panel_internal_frameLayout.setHorizontalGroup(
             panel_internal_frameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(etiFondo_inicio, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(panel_internal_frameLayout.createSequentialGroup()
+                .addComponent(etiFrasesCelebres, javax.swing.GroupLayout.PREFERRED_SIZE, 749, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         panel_internal_frameLayout.setVerticalGroup(
             panel_internal_frameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(etiFondo_inicio, javax.swing.GroupLayout.PREFERRED_SIZE, 460, Short.MAX_VALUE)
+            .addGroup(panel_internal_frameLayout.createSequentialGroup()
+                .addComponent(etiFondo_inicio, javax.swing.GroupLayout.PREFERRED_SIZE, 471, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(etiFrasesCelebres, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(4, 4, 4))
         );
 
-        internalFrame.getContentPane().add(panel_internal_frame, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -20, 730, 460));
+        internalFrame.getContentPane().add(panel_internal_frame, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -20, 730, 500));
 
         javax.swing.GroupLayout panel_inicioLayout = new javax.swing.GroupLayout(panel_inicio);
         panel_inicio.setLayout(panel_inicioLayout);
         panel_inicioLayout.setHorizontalGroup(
             panel_inicioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(panelLogin, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(panel_inicioLayout.createSequentialGroup()
                 .addComponent(panelMenu, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(internalFrame, javax.swing.GroupLayout.PREFERRED_SIZE, 740, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 20, Short.MAX_VALUE))
-            .addComponent(panelLogin, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         panel_inicioLayout.setVerticalGroup(
             panel_inicioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -176,10 +191,12 @@ public class Vtna_Inicio extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(panelLogin, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(panel_inicioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(panelMenu, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(internalFrame, javax.swing.GroupLayout.DEFAULT_SIZE, 472, Short.MAX_VALUE))
-                .addContainerGap(34, Short.MAX_VALUE))
+                .addGroup(panel_inicioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(panel_inicioLayout.createSequentialGroup()
+                        .addComponent(panelMenu, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 35, Short.MAX_VALUE))
+                    .addComponent(internalFrame, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
+                .addContainerGap())
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -204,6 +221,7 @@ public class Vtna_Inicio extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     public static javax.swing.JLabel etiAvatarInicio;
     public static javax.swing.JLabel etiFondo_inicio;
+    public static javax.swing.JTextField etiFrasesCelebres;
     public static javax.swing.JLabel etiHistoria;
     public static javax.swing.JLabel etiInicio;
     public static javax.swing.JLabel etiJuegos;

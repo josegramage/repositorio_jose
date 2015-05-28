@@ -5,10 +5,8 @@
  */
 package proyectofinal_josegramage;
 
-import javax.swing.JOptionPane;
-import javax.swing.JPanel;
+
 import proyectofinal_josegramage.Clases.Config;
-import proyectofinal_josegramage.Librerias.Singletons;
 import proyectofinal_josegramage.Modulos.Inicio.Controlador.Controlador_Inicio;
 import proyectofinal_josegramage.Modulos.Inicio.Vista.Vtna_Inicio;
 
@@ -20,10 +18,8 @@ public class Main {
 
     public static Config conf = null;
     
-    
     public static void main(String[] args) {
-       Singletons.cli.setDni("00000000A");
-      
+       
         conf = new Config();
         
           new Controlador_Inicio(new Vtna_Inicio(), 0).iniciar(0);

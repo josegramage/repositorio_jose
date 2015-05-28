@@ -25,6 +25,7 @@ import proyectofinal_josegramage.Modulos.Clientes.Vista.Vtna_cli_MiPerfil;
 import proyectofinal_josegramage.Modulos.Inicio.Vista.Vtna_Inicio;
 import proyectofinal_josegramage.Modulos.Inicio.Vista.Vtna_panel_Inicio;
 import proyectofinal_josegramage.Modulos.Juegos.Clases.Juego;
+import proyectofinal_josegramage.Modulos.Juegos.Clases.SimpleTableModel_juegos;
 import proyectofinal_josegramage.Modulos.Juegos.Modelo.autocomplete.AutocompleteJComboBox_J;
 import proyectofinal_josegramage.Modulos.Juegos.Vista.Vtna_jue_Crear;
 import proyectofinal_josegramage.Modulos.Juegos.Vista.Vtna_jue_Modif;
@@ -56,6 +57,11 @@ public class Singletons {
     public static Vtna_cli_Modif efModif;
     public static Vtna_cli_MiPerfil cliMP;
     
+     //PAGER JUEGOS
+    public static Vtna_jue_Pager juePager;
+    public static Vtna_jue_Crear jueCrear;
+    public static Vtna_jue_Modif jueModif;
+    
     //MODULO CLIENTE
     public static ArrayList<Cliente> cliArray;
     public static ArrayList<Cliente> cliLogArray;
@@ -68,19 +74,14 @@ public class Singletons {
     public static String ruta_avatar;
     
     //MODULO JUEGOS
-    public static ArrayList<Juego> jueArray;
+    public static ArrayList<Juego> jueArray = new ArrayList<Juego>();
     public static Juego jue;
     public static int posJ;
     public static int posJue=-1;
     public static ArrayList<Juego> jueg = new ArrayList<Juego>();
     public static String PATH_auto_Img="";
     public static String ruta_imagen;
-    
-    //PAGER JUEGOS
-    public static Vtna_jue_Pager juePager;
-    public static Vtna_jue_Crear jueCrear;
-    public static Vtna_jue_Modif jueModif;
-    
+        
     
     //FONDO / PANEL / TABLA / COMBO
     public static JPanel_Fondo panel;
@@ -88,6 +89,7 @@ public class Singletons {
     public static AutocompleteJComboBox combo = null;
     public static AutocompleteJComboBox_J combo_J = null;
     public static TableRowSorter<TableModel> sorter = new TableRowSorter<TableModel>(new SimpleTableModel_cliente());
+    public static TableRowSorter<TableModel> sorter_J = new TableRowSorter<TableModel>(new SimpleTableModel_juegos());
 
     
     

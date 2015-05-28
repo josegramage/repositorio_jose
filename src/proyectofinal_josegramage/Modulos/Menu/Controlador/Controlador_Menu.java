@@ -30,6 +30,8 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.SwingUtilities;
 import javax.swing.UIManager;
+import proyectofinal_josegramage.Modulos.Juegos.Controlador.Controlador_Juegos;
+import proyectofinal_josegramage.Modulos.Juegos.Vista.Vtna_jue_Pager;
 
 /**
  *
@@ -195,7 +197,11 @@ public class Controlador_Menu implements ActionListener, MouseListener {
                 break;
 
             case _BTN_JUEGOS:
-                JOptionPane.showMessageDialog(null, "En construcción");
+                new Controlador_Juegos(new Vtna_jue_Pager(), 0).iniciar(0);
+                Singletons.menu.dispose();
+                JPanel pJuegos = new JPanel();
+                pJuegos.add(Singletons.juePager.panelPager);
+                Singletons.ini.internalFrame.setContentPane(pJuegos);
                 break;
 
             case _BTN_PRODUCTOS:
