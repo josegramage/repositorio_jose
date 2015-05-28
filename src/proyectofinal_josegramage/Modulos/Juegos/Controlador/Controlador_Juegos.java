@@ -467,7 +467,7 @@ public class Controlador_Juegos implements ActionListener, KeyListener, MouseLis
                 break;
 
             
-            // ------- MODIFICAR EMPLEADO -------------------            
+            // ------- MODIFICAR JUEGO -------------------            
             case _TXT_NOMBRE_M:
                 JuegoBLL.pideNombreM();
                 break;
@@ -506,19 +506,12 @@ public class Controlador_Juegos implements ActionListener, KeyListener, MouseLis
 
             case _BTN_CANCELAR_M:
 
-                ClienteBLL.ocultaErrorM();
+                JuegoBLL.ocultaErrorM();
                 break;
 
-            case _TXT_LOGIN_M:
-                ClienteBLL.pideLoginM();
-                break;
-
-            case _TXT_PASSWORD_M:
-                ClienteBLL.pidePasswordM();
-                break;
-
+           
             case _BTN_VOLVER_M:
-                new Controlador_Juegos(new Vtna_cli_Pager(), 0).iniciar(0);
+                new Controlador_Juegos(new Vtna_jue_Pager(), 0).iniciar(0);
                 Singletons.efModif.dispose();
                 JPanel p4 = new JPanel();
                 p4.add(Singletons.efPager.panelPager);
@@ -529,7 +522,7 @@ public class Controlador_Juegos implements ActionListener, KeyListener, MouseLis
                 break;
 
             case _BTN_CARGAR_IMG_M:
-                FileUploader.pintar_guardar_img(Singletons.efModif.etiAvatarM, 90, 90,1);
+                FileUploader.pintar_guardar_img(Singletons.jueModif.etiAvatarM, 90, 90,1);
 
                 break;
         }
@@ -545,57 +538,54 @@ public class Controlador_Juegos implements ActionListener, KeyListener, MouseLis
         switch (Accion.valueOf(e.getComponent().getName())) {
 
             case _PANEL_FILTRAR:
-                pagina.currentPageIndex = 1;
-                ((SimpleTableModel_cliente) Singletons.efPager.TABLA.getModel()).filtrar();
+                pagina_J.currentPageIndex = 1;
+                ((SimpleTableModel_juegos) Singletons.juePager.TABLA.getModel()).filtrar();
                 break;
 
             // ----------  Crear Empleado  --------------
             case _TXT_NOMBRE:
-                ClienteBLL.pideNombreKey();
+                JuegoBLL.pideNombreKey();
                 break;
 
-            case _TXT_APELLIDOS:
-                ClienteBLL.pideApellidosKey();
+            case _TXT_COMPANYIA:
+                JuegoBLL.pideCompanyiaKey();
                 break;
 
-            case _TXT_DNI:
-                ClienteBLL.pideDniKey();
+            case _TXT_REF:
+                JuegoBLL.pideRefKey();
                 break;
 
-            case _TXT_TELEFONO:
-                ClienteBLL.pideTelefonoKey();
+            case _TXT_TIPO:
+                JuegoBLL.pideTipoKey();
                 break;
-                
-            case _TXT_DIRECCION:
-                ClienteBLL.pideDireccionKey();
 
-            case _TXT_EMAIL:
-                ClienteBLL.pideEmailKey();
+            case _TXT_DESCRIPCION:
+                JuegoBLL.pideDescripcionKey();
+                break;
+
+            case _TXT_PRECIO:
+                JuegoBLL.pidePrecioKey();
                 break;
 
             // ------------  Modificar Empleado --------------     
             case _TXT_NOMBRE_M:
-                ClienteBLL.pideNombreKeyM();
+                JuegoBLL.pideNombreKeyM();
                 break;
 
-            case _TXT_APELLIDOS_M:
-                ClienteBLL.pideApellidosKeyM();
+            case _TXT_COMPANYIA_M:
+                JuegoBLL.pideCompanyiaKeyM();
                 break;
 
-            case _TXT_TELEFONO_M:
-                ClienteBLL.pideTelefonoKeyM();
+            case _TXT_TIPO_M:
+                JuegoBLL.pideTipoKeyM();
                 break;
 
-            case _TXT_EMAIL_M:
-                ClienteBLL.pideEmailKeyM();
+            case _TXT_DESCRIPCION_M:
+                JuegoBLL.pideDescripcionKeyM();
                 break;
 
-            case _TXT_DIRECCION_M:
-                ClienteBLL.pideDireccionKeyM();
-                break;
-
-            case _TXT_PASSWORD_M:
-                ClienteBLL.pidePasswordKeyM();
+            case _TXT_PRECIO_M:
+                JuegoBLL.pidePrecioKeyM();
                 break;
         }
     }
@@ -606,60 +596,55 @@ public class Controlador_Juegos implements ActionListener, KeyListener, MouseLis
         switch (Accion.valueOf(e.getComponent().getName())) {
 
             case _PANEL_FILTRAR:
-                pagina.currentPageIndex = 1;
-                ((SimpleTableModel_cliente) Singletons.efPager.TABLA.getModel()).filtrar();
+                pagina_J.currentPageIndex = 1;
+                ((SimpleTableModel_juegos) Singletons.juePager.TABLA.getModel()).filtrar();
                 break;
 
             // ----------  Crear Empleado  --------------
             case _TXT_NOMBRE:
-                ClienteBLL.pideNombreKey();
+                JuegoBLL.pideNombreKey();
                 break;
 
-            case _TXT_APELLIDOS:
-                ClienteBLL.pideApellidosKey();
+            case _TXT_COMPANYIA:
+                JuegoBLL.pideCompanyiaKey();
                 break;
 
-            case _TXT_DNI:
-                ClienteBLL.pideDniKey();
+            case _TXT_REF:
+                JuegoBLL.pideRefKey();
                 break;
 
-            case _TXT_TELEFONO:
-                ClienteBLL.pideTelefonoKey();
+            case _TXT_TIPO:
+                JuegoBLL.pideTipoKey();
                 break;
 
-            case _TXT_DIRECCION:
-                ClienteBLL.pideDireccionKey();
+            case _TXT_DESCRIPCION:
+                JuegoBLL.pideDescripcionKey();
                 break;
 
-            case _TXT_EMAIL:
-                ClienteBLL.pideEmailKey();
+            case _TXT_PRECIO:
+                JuegoBLL.pidePrecioKey();
                 break;
 
             // ------------  Modificar Empleado --------------     
-            case _TXT_NOMBRE_M:
-                ClienteBLL.pideNombreKeyM();
+           case _TXT_NOMBRE_M:
+                JuegoBLL.pideNombreKeyM();
                 break;
 
-            case _TXT_APELLIDOS_M:
-                ClienteBLL.pideApellidosKeyM();
+            case _TXT_COMPANYIA_M:
+                JuegoBLL.pideCompanyiaKeyM();
                 break;
 
-            case _TXT_TELEFONO_M:
-                ClienteBLL.pideTelefonoKeyM();
+            case _TXT_TIPO_M:
+                JuegoBLL.pideTipoKeyM();
                 break;
 
-            case _TXT_EMAIL_M:
-                ClienteBLL.pideEmailKeyM();
+            case _TXT_DESCRIPCION_M:
+                JuegoBLL.pideDescripcionKeyM();
                 break;
 
-            case _TXT_DIRECCION_M:
-                ClienteBLL.pideDireccionKeyM();
+            case _TXT_PRECIO_M:
+                JuegoBLL.pidePrecioKeyM();
                 break;
-
-            case _TXT_PASSWORD_M:
-                ClienteBLL.pidePasswordKeyM();
-                break;
-
         }
     }
 
@@ -668,8 +653,8 @@ public class Controlador_Juegos implements ActionListener, KeyListener, MouseLis
         switch (Accion.valueOf(me.getComponent().getName())) {
             case _TABLA_CLICK:
                 try {
-                    Singletons.cli = new Cliente(Vtna_cli_Pager.TABLA.getValueAt(Vtna_cli_Pager.TABLA.getSelectedRow(), 0).toString());
-                    ClienteBLL_bd.buscarDniBLL();
+                    Singletons.jue = new Juego(Vtna_jue_Pager.TABLA.getValueAt(Vtna_jue_Pager.TABLA.getSelectedRow(), 0).toString());
+                    JuegoBLL_bd.buscarRefBLL();
                     //    Singletons.pos = ClienteBLL.buscar(Singletons.emp);
                     //    Singletons.emp = Singletons.efi.get(Singletons.pos);
                 } catch (Exception e) {

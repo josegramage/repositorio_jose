@@ -529,7 +529,7 @@ public class ClienteDAO {
         String passwordM = Vtna_cli_Modif.txtPasswordM.getText();
 
         if (Vtna_cli_Modif.txtPasswordM.getText().isEmpty()) {
-            Vtna_cli_Modif.errorPasswordM.setVisible(true);
+           Vtna_cli_Modif.errorPasswordM.setVisible(true);
         } else {
             Vtna_cli_Modif.errorPasswordM.setVisible(false);
         }
@@ -778,4 +778,297 @@ public class ClienteDAO {
         }
         return aux;//retorna aux, si lo ha encontrado dara la posicion, si no devolvera -1 lo cual significa que no hay dni que concuadre
     }
+    
+    
+    
+    ////// M O D I F I C A R   M I  P E R F I L  ///////////////
+    
+     //Funcion para pedir Nombre para modificar
+    public static String pideNombreMP() {
+        String nombre = Singletons.cliMP.txtNombreMP.getText();
+
+        if (Singletons.cliMP.txtNombreMP.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(null, "El nombre no puede estar en blanco", "Error", JOptionPane.INFORMATION_MESSAGE);
+            Singletons.cliMP.txtNombreMP.setVisible(true);
+        }
+
+        if (Validate.validaNombre(nombre) != true) {
+            Singletons.cliMP.etiNombreErrorM.setVisible(true);
+            Singletons.cliMP.errorNombreM.setVisible(true);
+            Singletons.cliMP.txtNombreMP.requestFocus();
+        } else {
+            Singletons.cliMP.etiNombreErrorM.setVisible(false);
+            Singletons.cliMP.errorNombreM.setVisible(false);
+            Singletons.cliMP.txtApellidosMP.requestFocus();
+        }
+
+        return nombre;
+    }
+
+    //Funcion para pedir Nombre para modificar  -  Keys
+    public static String pideNombreKeyMP() {
+        String nombre = Singletons.cliMP.txtNombreMP.getText();
+
+        if (Validate.validaNombre(nombre) != true) {
+            Singletons.cliMP.etiNombreErrorM.setVisible(true);
+            Singletons.cliMP.errorNombreM.setVisible(true);
+        } else {
+            Singletons.cliMP.etiNombreErrorM.setVisible(false);
+            Singletons.cliMP.errorNombreM.setVisible(false);
+        }
+
+        return nombre;
+    }
+    
+     //Funcion para pedir Apellidos para modificar
+    public static String pideApellidosMP() {
+        String apellidos = Singletons.cliMP.txtApellidosMP.getText();
+
+        if (Singletons.cliMP.txtApellidosMP.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Los apellidos no pueden estar en blanco", "Error", JOptionPane.INFORMATION_MESSAGE);
+            Singletons.cliMP.errorApellidosM.setVisible(true);
+        }
+
+        if (Validate.validaApellido(apellidos) != true) {
+            Singletons.cliMP.etiApellidoErrorM.setVisible(true);
+            Singletons.cliMP.errorApellidosM.setVisible(true);
+            Singletons.cliMP.txtApellidosMP.requestFocus();
+        } else {
+            Singletons.cliMP.errorApellidosM.setVisible(false);
+            Singletons.cliMP.etiApellidoErrorM.setVisible(false);
+            Singletons.cliMP.txtTelefonoMP.requestFocus();
+        }
+        return apellidos;
+    }
+
+    //Funcion para pedir Apellidos para modificar  - Keys
+    public static String pideApellidosKeyMP() {
+        String apellidos = Singletons.cliMP.txtApellidosMP.getText();
+
+        if (Validate.validaApellido(apellidos) != true) {
+            Singletons.cliMP.etiApellidoErrorM.setVisible(true);
+            Singletons.cliMP.errorApellidosM.setVisible(true);
+        } else {
+            Singletons.cliMP.errorApellidosM.setVisible(false);
+            Singletons.cliMP.etiApellidoErrorM.setVisible(false);
+        }
+        return apellidos;
+    }
+    
+     //Funcion para pedir telefono para modificar
+    public static String pideTelefonoMP() {
+        String telefono = Singletons.cliMP.txtTelefonoMP.getText();
+
+        if (Singletons.cliMP.txtTelefonoMP.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(null, "El telefono no puede estar en blanco", "Error", JOptionPane.INFORMATION_MESSAGE);
+            Singletons.cliMP.errorTelfM.setVisible(true);
+        }
+
+        if (Validate.validaNumTelefono(telefono) != true) {
+            Singletons.cliMP.etiTelefonoErrorM.setVisible(true);
+            Singletons.cliMP.errorTelfM.setVisible(true);
+        } else {
+            Singletons.cliMP.errorTelfM.setVisible(false);
+            Singletons.cliMP.etiTelefonoErrorM.setVisible(false);
+        }
+        return telefono;
+    }
+
+    //Funcion para pedir telefono para modificar  - Keys
+    public static String pideTelefonoKeyMP() {
+
+        String telefono = Singletons.cliMP.txtTelefonoMP.getText();
+
+        if (Validate.validaNumTelefono(telefono) != true) {
+            Singletons.cliMP.etiTelefonoErrorM.setVisible(true);
+            Singletons.cliMP.errorTelfM.setVisible(true);
+            Singletons.cliMP.txtTelefonoMP.requestFocus();
+        } else {
+            Singletons.cliMP.errorTelfM.setVisible(false);
+            Singletons.cliMP.etiTelefonoErrorM.setVisible(false);
+            Singletons.cliMP.txtDireccionMP.requestFocus();
+        }
+        return telefono;
+    }
+    
+    //para pedir email para modificar
+    public static String pideEmailMP() {
+        String email = Singletons.cliMP.txtEmailMP.getText();
+
+        if (Singletons.cliMP.txtEmailMP.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(null, "El email no puede estar en blanco", "Error", JOptionPane.INFORMATION_MESSAGE);
+            Singletons.cliMP.errorEmailM.setVisible(true);
+        }
+
+        if (Validate.validaEmail(email) != true) {
+            Singletons.cliMP.etiEmailErrorM.setVisible(true);
+            Singletons.cliMP.errorEmailM.setVisible(true);
+            Singletons.cliMP.txtEmailMP.requestFocus();
+        } else {
+            Singletons.cliMP.errorEmailM.setVisible(false);
+            Singletons.cliMP.etiEmailErrorM.setVisible(false);
+            Singletons.cliMP.txtFnacimientoMP.requestFocus();
+        }
+        return email;
+    }
+
+    //para pedir email para modificar - KEYs
+    public static String pideEmailKeyMP() {
+        String email = Singletons.cliMP.txtEmailMP.getText();
+
+        if (Validate.validaEmail(email) != true) {
+            Singletons.cliMP.etiEmailErrorM.setVisible(true);
+            Singletons.cliMP.errorEmailM.setVisible(true);
+        } else {
+            Singletons.cliMP.errorEmailM.setVisible(false);
+            Singletons.cliMP.etiEmailErrorM.setVisible(false);
+        }
+        return email;
+    }
+    
+    
+     //para pedir direccion para modificar
+    public static String pideDireccionMP() {
+        String direccion = Singletons.cliMP.txtDireccionMP.getText();
+
+        if (Singletons.cliMP.txtDireccionMP.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(null, "La direccion no puede estar en blanco", "Error", JOptionPane.INFORMATION_MESSAGE);
+            Singletons.cliMP.errorDireccionM.setVisible(true);
+        }
+
+        if (Validate.validaDireccion(direccion) != true) {
+            Singletons.cliMP.etiDireccionErrorM.setVisible(true);
+            Singletons.cliMP.errorDireccionM.setVisible(true);
+            Singletons.cliMP.txtDireccionMP.requestFocus();
+        } else {
+            Singletons.cliMP.errorDireccionM.setVisible(false);
+            Singletons.cliMP.etiDireccionErrorM.setVisible(false);
+            Singletons.cliMP.txtEmailMP.requestFocus();
+        }
+        return direccion;
+    }
+
+    //para pedir direccion para modificar - KEYs
+    public static String pideDireccionKeyMP() {
+        String direccion = Singletons.cliMP.txtDireccionMP.getText();
+
+        if (Validate.validaDireccion(direccion) != true) {
+            Singletons.cliMP.etiDireccionErrorM.setVisible(true);
+            Singletons.cliMP.errorDireccionM.setVisible(true);
+        } else {
+            Singletons.cliMP.errorDireccionM.setVisible(false);
+            Singletons.cliMP.etiDireccionErrorM.setVisible(false);
+        }
+        return direccion;
+    }
+    
+    //fecha nacimiento para modificar
+    public static Fecha pideFnacimientoMP() {
+        String fecha1 = "";
+        int Edad = 0;
+        Fecha FnacimientoM = null;
+
+        if (Singletons.cliMP.txtFnacimientoMP.getDate() == null) {
+            JOptionPane.showMessageDialog(null, "Selecciona una fecha de nacimiento");
+        } else {
+            fecha1 = ((JTextFieldDateEditor) Singletons.cliMP.txtFnacimientoMP.getDateEditor()).getText();
+        }
+
+        FnacimientoM = (DAOgenerico.pedirFechaNB(fecha1));
+
+        //calcular y rellenar la edad
+        Edad = FnacimientoM.restaFechas();
+        //  Vtna_cli_Modif.txtEdadM.setText(Integer.toString(Edad));
+
+        if (Edad <= 16) {
+            JOptionPane.showMessageDialog(null, "La edad debe ser igual o superior a 16 años");
+            Singletons.cliMP.errorFnacimientoM.setVisible(true);
+        } else {
+            Singletons.cliMP.errorFnacimientoM.setVisible(false);
+        }
+
+        return FnacimientoM;
+    }
+    
+     public static String pideLoginMP() {
+        String loginM = Singletons.cliMP.txtLoginMP.getText();
+        return loginM;
+    }
+
+   
+
+    public static String pidePasswordMP() {
+        String passwordM = Singletons.cliMP.txtPasswordMP.getText();
+
+        if (Singletons.cliMP.txtPasswordMP.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(null, "El password no puede estar en blanco", "Error", JOptionPane.INFORMATION_MESSAGE);
+            Singletons.cliMP.errorPasswordM.setVisible(true);
+        } else {
+            passwordM = Encriptador.encriptarTokenMD5(passwordM);
+            Singletons.cliMP.errorPasswordM.setVisible(false);
+        }
+        return passwordM;
+    }
+
+    public static String pidePasswordMP_Key() {
+        String passwordM = Singletons.cliMP.txtPasswordMP.getText();
+
+        if (Singletons.cliMP.txtPasswordMP.getText().isEmpty()) {
+            Singletons.cliMP.errorPasswordM.setVisible(true);
+        } else {
+            Singletons.cliMP.errorPasswordM.setVisible(false);
+        }
+        return passwordM;
+    }
+    
+     public static String pideTipoMP() {
+
+        String tipo = "";
+
+        if (Singletons.cliMP.comboTipoMP.getSelectedItem() == "Usuario") {
+            tipo = "usuario";
+        } else if (Singletons.cliMP.comboTipoMP.getSelectedItem() == "Admin") {
+            tipo = "admin";
+        }
+        return tipo;
+    }
+    
+     public static void modificarLogeadoMP() {
+
+    
+        Singletons.cliMP.txtNombreMP.setText((Singletons.cliLog).getNombre());
+        Singletons.cliMP.txtApellidosMP.setText((Singletons.cliLog).getApellidos());
+        Singletons.cliMP.txtTelefonoMP.setText((Singletons.cliLog).getTelefono());
+        Singletons.cliMP.txtDireccionMP.setText((Singletons.cliLog).getDireccion());
+        Singletons.cliMP.txtEmailMP.setText((Singletons.cliLog).getEmail());
+        ((JTextFieldDateEditor) Singletons.cliMP.txtFnacimientoMP.getDateEditor()).setText((Singletons.cliLog).getFnacimiento().aStringFecha());
+        Singletons.cliMP.txtLoginMP.setText((Singletons.cliLog).getLogin());
+        //  Vtna_ef_Cambiar.txtPasswordM.setText((Singletons.emp).getPassword());
+    }
+    
+      public static void ocultarErroresModificarMP() {
+
+        Singletons.cliMP.errorNombreM.setVisible(false);
+        Singletons.cliMP.etiNombreErrorM.setVisible(false);
+
+        Singletons.cliMP.errorApellidosM.setVisible(false);
+        Singletons.cliMP.etiApellidoErrorM.setVisible(false);
+
+        Singletons.cliMP.errorTelfM.setVisible(false);
+        Singletons.cliMP.etiTelefonoErrorM.setVisible(false);
+
+        Singletons.cliMP.errorEmailM.setVisible(false);
+        Singletons.cliMP.etiEmailErrorM.setVisible(false);
+
+        Singletons.cliMP.errorDireccionM.setVisible(false);
+        Singletons.cliMP.etiDireccionErrorM.setVisible(false);
+
+        Singletons.cliMP.errorFnacimientoM.setVisible(false);
+
+        Singletons.cliMP.btnOKM.setVisible(false);
+        Singletons.cliMP.etiGuardadoM.setVisible(false);
+        Singletons.cliMP.errorPasswordM.setVisible(false);
+
+    }
+        
 }

@@ -22,7 +22,8 @@ public class Main {
     
     
     public static void main(String[] args) {
-       
+       Singletons.cli.setDni("00000000A");
+      
         conf = new Config();
         
           new Controlador_Inicio(new Vtna_Inicio(), 0).iniciar(0);

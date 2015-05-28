@@ -35,6 +35,7 @@ import javax.swing.SwingUtilities;
 import javax.swing.UIManager;
 import javax.swing.plaf.basic.BasicInternalFrameUI;
 import proyectofinal_josegramage.Modulos.Clientes.Modelo.BLL.ClienteBLL_bd;
+import proyectofinal_josegramage.Modulos.Clientes.Vista.Vtna_cli_MiPerfil;
 import proyectofinal_josegramage.Modulos.Clientes.Vista.Vtna_cli_Modif;
 import proyectofinal_josegramage.Modulos.Inicio.Vista.Vtna_Inicio;
 import proyectofinal_josegramage.Modulos.Inicio.Vista.Vtna_panel_Inicio;
@@ -213,23 +214,21 @@ public class Controlador_Inicio implements ActionListener, MouseListener {
                     ClienteBLL_bd cli = new ClienteBLL_bd();
                     cli.listarClienteBLL();
 
-                    new Controlador_Cliente(new Vtna_cli_Modif(), 2).iniciar(2);
+                    new Controlador_Cliente(new Vtna_cli_MiPerfil(), 3).iniciar(3);
 
-                    JPanel panel_modif = new JPanel();
-                    panel_modif.add(Singletons.efModif.panelModif);
-                    Singletons.ini.internalFrame.setContentPane(panel_modif);
-                    ClienteDAO.modificarLogeado();
+                    JPanel panel_modifMP = new JPanel();
+                    panel_modifMP.add(Singletons.cliMP.panelModif_MP);
+                    Singletons.ini.internalFrame.setContentPane(panel_modifMP);
+                    ClienteDAO.modificarLogeadoMP();
 
                     if (Singletons.cliLog.getAvatar().isEmpty()) {
-                        FileUploader.leer_imag_defecto(3);
+                        FileUploader.leer_imag_defecto(4);
                     } else {
                         FileUploader.leer_imag(1);
                     }
-
                     
                 } else {
                     new Controlador_Login(new Vtna_SignUP(), 1).iniciar(1);
-
                     JPanel p4 = new JPanel();
                     p4.add(Singletons.alta.panelCrear);
                     Singletons.ini.internalFrame.setContentPane(p4);
@@ -267,27 +266,14 @@ public class Controlador_Inicio implements ActionListener, MouseListener {
 
     @Override
     public void mousePressed(MouseEvent e) {
-//        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+
     }
 
     @Override
     public void mouseReleased(MouseEvent e) {
         switch (Accion.valueOf(e.getComponent().getName())) {
-            /*
-             case _BTN_CONFIG:
-             Singletons.menu.btnConfig.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Img/config1.png")));
-             break;
-
-             case _BTN_EMPFIJO:
-             Singletons.menu.btnEmpFijo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Img/empfijo1.png")));
-             break;
-
-             case _BTN_REGISTRO:
-             break;
-             */
-        }
-
-        // throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+           
+        }       
     }
 
     @Override

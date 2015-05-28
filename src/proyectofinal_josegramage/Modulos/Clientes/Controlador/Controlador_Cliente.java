@@ -46,6 +46,7 @@ import java.awt.Image;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import proyectofinal_josegramage.Modulos.Clientes.Clases.Cliente;
+import proyectofinal_josegramage.Modulos.Clientes.Vista.Vtna_cli_MiPerfil;
 import proyectofinal_josegramage.Modulos.Inicio.Controlador.Controlador_Inicio;
 import proyectofinal_josegramage.Modulos.Inicio.Vista.Vtna_Inicio;
 import proyectofinal_josegramage.Modulos.Inicio.Vista.Vtna_panel_Inicio;
@@ -108,6 +109,20 @@ public class Controlador_Cliente implements ActionListener, KeyListener, MouseLi
         _BTN_CANCELAR_M,
         _BTN_VOLVER_M,
         _BTN_CARGAR_IMG_M,
+        // Ventana modificar Mi Perfil
+        _TXT_NOMBRE_MP,
+        _TXT_APELLIDOS_MP,
+        _TXT_TELEFONO_MP,
+        _TXT_DIRECCION_MP,
+        _TXT_EMAIL_MP,
+        _TXT_FNACIMIENTO_MP,
+        _TXT_LOGIN_MP,
+        _TXT_PASSWORD_MP,
+        _BTN_ACEPTAR_MP,
+        _BTN_SALIR_MP,
+        _BTN_VOLVER_MP,
+        _BTN_CARGAR_IMG_MP,
+        _BTN_ELIMINAR_MP,
 
     }
 
@@ -124,12 +139,17 @@ public class Controlador_Cliente implements ActionListener, KeyListener, MouseLi
         if (i == 2) {
             Singletons.efModif = (Vtna_cli_Modif) pager;
         }
+
+        if (i == 3) {
+            Singletons.cliMP = (Vtna_cli_MiPerfil) pager;
+        }
+
     }
 
     public void iniciar(int i) {
 
         if (i == 0) {
-            
+
             Singletons.efPager.TABLA.setModel(new SimpleTableModel_cliente());
             ((SimpleTableModel_cliente) Singletons.efPager.TABLA.getModel()).cargar();
             Singletons.efPager.TABLA.setFillsViewportHeight(true);
@@ -138,9 +158,8 @@ public class Controlador_Cliente implements ActionListener, KeyListener, MouseLi
             pagina.inicializa();
             pagina.initLinkBox();
 
-             Singletons.efPager.etiFILTRAR.setText(String.valueOf(Singletons.client.size()));
+            Singletons.efPager.etiFILTRAR.setText(String.valueOf(Singletons.client.size()));
 
-           
             List<String> myWords = new ArrayList<String>();
             for (int x = 0; x <= Singletons.client.size() - 1; x++) {
                 myWords.add(Singletons.client.get(x).getNombre());
@@ -227,7 +246,7 @@ public class Controlador_Cliente implements ActionListener, KeyListener, MouseLi
 
         //     Crear empleado
         if (i == 1) {
-            
+
             ClienteDAO.ocultarErrores();
             FileUploader.leer_imag_defecto(0);
 
@@ -281,7 +300,7 @@ public class Controlador_Cliente implements ActionListener, KeyListener, MouseLi
             Singletons.efCrear.comboTipo.setActionCommand("_COMBO_TIPO");
 
         }
-        //     Modificar empleado
+        //     Modificar empleado PAGER
         if (i == 2) {
 
             if (Singletons.cliLog.getTipo().equals("usuario")) {
@@ -289,8 +308,8 @@ public class Controlador_Cliente implements ActionListener, KeyListener, MouseLi
                 Singletons.efModif.comboTipoM.setVisible(false);
 
             }
-           
-    //        ClienteDAO.modificarLogeado();
+
+            //        ClienteDAO.modificarLogeado();
             ClienteBLL.ocultaErrorM();
 
             Singletons.efModif.txtNombreM.setName("_TXT_NOMBRE_M");
@@ -340,6 +359,69 @@ public class Controlador_Cliente implements ActionListener, KeyListener, MouseLi
             Singletons.efModif.btnVolverM.setActionCommand("_BTN_VOLVER_M");
             Singletons.efModif.btnVolverM.addActionListener(this);
         }
+
+        //     Modificar empleado MI PERFIL
+        if (i == 3) {
+
+            if (Singletons.cliLog.getTipo().equals("usuario")) {
+                Singletons.cliMP.etiTipoM.setVisible(false);
+                Singletons.cliMP.comboTipoMP.setVisible(false);
+            }
+
+            ClienteBLL.ocultaErrorMP();
+            Singletons.cliMP.errorPasswordM.setVisible(true);
+
+            Singletons.cliMP.txtNombreMP.setName("_TXT_NOMBRE_MP");
+            Singletons.cliMP.txtNombreMP.setActionCommand("_TXT_NOMBRE_MP");
+            Singletons.cliMP.txtNombreMP.addActionListener(this);
+            Singletons.cliMP.txtNombreMP.addKeyListener(this);
+
+            Singletons.cliMP.txtApellidosMP.setName("_TXT_APELLIDOS_MP");
+            Singletons.cliMP.txtApellidosMP.setActionCommand("_TXT_APELLIDOS_MP");
+            Singletons.cliMP.txtApellidosMP.addActionListener(this);
+            Singletons.cliMP.txtApellidosMP.addKeyListener(this);
+
+            Singletons.cliMP.txtTelefonoMP.setName("_TXT_TELEFONO_MP");
+            Singletons.cliMP.txtTelefonoMP.setActionCommand("_TXT_TELEFONO_MP");
+            Singletons.cliMP.txtTelefonoMP.addActionListener(this);
+            Singletons.cliMP.txtTelefonoMP.addKeyListener(this);
+
+            Singletons.cliMP.txtDireccionMP.setName("_TXT_DIRECCION_MP");
+            Singletons.cliMP.txtDireccionMP.setActionCommand("_TXT_DIRECCION_MP");
+            Singletons.cliMP.txtDireccionMP.addActionListener(this);
+            Singletons.cliMP.txtDireccionMP.addKeyListener(this);
+
+            Singletons.cliMP.txtEmailMP.setName("_TXT_EMAIL_MP");
+            Singletons.cliMP.txtEmailMP.setActionCommand("_TXT_EMAIL_MP");
+            Singletons.cliMP.txtEmailMP.addActionListener(this);
+            Singletons.cliMP.txtEmailMP.addKeyListener(this);
+
+            Singletons.cliMP.txtLoginMP.setName("_TXT_LOGIN_MP");
+            Singletons.cliMP.txtLoginMP.setActionCommand("_TXT_LOGIN_MP");
+            Singletons.cliMP.txtLoginMP.addActionListener(this);
+            Singletons.cliMP.txtLoginMP.addKeyListener(this);
+
+            Singletons.cliMP.txtPasswordMP.setName("_TXT_PASSWORD_MP");
+            Singletons.cliMP.txtPasswordMP.setActionCommand("_TXT_PASSWORD_MP");
+            Singletons.cliMP.txtPasswordMP.addActionListener(this);
+            Singletons.cliMP.txtPasswordMP.addKeyListener(this);
+
+            Singletons.cliMP.btnCambiarImgM.setActionCommand("_BTN_CARGAR_IMG_MP");
+            Singletons.cliMP.btnCambiarImgM.addActionListener(this);
+
+            Singletons.cliMP.btnAceptarM.setActionCommand("_BTN_ACEPTAR_MP");
+            Singletons.cliMP.btnAceptarM.addActionListener(this);
+
+            Singletons.cliMP.btnSalir_MP.setActionCommand("_BTN_SALIR_MP");
+            Singletons.cliMP.btnSalir_MP.addActionListener(this);
+
+            Singletons.cliMP.btnEliminar_MP.setActionCommand("_BTN_ELIMINAR_MP");
+            Singletons.cliMP.btnEliminar_MP.addActionListener(this);
+
+            Singletons.cliMP.btnVolverM.setActionCommand("_BTN_VOLVER_MP");
+            Singletons.cliMP.btnVolverM.addActionListener(this);
+        }
+
     }
 
     public static void comboActionPerformed(java.awt.event.ActionEvent evt) {
@@ -362,33 +444,38 @@ public class Controlador_Cliente implements ActionListener, KeyListener, MouseLi
                 break;
 
             case _BTN_CAMBIAR:
-                int inicio,
-                 selection,
-                 selection1;
 
-                int n = ((SimpleTableModel_cliente) Vtna_cli_Pager.TABLA.getModel()).getRowCount();
-                if (n != 0) {
-                    inicio = (pagina.currentPageIndex - 1) * pagina.itemsPerPage;
-                    selection = Vtna_cli_Pager.TABLA.getSelectedRow();
-                    selection1 = inicio + selection;
-                    if (Singletons.cli != null) {
-                        Singletons.efPager.dispose();
-                        new Controlador_Cliente(new Vtna_cli_Modif(), 2).iniciar(2);
-                        JPanel panel_modif = new JPanel();
-                        panel_modif.add(Singletons.efModif.panelModif);
-                        Singletons.ini.internalFrame.setContentPane(panel_modif);
-                        ClienteDAO.modificar();
-                        
-                        if (Singletons.cli.getAvatar().isEmpty()) {
-                    FileUploader.leer_imag_defecto(3);
-                    }
-                    else {
-                    FileUploader.leer_imag(2);
-                    }
-                        
-                        
-                    } else {
-                        JOptionPane.showMessageDialog(null, "No hay un empleado seleccionado", "Error", JOptionPane.QUESTION_MESSAGE);
+                if (Singletons.cliLog.getDni().equals(Singletons.cli.getDni())) {
+                    JOptionPane.showMessageDialog(null, "Cambia tus datos en Mi Perfil");
+
+                } else {
+
+                    int inicio,
+                            selection,
+                            selection1;
+
+                    int n = ((SimpleTableModel_cliente) Vtna_cli_Pager.TABLA.getModel()).getRowCount();
+                    if (n != 0) {
+                        inicio = (pagina.currentPageIndex - 1) * pagina.itemsPerPage;
+                        selection = Vtna_cli_Pager.TABLA.getSelectedRow();
+                        selection1 = inicio + selection;
+                        if (Singletons.cli != null) {
+                            Singletons.efPager.dispose();
+                            new Controlador_Cliente(new Vtna_cli_Modif(), 2).iniciar(2);
+                            JPanel panel_modif = new JPanel();
+                            panel_modif.add(Singletons.efModif.panelModif);
+                            Singletons.ini.internalFrame.setContentPane(panel_modif);
+                            ClienteDAO.modificar();
+
+                            if (Singletons.cli.getAvatar().isEmpty()) {
+                                FileUploader.leer_imag_defecto(3);
+                            } else {
+                                FileUploader.leer_imag(2);
+                            }
+
+                        } else {
+                            JOptionPane.showMessageDialog(null, "No hay un empleado seleccionado", "Error", JOptionPane.QUESTION_MESSAGE);
+                        }
                     }
                 }
                 break;
@@ -448,7 +535,6 @@ public class Controlador_Cliente implements ActionListener, KeyListener, MouseLi
                 pagina.initLinkBox();
                 break;
 
-          
             // ------- CREAR CLIENTE -------------------               
             case _TXT_NOMBRE:
                 ClienteBLL.pideNombre();
@@ -502,7 +588,7 @@ public class Controlador_Cliente implements ActionListener, KeyListener, MouseLi
 
                 break;
 
-            // ------- MODIFICAR CLIENTE -------------------            
+            // ------- MODIFICAR CLIENTE PAGER -------------------            
             case _TXT_NOMBRE_M:
                 ClienteBLL.pideNombreM();
                 break;
@@ -524,39 +610,22 @@ public class Controlador_Cliente implements ActionListener, KeyListener, MouseLi
                 break;
 
             case _BTN_ACEPTAR_M:
-                if (Singletons.cliLog.getTipo().equals("admin")) {
-                    ClienteBLL.ModificarPagerAdmin();
-          
-                    new Controlador_Cliente(new Vtna_cli_Pager(), 0).iniciar(0);
-                    Singletons.efModif.dispose();
-                    JPanel panelPagerM = new JPanel();
-                    panelPagerM.add(Singletons.efPager.panelPager);
-                    Singletons.ini.internalFrame.setContentPane(panelPagerM);
-                    
-                    Singletons.ini.eti_Entrar_Usuario.setText(Singletons.cliLog.getLogin());
-                    if (Singletons.cliLog.getAvatar().isEmpty()) {
-                        FileUploader.leer_imag_defecto(2);
-                    } else {
-                        FileUploader.leer_imag(0);
-                    }
-        //            ((SimpleTableModel_cliente) Singletons.efPager.TABLA.getModel()).cargar();
 
-                } else if (Singletons.cliLog.getTipo().equals("usuario")) {
-                    ClienteBLL.ModificarPagerUsuario();
-                    
-                    Singletons.efModif.dispose();
-                    new Controlador_Inicio(new Vtna_panel_Inicio(), 1).iniciar(1);
-                    JPanel panel_Inicio = new JPanel();
-                    panel_Inicio.add(Singletons.iniPanel.panelInicio);
-                    Singletons.ini.internalFrame.setContentPane(panel_Inicio);
+                ClienteBLL.ModificarPagerAdmin();
 
-                    Singletons.ini.eti_Entrar_Usuario.setText(Singletons.cliLog.getLogin());
-                    if (Singletons.cliLog.getAvatar().isEmpty()) {
-                        FileUploader.leer_imag_defecto(2);
-                    } else {
-                        FileUploader.leer_imag(0);
-                    }
+                new Controlador_Cliente(new Vtna_cli_Pager(), 0).iniciar(0);
+                Singletons.efModif.dispose();
+                JPanel panelPagerM = new JPanel();
+                panelPagerM.add(Singletons.efPager.panelPager);
+                Singletons.ini.internalFrame.setContentPane(panelPagerM);
+
+                Singletons.ini.eti_Entrar_Usuario.setText(Singletons.cliLog.getLogin());
+                if (Singletons.cliLog.getAvatar().isEmpty()) {
+                    FileUploader.leer_imag_defecto(2);
+                } else {
+                    FileUploader.leer_imag(0);
                 }
+                //            ((SimpleTableModel_cliente) Singletons.efPager.TABLA.getModel()).cargar();
                 break;
 
             case _BTN_CANCELAR_M:
@@ -595,6 +664,106 @@ public class Controlador_Cliente implements ActionListener, KeyListener, MouseLi
                 FileUploader.pintar_guardar_img(Singletons.efModif.etiAvatarM, 90, 90, 1);
 
                 break;
+
+            // ------- MODIFICAR CLIENTE MI PERFIL-------------------            
+            case _TXT_NOMBRE_MP:
+                ClienteBLL.pideNombreMP();
+                break;
+
+            case _TXT_APELLIDOS_MP:
+                ClienteBLL.pideApellidosMP();
+                break;
+
+            case _TXT_TELEFONO_MP:
+                ClienteBLL.pideTelefonoMP();
+                break;
+
+            case _TXT_DIRECCION_MP:
+                ClienteBLL.pideDireccionMP();
+                break;
+
+            case _TXT_EMAIL_MP:
+                ClienteBLL.pideEmailMP();
+                break;
+
+            case _BTN_ACEPTAR_MP:
+                if (Singletons.cliLog.getTipo().equals("admin")) {
+                    ClienteBLL.ModificarPagerMP();
+
+                    Singletons.cliMP.dispose();
+                    new Controlador_Menu(new Vtna_Menu_Admin(), 0).iniciar(0);
+                    JPanel pmenu = new JPanel();
+                    pmenu.add(Singletons.menu.panelMenu);
+                    Singletons.ini.internalFrame.setContentPane(pmenu);
+
+                    Singletons.ini.eti_Entrar_Usuario.setText(Singletons.cliLog.getLogin());
+                    if (Singletons.cliLog.getAvatar().isEmpty()) {
+                        FileUploader.leer_imag_defecto(2);
+                    } else {
+                        FileUploader.leer_imag(0);
+                    }
+
+                } else if (Singletons.cliLog.getTipo().equals("usuario")) {
+                    ClienteBLL.ModificarPagerMP();
+
+                    Singletons.ini.eti_Entrar_Usuario.setText(Singletons.cliLog.getLogin());
+                    if (Singletons.cliLog.getAvatar().isEmpty()) {
+                        FileUploader.leer_imag_defecto(2);
+                        JOptionPane.showMessageDialog(null, "sin imagen por defecto");
+                    } else {
+                        FileUploader.leer_imag(0);
+                        JOptionPane.showMessageDialog(null, "con imagen");
+                    }
+
+                    Singletons.cliMP.dispose();
+                    new Controlador_Inicio(new Vtna_panel_Inicio(), 1).iniciar(1);
+                    JPanel panel_Inicio = new JPanel();
+                    panel_Inicio.add(Singletons.iniPanel.panelInicio);
+                    Singletons.ini.internalFrame.setContentPane(panel_Inicio);
+
+                }
+                break;
+
+            case _TXT_LOGIN_MP:
+                ClienteBLL.pideLoginMP();
+                break;
+
+            case _TXT_PASSWORD_MP:
+                ClienteBLL.pidePasswordMP();
+                break;
+
+            case _BTN_VOLVER_MP:
+
+                if (Singletons.cliLog.getTipo().equals("admin")) {
+                    new Controlador_Cliente(new Vtna_cli_Pager(), 0).iniciar(0);
+                    Singletons.cliMP.dispose();
+                    JPanel pVolver = new JPanel();
+                    pVolver.add(Singletons.efPager.panelPager);
+                    Singletons.ini.internalFrame.setContentPane(pVolver);
+
+                } else if (Singletons.cliLog.getTipo().equals("usuario")) {
+                    Singletons.cliMP.dispose();
+                    new Controlador_Inicio(new Vtna_panel_Inicio(), 1).iniciar(1);
+                    JPanel panel_Inicio = new JPanel();
+                    panel_Inicio.add(Singletons.iniPanel.panelInicio);
+                    Singletons.ini.internalFrame.setContentPane(panel_Inicio);
+                }
+
+                break;
+
+            case _BTN_CARGAR_IMG_MP:
+                FileUploader.pintar_guardar_img(Singletons.efModif.etiAvatarM, 90, 90, 2);
+
+                break;
+
+            case _BTN_SALIR_MP:
+
+                break;
+
+            case _BTN_ELIMINAR_MP:
+
+                break;
+
         }
     }
 
@@ -660,6 +829,32 @@ public class Controlador_Cliente implements ActionListener, KeyListener, MouseLi
             case _TXT_PASSWORD_M:
                 ClienteBLL.pidePasswordKeyM();
                 break;
+
+            // ------------  Modificar Empleado MI PERFIL--------------     
+            case _TXT_NOMBRE_MP:
+                ClienteBLL.pideNombreKeyMP();
+                break;
+
+            case _TXT_APELLIDOS_MP:
+                ClienteBLL.pideApellidosKeyMP();
+                break;
+
+            case _TXT_TELEFONO_MP:
+                ClienteBLL.pideTelefonoKeyMP();
+                break;
+
+            case _TXT_EMAIL_MP:
+                ClienteBLL.pideEmailKeyMP();
+                break;
+
+            case _TXT_DIRECCION_MP:
+                ClienteBLL.pideDireccionKeyMP();
+                break;
+
+            case _TXT_PASSWORD_MP:
+                ClienteBLL.pidePasswordKeyMP();
+                break;
+
         }
     }
 

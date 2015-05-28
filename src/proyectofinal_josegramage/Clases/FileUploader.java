@@ -73,6 +73,12 @@ public class FileUploader {
                     Image newimg = img.getScaledInstance(ancho, alto, java.awt.Image.SCALE_SMOOTH);
                     ImageIcon newIcon = new ImageIcon(newimg);
                     Singletons.efModif.etiAvatarM.setIcon(newIcon); //pintamos la imagen en jlabel1
+                }else if (i == 2) {
+                    ImageIcon icon = new ImageIcon(ruta);
+                    Image img = icon.getImage();
+                    Image newimg = img.getScaledInstance(ancho, alto, java.awt.Image.SCALE_SMOOTH);
+                    ImageIcon newIcon = new ImageIcon(newimg);
+                    Singletons.cliMP.etiAvatarM.setIcon(newIcon); //pintamos la imagen en jlabel1
                 }
                 try {
                     //guardamos la imagen
@@ -149,7 +155,7 @@ public class FileUploader {
                 Image newimg = img.getScaledInstance(90, 90, java.awt.Image.SCALE_SMOOTH);
                 //SE GENERA EL IMAGE ICON CON LA NUEVA IMAGEN
                 ImageIcon newIcon = new ImageIcon(newimg);
-                Singletons.efModif.etiAvatarM.setIcon(newIcon);
+                Singletons.cliMP.etiAvatarM.setIcon(newIcon);
                 
                  } else if (i == 2) {       // para modificar
                 //pintamos la imagen en el Jlabel
@@ -166,7 +172,7 @@ public class FileUploader {
             }
 
         } catch (Exception ex) {
-            JOptionPane.showMessageDialog(null, "Error upload imagen", "Error leer imagen", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(null, "Error upload imagennnn", "Error leer imagen", JOptionPane.ERROR_MESSAGE);
         }
     }
 
@@ -194,6 +200,13 @@ public class FileUploader {
         Image newimg = img.getScaledInstance(90, 90, java.awt.Image.SCALE_SMOOTH);
         ImageIcon newIcon = new ImageIcon(newimg);
             Singletons.efModif.etiAvatarM.setIcon(newIcon);
+        
+        }  else if (i == 4) {
+             ImageIcon icon = new ImageIcon(ruta);
+        Image img = icon.getImage();
+        Image newimg = img.getScaledInstance(90, 90, java.awt.Image.SCALE_SMOOTH);
+        ImageIcon newIcon = new ImageIcon(newimg);
+            Singletons.cliMP.etiAvatarM.setIcon(newIcon);
         }
     }
 }

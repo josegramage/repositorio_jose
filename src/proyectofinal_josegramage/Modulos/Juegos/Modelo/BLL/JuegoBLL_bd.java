@@ -19,7 +19,7 @@ import proyectofinal_josegramage.Modulos.Clientes.Clases.Cliente;
 public class JuegoBLL_bd {
 
     //crea empleado
-    public static int nuevoUsuarioBLL() {
+    public static int nuevoJuegoBLL() {
         int resultado = 0;
         Connection _con = null;
         
@@ -27,7 +27,7 @@ public class JuegoBLL_bd {
 
         _con = _conexion_DB.AbrirConexion();
        
-        resultado = ClienteDAO_bd.nuevoClienteDAO(_con);
+        resultado = JuegoDAO_bd.nuevoClienteDAO(_con);
 
         _conexion_DB.CerrarConexion(_con);
         return resultado;
@@ -36,7 +36,7 @@ public class JuegoBLL_bd {
     
     
     //listar empleados
-    public static void listarClienteBLL() {
+    public static void listarJuegoBLL() {
         Connection _con = null;
         ConexionBD _conexion_DB = new ConexionBD();
 

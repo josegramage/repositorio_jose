@@ -118,7 +118,7 @@ public class SimpleTableModel_juegos extends AbstractTableModel {
     public void cargar() {
         datos.clear();
         datosaux.clear();
-        JuegoBLL_bd.listarClienteBLL();
+        JuegoBLL_bd.listarJuegoBLL();
         for (int i = 0; i <= Singletons.jueArray.size() - 1; i++) {
             addRow(Singletons.jueArray.get(i));
             datosaux.add(Singletons.jueArray.get(i));

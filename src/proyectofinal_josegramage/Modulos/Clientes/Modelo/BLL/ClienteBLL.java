@@ -101,7 +101,6 @@ public class ClienteBLL {
         }
     }
 
-   
     public static void limpiar() {
         ClienteDAO.limpiar();
     }
@@ -153,7 +152,7 @@ public class ClienteBLL {
     public static void pideDireccionM() {
         ClienteDAO.pideDireccionM();
     }
-    
+
     public static void pideDireccionKeyM() {
         ClienteDAO.pideDireccionKeyM();
     }
@@ -161,24 +160,24 @@ public class ClienteBLL {
     public static void pideFnacimientoM() {
         ClienteDAO.pideFnacimientoM();
     }
-    
+
     public static void pideLogin() {
         ClienteDAO.pideLogin();
     }
-    
+
     public static void pideLoginM() {
         ClienteDAO.pideLoginM();
     }
-    
-    public static void pidePassword(){
+
+    public static void pidePassword() {
         ClienteDAO.pidePassword();
     }
-    
-    public static void pidePasswordM(){
+
+    public static void pidePasswordM() {
         ClienteDAO.pidePasswordM();
     }
-    
-    public static void pidePasswordKeyM(){
+
+    public static void pidePasswordKeyM() {
         ClienteDAO.pidePasswordM_Key();
     }
 
@@ -193,99 +192,49 @@ public class ClienteBLL {
     //modificar Admin
     public static void ModificarPagerAdmin() {
 
-        // E N   P R U E B A S /////////
-        
-        if (Singletons.cli!=Singletons.cliLog){
-     //       JOptionPane.showMessageDialog(null,"asi es diferente cli"+ Singletons.cli.toString()+"\n cli log"+Singletons.cliLog.toString());
-           ModificarPagerUsuario();
-        } else  {
-   //     JOptionPane.showMessageDialog(null,"asi es igual cli"+ Singletons.cli.toString()+"\n cli log"+Singletons.cliLog.toString());
-        if (Vtna_cli_Modif.errorNombreM.isVisible() == false) {
-            Singletons.cli.setNombre(ClienteDAO.pideNombreM());
-        }
-        if (Vtna_cli_Modif.errorApellidosM.isVisible() == false) {
-            Singletons.cli.setApellidos(ClienteDAO.pideApellidosM());
-        }
-        if (Vtna_cli_Modif.errorTelfM.isVisible() == false) {
-            Singletons.cli.setTelefono(ClienteDAO.pideTelefonoM());
-        }
-        if (Vtna_cli_Modif.errorEmailM.isVisible() == false) {
-            Singletons.cli.setEmail(ClienteDAO.pideEmailM());
-        }
-        if (Vtna_cli_Modif.errorFnacimientoM.isVisible() == false) {
-            Singletons.cli.setFnacimiento(ClienteDAO.pideFnacimientoM());
-        }
-        if (Vtna_cli_Modif.errorDireccionM.isVisible() == false) {
-            Singletons.cli.setDireccion(ClienteDAO.pideDireccionM());
-        }
-       
-        Singletons.cli.setLogin(ClienteDAO.pideLoginM());
-        Singletons.cli.setPassword(ClienteDAO.pidePasswordM());
-        Singletons.cli.setTipo(ClienteDAO.pideTipoM());
-        
-        if (Singletons.PATH_auto != null) {
-            Singletons.cli.setAvatar(Singletons.PATH_auto);
-        }
+     
+            if (Vtna_cli_Modif.errorNombreM.isVisible() == false) {
+                Singletons.cli.setNombre(ClienteDAO.pideNombreM());
+            }
+            if (Vtna_cli_Modif.errorApellidosM.isVisible() == false) {
+                Singletons.cli.setApellidos(ClienteDAO.pideApellidosM());
+            }
+            if (Vtna_cli_Modif.errorTelfM.isVisible() == false) {
+                Singletons.cli.setTelefono(ClienteDAO.pideTelefonoM());
+            }
+            if (Vtna_cli_Modif.errorEmailM.isVisible() == false) {
+                Singletons.cli.setEmail(ClienteDAO.pideEmailM());
+            }
+            if (Vtna_cli_Modif.errorFnacimientoM.isVisible() == false) {
+                Singletons.cli.setFnacimiento(ClienteDAO.pideFnacimientoM());
+            }
+            if (Vtna_cli_Modif.errorDireccionM.isVisible() == false) {
+                Singletons.cli.setDireccion(ClienteDAO.pideDireccionM());
+            }
+
+            Singletons.cli.setLogin(ClienteDAO.pideLoginM());
+            Singletons.cli.setPassword(ClienteDAO.pidePasswordM());
+            Singletons.cli.setTipo(ClienteDAO.pideTipoM());
+
+            if (Singletons.PATH_auto != null) {
+                Singletons.cli.setAvatar(Singletons.PATH_auto);
+            }
+
+            if ((Vtna_cli_Modif.errorNombreM.isVisible() == false) && (Vtna_cli_Modif.errorApellidosM.isVisible() == false) && (Vtna_cli_Modif.errorTelfM.isVisible() == false)
+                    && (Vtna_cli_Modif.errorFnacimientoM.isVisible() == false) && (Singletons.efModif.errorPasswordM.isVisible() == false) && (Vtna_cli_Modif.errorDireccionM.isVisible() == false)) {
+
+                Singletons.cliArray.set(Singletons.pos, Singletons.cli);
+                ClienteBLL_bd.modificarClienteBLL();
+
+         //       ((SimpleTableModel_cliente) Singletons.efPager.TABLA.getModel()).cargar();
+
+                Vtna_cli_Modif.btnOKM.setVisible(true);
+                Vtna_cli_Modif.etiGuardadoM.setVisible(true);
+                ClienteDAO.noEditableM();
+            }
+    }
+
    
-        if ((Vtna_cli_Modif.errorNombreM.isVisible() == false) && (Vtna_cli_Modif.errorApellidosM.isVisible() == false) && (Vtna_cli_Modif.errorTelfM.isVisible() == false)
-                && (Vtna_cli_Modif.errorFnacimientoM.isVisible() == false) && (Singletons.efModif.errorPasswordM.isVisible() == false) && (Vtna_cli_Modif.errorDireccionM.isVisible() == false)) {
-
-            Singletons.cliArray.set(Singletons.pos, Singletons.cli);
-            ClienteBLL_bd.modificarClienteBLL();
-
-            ((SimpleTableModel_cliente) Singletons.efPager.TABLA.getModel()).cargar();
-            
-            Vtna_cli_Modif.btnOKM.setVisible(true);
-            Vtna_cli_Modif.etiGuardadoM.setVisible(true);
-            ClienteDAO.noEditableM();
-        }
-        }
-    }
-    // Modificar usuario
-    public static void ModificarPagerUsuario() {
-
-        if (Vtna_cli_Modif.errorNombreM.isVisible() == false) {
-            Singletons.cliLog.setNombre(ClienteDAO.pideNombreM());
-        }
-        if (Vtna_cli_Modif.errorApellidosM.isVisible() == false) {
-            Singletons.cliLog.setApellidos(ClienteDAO.pideApellidosM());
-        }
-        if (Vtna_cli_Modif.errorTelfM.isVisible() == false) {
-            Singletons.cliLog.setTelefono(ClienteDAO.pideTelefonoM());
-        }
-        if (Vtna_cli_Modif.errorEmailM.isVisible() == false) {
-            Singletons.cliLog.setEmail(ClienteDAO.pideEmailM());
-        }
-        if (Vtna_cli_Modif.errorFnacimientoM.isVisible() == false) {
-            Singletons.cliLog.setFnacimiento(ClienteDAO.pideFnacimientoM());
-        }
-        if (Vtna_cli_Modif.errorDireccionM.isVisible() == false) {
-            Singletons.cliLog.setDireccion(ClienteDAO.pideDireccionM());
-        }
-
-        Singletons.cliLog.setLogin(ClienteDAO.pideLoginM());
-        Singletons.cliLog.setPassword(ClienteDAO.pidePasswordM());
-
-        if (Singletons.PATH_auto != null) {
-            Singletons.cliLog.setAvatar(Singletons.PATH_auto);
-        }
-        
-        if ((Vtna_cli_Modif.errorNombreM.isVisible() == false) && (Vtna_cli_Modif.errorApellidosM.isVisible() == false) && (Vtna_cli_Modif.errorTelfM.isVisible() == false)
-                && (Vtna_cli_Modif.errorFnacimientoM.isVisible() == false) && (Singletons.efModif.errorPasswordM.isVisible() == false) && (Vtna_cli_Modif.errorDireccionM.isVisible() == false)) {
-
-            Singletons.cliArray.set(Singletons.pos, Singletons.cliLog);
-            ClienteBLL_bd.modificarClienteLogeado();
-      //      ((SimpleTableModel_cliente) Singletons.efPager.TABLA.getModel()).cargar();
-
-            Vtna_cli_Modif.btnOKM.setVisible(true);
-            Vtna_cli_Modif.etiGuardadoM.setVisible(true);
-            ClienteDAO.noEditableM();
-
-        }
-    }
-    
-    
-
     public static int buscar(Cliente ef) {//Buscar
         int aux = -1;
 
@@ -322,7 +271,6 @@ public class ClienteBLL {
         }
     }
 
-    
     public static void InfoPager() {
         imprimir(Singletons.cliArray);
     }
@@ -398,5 +346,118 @@ public class ClienteBLL {
                     break;
             }
         } while (op2 < 1);
+    }
+    
+    
+       ////// M O D I F I C A R   M I  P E R F I L  ///////////////
+    
+    
+    public static void pideNombreMP() {
+        ClienteDAO.pideNombreMP();
+    }
+
+    public static void pideNombreKeyMP() {
+        ClienteDAO.pideNombreKeyMP();
+    }
+
+    public static void pideApellidosMP() {
+        ClienteDAO.pideApellidosMP();
+    }
+
+    public static void pideApellidosKeyMP() {
+        ClienteDAO.pideApellidosKeyMP();
+    }
+
+    public static void pideTelefonoMP() {
+        ClienteDAO.pideTelefonoMP();
+    }
+
+    public static void pideTelefonoKeyMP() {
+        ClienteDAO.pideTelefonoKeyMP();
+    }
+
+    public static void pideEmailMP() {
+        ClienteDAO.pideEmailMP();
+    }
+
+    public static void pideEmailKeyMP() {
+        ClienteDAO.pideEmailKeyMP();
+    }
+
+    public static void pideDireccionMP() {
+        ClienteDAO.pideDireccionMP();
+    }
+
+    public static void pideDireccionKeyMP() {
+        ClienteDAO.pideDireccionKeyMP();
+    }
+
+    public static void pideFnacimientoMP() {
+        ClienteDAO.pideFnacimientoMP();
+    }
+
+    public static void pideLoginMP() {
+        ClienteDAO.pideLoginMP();
+    }
+
+    public static void pidePasswordMP() {
+        ClienteDAO.pidePasswordMP();
+    }
+
+    public static void pidePasswordKeyMP() {
+        ClienteDAO.pidePasswordMP_Key();
+    }
+
+    public static void ocultaErrorMP() {
+        ClienteDAO.ocultarErroresModificarMP();
+    }
+
+    public static void modificarMP() {
+        ClienteDAO.modificarLogeadoMP();
+    }
+
+
+    // Modificar usuario
+
+    public static void ModificarPagerMP() {
+
+        if (Singletons.cliMP.errorNombreM.isVisible() == false) {
+            Singletons.cliLog.setNombre(ClienteDAO.pideNombreMP());
+        }
+        if (Singletons.cliMP.errorApellidosM.isVisible() == false) {
+            Singletons.cliLog.setApellidos(ClienteDAO.pideApellidosMP());
+        }
+        if (Singletons.cliMP.errorTelfM.isVisible() == false) {
+            Singletons.cliLog.setTelefono(ClienteDAO.pideTelefonoMP());
+        }
+        if (Singletons.cliMP.errorEmailM.isVisible() == false) {
+            Singletons.cliLog.setEmail(ClienteDAO.pideEmailMP());
+        }
+        if (Singletons.cliMP.errorFnacimientoM.isVisible() == false) {
+            Singletons.cliLog.setFnacimiento(ClienteDAO.pideFnacimientoMP());
+        }
+        if (Singletons.cliMP.errorDireccionM.isVisible() == false) {
+            Singletons.cliLog.setDireccion(ClienteDAO.pideDireccionMP());
+        }
+
+        Singletons.cliLog.setLogin(ClienteDAO.pideLoginMP());
+        Singletons.cliLog.setPassword(ClienteDAO.pidePasswordMP());
+        Singletons.cliLog.setTipo(ClienteDAO.pideTipoMP());
+
+          if (Singletons.cliLog.getAvatar().isEmpty()) {
+            Singletons.cliLog.setAvatar(Singletons.PATH_auto);
+        }
+
+        if ((Singletons.cliMP.errorNombreM.isVisible() == false) && (Singletons.cliMP.errorApellidosM.isVisible() == false) && (Singletons.cliMP.errorTelfM.isVisible() == false)
+                && (Singletons.cliMP.errorFnacimientoM.isVisible() == false) && (Singletons.cliMP.errorPasswordM.isVisible() == false) && (Singletons.cliMP.errorDireccionM.isVisible() == false)) {
+
+            Singletons.cliArray.set(Singletons.pos, Singletons.cliLog);
+            ClienteBLL_bd.modificarClienteLogeado();
+            //      ((SimpleTableModel_cliente) Singletons.efPager.TABLA.getModel()).cargar();
+
+            Singletons.cliMP.btnOKM.setVisible(true);
+            Singletons.cliMP.etiGuardadoM.setVisible(true);
+          
+        }
     }
 }

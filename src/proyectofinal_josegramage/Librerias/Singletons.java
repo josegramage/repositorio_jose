@@ -21,6 +21,7 @@ import javax.swing.table.TableRowSorter;
 import proyectofinal_josegramage.Modulos.Clientes.Clases.Cliente;
 import proyectofinal_josegramage.Modulos.Clientes.Clases.Cliente;
 import proyectofinal_josegramage.Modulos.Clientes.Clases.SimpleTableModel_cliente;
+import proyectofinal_josegramage.Modulos.Clientes.Vista.Vtna_cli_MiPerfil;
 import proyectofinal_josegramage.Modulos.Inicio.Vista.Vtna_Inicio;
 import proyectofinal_josegramage.Modulos.Inicio.Vista.Vtna_panel_Inicio;
 import proyectofinal_josegramage.Modulos.Juegos.Clases.Juego;
@@ -53,11 +54,12 @@ public class Singletons {
     public static Vtna_cli_Pager efPager;
     public static Vtna_cli_Crear efCrear;
     public static Vtna_cli_Modif efModif;
+    public static Vtna_cli_MiPerfil cliMP;
     
     //MODULO CLIENTE
     public static ArrayList<Cliente> cliArray;
     public static ArrayList<Cliente> cliLogArray;
-    public static Cliente cli;
+    public static Cliente cli= new Cliente();
     public static Cliente cliLog= new Cliente();   // cliente logueado
     public static int pos;
     public static int posEmp=-1;

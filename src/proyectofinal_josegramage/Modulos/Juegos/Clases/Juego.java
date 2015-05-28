@@ -16,8 +16,6 @@ public class Juego implements Comparable<Juego>, Serializable {
     public String nombre;
     @XStreamAlias("companyia")
     public String companyia;
-    @XStreamAlias("descripcion")
-    public String descripcion;
     @XStreamAlias("fecha_alta")
     public Fecha fecha_alta;
     @XStreamAlias("tipo")
@@ -26,22 +24,23 @@ public class Juego implements Comparable<Juego>, Serializable {
     public float precio;
     @XStreamAlias("imagen")
     public String imagen;
-       
+    @XStreamAlias("descripcion")
+    public String descripcion;   
 
     public Juego() {
     }
 
     @SuppressWarnings("OverridableMethodCallInConstructor")
-    public Juego(String ref, String nombre, String companyia, String descripcion, Fecha fecha_alta, String tipo, float precio, String imagen) {
+    public Juego(String ref, String nombre, String companyia, Fecha fecha_alta, String tipo, float precio, String imagen, String descripcion) {
 
         this.ref = ref;
         this.nombre = nombre;
         this.companyia = companyia;
-        this.descripcion = descripcion;
         this.fecha_alta = fecha_alta;
         this.tipo = tipo;
         this.precio = precio;
         this.imagen = imagen;
+        this.descripcion = descripcion;
                         
     }
 
@@ -54,8 +53,8 @@ public class Juego implements Comparable<Juego>, Serializable {
     public String toString() {
        
         String toS = " Nombre= " + nombre + "\n Referencia= " + ref + "\n Companyia= " + companyia 
-                    +  "\n Descripcion= " + descripcion + "\n Fecha de alta= " + getFecha_alta().aStringFecha() + "\n Tipo: " + tipo
-                    +  "\n Precio = " + precio + " €";
+                     + "\n Fecha de alta= " + getFecha_alta().aStringFecha() + "\n Tipo: " + tipo
+                    +  "\n Precio = " + precio + " €" +  "\n Descripcion= " + descripcion;
                     
 
         StringBuffer cadena = new StringBuffer();

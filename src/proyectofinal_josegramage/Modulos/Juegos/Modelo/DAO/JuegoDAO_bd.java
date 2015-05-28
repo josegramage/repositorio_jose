@@ -13,6 +13,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import javax.swing.JOptionPane;
 import proyectofinal_josegramage.Modulos.Clientes.Clases.Cliente;
+import proyectofinal_josegramage.Modulos.Juegos.Clases.Juego;
 
 /**
  *
@@ -21,35 +22,29 @@ import proyectofinal_josegramage.Modulos.Clientes.Clases.Cliente;
 public class JuegoDAO_bd {
 
     //crear cliente nuevo
-    public static int nuevoClienteDAO(Connection con) {
+    public static int nuevoJuegoDAO(Connection con) {
         PreparedStatement stmt = null;
         int resultado = 0;
         try {
-            stmt = con.prepareStatement("INSERT INTO proyectofinal_josegramage.clientes ("
-                    + "Nombre, Apellidos, Dni, Telefono, Direccion, Email, Fnacimiento, Fechaalta,"
-                    + "Login, Password, Estado, Tipo, Avatar)"
-                    + "VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?)");
+            stmt = con.prepareStatement("INSERT INTO proyectofinal_josegramage.juegos ("
+                    + "Ref, Nombre, Companyia,Fecha_alta, Tipo, Precio, Imagen, Descripcion)"
+                    + "VALUES(?,?,?,?,?,?,?,?,?)");
 
-            stmt.setString(1, Singletons.cli.getNombre());
-            stmt.setString(2, Singletons.cli.getApellidos());
-            stmt.setString(3, Singletons.cli.getDni());
-            stmt.setString(4, Singletons.cli.getTelefono());
-            stmt.setString(5, Singletons.cli.getDireccion());
-            stmt.setString(6, Singletons.cli.getEmail());
-            stmt.setString(7, Singletons.cli.getFnacimiento().aStringFecha());
-            stmt.setString(8, Singletons.cli.getFechaalta().aStringFecha());
-            stmt.setString(9, Singletons.cli.getLogin());
-            stmt.setString(10, Singletons.cli.getPassword());
-            stmt.setString(11, Singletons.cli.getEstado());
-            stmt.setString(12, Singletons.cli.getTipo());
-            stmt.setString(13, Singletons.cli.getAvatar());
+            stmt.setString(1, Singletons.jue.getRef());
+            stmt.setString(2, Singletons.jue.getNombre());
+            stmt.setString(3, Singletons.jue.getCompanyia());
+            stmt.setString(8, Singletons.jue.getFecha_alta().aStringFecha());
+            stmt.setString(9, Singletons.jue.getTipo());
+            stmt.setFloat(10, Singletons.jue.getPrecio());
+            stmt.setString(11, Singletons.jue.getImagen());
+            stmt.setString(12, Singletons.jue.getDescripcion());
 
             resultado = stmt.executeUpdate();
 
        //     JOptionPane.showMessageDialog(null, "El usuario ha sido dado de alta correctamente!");
 
         } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null, "Ha habido un problema al insertar un nuevo usuario!");
+            JOptionPane.showMessageDialog(null, "Ha habido un problema al insertar un nuevo juego!");
         } finally {
             if (stmt != null) {
                 try {
@@ -62,37 +57,32 @@ public class JuegoDAO_bd {
         return resultado;
     }
 
-    //listar todos los clientes
-    public void listarClienteDAO(Connection con) {
+    //listar todos los juegos
+    public void listarJuegoDAO(Connection con) {
         ResultSet rs = null;
         PreparedStatement stmt = null;
 
-        Singletons.cliArray.clear();
+        Singletons.jueArray.clear();
         try {
-            stmt = con.prepareStatement("SELECT * FROM proyectofinal_josegramage.clientes");
+            stmt = con.prepareStatement("SELECT * FROM proyectofinal_josegramage.juegos");
             rs = stmt.executeQuery();
-            Cliente _cliente = null;
+            Juego _juego = null;
             while (rs.next()) {
-                _cliente = new Cliente();
-                _cliente.setNombre(rs.getString("Nombre"));
-                _cliente.setApellidos(rs.getString("Apellidos"));
-                _cliente.setDni(rs.getString("Dni"));
-                _cliente.setTelefono(rs.getString("Telefono"));
-                _cliente.setDireccion(rs.getString("Direccion"));
-                _cliente.setEmail(rs.getString("Email"));
-                _cliente.setFnacimiento(Fecha.muestraFecha(rs.getString("Fnacimiento")));
-                _cliente.setFechaalta(Fecha.muestraFecha(rs.getString("Fechaalta")));
-                _cliente.setLogin(rs.getString("Login"));
-                _cliente.setPassword(rs.getString("Password"));
-                _cliente.setEstado(rs.getString("Estado"));
-                _cliente.setTipo(rs.getString("Tipo"));
-                _cliente.setAvatar(rs.getString("Avatar"));
+                _juego = new Juego();
+                _juego.setRef(rs.getString("Ref"));
+                _juego.setNombre(rs.getString("Nombre"));
+                _juego.setCompanyia(rs.getString("Companyia"));
+                _juego.setFecha_alta(Fecha.muestraFecha(rs.getString("Fecha_alta")));
+                _juego.setTipo(rs.getString("Tipo"));
+                _juego.setPrecio(rs.getFloat("Precio"));
+                _juego.setDescripcion(rs.getString("Descripcion"));
+                
 
-                Singletons.cliArray.add(_cliente);
+                Singletons.jueArray.add(_juego);
 
             }
         } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null, "Ha habido un problema al obtener los usuarios!");
+            JOptionPane.showMessageDialog(null, "Ha habido un problema al obtener los juegos!");
         } finally {
             if (stmt != null) {
                 try {
@@ -109,7 +99,7 @@ public class JuegoDAO_bd {
 
         try {
 
-            stmt = con.prepareStatement("UPDATE proyectofinal_josegramage.clientes SET Nombre=?, Apellidos=?, Dni=?, Telefono=?, Direccion=?, Email=?, Fnacimiento=?, Fechaalta=?, Login=?, Password=?, Estado=?, Tipo=?, Avatar=? WHERE Dni=?");
+            stmt = con.prepareStatement("UPDATE proyectofinal_josegramage.juegos SET Ref=?, Nombre=?, Companyia=?, Fecha_alta=?, Tipo=?, Precio?, Imagen?, Descripcion=? WHERE Ref=?");
             stmt.setString(1, Singletons.cli.getNombre());
             stmt.setString(2, Singletons.cli.getApellidos());
             stmt.setString(3, Singletons.cli.getDni());
