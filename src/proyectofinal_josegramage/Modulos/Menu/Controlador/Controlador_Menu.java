@@ -5,7 +5,7 @@
  */
 package proyectofinal_josegramage.Modulos.Menu.Controlador;
 
-import proyectofinal_josegramage.Clases.FileUploader;
+import proyectofinal_josegramage.Utiles.FileUploader;
 import proyectofinal_josegramage.Clases.JPanel_Fondo;
 import proyectofinal_josegramage.Modulos.Clientes.Controlador.Controlador_Cliente;
 import proyectofinal_josegramage.Modulos.Clientes.Modelo.BLL.ClienteBLL;

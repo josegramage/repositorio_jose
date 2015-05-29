@@ -6,7 +6,7 @@
 package proyectofinal_josegramage.Modulos.Inicio.Controlador;
 
 import java.awt.Color;
-import proyectofinal_josegramage.Clases.FileUploader;
+import proyectofinal_josegramage.Utiles.FileUploader;
 import proyectofinal_josegramage.Clases.JPanel_Fondo;
 import proyectofinal_josegramage.Modulos.Clientes.Controlador.Controlador_Cliente;
 import proyectofinal_josegramage.Modulos.Clientes.Modelo.BLL.ClienteBLL;
@@ -111,7 +111,8 @@ public class Controlador_Inicio implements ActionListener, MouseListener {
             //     Singletons.ini.add(Singletons.ini.panelLogin);
 
             ((BasicInternalFrameUI) Singletons.ini.internalFrame.getUI()).setNorthPane(null);
-
+            
+            Singletons.ini.etiAdmin.setVisible(false);
             FrasesCelebres.ponerFrases();
             
             Image icono = Toolkit.getDefaultToolkit().getImage("src/proyectofinal_josegramage/Img/icono_bajo.jpg");

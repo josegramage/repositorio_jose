@@ -31,7 +31,7 @@ import java.awt.event.WindowEvent;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
-import proyectofinal_josegramage.Clases.FileUploader;
+import proyectofinal_josegramage.Utiles.FileUploader;
 import proyectofinal_josegramage.Modulos.Inicio.Controlador.Controlador_Inicio;
 import proyectofinal_josegramage.Modulos.Inicio.Vista.Vtna_Inicio;
 import proyectofinal_josegramage.Modulos.Inicio.Vista.Vtna_panel_Inicio;
@@ -195,14 +195,13 @@ public class Controlador_Login implements ActionListener, MouseListener, KeyList
                     Singletons.ini.eti_Reg_Perfil.setText("Mi perfil");
 
                     if (Singletons.cliLog.getAvatar().isEmpty()) {
-                    FileUploader.leer_imag_defecto(2);
+                        FileUploader.leer_imag_defecto(2);
+                    } else {
+                        FileUploader.leer_imag(0);
                     }
-                    else {
-                    FileUploader.leer_imag(0);
-                    }
-                    
-                    if (Singletons.cliLog.getTipo().equals("admin")) {
 
+                    if (Singletons.cliLog.getTipo().equals("admin")) {
+                        Singletons.ini.etiAdmin.setVisible(true);
                         Singletons.login.dispose();
 
                         new Controlador_Menu(new Vtna_Menu_Admin(), 0).iniciar(0);

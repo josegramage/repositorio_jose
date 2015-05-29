@@ -5,7 +5,7 @@ import com.toedter.calendar.JTextFieldDateEditor;
 import javax.swing.JOptionPane;
 
 import proyectofinal_josegramage.Clases.Fecha;
-import proyectofinal_josegramage.Clases.FileUploader;
+import proyectofinal_josegramage.Utiles.FileUploader;
 import proyectofinal_josegramage.Clases.JavaMail;
 import proyectofinal_josegramage.Librerias.Encriptador;
 import proyectofinal_josegramage.Librerias.Funciones;

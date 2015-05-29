@@ -1,6 +1,6 @@
 package proyectofinal_josegramage.Modulos.Clientes.Modelo.BLL;
 
-import proyectofinal_josegramage.Clases.FileUploader;
+import proyectofinal_josegramage.Utiles.FileUploader;
 import proyectofinal_josegramage.Librerias.Encriptador;
 import javax.swing.JOptionPane;
 
@@ -164,13 +164,25 @@ public class ClienteBLL {
     public static void pideLogin() {
         ClienteDAO.pideLogin();
     }
+    
+    public static void pideLoginKey() {
+        ClienteDAO.pideLoginKey();
+    }
 
     public static void pideLoginM() {
         ClienteDAO.pideLoginM();
     }
+    
+     public static void pideLoginKeyM() {
+        ClienteDAO.pideLoginKeyM();
+    }
 
     public static void pidePassword() {
         ClienteDAO.pidePassword();
+    }
+    
+        public static void pidePasswordKey() {
+        ClienteDAO.pidePasswordKey();
     }
 
     public static void pidePasswordM() {

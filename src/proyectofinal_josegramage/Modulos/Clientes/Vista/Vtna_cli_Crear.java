@@ -70,6 +70,7 @@ public class Vtna_cli_Crear extends javax.swing.JFrame {
         etiEmailError = new javax.swing.JLabel();
         txtDireccion = new javax.swing.JTextField();
         txtTelefono = new javax.swing.JTextField();
+        errorPassword = new javax.swing.JButton();
 
         panelCrear.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -193,6 +194,9 @@ public class Vtna_cli_Crear extends javax.swing.JFrame {
         panelCrear.add(txtDireccion, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 150, 130, -1));
         panelCrear.add(txtTelefono, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 120, 130, -1));
 
+        errorPassword.setIcon(new javax.swing.ImageIcon(getClass().getResource("/proyectofinal_josegramage/Img/iconos/error.png"))); // NOI18N
+        panelCrear.add(errorPassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 240, 22, 20));
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -231,6 +235,7 @@ public class Vtna_cli_Crear extends javax.swing.JFrame {
     public static javax.swing.JButton errorFnacimiento;
     public static javax.swing.JButton errorLogin;
     public static javax.swing.JButton errorNombre;
+    public static javax.swing.JButton errorPassword;
     public static javax.swing.JButton errorTelf;
     public static javax.swing.JLabel etiApellidoError;
     public static javax.swing.JLabel etiAvatar;

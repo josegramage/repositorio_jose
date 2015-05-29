@@ -5,7 +5,7 @@
  */
 package proyectofinal_josegramage.Modulos.Clientes.Controlador;
 
-import proyectofinal_josegramage.Clases.FileUploader;
+import proyectofinal_josegramage.Utiles.FileUploader;
 import proyectofinal_josegramage.Clases.JDKP_Fondo;
 import proyectofinal_josegramage.Clases.JPanel_Fondo;
 import proyectofinal_josegramage.Modulos.Clientes.Modelo.BLL.ClienteBLL;
@@ -279,6 +279,16 @@ public class Controlador_Cliente implements ActionListener, KeyListener, MouseLi
             Singletons.efCrear.txtEmail.setActionCommand("_TXT_EMAIL");
             Singletons.efCrear.txtEmail.addActionListener(this);
             Singletons.efCrear.txtEmail.addKeyListener(this);
+
+            Singletons.efCrear.txtLogin.setName("_TXT_LOGIN");
+            Singletons.efCrear.txtLogin.setActionCommand("_TXT_LOGIN");
+            Singletons.efCrear.txtLogin.addActionListener(this);
+            Singletons.efCrear.txtLogin.addKeyListener(this);
+
+            Singletons.efCrear.txtPassword.setName("_TXT_PASSWORD");
+            Singletons.efCrear.txtPassword.setActionCommand("_TXT_PASSWORD");
+            Singletons.efCrear.txtPassword.addActionListener(this);
+            Singletons.efCrear.txtPassword.addKeyListener(this);
 
             Singletons.efCrear.btnCargarImg.setActionCommand("_BTN_CARGAR_IMG");
             Singletons.efCrear.btnCargarImg.addActionListener(this);
@@ -800,9 +810,18 @@ public class Controlador_Cliente implements ActionListener, KeyListener, MouseLi
 
             case _TXT_DIRECCION:
                 ClienteBLL.pideDireccionKey();
+                break;
 
             case _TXT_EMAIL:
                 ClienteBLL.pideEmailKey();
+                break;
+
+            case _TXT_LOGIN:
+                ClienteBLL.pideLoginKey();
+                break;
+
+            case _TXT_PASSWORD:
+                ClienteBLL.pidePasswordKey();
                 break;
 
             // ------------  Modificar Empleado --------------     
@@ -824,6 +843,10 @@ public class Controlador_Cliente implements ActionListener, KeyListener, MouseLi
 
             case _TXT_DIRECCION_M:
                 ClienteBLL.pideDireccionKeyM();
+                break;
+
+            case _TXT_LOGIN_M:
+                ClienteBLL.pideLoginKeyM();
                 break;
 
             case _TXT_PASSWORD_M:
@@ -854,7 +877,6 @@ public class Controlador_Cliente implements ActionListener, KeyListener, MouseLi
             case _TXT_PASSWORD_MP:
                 ClienteBLL.pidePasswordKeyMP();
                 break;
-
         }
     }
 
@@ -893,6 +915,14 @@ public class Controlador_Cliente implements ActionListener, KeyListener, MouseLi
                 ClienteBLL.pideEmailKey();
                 break;
 
+            case _TXT_LOGIN:
+                ClienteBLL.pideLoginKey();
+                break;
+
+            case _TXT_PASSWORD:
+                ClienteBLL.pidePasswordKey();
+                break;
+
             // ------------  Modificar Empleado --------------     
             case _TXT_NOMBRE_M:
                 ClienteBLL.pideNombreKeyM();
@@ -912,6 +942,10 @@ public class Controlador_Cliente implements ActionListener, KeyListener, MouseLi
 
             case _TXT_DIRECCION_M:
                 ClienteBLL.pideDireccionKeyM();
+                break;
+
+            case _TXT_LOGIN_M:
+                ClienteBLL.pideLoginKeyM();
                 break;
 
             case _TXT_PASSWORD_M:

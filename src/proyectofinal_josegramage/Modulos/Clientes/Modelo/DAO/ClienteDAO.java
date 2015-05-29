@@ -5,10 +5,8 @@ import com.toedter.calendar.JTextFieldDateEditor;
 import javax.swing.JOptionPane;
 
 import proyectofinal_josegramage.Clases.Fecha;
-import proyectofinal_josegramage.Clases.FileUploader;
-import proyectofinal_josegramage.Clases.JavaMail;
+import proyectofinal_josegramage.Utiles.FileUploader;
 import proyectofinal_josegramage.Librerias.Encriptador;
-import proyectofinal_josegramage.Librerias.Funciones;
 import proyectofinal_josegramage.Librerias.Validate;
 import proyectofinal_josegramage.Modulos.Clientes.Clases.Cliente;
 import proyectofinal_josegramage.Modulos.Clientes.Clases.DAOgenerico;
@@ -51,7 +49,6 @@ public class ClienteDAO {
         } else {
             Vtna_cli_Crear.etiNombreError.setVisible(false);
             Vtna_cli_Crear.errorNombre.setVisible(false);
-
         }
         return nombre;
     }
@@ -74,7 +71,6 @@ public class ClienteDAO {
             Vtna_cli_Modif.errorNombreM.setVisible(false);
             Vtna_cli_Modif.txtApellidosM.requestFocus();
         }
-
         return nombre;
     }
 
@@ -89,7 +85,6 @@ public class ClienteDAO {
             Vtna_cli_Modif.etiNombreErrorM.setVisible(false);
             Vtna_cli_Modif.errorNombreM.setVisible(false);
         }
-
         return nombre;
     }
 
@@ -194,7 +189,6 @@ public class ClienteDAO {
         boolean validar;
 
         if (dni.isEmpty()) {
-            //     Vtna_cli_Crear.etiDniError.setVisible(true);
             Vtna_cli_Crear.errorDni.setVisible(true);
         } else {
             dni = Vtna_cli_Crear.txtDni.getText();
@@ -435,7 +429,6 @@ public class ClienteDAO {
 
             //calcular y rellenar la edad
             Edad = Fnacimiento.restaFechas();
-            //    Vtna_cli_Crear.txtEdad.setText(Integer.toString(Edad));
 
             if (Edad <= 18) {
                 JOptionPane.showMessageDialog(null, "Debe ser mayor de edad");
@@ -444,7 +437,6 @@ public class ClienteDAO {
                 Vtna_cli_Crear.errorFnacimiento.setVisible(false);
             }
         }
-
         return Fnacimiento;
     }
 
@@ -464,7 +456,6 @@ public class ClienteDAO {
 
         //calcular y rellenar la edad
         Edad = FnacimientoM.restaFechas();
-        //  Vtna_cli_Modif.txtEdadM.setText(Integer.toString(Edad));
 
         if (Edad <= 16) {
             JOptionPane.showMessageDialog(null, "La edad debe ser igual o superior a 16 años");
@@ -472,7 +463,6 @@ public class ClienteDAO {
         } else {
             Vtna_cli_Modif.errorFnacimientoM.setVisible(false);
         }
-
         return FnacimientoM;
     }
 
@@ -501,14 +491,69 @@ public class ClienteDAO {
         return login;
     }
 
+    public static String pideLoginKey() {
+        String login = Vtna_cli_Crear.txtLogin.getText();
+
+        if (Vtna_cli_Crear.txtLogin.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(null, "El login no puede estar en blanco", "Error", JOptionPane.INFORMATION_MESSAGE);
+            Vtna_cli_Crear.txtLogin.requestFocus();
+            Vtna_cli_Crear.errorLogin.setVisible(true);
+        } else {
+            Vtna_cli_Crear.errorLogin.setVisible(false);
+            Vtna_cli_Crear.txtPassword.requestFocus();
+        }
+        return login;
+    }
+
     public static String pideLoginM() {
+
         String loginM = Vtna_cli_Modif.txtLoginM.getText();
+        if (Vtna_cli_Modif.txtLoginM.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(null, "El login no puede estar en blanco", "Error", JOptionPane.INFORMATION_MESSAGE);
+            Vtna_cli_Modif.txtLoginM.requestFocus();
+            Vtna_cli_Modif.errorLoginM.setVisible(true);
+        } else {
+            Vtna_cli_Modif.errorLoginM.setVisible(false);
+            Vtna_cli_Modif.txtPasswordM.requestFocus();
+        }
         return loginM;
     }
 
+    public static String pideLoginKeyM() {
+
+        String loginM = Vtna_cli_Modif.txtLoginM.getText();
+        if (Vtna_cli_Modif.txtLoginM.getText().isEmpty()) {
+            Vtna_cli_Modif.errorLoginM.setVisible(true);
+        } else {
+            Vtna_cli_Modif.errorLoginM.setVisible(false);
+        }
+        return loginM;
+    }
+
+    // Funcion para pedir Password
     public static String pidePassword() {
         String password = Vtna_cli_Crear.txtPassword.getText();
-        password = Encriptador.encriptarTokenMD5(password);
+        if (Vtna_cli_Crear.txtPassword.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(null, "El Password no puede estar en blanco", "Error", JOptionPane.INFORMATION_MESSAGE);
+            Vtna_cli_Crear.errorPassword.setVisible(true);
+        } else {
+            password = Encriptador.encriptarTokenMD5(password);
+            Vtna_cli_Crear.errorPassword.setVisible(false);
+            Vtna_cli_Crear.btnAceptar.requestFocus();
+        }
+        return password;
+    }
+
+    // Funcion para pedir Password  - Key
+    public static String pidePasswordKey() {
+        String password = Vtna_cli_Crear.txtPassword.getText();
+        if (Vtna_cli_Crear.txtPassword.getText().isEmpty()) {
+            Vtna_cli_Crear.errorPassword.setVisible(true);
+        } else {
+            password = Encriptador.encriptarTokenMD5(password);
+            Vtna_cli_Crear.errorPassword.setVisible(false);
+            Vtna_cli_Crear.btnAceptar.requestFocus();
+        }
         return password;
     }
 
@@ -529,8 +574,9 @@ public class ClienteDAO {
         String passwordM = Vtna_cli_Modif.txtPasswordM.getText();
 
         if (Vtna_cli_Modif.txtPasswordM.getText().isEmpty()) {
-           Vtna_cli_Modif.errorPasswordM.setVisible(true);
+            Vtna_cli_Modif.errorPasswordM.setVisible(true);
         } else {
+            passwordM = Encriptador.encriptarTokenMD5(passwordM);
             Vtna_cli_Modif.errorPasswordM.setVisible(false);
         }
         return passwordM;
@@ -591,14 +637,7 @@ public class ClienteDAO {
 
     public static void modificar() {
 
-   //     if (Singletons.cliLog.getTipo().equals("admin")) {
-
-         //   if (Singletons.cli.getAvatar().isEmpty()) {
-           //     FileUploader.leer_imag_defecto(3);
-         //   } else {
-                FileUploader.leer_imag(1);
-           // }
-       // }
+        FileUploader.leer_imag(1);
 
         Vtna_cli_Modif.txtNombreM.setText((Singletons.cli).getNombre());
         Vtna_cli_Modif.txtApellidosM.setText((Singletons.cli).getApellidos());
@@ -607,18 +646,11 @@ public class ClienteDAO {
         Vtna_cli_Modif.txtEmailM.setText((Singletons.cli).getEmail());
         ((JTextFieldDateEditor) Vtna_cli_Modif.txtFnacimientoM.getDateEditor()).setText((Singletons.cli).getFnacimiento().aStringFecha());
         Vtna_cli_Modif.txtLoginM.setText((Singletons.cli).getLogin());
-        //  Vtna_ef_Cambiar.txtPasswordM.setText((Singletons.emp).getPassword());
     }
 
     public static void modificarLogeado() {
 
-    //    if (Singletons.cliLog.getTipo().equals("admin")) {
-      //      if (Singletons.cli.getAvatar().isEmpty()) {
-     //           FileUploader.leer_imag_defecto(3);
-     //       } else {
-                FileUploader.leer_imag(1);
-     //       }
-     //   }
+        FileUploader.leer_imag(1);
 
         Vtna_cli_Modif.txtNombreM.setText((Singletons.cliLog).getNombre());
         Vtna_cli_Modif.txtApellidosM.setText((Singletons.cliLog).getApellidos());
@@ -627,7 +659,6 @@ public class ClienteDAO {
         Vtna_cli_Modif.txtEmailM.setText((Singletons.cliLog).getEmail());
         ((JTextFieldDateEditor) Vtna_cli_Modif.txtFnacimientoM.getDateEditor()).setText((Singletons.cliLog).getFnacimiento().aStringFecha());
         Vtna_cli_Modif.txtLoginM.setText((Singletons.cliLog).getLogin());
-        //  Vtna_ef_Cambiar.txtPasswordM.setText((Singletons.emp).getPassword());
     }
 
     public static void limpiar() {
@@ -767,23 +798,8 @@ public class ClienteDAO {
         return Singletons.cli;
     }
 
-    public static int BuscarEmpleados(Cliente cli) {//Buscar
-        int aux = -1;
-
-        for (int i = 0; i <= (Singletons.cliArray.size() - 1); i++) {
-            if ((Singletons.cliArray.get(i)).equals(cli))//buclea hasta que encuentra un dni que concuadre con el comparator de la madre y lo devuelve como aux
-            {
-                aux = i;
-            }
-        }
-        return aux;//retorna aux, si lo ha encontrado dara la posicion, si no devolvera -1 lo cual significa que no hay dni que concuadre
-    }
-    
-    
-    
     ////// M O D I F I C A R   M I  P E R F I L  ///////////////
-    
-     //Funcion para pedir Nombre para modificar
+    //Funcion para pedir Nombre para modificar
     public static String pideNombreMP() {
         String nombre = Singletons.cliMP.txtNombreMP.getText();
 
@@ -819,8 +835,8 @@ public class ClienteDAO {
 
         return nombre;
     }
-    
-     //Funcion para pedir Apellidos para modificar
+
+    //Funcion para pedir Apellidos para modificar
     public static String pideApellidosMP() {
         String apellidos = Singletons.cliMP.txtApellidosMP.getText();
 
@@ -854,8 +870,8 @@ public class ClienteDAO {
         }
         return apellidos;
     }
-    
-     //Funcion para pedir telefono para modificar
+
+    //Funcion para pedir telefono para modificar
     public static String pideTelefonoMP() {
         String telefono = Singletons.cliMP.txtTelefonoMP.getText();
 
@@ -890,7 +906,7 @@ public class ClienteDAO {
         }
         return telefono;
     }
-    
+
     //para pedir email para modificar
     public static String pideEmailMP() {
         String email = Singletons.cliMP.txtEmailMP.getText();
@@ -925,9 +941,8 @@ public class ClienteDAO {
         }
         return email;
     }
-    
-    
-     //para pedir direccion para modificar
+
+    //para pedir direccion para modificar
     public static String pideDireccionMP() {
         String direccion = Singletons.cliMP.txtDireccionMP.getText();
 
@@ -961,7 +976,7 @@ public class ClienteDAO {
         }
         return direccion;
     }
-    
+
     //fecha nacimiento para modificar
     public static Fecha pideFnacimientoMP() {
         String fecha1 = "";
@@ -976,9 +991,7 @@ public class ClienteDAO {
 
         FnacimientoM = (DAOgenerico.pedirFechaNB(fecha1));
 
-        //calcular y rellenar la edad
         Edad = FnacimientoM.restaFechas();
-        //  Vtna_cli_Modif.txtEdadM.setText(Integer.toString(Edad));
 
         if (Edad <= 16) {
             JOptionPane.showMessageDialog(null, "La edad debe ser igual o superior a 16 años");
@@ -989,13 +1002,11 @@ public class ClienteDAO {
 
         return FnacimientoM;
     }
-    
-     public static String pideLoginMP() {
+
+    public static String pideLoginMP() {
         String loginM = Singletons.cliMP.txtLoginMP.getText();
         return loginM;
     }
-
-   
 
     public static String pidePasswordMP() {
         String passwordM = Singletons.cliMP.txtPasswordMP.getText();
@@ -1020,8 +1031,8 @@ public class ClienteDAO {
         }
         return passwordM;
     }
-    
-     public static String pideTipoMP() {
+
+    public static String pideTipoMP() {
 
         String tipo = "";
 
@@ -1032,10 +1043,9 @@ public class ClienteDAO {
         }
         return tipo;
     }
-    
-     public static void modificarLogeadoMP() {
 
-    
+    public static void modificarLogeadoMP() {
+
         Singletons.cliMP.txtNombreMP.setText((Singletons.cliLog).getNombre());
         Singletons.cliMP.txtApellidosMP.setText((Singletons.cliLog).getApellidos());
         Singletons.cliMP.txtTelefonoMP.setText((Singletons.cliLog).getTelefono());
@@ -1043,10 +1053,9 @@ public class ClienteDAO {
         Singletons.cliMP.txtEmailMP.setText((Singletons.cliLog).getEmail());
         ((JTextFieldDateEditor) Singletons.cliMP.txtFnacimientoMP.getDateEditor()).setText((Singletons.cliLog).getFnacimiento().aStringFecha());
         Singletons.cliMP.txtLoginMP.setText((Singletons.cliLog).getLogin());
-        //  Vtna_ef_Cambiar.txtPasswordM.setText((Singletons.emp).getPassword());
     }
-    
-      public static void ocultarErroresModificarMP() {
+
+    public static void ocultarErroresModificarMP() {
 
         Singletons.cliMP.errorNombreM.setVisible(false);
         Singletons.cliMP.etiNombreErrorM.setVisible(false);
@@ -1070,5 +1079,4 @@ public class ClienteDAO {
         Singletons.cliMP.errorPasswordM.setVisible(false);
 
     }
-        
 }

@@ -5,7 +5,7 @@
  */
 package proyectofinal_josegramage.Modulos.Juegos.Controlador;
 
-import proyectofinal_josegramage.Clases.FileUploader;
+import proyectofinal_josegramage.Utiles.FileUploader;
 import proyectofinal_josegramage.Clases.JDKP_Fondo;
 import proyectofinal_josegramage.Clases.JPanel_Fondo;
 import proyectofinal_josegramage.Modulos.Juegos.Modelo.BLL.JuegoBLL;

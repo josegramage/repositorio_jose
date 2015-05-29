@@ -1,6 +1,6 @@
 package proyectofinal_josegramage.Modulos.Juegos.Modelo.BLL;
 
-import proyectofinal_josegramage.Clases.FileUploader;
+import proyectofinal_josegramage.Utiles.FileUploader;
 import proyectofinal_josegramage.Librerias.Encriptador;
 import javax.swing.JOptionPane;
 

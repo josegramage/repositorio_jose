@@ -40,6 +40,7 @@ public class Vtna_Inicio extends javax.swing.JFrame {
         eti_Reg_Perfil = new javax.swing.JLabel();
         jSeparator1 = new javax.swing.JSeparator();
         etiLogo = new javax.swing.JLabel();
+        etiAdmin = new javax.swing.JLabel();
         internalFrame = new javax.swing.JInternalFrame();
         panel_internal_frame = new javax.swing.JPanel();
         etiFondo_inicio = new javax.swing.JLabel();
@@ -112,6 +113,9 @@ public class Vtna_Inicio extends javax.swing.JFrame {
         etiLogo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         etiLogo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/proyectofinal_josegramage/Img/logo_azul.png"))); // NOI18N
 
+        etiAdmin.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        etiAdmin.setText("- Modo Admin-");
+
         javax.swing.GroupLayout panelLoginLayout = new javax.swing.GroupLayout(panelLogin);
         panelLogin.setLayout(panelLoginLayout);
         panelLoginLayout.setHorizontalGroup(
@@ -120,6 +124,8 @@ public class Vtna_Inicio extends javax.swing.JFrame {
                 .addGap(20, 20, 20)
                 .addComponent(etiLogo, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(etiAdmin)
+                .addGap(47, 47, 47)
                 .addGroup(panelLoginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(eti_Entrar_Usuario, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -140,6 +146,9 @@ public class Vtna_Inicio extends javax.swing.JFrame {
                         .addGap(9, 9, 9)
                         .addComponent(eti_Reg_Perfil, javax.swing.GroupLayout.PREFERRED_SIZE, 19, javax.swing.GroupLayout.PREFERRED_SIZE))))
             .addComponent(etiAvatarInicio, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelLoginLayout.createSequentialGroup()
+                .addComponent(etiAdmin)
+                .addGap(32, 32, 32))
         );
 
         internalFrame.setVisible(true);
@@ -219,6 +228,7 @@ public class Vtna_Inicio extends javax.swing.JFrame {
    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    public static javax.swing.JLabel etiAdmin;
     public static javax.swing.JLabel etiAvatarInicio;
     public static javax.swing.JLabel etiFondo_inicio;
     public static javax.swing.JTextField etiFrasesCelebres;

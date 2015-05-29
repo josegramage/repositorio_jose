@@ -65,6 +65,7 @@ public class Vtna_cli_Modif extends javax.swing.JFrame {
         comboTipoM = new javax.swing.JComboBox();
         txtTelefonoM = new javax.swing.JTextField();
         txtDireccionM = new javax.swing.JTextField();
+        errorLoginM = new javax.swing.JButton();
 
         panelModif.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -82,15 +83,15 @@ public class Vtna_cli_Modif extends javax.swing.JFrame {
 
         etiNombreErrorM.setForeground(new java.awt.Color(255, 0, 0));
         etiNombreErrorM.setText("Introduce un nombre valido");
-        panelModif.add(etiNombreErrorM, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 30, -1, -1));
+        panelModif.add(etiNombreErrorM, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 30, -1, -1));
 
         etiApellidoErrorM.setForeground(new java.awt.Color(255, 0, 0));
         etiApellidoErrorM.setText("Introduce apellidos validos");
-        panelModif.add(etiApellidoErrorM, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 60, -1, -1));
+        panelModif.add(etiApellidoErrorM, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 60, -1, -1));
 
         etiTelefonoErrorM.setForeground(new java.awt.Color(255, 0, 0));
         etiTelefonoErrorM.setText("Introduce un telefono valido");
-        panelModif.add(etiTelefonoErrorM, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 90, -1, -1));
+        panelModif.add(etiTelefonoErrorM, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 90, -1, -1));
 
         etiGuardadoM.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         etiGuardadoM.setForeground(new java.awt.Color(0, 204, 102));
@@ -102,34 +103,34 @@ public class Vtna_cli_Modif extends javax.swing.JFrame {
 
         etiEmailErrorM.setForeground(new java.awt.Color(255, 0, 0));
         etiEmailErrorM.setText("Introduce un email valido");
-        panelModif.add(etiEmailErrorM, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 150, -1, -1));
+        panelModif.add(etiEmailErrorM, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 150, -1, -1));
 
         jLabel3.setText("Login:");
         panelModif.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 220, -1, -1));
 
         jLabel7.setText("Password:");
-        panelModif.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 220, -1, -1));
+        panelModif.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 220, -1, -1));
 
         etiAvatarM.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         panelModif.add(etiAvatarM, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 30, 90, 90));
 
         etiTipoM.setText("Tipo:");
-        panelModif.add(etiTipoM, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 250, -1, -1));
+        panelModif.add(etiTipoM, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 250, -1, -1));
 
         etiDireccionM.setText("Dirección:");
         panelModif.add(etiDireccionM, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 120, -1, -1));
 
         etiDireccionErrorM.setForeground(new java.awt.Color(255, 0, 0));
         etiDireccionErrorM.setText("Introduce una direccion valida");
-        panelModif.add(etiDireccionErrorM, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 120, -1, -1));
-        panelModif.add(txtNombreM, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 30, 129, -1));
-        panelModif.add(txtApellidosM, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 60, 129, -1));
-        panelModif.add(txtEmailM, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 150, 130, -1));
-        panelModif.add(txtLoginM, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 220, 120, -1));
-        panelModif.add(txtPasswordM, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 220, 130, -1));
+        panelModif.add(etiDireccionErrorM, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 120, -1, -1));
+        panelModif.add(txtNombreM, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 30, 129, -1));
+        panelModif.add(txtApellidosM, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 60, 129, -1));
+        panelModif.add(txtEmailM, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 150, 130, -1));
+        panelModif.add(txtLoginM, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 220, 100, -1));
+        panelModif.add(txtPasswordM, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 220, 130, -1));
 
         txtFnacimientoM.setDateFormatString("dd/MM/yyyy");
-        panelModif.add(txtFnacimientoM, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 180, -1, -1));
+        panelModif.add(txtFnacimientoM, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 180, -1, -1));
 
         btnAceptarM.setText("Aceptar");
         panelModif.add(btnAceptarM, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 290, -1, -1));
@@ -138,16 +139,16 @@ public class Vtna_cli_Modif extends javax.swing.JFrame {
         panelModif.add(btnCancelarM, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 290, -1, -1));
 
         errorNombreM.setIcon(new javax.swing.ImageIcon(getClass().getResource("/proyectofinal_josegramage/Img/iconos/error.png"))); // NOI18N
-        panelModif.add(errorNombreM, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 30, 22, 20));
+        panelModif.add(errorNombreM, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 30, 22, 20));
 
         errorApellidosM.setIcon(new javax.swing.ImageIcon(getClass().getResource("/proyectofinal_josegramage/Img/iconos/error.png"))); // NOI18N
-        panelModif.add(errorApellidosM, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 60, 22, 20));
+        panelModif.add(errorApellidosM, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 60, 22, 20));
 
         errorTelfM.setIcon(new javax.swing.ImageIcon(getClass().getResource("/proyectofinal_josegramage/Img/iconos/error.png"))); // NOI18N
-        panelModif.add(errorTelfM, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 90, 22, 20));
+        panelModif.add(errorTelfM, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 90, 22, 20));
 
         errorFnacimientoM.setIcon(new javax.swing.ImageIcon(getClass().getResource("/proyectofinal_josegramage/Img/iconos/error.png"))); // NOI18N
-        panelModif.add(errorFnacimientoM, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 180, 22, 20));
+        panelModif.add(errorFnacimientoM, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 180, 22, 20));
 
         btnOKM.setIcon(new javax.swing.ImageIcon(getClass().getResource("/proyectofinal_josegramage/Img/iconos/acierto.png"))); // NOI18N
         panelModif.add(btnOKM, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 250, 30, 30));
@@ -157,22 +158,25 @@ public class Vtna_cli_Modif extends javax.swing.JFrame {
         panelModif.add(btnVolverM, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 290, 100, -1));
 
         errorEmailM.setIcon(new javax.swing.ImageIcon(getClass().getResource("/proyectofinal_josegramage/Img/iconos/error.png"))); // NOI18N
-        panelModif.add(errorEmailM, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 150, 22, 20));
+        panelModif.add(errorEmailM, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 150, 22, 20));
 
         btnCambiarImgM.setFont(new java.awt.Font("Tahoma", 0, 9)); // NOI18N
         btnCambiarImgM.setText("cambiar imagen");
         panelModif.add(btnCambiarImgM, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 125, 90, -1));
 
         errorPasswordM.setIcon(new javax.swing.ImageIcon(getClass().getResource("/proyectofinal_josegramage/Img/iconos/error.png"))); // NOI18N
-        panelModif.add(errorPasswordM, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 220, 20, 20));
+        panelModif.add(errorPasswordM, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 220, 20, 20));
 
         errorDireccionM.setIcon(new javax.swing.ImageIcon(getClass().getResource("/proyectofinal_josegramage/Img/iconos/error.png"))); // NOI18N
-        panelModif.add(errorDireccionM, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 120, 22, 20));
+        panelModif.add(errorDireccionM, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 120, 22, 20));
 
         comboTipoM.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Usuario", "Admin" }));
-        panelModif.add(comboTipoM, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 250, -1, -1));
-        panelModif.add(txtTelefonoM, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 90, 130, -1));
-        panelModif.add(txtDireccionM, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 120, 130, -1));
+        panelModif.add(comboTipoM, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 250, -1, -1));
+        panelModif.add(txtTelefonoM, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 90, 130, -1));
+        panelModif.add(txtDireccionM, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 120, 130, -1));
+
+        errorLoginM.setIcon(new javax.swing.ImageIcon(getClass().getResource("/proyectofinal_josegramage/Img/iconos/error.png"))); // NOI18N
+        panelModif.add(errorLoginM, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 220, 22, 20));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -203,6 +207,7 @@ public class Vtna_cli_Modif extends javax.swing.JFrame {
     public static javax.swing.JButton errorDireccionM;
     public static javax.swing.JButton errorEmailM;
     public static javax.swing.JButton errorFnacimientoM;
+    public static javax.swing.JButton errorLoginM;
     public static javax.swing.JButton errorNombreM;
     public static javax.swing.JButton errorPasswordM;
     public static javax.swing.JButton errorTelfM;
