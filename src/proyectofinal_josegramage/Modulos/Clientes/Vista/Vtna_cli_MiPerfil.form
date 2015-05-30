@@ -532,14 +532,14 @@
         </Component>
         <Component class="javax.swing.JButton" name="btnSalir_MP">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Salir"/>
+            <Property name="text" type="java.lang.String" value="Salir -logout-"/>
           </Properties>
           <AuxValues>
             <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="9"/>
           </AuxValues>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-              <AbsoluteConstraints x="410" y="340" width="70" height="-1"/>
+              <AbsoluteConstraints x="410" y="340" width="110" height="-1"/>
             </Constraint>
           </Constraints>
         </Component>

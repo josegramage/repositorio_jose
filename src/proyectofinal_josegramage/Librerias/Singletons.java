@@ -58,7 +58,7 @@ public class Singletons {
     public static Vtna_cli_MiPerfil cliMP;
     
      //PAGER JUEGOS
-    public static Vtna_jue_Pager juePager;
+    public static Vtna_jue_Pager juePager= new Vtna_jue_Pager();
     public static Vtna_jue_Crear jueCrear;
     public static Vtna_jue_Modif jueModif;
     

@@ -175,6 +175,7 @@ public class FileUploader {
     public static void leer_imag_defecto(int i) {
 
         String ruta = "src/proyectofinal_josegramage/Img/avatar_cliente/icono_defecto.jpg";
+        String ruta2="";
 
         if (i == 0) {
             ImageIcon icon = new ImageIcon(ruta);
@@ -203,7 +204,14 @@ public class FileUploader {
             Image newimg = img.getScaledInstance(90, 90, java.awt.Image.SCALE_SMOOTH);
             ImageIcon newIcon = new ImageIcon(newimg);
             Singletons.cliMP.etiAvatarM.setIcon(newIcon);
-        }
+            
+        } else if (i == 5) {
+            ImageIcon icon = new ImageIcon(ruta2);
+            Image img = icon.getImage();
+            Image newimg = img.getScaledInstance(55, 55, java.awt.Image.SCALE_SMOOTH);
+            ImageIcon newIcon = new ImageIcon(newimg);
+            Singletons.ini.etiAvatarInicio.setIcon(newIcon);
+    }
     }
 
     //////////////// J U E G O S /////////////////////////////777

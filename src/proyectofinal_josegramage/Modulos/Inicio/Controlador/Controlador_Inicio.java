@@ -133,7 +133,8 @@ public class Controlador_Inicio implements ActionListener, MouseListener {
             } else {
                 Singletons.ini.eti_Entrar_Usuario.setText("Entrar");
                 Singletons.ini.eti_Reg_Perfil.setText("Regístrate");
-            }
+                
+                                  }
 
             Singletons.ini.etiInicio.setName("_INICIO");
             Singletons.ini.etiInicio.addMouseListener(this);
@@ -241,7 +242,6 @@ public class Controlador_Inicio implements ActionListener, MouseListener {
                     Singletons.ini.internalFrame.setContentPane(p4);
                 }
                 break;
-
                 
                 
             case _INICIO:
@@ -250,7 +250,7 @@ public class Controlador_Inicio implements ActionListener, MouseListener {
                 JPanel panel_Inicio = new JPanel();
                 panel_Inicio.add(Singletons.iniPanel.panelInicio);
                 Singletons.ini.internalFrame.setContentPane(panel_Inicio);
-
+          
                 break;
 
             case _PRODUCTOS:
@@ -262,7 +262,28 @@ public class Controlador_Inicio implements ActionListener, MouseListener {
                
                 JPanel pJuegos = new JPanel();
                 pJuegos.add(Singletons.juePager.panelPager);
-                Singletons.ini.internalFrame.setContentPane(pJuegos);
+                Singletons.ini.internalFrame.setContentPane(pJuegos);            
+          /*      
+                if (Singletons.conectado = false){
+                      JOptionPane.showMessageDialog(null,"conectado false");
+                      Singletons.juePager.btnAgregar.setVisible(false);
+                      Singletons.juePager.btnCambiar.setVisible(false);
+                      Singletons.juePager.btnEliminar.setVisible(false);
+                      Singletons.juePager.btnMenu.setVisible(false);
+                      Singletons.juePager.btnInfo.setVisible(false);
+                      
+                  }else {    
+                      if (Singletons.cliLog.getTipo().equals("usuario")){
+                      JOptionPane.showMessageDialog(null,"usuario");
+                      Singletons.juePager.btnAgregar.setVisible(false);
+                      Singletons.juePager.btnCambiar.setVisible(false);
+                      Singletons.juePager.btnEliminar.setVisible(false);
+                      Singletons.juePager.btnMenu.setVisible(false);
+                      Singletons.juePager.btnInfo.setVisible(false);           
+            }            
+                }
+                  */
+                  
                 break;
 
             case _HISTORIA:

@@ -80,6 +80,7 @@ public class Controlador_Cliente implements ActionListener, KeyListener, MouseLi
         _BTN_PERFIL,
         _BTN_PERFIL_EDITAR,
         _BTN_PERFIL_SALIR,
+        _DOBLECLICK_TABLE,
         // Ventana crear
         _TXT_NOMBRE,
         _TXT_APELLIDOS,
@@ -240,6 +241,9 @@ public class Controlador_Cliente implements ActionListener, KeyListener, MouseLi
             Singletons.efPager.btnPerfilSalir.setActionCommand("_BTN_PERFIL_SALIR");
             Singletons.efPager.btnPerfilSalir.setName("_BTN_PERFIL_SALIR");
             Singletons.efPager.btnPerfilSalir.addActionListener(this);
+            Singletons.efPager.btnPerfilSalir.addMouseListener(this);
+            
+            Singletons.efPager.TABLA.setName("_DOBLECLICK_TABLE");
             Singletons.efPager.btnPerfilSalir.addMouseListener(this);
 
         }
@@ -719,10 +723,8 @@ public class Controlador_Cliente implements ActionListener, KeyListener, MouseLi
                     Singletons.ini.eti_Entrar_Usuario.setText(Singletons.cliLog.getLogin());
                     if (Singletons.cliLog.getAvatar().isEmpty()) {
                         FileUploader.leer_imag_defecto(2);
-                        JOptionPane.showMessageDialog(null, "sin imagen por defecto");
                     } else {
-                        FileUploader.leer_imag(0);
-                        JOptionPane.showMessageDialog(null, "con imagen");
+                        FileUploader.leer_imag(0);         
                     }
 
                     Singletons.cliMP.dispose();
@@ -730,7 +732,6 @@ public class Controlador_Cliente implements ActionListener, KeyListener, MouseLi
                     JPanel panel_Inicio = new JPanel();
                     panel_Inicio.add(Singletons.iniPanel.panelInicio);
                     Singletons.ini.internalFrame.setContentPane(panel_Inicio);
-
                 }
                 break;
 
@@ -767,7 +768,20 @@ public class Controlador_Cliente implements ActionListener, KeyListener, MouseLi
                 break;
 
             case _BTN_SALIR_MP:
+                
+                Singletons.conectado = false;
+                
+                Singletons.ini.eti_Entrar_Usuario.setText("Entrar");
+                Singletons.ini.eti_Reg_Perfil.setText("Regístrate");
+                FileUploader.leer_imag_defecto(5);
+                Singletons.ini.etiAdmin.setVisible(false);
+                
+                new Controlador_Inicio(new Vtna_panel_Inicio(), 1).iniciar(1);
 
+                JPanel panel_Inicio = new JPanel();
+                panel_Inicio.add(Singletons.iniPanel.panelInicio);
+                Singletons.ini.internalFrame.setContentPane(panel_Inicio);
+                
                 break;
 
             case _BTN_ELIMINAR_MP:
@@ -967,7 +981,21 @@ public class Controlador_Cliente implements ActionListener, KeyListener, MouseLi
                 } catch (Exception e) {
                 }
                 break;
-        }
+                
+       /*         case _TAULA:
+                taula = (JTable) me.getSource();
+                Point point = me.getPoint();
+                int row = taula.rowAtPoint(point);
+                if (me.getClickCount() == 2) {
+                    int sel = posicioAbsoluta();
+                    String dni = (String) taula.getModel().getValueAt(sel, 0);
+                    SingletonEF.ef = new EmpleatFix(dni);
+                    frmIntEF.setEnabled(false);
+                    new ControladorEF(new FrmModiEF(), 2).iniciar(2);
+                }
+                break;
+        */
+                }
     }
 
     @Override

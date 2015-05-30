@@ -64,7 +64,7 @@ public class LoginDAO {
                 resultado = true;
                 Singletons.conectado = true;
                 
-               con.prepareStatement("UPDATE proyectofinal_josegramage.clientes SET estado='activado'");
+               con.prepareStatement("UPDATE proyectofinal_josegramage.clientes SET estado='activado' WHERE login=? AND password=?");
                 
                 
             }

@@ -176,8 +176,8 @@ public class Vtna_cli_MiPerfil extends javax.swing.JFrame {
         btnEliminar_MP.setText("Eliminar cuenta");
         panelModif_MP.add(btnEliminar_MP, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 300, -1, -1));
 
-        btnSalir_MP.setText("Salir");
-        panelModif_MP.add(btnSalir_MP, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 340, 70, -1));
+        btnSalir_MP.setText("Salir -logout-");
+        panelModif_MP.add(btnSalir_MP, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 340, 110, -1));
 
         jLabel6.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel6.setText("Mi perfil");
