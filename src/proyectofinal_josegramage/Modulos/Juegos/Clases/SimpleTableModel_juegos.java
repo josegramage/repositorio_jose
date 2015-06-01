@@ -94,7 +94,7 @@ public class SimpleTableModel_juegos extends AbstractTableModel {
                 break;
 
             case 3:
-                ((Juego) fila).setPrecio(value.toString());
+                fila.setPrecio(value.toString());
                 break;
 
             case 4:

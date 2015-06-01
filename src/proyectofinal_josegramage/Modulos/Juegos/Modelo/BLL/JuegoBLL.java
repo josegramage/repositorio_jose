@@ -202,7 +202,7 @@ public class JuegoBLL {
 
             Singletons.jueArray.set(Singletons.posJ, Singletons.jue);
             JuegoBLL_bd.modificarJuegoBLL();
-            ((SimpleTableModel_juegos) Singletons.juePager.TABLA.getModel()).cargar();
+        ((SimpleTableModel_juegos) Singletons.juePager.TABLA.getModel()).cargar();
          }
     }
 
@@ -222,7 +222,7 @@ public class JuegoBLL {
         int opc, inicio, selection, selection1;
         int n = ((SimpleTableModel_juegos) Vtna_jue_Pager.TABLA.getModel()).getRowCount();
         if (n != 0) {
-            inicio = (pagina_J.currentPageIndex - 1) * pagina_J.itemsPerPage;
+            inicio = (pagina_J.currentPageIndex - 1) * pagina_J.itemsPerPageJ;
             selection = Vtna_jue_Pager.TABLA.getSelectedRow();
             selection1 = inicio + selection;
             if (n == -1) {

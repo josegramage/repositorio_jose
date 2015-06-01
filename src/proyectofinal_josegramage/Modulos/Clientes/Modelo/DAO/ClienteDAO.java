@@ -348,10 +348,6 @@ public class ClienteDAO {
 
         if (Vtna_cli_Crear.txtDireccion.getText().isEmpty()) {
             JOptionPane.showMessageDialog(null, "La direccion no puede estar en blanco", "Error", JOptionPane.INFORMATION_MESSAGE);
-            Vtna_cli_Crear.errorDireccion.setVisible(true);
-        }
-
-        if (Validate.validaDireccion(direccion) != true) {
             Vtna_cli_Crear.etiDireccionError.setVisible(true);
             Vtna_cli_Crear.errorDireccion.setVisible(true);
             Vtna_cli_Crear.txtDireccion.requestFocus();
@@ -384,11 +380,7 @@ public class ClienteDAO {
         if (Vtna_cli_Modif.txtDireccionM.getText().isEmpty()) {
             JOptionPane.showMessageDialog(null, "La direccion no puede estar en blanco", "Error", JOptionPane.INFORMATION_MESSAGE);
             Vtna_cli_Modif.errorDireccionM.setVisible(true);
-        }
-
-        if (Validate.validaDireccion(direccion) != true) {
             Vtna_cli_Modif.etiDireccionErrorM.setVisible(true);
-            Vtna_cli_Modif.errorDireccionM.setVisible(true);
             Vtna_cli_Modif.txtDireccionM.requestFocus();
         } else {
             Vtna_cli_Modif.errorDireccionM.setVisible(false);
@@ -620,6 +612,8 @@ public class ClienteDAO {
         password = pidePassword();
         tipo = pideTipo();
 
+        avatar= Singletons.PATH_auto;
+        
         if ((Vtna_cli_Crear.errorNombre.isVisible() == false) && (Vtna_cli_Crear.errorDni.isVisible() == false) && (Vtna_cli_Crear.errorApellidos.isVisible() == false)
             && (Vtna_cli_Crear.errorTelf.isVisible() == false) && (Vtna_cli_Crear.errorDireccion.isVisible() == false) && (Vtna_cli_Crear.errorEmail.isVisible() == false) && (Vtna_cli_Crear.errorFnacimiento.isVisible() == false)) {
             Fecha Fechaalta = Fecha.fechaHoy();

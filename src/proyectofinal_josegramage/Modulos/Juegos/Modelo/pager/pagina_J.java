@@ -22,17 +22,16 @@ public class pagina_J {
     public static Box box = Box.createHorizontalBox();
 
     public static int currentPageIndex = 1;
-    public static int itemsPerPage = 5;
+    public static int itemsPerPageJ = 5;
     public static int maxPageIndex;
 
     public static void inicializa() {
         int rowCount = 0;
 
         rowCount = ((SimpleTableModel_juegos)Vtna_jue_Pager.TABLA.getModel()).getRowCount();
-   
         
-        int v = rowCount%itemsPerPage==0 ? 0 : 1;
-        maxPageIndex = rowCount/itemsPerPage + v;
+        int v = rowCount%itemsPerPageJ==0 ? 0 : 1;
+        maxPageIndex = rowCount/itemsPerPageJ + v;
         
         box.setBorder(BorderFactory.createEmptyBorder(2,2,2,2));
 
@@ -42,11 +41,11 @@ public class pagina_J {
     
     public static void initLinkBox() {
  
-                    Singletons.sorter.setRowFilter(new RowFilter<TableModel, Integer>() {
+                    Singletons.sorter_J.setRowFilter(new RowFilter<TableModel, Integer>() {
                         @Override public boolean include(RowFilter.Entry<? extends TableModel, ? extends Integer> entry) {
                             int ti = currentPageIndex - 1;
                             int ei = entry.getIdentifier();
-                            return ti*itemsPerPage<=ei && ei<ti*itemsPerPage+itemsPerPage;
+                            return ti*itemsPerPageJ<=ei && ei<ti*itemsPerPageJ+itemsPerPageJ;
                         }
                     });
 
@@ -60,15 +59,15 @@ public class pagina_J {
                 rowCount = ((SimpleTableModel_juegos)Vtna_jue_Pager.TABLA.getModel()).getRowCount();
 
 
-        int v = rowCount%itemsPerPage==0 ? 0 : 1;
-        maxPageIndex = rowCount/itemsPerPage + v;
+        int v = rowCount%itemsPerPageJ==0 ? 0 : 1;
+        maxPageIndex = rowCount/itemsPerPageJ + v;
         endPageIndex = currentPageIndex+LR_PAGE_SIZE-1;
         if(endPageIndex>maxPageIndex) {
             endPageIndex = maxPageIndex;
         }
 
         box.removeAll();
-        if(  (rowCount<=itemsPerPage) && (rowCount>0)  ){ //caben todos los datos en la misma página
+        if(  (rowCount<=itemsPerPageJ) && (rowCount>0)  ){ //caben todos los datos en la misma página
 
                 //actualizar botones y caja: desactivarlos
                 Vtna_jue_Pager.primero.setEnabled(false);
@@ -106,7 +105,7 @@ public class pagina_J {
             box.revalidate();
             box.repaint();
             
-        }else if(rowCount>itemsPerPage) {
+        }else if(rowCount>itemsPerPageJ) {
 
                     Vtna_jue_Pager.primero.setEnabled(currentPageIndex>1);
                     Vtna_jue_Pager.ANTERIOR.setEnabled(currentPageIndex>1);

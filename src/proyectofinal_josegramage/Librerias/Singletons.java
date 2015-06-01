@@ -24,6 +24,7 @@ import proyectofinal_josegramage.Modulos.Clientes.Clases.SimpleTableModel_client
 import proyectofinal_josegramage.Modulos.Clientes.Vista.Vtna_cli_MiPerfil;
 import proyectofinal_josegramage.Modulos.Inicio.Vista.Vtna_Historia;
 import proyectofinal_josegramage.Modulos.Inicio.Vista.Vtna_Inicio;
+import proyectofinal_josegramage.Modulos.Inicio.Vista.Vtna_Nosotros;
 import proyectofinal_josegramage.Modulos.Inicio.Vista.Vtna_panel_Inicio;
 import proyectofinal_josegramage.Modulos.Juegos.Clases.Juego;
 import proyectofinal_josegramage.Modulos.Juegos.Clases.SimpleTableModel_juegos;
@@ -54,6 +55,7 @@ public class Singletons {
     public static Vtna_Config config;
     public static Vtna_Estad estad;
     public static Vtna_Historia histo;
+    public static Vtna_Nosotros nos;
     
     //PAGER CLIENTE
     public static Vtna_cli_Pager efPager;
@@ -78,7 +80,7 @@ public class Singletons {
     public static String ruta_avatar;
     
     //MODULO JUEGOS
-    public static ArrayList<Juego> jueArray = new ArrayList<Juego>();
+    public static ArrayList<Juego> jueArray= new ArrayList<Juego>();
     public static Juego jue;
     public static int posJ;
     public static int posJue=-1;

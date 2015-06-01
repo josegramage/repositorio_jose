@@ -256,43 +256,7 @@ public class JuegoDAO {
         return tipo;
     }
 
-    //para pedir Precio para crear
- /*   public static float pidePrecio() {
-        float precio = Float.parseFloat(Vtna_jue_Crear.txtPrecio.getText());
-    //    float precio = ((Juego)).setPrecio(Float.parseFloat(value.toString()));
-     //   String precio = Vtna_jue_Crear.txtPrecio.getText();
-
-        if (Vtna_jue_Crear.txtPrecio.getText().isEmpty()) {
-            JOptionPane.showMessageDialog(null, "El precio no puede estar en blanco", "Error", JOptionPane.INFORMATION_MESSAGE);
-            Vtna_jue_Crear.errorPrecio.setVisible(true);
-        }
-
-        if (Validate.validaNumPositivo(String.valueOf(precio)) != true) {
-            Vtna_jue_Crear.errorPrecio.setVisible(true);
-            Vtna_jue_Crear.txtPrecio.requestFocus();
-        } else {
-            Vtna_jue_Crear.errorPrecio.setVisible(false);
-            Vtna_jue_Crear.txtDescripcion.requestFocus();
-        }
-        return precio;
-    }
-*/
-    /*
-    //para pedir Precio para crear - KEYs
-    public static float pidePrecioKey() {
-       // JOptionPane.showMessageDialog(null,Vtna_jue_Crear.txtPrecio.getText());
-        float precio = Float.parseFloat(Vtna_jue_Crear.txtPrecio.getText());
-      //  float precio = Vtna_jue_Crear.txtPrecio.getText();
-//float precio=0.0f;
-        
-        if (Validate.validaNumPositivo(Vtna_jue_Crear.txtPrecio.getText()) != true) {
-             Vtna_jue_Crear.errorPrecio.setVisible(true);
-        } else {
-            Vtna_jue_Crear.errorPrecio.setVisible(false);
-         }
-        return precio;
-    }
-    */
+   
     
      //para pedir Precio para crear
       public static String pidePrecio() {
@@ -392,14 +356,14 @@ public class JuegoDAO {
         companyia = pideCompanyia();
         descripcion = pideDescripcion();  
         precio = pidePrecio();
-        tipo = pideTipo();   
+        tipo = pideTipo();      
+        imagen= Singletons.PATH_auto_Img;
         
-                  
+        
         if ((Vtna_jue_Crear.errorNombre.isVisible() == false) && (Vtna_jue_Crear.errorRef.isVisible() == false) && (Vtna_jue_Crear.errorCompanyia.isVisible() == false)
-                && (Vtna_jue_Crear.errorTipo.isVisible() == false) && (Vtna_jue_Crear.errorPrecio.isVisible() == false) && (Vtna_jue_Crear.errorDescripcion.isVisible() == false)) {
-fecha_alta = Fecha.fechaHoy();
+            && (Vtna_jue_Crear.errorTipo.isVisible() == false) && (Vtna_jue_Crear.errorPrecio.isVisible() == false) && (Vtna_jue_Crear.errorDescripcion.isVisible() == false)) {
+            fecha_alta = Fecha.fechaHoy();
             Singletons.jue = new Juego(ref, nombre, companyia, fecha_alta, tipo, precio, imagen, descripcion);
-
         }
     }
 

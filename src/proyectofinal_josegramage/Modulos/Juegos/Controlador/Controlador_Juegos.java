@@ -48,7 +48,6 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import proyectofinal_josegramage.Modulos.Juegos.Clases.Juego;
 
-
 /**
  *
  * @author Joso
@@ -138,8 +137,8 @@ public class Controlador_Juegos implements ActionListener, KeyListener, MouseLis
                 myWords.add(Singletons.jueg.get(x).getNombre());
             }
 
-            StringSearchable_J searchable = new StringSearchable_J(myWords);
-            Singletons.combo_J = new AutocompleteJComboBox_J(searchable);
+            StringSearchable_J searchableJ = new StringSearchable_J(myWords);
+            Singletons.combo_J = new AutocompleteJComboBox_J(searchableJ);
             Vtna_jue_Pager.panelFiltrar.setLayout(new java.awt.BorderLayout());
             Vtna_jue_Pager.panelFiltrar.add(Singletons.combo_J);
 
@@ -156,172 +155,169 @@ public class Controlador_Juegos implements ActionListener, KeyListener, MouseLis
                     Singletons.juePager.btnCambiar.setVisible(false);
                     Singletons.juePager.btnEliminar.setVisible(false);
                     Singletons.juePager.btnMenu.setVisible(false);
-                    Singletons.juePager.btnAbrir.setVisible(false);        
-                                   } 
-
-                } else {
-                    Singletons.juePager.btnAgregar.setVisible(false);
-                    Singletons.juePager.btnCambiar.setVisible(false);
-                    Singletons.juePager.btnEliminar.setVisible(false);
-                    Singletons.juePager.btnMenu.setVisible(false);
                     Singletons.juePager.btnAbrir.setVisible(false);
-                               }
-            
-      
-                Singletons.juePager.ANTERIOR.setActionCommand("_BTN_ANTERIOR");
-                Singletons.juePager.ANTERIOR.addActionListener(this);
+                }
 
-                Singletons.juePager.SIGUIENTE.setActionCommand("_BTN_SIGUIENTE");
-                Singletons.juePager.SIGUIENTE.addActionListener(this);
-
-                Singletons.juePager.ultimo.setActionCommand("_BTN_ULTIMO");
-                Singletons.juePager.ultimo.addActionListener(this);
-
-                Singletons.juePager.primero.setActionCommand("_BTN_PRIMERO");
-                Singletons.juePager.primero.addActionListener(this);
-
-                Singletons.juePager.jComboBox1.setActionCommand("_COMBOX");
-                Singletons.juePager.jComboBox1.addActionListener(this);
-
-                Singletons.juePager.panelFiltrar.setName("_PANEL_FILTRAR");
-                Singletons.juePager.panelFiltrar.setActionCommand("_PANEL_FILTRAR");
-                Singletons.juePager.panelFiltrar.addActionListener(this);
-                Singletons.juePager.panelFiltrar.addKeyListener(this);
-
-                Singletons.juePager.TABLA.setName("_TABLA_CLICK");
-                Singletons.juePager.TABLA.addMouseListener(this);
-                Singletons.juePager.TABLA.addKeyListener(this);
-
-                Singletons.juePager.btnGuardar.setActionCommand("_BTN_GUARDAR");
-                Singletons.juePager.btnGuardar.addActionListener(this);
-
-                Singletons.juePager.btnAbrir.setActionCommand("_BTN_ABRIR");
-                Singletons.juePager.btnAbrir.addActionListener(this);
-
-                Singletons.juePager.btnAgregar.setActionCommand("_BTN_AGREGAR");
-                Singletons.juePager.btnAgregar.setName("_BTN_AGREGAR");
-                Singletons.juePager.btnAgregar.addActionListener(this);
-                Singletons.juePager.btnAgregar.addMouseListener(this);
-
-                Singletons.juePager.btnCambiar.setActionCommand("_BTN_CAMBIAR");
-                Singletons.juePager.btnCambiar.setName("_BTN_CAMBIAR");
-                Singletons.juePager.btnCambiar.addActionListener(this);
-                Singletons.juePager.btnCambiar.addMouseListener(this);
-
-                Singletons.juePager.btnEliminar.setActionCommand("_BTN_ELIMINAR");
-                Singletons.juePager.btnEliminar.setName("_BTN_ELIMINAR");
-                Singletons.juePager.btnEliminar.addActionListener(this);
-                Singletons.juePager.btnEliminar.addMouseListener(this);
-
-                Singletons.juePager.btnMenu.setActionCommand("_BTN_MENU");
-                Singletons.juePager.btnMenu.setName("_BTN_MENU");
-                Singletons.juePager.btnMenu.addActionListener(this);
-                Singletons.juePager.btnMenu.addMouseListener(this);
-
-                Singletons.juePager.btnPerfilEditar.setActionCommand("_BTN_PERFIL_EDITAR");
-                Singletons.juePager.btnPerfilEditar.setName("_BTN_PERFIL_EDITAR");
-                Singletons.juePager.btnPerfilEditar.addActionListener(this);
-                Singletons.juePager.btnPerfilEditar.addMouseListener(this);
-
-                Singletons.juePager.btnPerfilSalir.setActionCommand("_BTN_PERFIL_SALIR");
-                Singletons.juePager.btnPerfilSalir.setName("_BTN_PERFIL_SALIR");
-                Singletons.juePager.btnPerfilSalir.addActionListener(this);
-                Singletons.juePager.btnPerfilSalir.addMouseListener(this);
-                
-                Singletons.juePager.btnComprar.setActionCommand("_BTN_COMPRAR");
-                Singletons.juePager.btnComprar.setName("_BTN_COMPRAR");
-                Singletons.juePager.btnComprar.addActionListener(this);
-                Singletons.juePager.btnComprar.addMouseListener(this);
+            } else {
+                Singletons.juePager.btnAgregar.setVisible(false);
+                Singletons.juePager.btnCambiar.setVisible(false);
+                Singletons.juePager.btnEliminar.setVisible(false);
+                Singletons.juePager.btnMenu.setVisible(false);
+                Singletons.juePager.btnAbrir.setVisible(false);
             }
 
-            //     Crear juegos
-            if (i == 1) {
+            Singletons.juePager.ANTERIOR.setActionCommand("_BTN_ANTERIOR");
+            Singletons.juePager.ANTERIOR.addActionListener(this);
 
-                JuegoDAO.ocultarErrores();
-                FileUploader.leer_img_defecto_J(0);
+            Singletons.juePager.SIGUIENTE.setActionCommand("_BTN_SIGUIENTE");
+            Singletons.juePager.SIGUIENTE.addActionListener(this);
 
-                Singletons.jueCrear.txtNombre.setName("_TXT_NOMBRE");
-                Singletons.jueCrear.txtNombre.setActionCommand("_TXT_NOMBRE");
-                Singletons.jueCrear.txtNombre.addActionListener(this);
-                Singletons.jueCrear.txtNombre.addKeyListener(this);
+            Singletons.juePager.ultimo.setActionCommand("_BTN_ULTIMO");
+            Singletons.juePager.ultimo.addActionListener(this);
 
-                Singletons.jueCrear.txtCompanyia.setName("_TXT_COMPANYIA");
-                Singletons.jueCrear.txtCompanyia.setActionCommand("_TXT_COMPANYIA");
-                Singletons.jueCrear.txtCompanyia.addActionListener(this);
-                Singletons.jueCrear.txtCompanyia.addKeyListener(this);
+            Singletons.juePager.primero.setActionCommand("_BTN_PRIMERO");
+            Singletons.juePager.primero.addActionListener(this);
 
-                Singletons.jueCrear.txtRef.setName("_TXT_REF");
-                Singletons.jueCrear.txtRef.setActionCommand("_TXT_REF");
-                Singletons.jueCrear.txtRef.addActionListener(this);
-                Singletons.jueCrear.txtRef.addKeyListener(this);
+            Singletons.juePager.jComboBox1.setActionCommand("_COMBOX");
+            Singletons.juePager.jComboBox1.addActionListener(this);
 
-                Singletons.jueCrear.txtTipo.setName("_TXT_TIPO");
-                Singletons.jueCrear.txtTipo.setActionCommand("_TXT_TIPO");
-                Singletons.jueCrear.txtTipo.addActionListener(this);
-                Singletons.jueCrear.txtTipo.addKeyListener(this);
+            Singletons.juePager.panelFiltrar.setName("_PANEL_FILTRAR");
+            Singletons.juePager.panelFiltrar.setActionCommand("_PANEL_FILTRAR");
+            Singletons.juePager.panelFiltrar.addActionListener(this);
+            Singletons.juePager.panelFiltrar.addKeyListener(this);
 
-                Singletons.jueCrear.txtDescripcion.setName("_TXT_DESCRIPCION");
-                Singletons.jueCrear.txtDescripcion.addKeyListener(this);
+            Singletons.juePager.TABLA.setName("_TABLA_CLICK");
+            Singletons.juePager.TABLA.addMouseListener(this);
+            Singletons.juePager.TABLA.addKeyListener(this);
 
-                Singletons.jueCrear.txtPrecio.setName("_TXT_PRECIO");
-                Singletons.jueCrear.txtPrecio.setActionCommand("_TXT_PRECIO");
-                Singletons.jueCrear.txtPrecio.addActionListener(this);
-                Singletons.jueCrear.txtPrecio.addKeyListener(this);
+            Singletons.juePager.btnGuardar.setActionCommand("_BTN_GUARDAR");
+            Singletons.juePager.btnGuardar.addActionListener(this);
 
-                Singletons.jueCrear.btnCargarImg.setActionCommand("_BTN_CARGAR_IMG");
-                Singletons.jueCrear.btnCargarImg.addActionListener(this);
+            Singletons.juePager.btnAbrir.setActionCommand("_BTN_ABRIR");
+            Singletons.juePager.btnAbrir.addActionListener(this);
 
-                Singletons.jueCrear.btnAceptar.setActionCommand("_BTN_ACEPTAR");
-                Singletons.jueCrear.btnAceptar.addActionListener(this);
+            Singletons.juePager.btnAgregar.setActionCommand("_BTN_AGREGAR");
+            Singletons.juePager.btnAgregar.setName("_BTN_AGREGAR");
+            Singletons.juePager.btnAgregar.addActionListener(this);
+            Singletons.juePager.btnAgregar.addMouseListener(this);
 
-                Singletons.jueCrear.btnCancelar.setActionCommand("_BTN_CANCELAR");
-                Singletons.jueCrear.btnCancelar.addActionListener(this);
+            Singletons.juePager.btnCambiar.setActionCommand("_BTN_CAMBIAR");
+            Singletons.juePager.btnCambiar.setName("_BTN_CAMBIAR");
+            Singletons.juePager.btnCambiar.addActionListener(this);
+            Singletons.juePager.btnCambiar.addMouseListener(this);
 
-                Singletons.jueCrear.btnVolver.setActionCommand("_BTN_VOLVER");
-                Singletons.jueCrear.btnVolver.addActionListener(this);
-            }
-            //     Modificar JUEGO
-            if (i == 2) {
+            Singletons.juePager.btnEliminar.setActionCommand("_BTN_ELIMINAR");
+            Singletons.juePager.btnEliminar.setName("_BTN_ELIMINAR");
+            Singletons.juePager.btnEliminar.addActionListener(this);
+            Singletons.juePager.btnEliminar.addMouseListener(this);
 
-                JuegoDAO.modificarJuego();
-                JuegoBLL.ocultaErrorM();
+            Singletons.juePager.btnMenu.setActionCommand("_BTN_MENU");
+            Singletons.juePager.btnMenu.setName("_BTN_MENU");
+            Singletons.juePager.btnMenu.addActionListener(this);
+            Singletons.juePager.btnMenu.addMouseListener(this);
 
-                Singletons.jueModif.txtNombreM.setName("_TXT_NOMBRE_M");
-                Singletons.jueModif.txtNombreM.setActionCommand("_TXT_NOMBRE_M");
-                Singletons.jueModif.txtNombreM.addActionListener(this);
-                Singletons.jueModif.txtNombreM.addKeyListener(this);
+            Singletons.juePager.btnPerfilEditar.setActionCommand("_BTN_PERFIL_EDITAR");
+            Singletons.juePager.btnPerfilEditar.setName("_BTN_PERFIL_EDITAR");
+            Singletons.juePager.btnPerfilEditar.addActionListener(this);
+            Singletons.juePager.btnPerfilEditar.addMouseListener(this);
 
-                Singletons.jueModif.txtCompanyiaM.setName("_TXT_COMPANYIA_M");
-                Singletons.jueModif.txtCompanyiaM.setActionCommand("_TXT_COMPANYIA_M");
-                Singletons.jueModif.txtCompanyiaM.addActionListener(this);
-                Singletons.jueModif.txtCompanyiaM.addKeyListener(this);
+            Singletons.juePager.btnPerfilSalir.setActionCommand("_BTN_PERFIL_SALIR");
+            Singletons.juePager.btnPerfilSalir.setName("_BTN_PERFIL_SALIR");
+            Singletons.juePager.btnPerfilSalir.addActionListener(this);
+            Singletons.juePager.btnPerfilSalir.addMouseListener(this);
 
-                Singletons.jueModif.txtTipoM.setName("_TXT_TIPO_M");
-                Singletons.jueModif.txtTipoM.setActionCommand("_TXT_TIPO_M");
-                Singletons.jueModif.txtTipoM.addActionListener(this);
-                Singletons.jueModif.txtTipoM.addKeyListener(this);               
-                
-                Singletons.jueModif.txtDescripcionM.setName("_TXT_DESCRIPCION_M");
-                Singletons.jueModif.txtDescripcionM.setText("_TXT_DESCRIPCION_M");
-                Singletons.jueModif.txtDescripcionM.addKeyListener(this);
-                
-                Singletons.jueModif.txtPrecioM.setName("_TXT_PRECIO_M");
-                Singletons.jueModif.txtPrecioM.setActionCommand("_TXT_PRECIO_M");
-                Singletons.jueModif.txtPrecioM.addActionListener(this);
-                Singletons.jueModif.txtPrecioM.addKeyListener(this);
-
-                Singletons.jueModif.btnCambiarImgM.setActionCommand("_BTN_CARGAR_IMG_M");
-                Singletons.jueModif.btnCambiarImgM.addActionListener(this);
-
-                Singletons.jueModif.btnAceptarM.setActionCommand("_BTN_ACEPTAR_M");
-                Singletons.jueModif.btnAceptarM.addActionListener(this);
-
-                Singletons.jueModif.btnVolverM.setActionCommand("_BTN_VOLVER_M");
-                Singletons.jueModif.btnVolverM.addActionListener(this);
-            }
+            Singletons.juePager.btnComprar.setActionCommand("_BTN_COMPRAR");
+            Singletons.juePager.btnComprar.setName("_BTN_COMPRAR");
+            Singletons.juePager.btnComprar.addActionListener(this);
+            Singletons.juePager.btnComprar.addMouseListener(this);
         }
 
-    
+        //     Crear juegos
+        if (i == 1) {
+
+            JuegoDAO.ocultarErrores();
+            FileUploader.leer_img_defecto_J(0);
+
+            Singletons.jueCrear.txtNombre.setName("_TXT_NOMBRE");
+            Singletons.jueCrear.txtNombre.setActionCommand("_TXT_NOMBRE");
+            Singletons.jueCrear.txtNombre.addActionListener(this);
+            Singletons.jueCrear.txtNombre.addKeyListener(this);
+
+            Singletons.jueCrear.txtCompanyia.setName("_TXT_COMPANYIA");
+            Singletons.jueCrear.txtCompanyia.setActionCommand("_TXT_COMPANYIA");
+            Singletons.jueCrear.txtCompanyia.addActionListener(this);
+            Singletons.jueCrear.txtCompanyia.addKeyListener(this);
+
+            Singletons.jueCrear.txtRef.setName("_TXT_REF");
+            Singletons.jueCrear.txtRef.setActionCommand("_TXT_REF");
+            Singletons.jueCrear.txtRef.addActionListener(this);
+            Singletons.jueCrear.txtRef.addKeyListener(this);
+
+            Singletons.jueCrear.txtTipo.setName("_TXT_TIPO");
+            Singletons.jueCrear.txtTipo.setActionCommand("_TXT_TIPO");
+            Singletons.jueCrear.txtTipo.addActionListener(this);
+            Singletons.jueCrear.txtTipo.addKeyListener(this);
+
+            Singletons.jueCrear.txtDescripcion.setName("_TXT_DESCRIPCION");
+            Singletons.jueCrear.txtDescripcion.addKeyListener(this);
+
+            Singletons.jueCrear.txtPrecio.setName("_TXT_PRECIO");
+            Singletons.jueCrear.txtPrecio.setActionCommand("_TXT_PRECIO");
+            Singletons.jueCrear.txtPrecio.addActionListener(this);
+            Singletons.jueCrear.txtPrecio.addKeyListener(this);
+
+            Singletons.jueCrear.btnCargarImg.setActionCommand("_BTN_CARGAR_IMG");
+            Singletons.jueCrear.btnCargarImg.addActionListener(this);
+
+            Singletons.jueCrear.btnAceptar.setActionCommand("_BTN_ACEPTAR");
+            Singletons.jueCrear.btnAceptar.addActionListener(this);
+
+            Singletons.jueCrear.btnCancelar.setActionCommand("_BTN_CANCELAR");
+            Singletons.jueCrear.btnCancelar.addActionListener(this);
+
+            Singletons.jueCrear.btnVolver.setActionCommand("_BTN_VOLVER");
+            Singletons.jueCrear.btnVolver.addActionListener(this);
+        }
+        //     Modificar JUEGO
+        if (i == 2) {
+
+            JuegoDAO.modificarJuego();
+            JuegoBLL.ocultaErrorM();
+
+            Singletons.jueModif.txtNombreM.setName("_TXT_NOMBRE_M");
+            Singletons.jueModif.txtNombreM.setActionCommand("_TXT_NOMBRE_M");
+            Singletons.jueModif.txtNombreM.addActionListener(this);
+            Singletons.jueModif.txtNombreM.addKeyListener(this);
+
+            Singletons.jueModif.txtCompanyiaM.setName("_TXT_COMPANYIA_M");
+            Singletons.jueModif.txtCompanyiaM.setActionCommand("_TXT_COMPANYIA_M");
+            Singletons.jueModif.txtCompanyiaM.addActionListener(this);
+            Singletons.jueModif.txtCompanyiaM.addKeyListener(this);
+
+            Singletons.jueModif.txtTipoM.setName("_TXT_TIPO_M");
+            Singletons.jueModif.txtTipoM.setActionCommand("_TXT_TIPO_M");
+            Singletons.jueModif.txtTipoM.addActionListener(this);
+            Singletons.jueModif.txtTipoM.addKeyListener(this);
+
+            Singletons.jueModif.txtDescripcionM.setName("_TXT_DESCRIPCION_M");
+            Singletons.jueModif.txtDescripcionM.setText("_TXT_DESCRIPCION_M");
+            Singletons.jueModif.txtDescripcionM.addKeyListener(this);
+
+            Singletons.jueModif.txtPrecioM.setName("_TXT_PRECIO_M");
+            Singletons.jueModif.txtPrecioM.setActionCommand("_TXT_PRECIO_M");
+            Singletons.jueModif.txtPrecioM.addActionListener(this);
+            Singletons.jueModif.txtPrecioM.addKeyListener(this);
+
+            Singletons.jueModif.btnCambiarImgM.setActionCommand("_BTN_CARGAR_IMG_M");
+            Singletons.jueModif.btnCambiarImgM.addActionListener(this);
+
+            Singletons.jueModif.btnAceptarM.setActionCommand("_BTN_ACEPTAR_M");
+            Singletons.jueModif.btnAceptarM.addActionListener(this);
+
+            Singletons.jueModif.btnVolverM.setActionCommand("_BTN_VOLVER_M");
+            Singletons.jueModif.btnVolverM.addActionListener(this);
+        }
+    }
 
     public static void comboActionPerformed(java.awt.event.ActionEvent evt) {
         System.out.println("word selected: " + ((JComboBox) Singletons.combo_J).getSelectedItem());
@@ -349,7 +345,7 @@ public class Controlador_Juegos implements ActionListener, KeyListener, MouseLis
 
                 int n = ((SimpleTableModel_juegos) Vtna_jue_Pager.TABLA.getModel()).getRowCount();
                 if (n != 0) {
-                    inicio = (pagina_J.currentPageIndex - 1) * pagina_J.itemsPerPage;
+                    inicio = (pagina_J.currentPageIndex - 1) * pagina_J.itemsPerPageJ;
                     selection = Vtna_jue_Pager.TABLA.getSelectedRow();
                     selection1 = inicio + selection;
                     if (Singletons.jue != null) {
@@ -369,9 +365,8 @@ public class Controlador_Juegos implements ActionListener, KeyListener, MouseLis
                 JuegoBLL.btnEliminarPager();
                 break;
 
-            
             case _BTN_MENU:
-              new Controlador_Menu(new Vtna_Menu_Admin(), 0).iniciar(0);
+                new Controlador_Menu(new Vtna_Menu_Admin(), 0).iniciar(0);
                 Singletons.juePager.dispose();
                 JPanel p4 = new JPanel();
                 p4.add(Singletons.menu.panelMenu);
@@ -384,6 +379,7 @@ public class Controlador_Juegos implements ActionListener, KeyListener, MouseLis
                 break;
 
             case _BTN_ABRIR:
+                JOptionPane.showMessageDialog(null, "Funcion no disponible");
                 //          JuegoBLL.abrir();
                 break;
 
@@ -408,18 +404,18 @@ public class Controlador_Juegos implements ActionListener, KeyListener, MouseLis
                 break;
 
             case _COMBOX:
-                pagina_J.itemsPerPage = Integer.parseInt(Singletons.juePager.jComboBox1.getSelectedItem().toString());
+                pagina_J.itemsPerPageJ = Integer.parseInt(Singletons.juePager.jComboBox1.getSelectedItem().toString());
                 pagina_J.currentPageIndex = 1;
                 pagina_J.initLinkBox();
                 break;
-                
+
             case _BTN_COMPRAR:
-                 if (Singletons.conectado == false) {
-                     JOptionPane.showMessageDialog(null, "Debes registrarte para poder comprar");
-                 } else {
-                     JOptionPane.showMessageDialog(null, "Pagina de compras \n - en construccion -");
-                 }
-                    
+                if (Singletons.conectado == false) {
+                    JOptionPane.showMessageDialog(null, "Debes registrarte para poder comprar");
+                } else {
+                    JOptionPane.showMessageDialog(null, "Pagina de compras \n - en construccion -");
+                }
+
                 break;
 
             // ------- CREAR JUEGO -------------------               
@@ -480,12 +476,16 @@ public class Controlador_Juegos implements ActionListener, KeyListener, MouseLis
                 JuegoBLL.pideTipoM();
                 break;
 
-           case _TXT_DESCRIPCION_M:
+            case _TXT_DESCRIPCION_M:
                 JuegoBLL.pideDescripcionM();
                 break;
 
             case _TXT_PRECIO_M:
                 JuegoBLL.pidePrecioM();
+                break;
+
+            case _BTN_CARGAR_IMG_M:
+                FileUploader.guardar_img_J(Singletons.jueModif.etiAvatarM, 90, 90, 1);
                 break;
 
             case _BTN_ACEPTAR_M:
@@ -497,8 +497,7 @@ public class Controlador_Juegos implements ActionListener, KeyListener, MouseLis
                 panelPagerM.add(Singletons.juePager.panelPager);
                 Singletons.ini.internalFrame.setContentPane(panelPagerM);
 
-                ((SimpleTableModel_juegos) Singletons.juePager.TABLA.getModel()).cargar();
-
+           //     ((SimpleTableModel_juegos) Singletons.juePager.TABLA.getModel()).cargar();
             case _BTN_CANCELAR_M:
                 JuegoBLL.ocultaErrorM();
                 break;
@@ -511,9 +510,6 @@ public class Controlador_Juegos implements ActionListener, KeyListener, MouseLis
                 Singletons.ini.internalFrame.setContentPane(pModif);
                 break;
 
-            case _BTN_CARGAR_IMG_M:
-                FileUploader.guardar_img_J(Singletons.jueModif.etiAvatarM, 90, 90, 1);
-                break;
         }
     }
 
@@ -647,21 +643,21 @@ public class Controlador_Juegos implements ActionListener, KeyListener, MouseLis
 
                 } catch (Exception e) {
                 }
-                
-               Singletons.juePager.etiNombreP.setText(Singletons.jue.getNombre());
-               Singletons.juePager.etiCompanyiaP.setText(Singletons.jue.getCompanyia());
-               Singletons.juePager.etiTipoP.setText(Singletons.jue.getTipo());
-               Singletons.juePager.etiPrecioP.setText(Singletons.jue.getPrecio());
-               Singletons.juePager.etiFechaP.setText(Singletons.jue.getFecha_alta().aStringFecha());
-               Singletons.juePager.etiDescripcionP.setText(Singletons.jue.getDescripcion());
-               
-               if (Singletons.jue.getImagen().isEmpty()){
-                   FileUploader.leer_img_defecto_J(2);
-               } else {
-                   Singletons.juePager.imgPager.setText(Singletons.jue.getImagen());
-                   FileUploader.leer_img_juego(1);
-               }
-              
+
+                Singletons.juePager.etiNombreP.setText(Singletons.jue.getNombre());
+                Singletons.juePager.etiCompanyiaP.setText(Singletons.jue.getCompanyia());
+                Singletons.juePager.etiTipoP.setText(Singletons.jue.getTipo());
+                Singletons.juePager.etiPrecioP.setText(Singletons.jue.getPrecio());
+                Singletons.juePager.etiFechaP.setText(Singletons.jue.getFecha_alta().aStringFecha());
+                Singletons.juePager.etiDescripcionP.setText(Singletons.jue.getDescripcion());
+
+                if (Singletons.jue.getImagen().isEmpty()) {
+                    FileUploader.leer_img_defecto_J(2);
+                } else {
+                    Singletons.juePager.imgPager.setText(Singletons.jue.getImagen());
+                    FileUploader.leer_img_juego(1);
+                }
+
                 break;
         }
     }

@@ -100,7 +100,7 @@ public class Vtna_jue_Pager extends javax.swing.JFrame implements ActionListener
         ));
         jScrollPane1.setViewportView(TABLA);
 
-        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(12, 13, 550, 170));
+        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(12, 13, 550, 160));
 
         btnAgregar.setText("Agregar");
 

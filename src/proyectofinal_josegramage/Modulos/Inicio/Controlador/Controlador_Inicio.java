@@ -40,6 +40,7 @@ import proyectofinal_josegramage.Modulos.Clientes.Vista.Vtna_cli_MiPerfil;
 import proyectofinal_josegramage.Modulos.Clientes.Vista.Vtna_cli_Modif;
 import proyectofinal_josegramage.Modulos.Inicio.Vista.Vtna_Historia;
 import proyectofinal_josegramage.Modulos.Inicio.Vista.Vtna_Inicio;
+import proyectofinal_josegramage.Modulos.Inicio.Vista.Vtna_Nosotros;
 import proyectofinal_josegramage.Modulos.Inicio.Vista.Vtna_panel_Inicio;
 import proyectofinal_josegramage.Modulos.Juegos.Controlador.Controlador_Juegos;
 import proyectofinal_josegramage.Modulos.Juegos.Vista.Vtna_jue_Crear;
@@ -85,11 +86,10 @@ public class Controlador_Inicio implements ActionListener, MouseListener {
 
         if (i == 3) {
             Singletons.histo = (Vtna_Historia) inicio;
-
         }
 
         if (i == 4) {
-            new Controlador_Login(new Vtna_SignIN(), 0).iniciar(0);
+            Singletons.nos = (Vtna_Nosotros) inicio;
         }
 
     }
@@ -280,7 +280,11 @@ public class Controlador_Inicio implements ActionListener, MouseListener {
                 break;
 
             case _NOSOTROS:
-                JOptionPane.showMessageDialog(null, "En construcción");
+               new Controlador_Inicio(new Vtna_Nosotros(), 4).iniciar(4);
+
+                JPanel pNosotros = new JPanel();
+                pNosotros.add(Singletons.nos.panelNosotros);
+                Singletons.ini.internalFrame.setContentPane(pNosotros);
                 break;
 
             case _MENU_ADMIN:

@@ -280,7 +280,7 @@ public class FileUploader {
                 Image img = icon.getImage();
                 Image newimg = img.getScaledInstance(90, 90, java.awt.Image.SCALE_SMOOTH);
                 ImageIcon newIcon = new ImageIcon(newimg);
-                Singletons.jueCrear.etiAvatar.setIcon(newIcon); //pintamos la imagen_default 
+                Singletons.jueCrear.etiAvatar.setIcon(newIcon);  
 
             } else if (i == 1) {
                 ImageIcon icon = new ImageIcon(ruta);
