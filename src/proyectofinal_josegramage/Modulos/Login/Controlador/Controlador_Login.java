@@ -64,8 +64,6 @@ public class Controlador_Login implements ActionListener, MouseListener, KeyList
         _BTN_CANCELAR,
         // recuperar password
         _BTN_ACEPTAR_RECU,
-        _BTN_VOLVER_RECU,
-
     }
 
     public Controlador_Login(JFrame Login, int i) {
@@ -165,11 +163,6 @@ public class Controlador_Login implements ActionListener, MouseListener, KeyList
             Singletons.recu.btnAceptarRecu.addActionListener(this);
             Singletons.recu.btnAceptarRecu.addMouseListener(this);
 
-            Singletons.recu.btnVolverRecu.setActionCommand("_BTN_VOLVER_RECU");
-            Singletons.recu.btnVolverRecu.setName("_BTN_VOLVER_RECU");
-            Singletons.recu.btnVolverRecu.addActionListener(this);
-            Singletons.recu.btnVolverRecu.addMouseListener(this);
-
         }
     }
 
@@ -183,11 +176,13 @@ public class Controlador_Login implements ActionListener, MouseListener, KeyList
                 String usuario = Vtna_SignIN.txtUsuario.getText();
                 String password = Vtna_SignIN.txtPassword.getText();
                 boolean login;
-
+                
                 LoginBLL _login = new LoginBLL();
 
                 login = _login.loginUsuarioBLL(usuario, password);
-
+                
+                LoginBLL.activarUsuarioBLL(usuario);
+                
                 if (login == true) {
                     Singletons.conectado = true;
 
@@ -254,12 +249,14 @@ public class Controlador_Login implements ActionListener, MouseListener, KeyList
 
             case _BTN_ACEPTAR_alta:
                 LoginBLL.AltaUsuario();
+                
+                if (Singletons.cli.getFechaalta()!= null) {
                 Singletons.alta.dispose();
-
                 new Controlador_Login(new Vtna_SignIN(), 0).iniciar(0);
                 JPanel p4 = new JPanel();
                 p4.add(Singletons.login.panelLogin);
                 Singletons.ini.internalFrame.setContentPane(p4);
+                }
                 break;
 
             case _BTN_CANCELAR:
@@ -279,11 +276,6 @@ public class Controlador_Login implements ActionListener, MouseListener, KeyList
                 JPanel panLog = new JPanel();
                 panLog.add(Singletons.login.panelLogin);
                 Singletons.ini.internalFrame.setContentPane(panLog);
-                break;
-
-            case _BTN_VOLVER_RECU:
-                new Controlador_Login(new Vtna_SignIN(), 0).iniciar(0);
-                Singletons.recu.dispose();
                 break;
 
         }
@@ -355,11 +347,11 @@ public class Controlador_Login implements ActionListener, MouseListener, KeyList
                 break;
 
             case _BTN_REGISTRO:
-                Singletons.login.etiRegistro.setForeground(Color.white);
+                Singletons.login.etiRegistro.setForeground(Color.blue);
                 break;
 
             case _BTN_PASSW_OLVID:
-                Singletons.login.etiPassword.setForeground(Color.white);
+                Singletons.login.etiPassword.setForeground(Color.blue);
                 break;
 
         }

@@ -5,6 +5,7 @@
  */
 package proyectofinal_josegramage.Modulos.Juegos.Controlador;
 
+import com.toedter.calendar.JTextFieldDateEditor;
 import proyectofinal_josegramage.Utiles.FileUploader;
 import proyectofinal_josegramage.Clases.JDKP_Fondo;
 import proyectofinal_josegramage.Clases.JPanel_Fondo;
@@ -45,10 +46,8 @@ import javax.swing.JFrame;
 import java.awt.Image;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
-import proyectofinal_josegramage.Modulos.Clientes.Controlador.Controlador_Cliente;
-import proyectofinal_josegramage.Modulos.Clientes.Vista.Vtna_cli_Pager;
 import proyectofinal_josegramage.Modulos.Juegos.Clases.Juego;
-import proyectofinal_josegramage.Modulos.Login.Vista.Vtna_SignUP;
+
 
 /**
  *
@@ -78,6 +77,7 @@ public class Controlador_Juegos implements ActionListener, KeyListener, MouseLis
         _BTN_PERFIL,
         _BTN_PERFIL_EDITAR,
         _BTN_PERFIL_SALIR,
+        _BTN_COMPRAR,
         // Ventana crear
         _TXT_NOMBRE,
         _TXT_COMPANYIA,
@@ -156,17 +156,18 @@ public class Controlador_Juegos implements ActionListener, KeyListener, MouseLis
                     Singletons.juePager.btnCambiar.setVisible(false);
                     Singletons.juePager.btnEliminar.setVisible(false);
                     Singletons.juePager.btnMenu.setVisible(false);
-                    Singletons.juePager.btnInfo.setVisible(false);
-                } 
+                    Singletons.juePager.btnAbrir.setVisible(false);        
+                                   } 
 
                 } else {
                     Singletons.juePager.btnAgregar.setVisible(false);
                     Singletons.juePager.btnCambiar.setVisible(false);
                     Singletons.juePager.btnEliminar.setVisible(false);
                     Singletons.juePager.btnMenu.setVisible(false);
-                    Singletons.juePager.btnInfo.setVisible(false);
-            }
-
+                    Singletons.juePager.btnAbrir.setVisible(false);
+                               }
+            
+      
                 Singletons.juePager.ANTERIOR.setActionCommand("_BTN_ANTERIOR");
                 Singletons.juePager.ANTERIOR.addActionListener(this);
 
@@ -212,11 +213,6 @@ public class Controlador_Juegos implements ActionListener, KeyListener, MouseLis
                 Singletons.juePager.btnEliminar.addActionListener(this);
                 Singletons.juePager.btnEliminar.addMouseListener(this);
 
-                Singletons.juePager.btnInfo.setActionCommand("_BTN_INFO");
-                Singletons.juePager.btnInfo.setName("_BTN_INFO");
-                Singletons.juePager.btnInfo.addActionListener(this);
-                Singletons.juePager.btnInfo.addMouseListener(this);
-
                 Singletons.juePager.btnMenu.setActionCommand("_BTN_MENU");
                 Singletons.juePager.btnMenu.setName("_BTN_MENU");
                 Singletons.juePager.btnMenu.addActionListener(this);
@@ -231,6 +227,11 @@ public class Controlador_Juegos implements ActionListener, KeyListener, MouseLis
                 Singletons.juePager.btnPerfilSalir.setName("_BTN_PERFIL_SALIR");
                 Singletons.juePager.btnPerfilSalir.addActionListener(this);
                 Singletons.juePager.btnPerfilSalir.addMouseListener(this);
+                
+                Singletons.juePager.btnComprar.setActionCommand("_BTN_COMPRAR");
+                Singletons.juePager.btnComprar.setName("_BTN_COMPRAR");
+                Singletons.juePager.btnComprar.addActionListener(this);
+                Singletons.juePager.btnComprar.addMouseListener(this);
             }
 
             //     Crear juegos
@@ -278,14 +279,8 @@ public class Controlador_Juegos implements ActionListener, KeyListener, MouseLis
 
                 Singletons.jueCrear.btnVolver.setActionCommand("_BTN_VOLVER");
                 Singletons.jueCrear.btnVolver.addActionListener(this);
-
-                Singletons.jueCrear.btnNuevo.setActionCommand("_BTN_NUEVO");
-                Singletons.jueCrear.btnNuevo.setName("_BTN_NUEVO");
-                Singletons.jueCrear.btnNuevo.addActionListener(this);
-                Singletons.jueCrear.btnNuevo.addMouseListener(this);
-
             }
-            //     Modificar empleado
+            //     Modificar JUEGO
             if (i == 2) {
 
                 JuegoDAO.modificarJuego();
@@ -304,11 +299,12 @@ public class Controlador_Juegos implements ActionListener, KeyListener, MouseLis
                 Singletons.jueModif.txtTipoM.setName("_TXT_TIPO_M");
                 Singletons.jueModif.txtTipoM.setActionCommand("_TXT_TIPO_M");
                 Singletons.jueModif.txtTipoM.addActionListener(this);
-                Singletons.jueModif.txtTipoM.addKeyListener(this);
-
-                Singletons.jueModif.txtDescripcionM.setName("_TXT_DIRECCION_M");
+                Singletons.jueModif.txtTipoM.addKeyListener(this);               
+                
+                Singletons.jueModif.txtDescripcionM.setName("_TXT_DESCRIPCION_M");
+                Singletons.jueModif.txtDescripcionM.setText("_TXT_DESCRIPCION_M");
                 Singletons.jueModif.txtDescripcionM.addKeyListener(this);
-
+                
                 Singletons.jueModif.txtPrecioM.setName("_TXT_PRECIO_M");
                 Singletons.jueModif.txtPrecioM.setActionCommand("_TXT_PRECIO_M");
                 Singletons.jueModif.txtPrecioM.addActionListener(this);
@@ -319,9 +315,6 @@ public class Controlador_Juegos implements ActionListener, KeyListener, MouseLis
 
                 Singletons.jueModif.btnAceptarM.setActionCommand("_BTN_ACEPTAR_M");
                 Singletons.jueModif.btnAceptarM.addActionListener(this);
-
-                Singletons.jueModif.btnCancelarM.setActionCommand("_BTN_CANCELAR_M");
-                Singletons.jueModif.btnCancelarM.addActionListener(this);
 
                 Singletons.jueModif.btnVolverM.setActionCommand("_BTN_VOLVER_M");
                 Singletons.jueModif.btnVolverM.addActionListener(this);
@@ -376,14 +369,7 @@ public class Controlador_Juegos implements ActionListener, KeyListener, MouseLis
                 JuegoBLL.btnEliminarPager();
                 break;
 
-            case _BTN_INFO:
-                if (Singletons.jue != null) {
-                    JuegoBLL.InfoPager();
-                } else {
-                    JOptionPane.showMessageDialog(null, "No hay un juego seleccionado", "Error", JOptionPane.QUESTION_MESSAGE);
-                }
-                break;
-
+            
             case _BTN_MENU:
               new Controlador_Menu(new Vtna_Menu_Admin(), 0).iniciar(0);
                 Singletons.juePager.dispose();
@@ -426,8 +412,17 @@ public class Controlador_Juegos implements ActionListener, KeyListener, MouseLis
                 pagina_J.currentPageIndex = 1;
                 pagina_J.initLinkBox();
                 break;
+                
+            case _BTN_COMPRAR:
+                 if (Singletons.conectado == false) {
+                     JOptionPane.showMessageDialog(null, "Debes registrarte para poder comprar");
+                 } else {
+                     JOptionPane.showMessageDialog(null, "Pagina de compras \n - en construccion -");
+                 }
+                    
+                break;
 
-            // ------- CREAR EMPLEADO -------------------               
+            // ------- CREAR JUEGO -------------------               
             case _TXT_NOMBRE:
                 JuegoBLL.pideNombre();
                 break;
@@ -485,7 +480,7 @@ public class Controlador_Juegos implements ActionListener, KeyListener, MouseLis
                 JuegoBLL.pideTipoM();
                 break;
 
-            case _TXT_DESCRIPCION_M:
+           case _TXT_DESCRIPCION_M:
                 JuegoBLL.pideDescripcionM();
                 break;
 
@@ -561,7 +556,7 @@ public class Controlador_Juegos implements ActionListener, KeyListener, MouseLis
                 JuegoBLL.pidePrecioKey();
                 break;
 
-            // ------------  Modificar Empleado --------------     
+            // ------------  Modificar JUEGO --------------     
             case _TXT_NOMBRE_M:
                 JuegoBLL.pideNombreKeyM();
                 break;
@@ -594,7 +589,7 @@ public class Controlador_Juegos implements ActionListener, KeyListener, MouseLis
                 ((SimpleTableModel_juegos) Singletons.juePager.TABLA.getModel()).filtrar();
                 break;
 
-            // ----------  Crear Empleado  --------------
+            // ----------  Crear JUEGO  --------------
             case _TXT_NOMBRE:
                 JuegoBLL.pideNombreKey();
                 break;
@@ -619,7 +614,7 @@ public class Controlador_Juegos implements ActionListener, KeyListener, MouseLis
                 JuegoBLL.pidePrecioKey();
                 break;
 
-            // ------------  Modificar Empleado --------------     
+            // ------------  Modificar JUEGO --------------     
             case _TXT_NOMBRE_M:
                 JuegoBLL.pideNombreKeyM();
                 break;
@@ -652,6 +647,21 @@ public class Controlador_Juegos implements ActionListener, KeyListener, MouseLis
 
                 } catch (Exception e) {
                 }
+                
+               Singletons.juePager.etiNombreP.setText(Singletons.jue.getNombre());
+               Singletons.juePager.etiCompanyiaP.setText(Singletons.jue.getCompanyia());
+               Singletons.juePager.etiTipoP.setText(Singletons.jue.getTipo());
+               Singletons.juePager.etiPrecioP.setText(Singletons.jue.getPrecio());
+               Singletons.juePager.etiFechaP.setText(Singletons.jue.getFecha_alta().aStringFecha());
+               Singletons.juePager.etiDescripcionP.setText(Singletons.jue.getDescripcion());
+               
+               if (Singletons.jue.getImagen().isEmpty()){
+                   FileUploader.leer_img_defecto_J(2);
+               } else {
+                   Singletons.juePager.imgPager.setText(Singletons.jue.getImagen());
+                   FileUploader.leer_img_juego(1);
+               }
+              
                 break;
         }
     }

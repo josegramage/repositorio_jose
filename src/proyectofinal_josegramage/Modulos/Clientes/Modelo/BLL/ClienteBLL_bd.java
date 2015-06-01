@@ -89,6 +89,20 @@ public class ClienteBLL_bd {
         _clienteborrado = _clienteDAO.borrarClienteDAO(_con, Singletons.cli);
         _conexion_DB.CerrarConexion(_con);
     }
+    
+    public static void borrarUsuarioMiPerfil() {
+        Connection _con;
+        Cliente _clienteborrado = null;
+        ConexionBD _conexion_DB = new ConexionBD();
+
+        _con = _conexion_DB.AbrirConexion();
+        ClienteDAO_bd _clienteDAO = new ClienteDAO_bd();
+        _clienteborrado = _clienteDAO.borrarClienteDAO(_con, Singletons.cliLog);
+        _conexion_DB.CerrarConexion(_con);
+        
+      
+    }
+    
 
      //buscar por dni al empleado
     public static boolean buscarDniBLL() {
@@ -106,4 +120,44 @@ public class ClienteBLL_bd {
         _conexion_DB.CerrarConexion(_con);
         return buscar;
     }
+    
+    
+    // Sacar empleado joven y mayor
+    public void clienteMenorMayorBLL() {
+
+        Connection _con = null;
+        ConexionBD _conexion_DB = new ConexionBD();
+        _con = _conexion_DB.AbrirConexion();
+
+        ClienteDAO_bd _clienteDAO = new ClienteDAO_bd();
+        _clienteDAO.clienteMenorMayorDAO(_con);
+        _conexion_DB.CerrarConexion(_con);
+    }
+
+    // Sacar edad media de los empleados
+    public void EdadMediaBLL() {
+
+        Connection _con = null;
+        ConexionBD _conexion_DB = new ConexionBD();
+        _con = _conexion_DB.AbrirConexion();
+
+        ClienteDAO_bd _clienteDAO = new ClienteDAO_bd();
+        _clienteDAO.EdadMediaDAO(_con);
+        _conexion_DB.CerrarConexion(_con);
+    }
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
 }

@@ -35,7 +35,6 @@ public class Vtna_Recuperar extends javax.swing.JFrame {
         txtemailRecuperar = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
-        btnVolverRecu = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -49,8 +48,6 @@ public class Vtna_Recuperar extends javax.swing.JFrame {
 
         jLabel3.setText("Si has olvidado tu contraseña te enviaremos a tu correo electrónico");
 
-        btnVolverRecu.setText("Volver");
-
         javax.swing.GroupLayout panelRecuperarLayout = new javax.swing.GroupLayout(panelRecuperar);
         panelRecuperar.setLayout(panelRecuperarLayout);
         panelRecuperarLayout.setHorizontalGroup(
@@ -63,18 +60,13 @@ public class Vtna_Recuperar extends javax.swing.JFrame {
                             .addComponent(jLabel4)
                             .addComponent(jLabel3)))
                     .addGroup(panelRecuperarLayout.createSequentialGroup()
-                        .addGroup(panelRecuperarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(panelRecuperarLayout.createSequentialGroup()
-                                .addGap(65, 65, 65)
-                                .addGroup(panelRecuperarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(jLabel2)
-                                    .addComponent(txtDniRecuperar)
-                                    .addComponent(txtemailRecuperar)
-                                    .addComponent(btnAceptarRecu, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jLabel1)))
-                            .addGroup(panelRecuperarLayout.createSequentialGroup()
-                                .addGap(83, 83, 83)
-                                .addComponent(btnVolverRecu, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(65, 65, 65)
+                        .addGroup(panelRecuperarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jLabel2)
+                            .addComponent(txtDniRecuperar)
+                            .addComponent(txtemailRecuperar)
+                            .addComponent(btnAceptarRecu, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel1))
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
@@ -95,9 +87,7 @@ public class Vtna_Recuperar extends javax.swing.JFrame {
                 .addComponent(txtemailRecuperar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(32, 32, 32)
                 .addComponent(btnAceptarRecu)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btnVolverRecu)
-                .addContainerGap())
+                .addGap(40, 40, 40))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -158,7 +148,6 @@ public class Vtna_Recuperar extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     public static javax.swing.JButton btnAceptarRecu;
-    public static javax.swing.JButton btnVolverRecu;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

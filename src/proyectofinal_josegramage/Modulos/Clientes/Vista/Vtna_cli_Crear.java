@@ -48,12 +48,9 @@ public class Vtna_cli_Crear extends javax.swing.JFrame {
         etiApellidoError = new javax.swing.JLabel();
         etiDniError = new javax.swing.JLabel();
         etiTelefonoError = new javax.swing.JLabel();
-        etiGuardado = new javax.swing.JLabel();
         etiLogin = new javax.swing.JLabel();
         etiEmail = new javax.swing.JLabel();
         etiPassword = new javax.swing.JLabel();
-        btnOK = new javax.swing.JButton();
-        btnNuevo = new javax.swing.JButton();
         btnVolver = new javax.swing.JButton();
         txtLogin = new javax.swing.JTextField();
         txtPassword = new javax.swing.JTextField();
@@ -96,10 +93,10 @@ public class Vtna_cli_Crear extends javax.swing.JFrame {
         panelCrear.add(txtFnacimiento, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 210, -1, -1));
 
         btnAceptar.setText("Aceptar");
-        panelCrear.add(btnAceptar, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 310, -1, -1));
+        panelCrear.add(btnAceptar, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 300, -1, -1));
 
         btnCancelar.setText("Cancelar");
-        panelCrear.add(btnCancelar, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 310, -1, -1));
+        panelCrear.add(btnCancelar, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 300, -1, -1));
 
         etiNombreError.setForeground(new java.awt.Color(255, 0, 0));
         etiNombreError.setText("Introduce un nombre válido");
@@ -132,11 +129,6 @@ public class Vtna_cli_Crear extends javax.swing.JFrame {
         etiTelefonoError.setText("Introduce un telefono válido");
         panelCrear.add(etiTelefonoError, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 120, -1, -1));
 
-        etiGuardado.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        etiGuardado.setForeground(new java.awt.Color(0, 204, 102));
-        etiGuardado.setText("Cliente guardado con éxito");
-        panelCrear.add(etiGuardado, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 280, -1, -1));
-
         etiLogin.setText("Login:");
         panelCrear.add(etiLogin, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 240, -1, -1));
 
@@ -146,15 +138,9 @@ public class Vtna_cli_Crear extends javax.swing.JFrame {
         etiPassword.setText("Password:");
         panelCrear.add(etiPassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 240, -1, -1));
 
-        btnOK.setIcon(new javax.swing.ImageIcon(getClass().getResource("/proyectofinal_josegramage/Img/iconos/acierto.png"))); // NOI18N
-        panelCrear.add(btnOK, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 270, 30, 30));
-
-        btnNuevo.setText("Nuevo");
-        panelCrear.add(btnNuevo, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 302, 110, 60));
-
         btnVolver.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         btnVolver.setText("VOLVER");
-        panelCrear.add(btnVolver, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 340, 180, -1));
+        panelCrear.add(btnVolver, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 330, 180, -1));
         panelCrear.add(txtLogin, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 240, 110, -1));
         panelCrear.add(txtPassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 240, 110, -1));
 
@@ -224,8 +210,6 @@ public class Vtna_cli_Crear extends javax.swing.JFrame {
     public static javax.swing.JButton btnAceptar;
     public static javax.swing.JButton btnCancelar;
     public static javax.swing.JButton btnCargarImg;
-    public static javax.swing.JButton btnNuevo;
-    public static javax.swing.JButton btnOK;
     public static javax.swing.JButton btnVolver;
     public static javax.swing.JComboBox comboTipo;
     public static javax.swing.JButton errorApellidos;
@@ -244,7 +228,6 @@ public class Vtna_cli_Crear extends javax.swing.JFrame {
     private javax.swing.JLabel etiEmail;
     private javax.swing.JLabel etiEmail1;
     public static javax.swing.JLabel etiEmailError;
-    public static javax.swing.JLabel etiGuardado;
     public static javax.swing.JLabel etiLogin;
     public static javax.swing.JLabel etiNombreError;
     public static javax.swing.JLabel etiPassword;

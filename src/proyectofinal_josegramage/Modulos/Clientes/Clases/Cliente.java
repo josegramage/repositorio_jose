@@ -71,8 +71,7 @@ public class Cliente implements Comparable<Cliente>, Serializable {
        
         String toS = " Usuario= " + login +"\n --------" + "\n Nombre= " + nombre + "\n Apellidos= " + apellidos + "\n Dni= " + dni 
                     +  "\n Telefono= " + telefono + "\n Direccion= " + direccion + "\n Email: " + email + "\n Fecha de nacimiento= "
-                    + getFnacimiento().aStringFecha() + "\n Fecha de alta= "
-                    + getFechaalta().aStringFecha();
+                    + getFnacimiento().aStringFecha() + "\n Fecha de alta= "+ getFechaalta().aStringFecha();
 
         StringBuffer cadena = new StringBuffer();
         cadena.append(toS);

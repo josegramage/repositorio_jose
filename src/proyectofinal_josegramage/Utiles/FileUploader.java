@@ -97,7 +97,7 @@ public class FileUploader {
                 }
             }
         } else { //avatar per defecte
-            ruta = "src/proyectofinal_josegramage/Img/avatar_cliente/icono_defecto.jpg";
+            ruta = "src/proyectofinal_josegramage/Img/icono_defecto.jpg";
 
             if (i == 0) {
                 ImageIcon icon = new ImageIcon(ruta);
@@ -113,9 +113,16 @@ public class FileUploader {
                 ImageIcon newIcon = new ImageIcon(newimg);
                 Singletons.efModif.etiAvatarM.setIcon(newIcon);
             }
+            else if (i == 2) {
+                ImageIcon icon = new ImageIcon(ruta);
+                Image img = icon.getImage();
+                Image newimg = img.getScaledInstance(90, 90, java.awt.Image.SCALE_SMOOTH);
+                ImageIcon newIcon = new ImageIcon(newimg);
+                Singletons.cliMP.etiAvatarM.setIcon(newIcon);
+            }
             try {
                 //guardamos la imagen
-                Singletons.PATH_auto = new java.io.File("") + "src/proyectofinal_josegramage/Img/avatar_cliente/icono_defecto.jpg";
+                Singletons.PATH_auto = new java.io.File("") + "src/proyectofinal_josegramage/Img/icono_defecto.jpg";
                 File f = new File(Singletons.PATH_auto);
                 image = ImageIO.read(f);
                 ImageIO.write(image, "jpg", f);
@@ -132,7 +139,7 @@ public class FileUploader {
 
             if (i == 0) {    // para el login
 
-                ImageIcon icon = new ImageIcon(Singletons.ruta_avatar);
+                ImageIcon icon = new ImageIcon(Singletons.cliLog.getAvatar());
 
                 Image img = icon.getImage();
 
@@ -174,7 +181,7 @@ public class FileUploader {
 
     public static void leer_imag_defecto(int i) {
 
-        String ruta = "src/proyectofinal_josegramage/Img/avatar_cliente/icono_defecto.jpg";
+        String ruta = "src/proyectofinal_josegramage/Img/icono_defecto.jpg";
         String ruta2="";
 
         if (i == 0) {
@@ -256,8 +263,8 @@ public class FileUploader {
                             fileChooser.getSelectedFile().toURL().toString().length() - 3);
                     String cad = Funciones.getCadenaAleatoria1(10);
 
-                    Singletons.PATH_auto = new java.io.File("") + "src/proyectofinal_josegramage/Img/avatar_cliente/" + cad + "." + extension;
-                    File f = new File(Singletons.PATH_auto);
+                    Singletons.PATH_auto_Img = new java.io.File("") + "src/proyectofinal_josegramage/Img/imagen_juegos/" + cad + "." + extension;
+                    File f = new File(Singletons.PATH_auto_Img);
 
                     ImageIO.write(image, extension, f);
 
@@ -266,7 +273,7 @@ public class FileUploader {
                 }
             }
         } else { //avatar per defecte
-            ruta = "src/proyectofinal_josegramage/Img/avatar_cliente/icono_defecto.jpg";
+            ruta = "src/proyectofinal_josegramage/Img/img_defecto.jpg";
 
             if (i == 0) {
                 ImageIcon icon = new ImageIcon(ruta);
@@ -284,7 +291,7 @@ public class FileUploader {
             }
             try {
                 //guardamos la imagen
-                Singletons.PATH_auto_Img = new java.io.File("") + "src/proyectofinal_josegramage/Img/avatar_cliente/icono_defecto.jpg";
+                Singletons.PATH_auto_Img = new java.io.File("") + "src/proyectofinal_josegramage/Img/img_defecto.jpg";
                 File f = new File(Singletons.PATH_auto_Img);
                 image = ImageIO.read(f);
                 ImageIO.write(image, "jpg", f);
@@ -307,6 +314,16 @@ public class FileUploader {
                 ImageIcon newIcon = new ImageIcon(newimg);
                 Singletons.jueModif.etiAvatarM.setIcon(newIcon);
             }
+            if (i == 1) {
+                // pager
+                ImageIcon icon = new ImageIcon(Singletons.jue.getImagen());
+                Image img = icon.getImage();
+
+                Image newimg = img.getScaledInstance(111, 111, java.awt.Image.SCALE_SMOOTH);
+
+                ImageIcon newIcon = new ImageIcon(newimg);
+                Singletons.juePager.imgPager.setIcon(newIcon);
+            }
 
         } catch (Exception ex) {
             JOptionPane.showMessageDialog(null, "Error upload imagen", "Error leer imagen", JOptionPane.ERROR_MESSAGE);
@@ -315,7 +332,7 @@ public class FileUploader {
 
     public static void leer_img_defecto_J(int i) {
 
-        String ruta = "src/proyectofinal_josegramage/Img/avatar_cliente/icono_defecto.jpg";
+        String ruta = "src/proyectofinal_josegramage/Img/img_defecto.jpg";
 
         if (i == 0) {
             ImageIcon icon = new ImageIcon(ruta);
@@ -330,6 +347,13 @@ public class FileUploader {
             Image newimg = img.getScaledInstance(90, 90, java.awt.Image.SCALE_SMOOTH);
             ImageIcon newIcon = new ImageIcon(newimg);
             Singletons.jueModif.etiAvatarM.setIcon(newIcon); //pintamos la imagen_default en jlabel1
+        }
+        if (i == 2) {
+            ImageIcon icon = new ImageIcon(ruta);
+            Image img = icon.getImage();
+            Image newimg = img.getScaledInstance(111, 111, java.awt.Image.SCALE_SMOOTH);
+            ImageIcon newIcon = new ImageIcon(newimg);
+            Singletons.juePager.imgPager.setIcon(newIcon); //pintamos la imagen_default en jlabel1
         }
     }
 }

@@ -31,26 +31,24 @@ public class Vtna_jue_Modif extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
-        etiGuardadoM = new javax.swing.JLabel();
         etiEmailM = new javax.swing.JLabel();
         etiAvatarM = new javax.swing.JLabel();
         etiDireccionM = new javax.swing.JLabel();
         txtNombreM = new javax.swing.JTextField();
         txtCompanyiaM = new javax.swing.JTextField();
         btnAceptarM = new javax.swing.JButton();
-        btnCancelarM = new javax.swing.JButton();
         errorNombreM = new javax.swing.JButton();
         errorCompanyiaM = new javax.swing.JButton();
         errorTipoM = new javax.swing.JButton();
-        btnOKM = new javax.swing.JButton();
         btnVolverM = new javax.swing.JButton();
         errorDescripcionM = new javax.swing.JButton();
         btnCambiarImgM = new javax.swing.JButton();
         errorPrecioM = new javax.swing.JButton();
         txtTipoM = new javax.swing.JTextField();
         txtPrecioM = new javax.swing.JTextField();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        txtDescripcionM = new javax.swing.JTextArea();
+        etiDescripcion = new javax.swing.JLabel();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        txtDescripcionM = new javax.swing.JTextPane();
 
         panelModif.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -62,11 +60,6 @@ public class Vtna_jue_Modif extends javax.swing.JFrame {
 
         jLabel4.setText("Tipo:");
         panelModif.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 90, -1, -1));
-
-        etiGuardadoM.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        etiGuardadoM.setForeground(new java.awt.Color(0, 204, 102));
-        etiGuardadoM.setText("Juego modificado con éxito");
-        panelModif.add(etiGuardadoM, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 260, -1, -1));
 
         etiEmailM.setText("Descripcion:");
         panelModif.add(etiEmailM, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 150, -1, -1));
@@ -80,10 +73,7 @@ public class Vtna_jue_Modif extends javax.swing.JFrame {
         panelModif.add(txtCompanyiaM, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 60, 129, -1));
 
         btnAceptarM.setText("Aceptar");
-        panelModif.add(btnAceptarM, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 290, -1, -1));
-
-        btnCancelarM.setText("Cancelar");
-        panelModif.add(btnCancelarM, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 290, -1, -1));
+        panelModif.add(btnAceptarM, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 250, -1, -1));
 
         errorNombreM.setIcon(new javax.swing.ImageIcon(getClass().getResource("/proyectofinal_josegramage/Img/iconos/error.png"))); // NOI18N
         panelModif.add(errorNombreM, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 30, 22, 20));
@@ -94,12 +84,8 @@ public class Vtna_jue_Modif extends javax.swing.JFrame {
         errorTipoM.setIcon(new javax.swing.ImageIcon(getClass().getResource("/proyectofinal_josegramage/Img/iconos/error.png"))); // NOI18N
         panelModif.add(errorTipoM, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 90, 22, 20));
 
-        btnOKM.setIcon(new javax.swing.ImageIcon(getClass().getResource("/proyectofinal_josegramage/Img/iconos/acierto.png"))); // NOI18N
-        panelModif.add(btnOKM, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 250, 30, 30));
-
-        btnVolverM.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        btnVolverM.setText("VOLVER");
-        panelModif.add(btnVolverM, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 290, 100, -1));
+        btnVolverM.setText("Volver");
+        panelModif.add(btnVolverM, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 250, 80, -1));
 
         errorDescripcionM.setIcon(new javax.swing.ImageIcon(getClass().getResource("/proyectofinal_josegramage/Img/iconos/error.png"))); // NOI18N
         panelModif.add(errorDescripcionM, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 150, 22, 20));
@@ -112,12 +98,11 @@ public class Vtna_jue_Modif extends javax.swing.JFrame {
         panelModif.add(errorPrecioM, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 120, 22, 20));
         panelModif.add(txtTipoM, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 90, 130, -1));
         panelModif.add(txtPrecioM, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 120, 130, -1));
+        panelModif.add(etiDescripcion, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 240, 90, 40));
 
-        txtDescripcionM.setColumns(20);
-        txtDescripcionM.setRows(5);
-        jScrollPane1.setViewportView(txtDescripcionM);
+        jScrollPane2.setViewportView(txtDescripcionM);
 
-        panelModif.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 150, 130, 80));
+        panelModif.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 150, 130, 60));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -140,8 +125,6 @@ public class Vtna_jue_Modif extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     public static javax.swing.JButton btnAceptarM;
     public static javax.swing.JButton btnCambiarImgM;
-    public static javax.swing.JButton btnCancelarM;
-    public static javax.swing.JButton btnOKM;
     public static javax.swing.JButton btnVolverM;
     public static javax.swing.JButton errorCompanyiaM;
     public static javax.swing.JButton errorDescripcionM;
@@ -149,16 +132,16 @@ public class Vtna_jue_Modif extends javax.swing.JFrame {
     public static javax.swing.JButton errorPrecioM;
     public static javax.swing.JButton errorTipoM;
     public static javax.swing.JLabel etiAvatarM;
+    public static javax.swing.JLabel etiDescripcion;
     private javax.swing.JLabel etiDireccionM;
     private javax.swing.JLabel etiEmailM;
-    public static javax.swing.JLabel etiGuardadoM;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel4;
-    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
     public static javax.swing.JPanel panelModif;
     public static javax.swing.JTextField txtCompanyiaM;
-    public static javax.swing.JTextArea txtDescripcionM;
+    public static javax.swing.JTextPane txtDescripcionM;
     public static javax.swing.JTextField txtNombreM;
     public static javax.swing.JTextField txtPrecioM;
     public static javax.swing.JTextField txtTipoM;

@@ -16,7 +16,9 @@ import proyectofinal_josegramage.Modulos.Juegos.Vista.Vtna_jue_Pager;
 import proyectofinal_josegramage.Utiles.Menus;
 import java.util.ArrayList;
 import java.util.Iterator;
+import javax.swing.JPanel;
 import proyectofinal_josegramage.Modulos.Juegos.Clases.Juego;
+import proyectofinal_josegramage.Modulos.Juegos.Controlador.Controlador_Juegos;
 import proyectofinal_josegramage.Modulos.Juegos.Modelo.DAO.JuegoDAO;
 
 public class JuegoBLL {
@@ -95,10 +97,15 @@ public class JuegoBLL {
 
         JuegoDAO.CreaJuego();
 
-        if (Singletons.jue != null) {
+        if (Singletons.jue.getFecha_alta() != null) {
             Singletons.jueArray.add(Singletons.jue);
             JuegoBLL_bd.nuevoJuegoBLL();
-            ((SimpleTableModel_juegos) Singletons.juePager.TABLA.getModel()).cargar();
+       //     ((SimpleTableModel_juegos) Singletons.juePager.TABLA.getModel()).cargar();
+             new Controlador_Juegos(new Vtna_jue_Pager(), 0).iniciar(0);
+                Singletons.jueCrear.dispose();
+                JPanel panelPager = new JPanel();
+                panelPager.add(Singletons.juePager.panelPager);
+                Singletons.ini.internalFrame.setContentPane(panelPager);
         }
     }
 
@@ -196,12 +203,7 @@ public class JuegoBLL {
             Singletons.jueArray.set(Singletons.posJ, Singletons.jue);
             JuegoBLL_bd.modificarJuegoBLL();
             ((SimpleTableModel_juegos) Singletons.juePager.TABLA.getModel()).cargar();
-
-            Vtna_jue_Modif.btnOKM.setVisible(true);
-            Vtna_jue_Modif.etiGuardadoM.setVisible(true);
-            JuegoDAO.noEditableM();
-
-        }
+         }
     }
 
     public static int buscar(Juego jue) {//Buscar

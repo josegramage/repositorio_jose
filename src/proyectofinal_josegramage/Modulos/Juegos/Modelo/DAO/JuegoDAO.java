@@ -393,16 +393,13 @@ public class JuegoDAO {
         descripcion = pideDescripcion();  
         precio = pidePrecio();
         tipo = pideTipo();   
-        fecha_alta = Fecha.fechaHoy();
+        
                   
         if ((Vtna_jue_Crear.errorNombre.isVisible() == false) && (Vtna_jue_Crear.errorRef.isVisible() == false) && (Vtna_jue_Crear.errorCompanyia.isVisible() == false)
                 && (Vtna_jue_Crear.errorTipo.isVisible() == false) && (Vtna_jue_Crear.errorPrecio.isVisible() == false) && (Vtna_jue_Crear.errorDescripcion.isVisible() == false)) {
-
+fecha_alta = Fecha.fechaHoy();
             Singletons.jue = new Juego(ref, nombre, companyia, fecha_alta, tipo, precio, imagen, descripcion);
 
-            Vtna_jue_Crear.btnOK.setVisible(true);
-            Vtna_jue_Crear.etiGuardado.setVisible(true);
-            noEditable();
         }
     }
 
@@ -417,7 +414,7 @@ public class JuegoDAO {
         Vtna_jue_Modif.txtNombreM.setText((Singletons.jue).getNombre());
         Vtna_jue_Modif.txtCompanyiaM.setText((Singletons.jue).getCompanyia());
         Vtna_jue_Modif.txtTipoM.setText((Singletons.jue).getTipo());
-        Vtna_jue_Modif.txtPrecioM.setText(String.valueOf((Singletons.jue).getPrecio()));
+        Vtna_jue_Modif.txtPrecioM.setText((Singletons.jue).getPrecio());
         Vtna_jue_Modif.txtDescripcionM.setText((Singletons.jue).getDescripcion());   
     }
 
@@ -429,8 +426,7 @@ public class JuegoDAO {
         Vtna_jue_Crear.txtCompanyia.setText("");
         Vtna_jue_Crear.txtTipo.setText("");
         Vtna_jue_Crear.txtPrecio.setText("");
-        Vtna_jue_Crear.btnOK.setVisible(false);
-        Vtna_jue_Crear.etiGuardado.setVisible(false);
+        Vtna_jue_Crear.txtDescripcion.setText("");
         Vtna_jue_Crear.errorNombre.setVisible(false);
         Vtna_jue_Crear.errorCompanyia.setVisible(false);
         Vtna_jue_Crear.errorRef.setVisible(false);
@@ -446,8 +442,6 @@ public class JuegoDAO {
         Vtna_jue_Modif.errorTipoM.setVisible(false);
         Vtna_jue_Modif.errorDescripcionM.setVisible(false);
         Vtna_jue_Modif.errorPrecioM.setVisible(false);
-        Vtna_jue_Modif.btnOKM.setVisible(false);
-        Vtna_jue_Modif.etiGuardadoM.setVisible(false);
     }
 
     public static void ocultarErrores() {
@@ -458,8 +452,6 @@ public class JuegoDAO {
         Vtna_jue_Crear.errorTipo.setVisible(false);
         Vtna_jue_Crear.errorPrecio.setVisible(false);
         Vtna_jue_Crear.errorDescripcion.setVisible(false);
-        Vtna_jue_Crear.btnOK.setVisible(false);
-        Vtna_jue_Crear.etiGuardado.setVisible(false);
     }
 
     public static void editable() {
@@ -490,7 +482,6 @@ public class JuegoDAO {
         Vtna_jue_Modif.txtCompanyiaM.setEditable(false);
         Vtna_jue_Modif.txtTipoM.setEditable(false);
         Vtna_jue_Modif.txtPrecioM.setEditable(false);
-        Vtna_jue_Modif.btnCancelarM.setEnabled(false);
         Vtna_jue_Modif.btnAceptarM.setEnabled(false);
     }
 

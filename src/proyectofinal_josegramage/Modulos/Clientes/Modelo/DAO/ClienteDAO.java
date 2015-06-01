@@ -265,11 +265,9 @@ public class ClienteDAO {
         if (Validate.validaNumTelefono(telefono) != true) {
             Vtna_cli_Modif.etiTelefonoErrorM.setVisible(true);
             Vtna_cli_Modif.errorTelfM.setVisible(true);
-            Vtna_cli_Modif.txtTelefonoM.requestFocus();
         } else {
             Vtna_cli_Modif.errorTelfM.setVisible(false);
             Vtna_cli_Modif.etiTelefonoErrorM.setVisible(false);
-            Vtna_cli_Modif.txtDireccionM.requestFocus();
         }
         return telefono;
     }
@@ -422,6 +420,7 @@ public class ClienteDAO {
 
         if (Vtna_cli_Crear.txtFnacimiento.getDate() == null) {
             JOptionPane.showMessageDialog(null, "Selecciona una fecha de nacimiento");
+            Vtna_cli_Crear.errorFnacimiento.setVisible(true);
         } else {
             fecha1 = ((JTextFieldDateEditor) Vtna_cli_Crear.txtFnacimiento.getDateEditor()).getText();
 
@@ -448,6 +447,7 @@ public class ClienteDAO {
 
         if (Vtna_cli_Modif.txtFnacimientoM.getDate() == null) {
             JOptionPane.showMessageDialog(null, "Selecciona una fecha de nacimiento");
+            Vtna_cli_Modif.errorFnacimientoM.setVisible(true);
         } else {
             fecha1 = ((JTextFieldDateEditor) Vtna_cli_Modif.txtFnacimientoM.getDateEditor()).getText();
         }
@@ -457,8 +457,8 @@ public class ClienteDAO {
         //calcular y rellenar la edad
         Edad = FnacimientoM.restaFechas();
 
-        if (Edad <= 16) {
-            JOptionPane.showMessageDialog(null, "La edad debe ser igual o superior a 16 años");
+        if (Edad <= 18) {
+            JOptionPane.showMessageDialog(null, "Debe ser mayor de edad");
             Vtna_cli_Modif.errorFnacimientoM.setVisible(true);
         } else {
             Vtna_cli_Modif.errorFnacimientoM.setVisible(false);
@@ -473,7 +473,7 @@ public class ClienteDAO {
 
         if (Vtna_cli_Crear.txtLogin.getText().isEmpty()) {
             JOptionPane.showMessageDialog(null, "El login no puede estar en blanco", "Error", JOptionPane.INFORMATION_MESSAGE);
-
+            Vtna_cli_Crear.errorLogin.setVisible(true);
         } else {
             Cliente e = new Cliente(login);
             login = Vtna_cli_Crear.txtLogin.getText();
@@ -495,12 +495,9 @@ public class ClienteDAO {
         String login = Vtna_cli_Crear.txtLogin.getText();
 
         if (Vtna_cli_Crear.txtLogin.getText().isEmpty()) {
-            JOptionPane.showMessageDialog(null, "El login no puede estar en blanco", "Error", JOptionPane.INFORMATION_MESSAGE);
-            Vtna_cli_Crear.txtLogin.requestFocus();
             Vtna_cli_Crear.errorLogin.setVisible(true);
         } else {
             Vtna_cli_Crear.errorLogin.setVisible(false);
-            Vtna_cli_Crear.txtPassword.requestFocus();
         }
         return login;
     }
@@ -552,7 +549,6 @@ public class ClienteDAO {
         } else {
             password = Encriptador.encriptarTokenMD5(password);
             Vtna_cli_Crear.errorPassword.setVisible(false);
-            Vtna_cli_Crear.btnAceptar.requestFocus();
         }
         return password;
     }
@@ -619,25 +615,21 @@ public class ClienteDAO {
         direccion = pideDireccion();
         email = pideEmail();
         Fnacimiento = pideFnacimiento();
-        Fecha Fechaalta = Fecha.fechaHoy();
+
         login = pideLogin();
         password = pidePassword();
         tipo = pideTipo();
 
         if ((Vtna_cli_Crear.errorNombre.isVisible() == false) && (Vtna_cli_Crear.errorDni.isVisible() == false) && (Vtna_cli_Crear.errorApellidos.isVisible() == false)
-                && (Vtna_cli_Crear.errorTelf.isVisible() == false) && (Vtna_cli_Crear.errorFnacimiento.isVisible() == false)) {
-
+            && (Vtna_cli_Crear.errorTelf.isVisible() == false) && (Vtna_cli_Crear.errorDireccion.isVisible() == false) && (Vtna_cli_Crear.errorEmail.isVisible() == false) && (Vtna_cli_Crear.errorFnacimiento.isVisible() == false)) {
+            Fecha Fechaalta = Fecha.fechaHoy();
             Singletons.cli = new Cliente(nombre, apellidos, dni, telefono, direccion, email, Fnacimiento, Fechaalta, login, password, estado, tipo, avatar);
-
-            Vtna_cli_Crear.btnOK.setVisible(true);
-            Vtna_cli_Crear.etiGuardado.setVisible(true);
-            noEditable();
         }
     }
 
     public static void modificar() {
 
-        FileUploader.leer_imag(1);
+        FileUploader.leer_imag(2);
 
         Vtna_cli_Modif.txtNombreM.setText((Singletons.cli).getNombre());
         Vtna_cli_Modif.txtApellidosM.setText((Singletons.cli).getApellidos());
@@ -669,8 +661,7 @@ public class ClienteDAO {
         Vtna_cli_Crear.txtTelefono.setText("");
         Vtna_cli_Crear.txtDireccion.setText("");
         Vtna_cli_Crear.txtFnacimiento.setDate(null);
-        Vtna_cli_Crear.btnOK.setVisible(false);
-        Vtna_cli_Crear.etiGuardado.setVisible(false);
+        Vtna_cli_Crear.txtEmail.setText("");
         Vtna_cli_Crear.errorNombre.setVisible(false);
         Vtna_cli_Crear.errorApellidos.setVisible(false);
         Vtna_cli_Crear.errorDni.setVisible(false);
@@ -708,9 +699,7 @@ public class ClienteDAO {
         Vtna_cli_Modif.etiDireccionErrorM.setVisible(false);
 
         Vtna_cli_Modif.errorFnacimientoM.setVisible(false);
-
-        Vtna_cli_Modif.btnOKM.setVisible(false);
-        Vtna_cli_Modif.etiGuardadoM.setVisible(false);
+        Vtna_cli_Modif.errorLoginM.setVisible(false);
         Vtna_cli_Modif.errorPasswordM.setVisible(false);
 
     }
@@ -737,8 +726,6 @@ public class ClienteDAO {
 
         Vtna_cli_Crear.errorFnacimiento.setVisible(false);
 
-        Vtna_cli_Crear.btnOK.setVisible(false);
-        Vtna_cli_Crear.etiGuardado.setVisible(false);
         Vtna_cli_Crear.errorLogin.setVisible(false);
 
     }
@@ -780,7 +767,6 @@ public class ClienteDAO {
         Vtna_cli_Modif.txtDireccionM.setEditable(false);
         Vtna_cli_Modif.txtLoginM.setEditable(false);
         Vtna_cli_Modif.txtPasswordM.setEditable(false);
-        Vtna_cli_Modif.btnCancelarM.setEnabled(false);
         Vtna_cli_Modif.btnAceptarM.setEnabled(false);
         ((JTextFieldDateEditor) Vtna_cli_Modif.txtFnacimientoM.getDateEditor()).setEditable(false);
     }

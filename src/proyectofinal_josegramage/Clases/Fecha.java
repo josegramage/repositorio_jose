@@ -194,7 +194,7 @@ public class Fecha implements Serializable {
 
 		String fecha = "";
 		int anyo = fech.get(Calendar.YEAR);
-		int mes = fech.get(Calendar.MONTH);
+		int mes = fech.get(Calendar.MONTH)+1;
 		int dia = fech.get(Calendar.DAY_OF_MONTH);
 		Fecha f = new Fecha(fecha, dia, mes, anyo);
 

@@ -37,10 +37,7 @@ public class Vtna_jue_Crear extends javax.swing.JFrame {
         txtRef = new javax.swing.JTextField();
         btnAceptar = new javax.swing.JButton();
         btnCancelar = new javax.swing.JButton();
-        etiGuardado = new javax.swing.JLabel();
         etiEmail = new javax.swing.JLabel();
-        btnOK = new javax.swing.JButton();
-        btnNuevo = new javax.swing.JButton();
         btnVolver = new javax.swing.JButton();
         errorPrecio = new javax.swing.JButton();
         etiAvatar = new javax.swing.JLabel();
@@ -74,28 +71,17 @@ public class Vtna_jue_Crear extends javax.swing.JFrame {
         panelCrear.add(txtRef, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 60, 129, -1));
 
         btnAceptar.setText("Aceptar");
-        panelCrear.add(btnAceptar, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 330, -1, -1));
+        panelCrear.add(btnAceptar, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 310, -1, -1));
 
         btnCancelar.setText("Cancelar");
-        panelCrear.add(btnCancelar, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 330, -1, -1));
-
-        etiGuardado.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        etiGuardado.setForeground(new java.awt.Color(0, 204, 102));
-        etiGuardado.setText("Juego guardado con éxito");
-        panelCrear.add(etiGuardado, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 300, -1, -1));
+        panelCrear.add(btnCancelar, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 310, -1, -1));
 
         etiEmail.setText("Precio:");
         panelCrear.add(etiEmail, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 180, -1, -1));
 
-        btnOK.setIcon(new javax.swing.ImageIcon(getClass().getResource("/proyectofinal_josegramage/Img/iconos/acierto.png"))); // NOI18N
-        panelCrear.add(btnOK, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 290, 30, 30));
-
-        btnNuevo.setText("Nuevo");
-        panelCrear.add(btnNuevo, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 330, 110, 60));
-
         btnVolver.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         btnVolver.setText("VOLVER");
-        panelCrear.add(btnVolver, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 360, 180, -1));
+        panelCrear.add(btnVolver, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 340, 180, -1));
 
         errorPrecio.setIcon(new javax.swing.ImageIcon(getClass().getResource("/proyectofinal_josegramage/Img/iconos/error.png"))); // NOI18N
         panelCrear.add(errorPrecio, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 180, 22, 20));
@@ -160,8 +146,6 @@ public class Vtna_jue_Crear extends javax.swing.JFrame {
     public static javax.swing.JButton btnAceptar;
     public static javax.swing.JButton btnCancelar;
     public static javax.swing.JButton btnCargarImg;
-    public static javax.swing.JButton btnNuevo;
-    public static javax.swing.JButton btnOK;
     public static javax.swing.JButton btnVolver;
     public static javax.swing.JButton errorCompanyia;
     public static javax.swing.JButton errorDescripcion;
@@ -172,7 +156,6 @@ public class Vtna_jue_Crear extends javax.swing.JFrame {
     public static javax.swing.JLabel etiAvatar;
     private javax.swing.JLabel etiEmail;
     private javax.swing.JLabel etiEmail1;
-    public static javax.swing.JLabel etiGuardado;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

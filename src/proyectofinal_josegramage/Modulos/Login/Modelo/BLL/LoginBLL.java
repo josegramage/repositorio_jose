@@ -59,7 +59,23 @@ public class LoginBLL {
 
         return _resul;
     }
+    
+     public static int activarUsuarioBLL(String login) {
 
+        Connection _con;
+        int _resul;
+        ConexionBD _conexion_DB = new ConexionBD();
+
+        _con = _conexion_DB.AbrirConexion();
+
+        LoginDAO _loginDAO = new LoginDAO();
+
+        _resul = _loginDAO.activarUsuarioDAO(_con, login);
+         _conexion_DB.CerrarConexion(_con);
+
+        return _resul;
+    }
+    
     
     public int RecuperarPassword() {
 
@@ -98,25 +114,6 @@ public class LoginBLL {
             JOptionPane.showMessageDialog(null, "El dni no coresponde a ningun usuario registrado");
         }
        return correcto;
-    }
-    
-    
-  
-     public static String activarUsuario(String dni) {
-
-        Connection _con;
-        String tipo;
-        ConexionBD _conexion_DB = new ConexionBD();
-
-        _con = _conexion_DB.AbrirConexion();
-
-        LoginDAO _loginDAO = new LoginDAO();
-
-        tipo = _loginDAO.ActivarUsuarioDAO(_con, dni);
-
-        _conexion_DB.CerrarConexion(_con);
-
-        return tipo;
     }
     
     
@@ -197,8 +194,10 @@ public class LoginBLL {
     public static void AltaUsuario() {
 
         LoginDAO.AltaUsuario();
-        Singletons.cli.setPassword(Encriptador.encriptarTokenMD5(Singletons.cli.getPassword()));
-        if (Singletons.cli != null) {
+     
+       //la fecha de alta se genera automaticamente asi que me sirve de chivato
+        if (Singletons.cli.getFechaalta()!= null) {
+            Singletons.cli.setPassword(Encriptador.encriptarTokenMD5(Singletons.cli.getPassword()));
             Singletons.cliArray.add(Singletons.cli);
             ClienteBLL_bd.nuevoUsuarioBLL();
         }

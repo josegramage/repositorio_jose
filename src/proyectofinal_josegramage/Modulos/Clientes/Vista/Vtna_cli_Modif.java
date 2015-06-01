@@ -35,7 +35,6 @@ public class Vtna_cli_Modif extends javax.swing.JFrame {
         etiNombreErrorM = new javax.swing.JLabel();
         etiApellidoErrorM = new javax.swing.JLabel();
         etiTelefonoErrorM = new javax.swing.JLabel();
-        etiGuardadoM = new javax.swing.JLabel();
         etiEmailM = new javax.swing.JLabel();
         etiEmailErrorM = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
@@ -51,12 +50,10 @@ public class Vtna_cli_Modif extends javax.swing.JFrame {
         txtPasswordM = new javax.swing.JTextField();
         txtFnacimientoM = new com.toedter.calendar.JDateChooser();
         btnAceptarM = new javax.swing.JButton();
-        btnCancelarM = new javax.swing.JButton();
         errorNombreM = new javax.swing.JButton();
         errorApellidosM = new javax.swing.JButton();
         errorTelfM = new javax.swing.JButton();
         errorFnacimientoM = new javax.swing.JButton();
-        btnOKM = new javax.swing.JButton();
         btnVolverM = new javax.swing.JButton();
         errorEmailM = new javax.swing.JButton();
         btnCambiarImgM = new javax.swing.JButton();
@@ -93,11 +90,6 @@ public class Vtna_cli_Modif extends javax.swing.JFrame {
         etiTelefonoErrorM.setText("Introduce un telefono valido");
         panelModif.add(etiTelefonoErrorM, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 90, -1, -1));
 
-        etiGuardadoM.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        etiGuardadoM.setForeground(new java.awt.Color(0, 204, 102));
-        etiGuardadoM.setText("Cliente modificado con éxito");
-        panelModif.add(etiGuardadoM, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 260, -1, -1));
-
         etiEmailM.setText("Email:");
         panelModif.add(etiEmailM, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 150, -1, -1));
 
@@ -132,11 +124,9 @@ public class Vtna_cli_Modif extends javax.swing.JFrame {
         txtFnacimientoM.setDateFormatString("dd/MM/yyyy");
         panelModif.add(txtFnacimientoM, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 180, -1, -1));
 
-        btnAceptarM.setText("Aceptar");
-        panelModif.add(btnAceptarM, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 290, -1, -1));
-
-        btnCancelarM.setText("Cancelar");
-        panelModif.add(btnCancelarM, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 290, -1, -1));
+        btnAceptarM.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        btnAceptarM.setText("ACEPTAR");
+        panelModif.add(btnAceptarM, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 280, 100, -1));
 
         errorNombreM.setIcon(new javax.swing.ImageIcon(getClass().getResource("/proyectofinal_josegramage/Img/iconos/error.png"))); // NOI18N
         panelModif.add(errorNombreM, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 30, 22, 20));
@@ -150,12 +140,9 @@ public class Vtna_cli_Modif extends javax.swing.JFrame {
         errorFnacimientoM.setIcon(new javax.swing.ImageIcon(getClass().getResource("/proyectofinal_josegramage/Img/iconos/error.png"))); // NOI18N
         panelModif.add(errorFnacimientoM, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 180, 22, 20));
 
-        btnOKM.setIcon(new javax.swing.ImageIcon(getClass().getResource("/proyectofinal_josegramage/Img/iconos/acierto.png"))); // NOI18N
-        panelModif.add(btnOKM, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 250, 30, 30));
-
         btnVolverM.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         btnVolverM.setText("VOLVER");
-        panelModif.add(btnVolverM, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 290, 100, -1));
+        panelModif.add(btnVolverM, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 280, 100, -1));
 
         errorEmailM.setIcon(new javax.swing.ImageIcon(getClass().getResource("/proyectofinal_josegramage/Img/iconos/error.png"))); // NOI18N
         panelModif.add(errorEmailM, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 150, 22, 20));
@@ -199,8 +186,6 @@ public class Vtna_cli_Modif extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     public static javax.swing.JButton btnAceptarM;
     public static javax.swing.JButton btnCambiarImgM;
-    public static javax.swing.JButton btnCancelarM;
-    public static javax.swing.JButton btnOKM;
     public static javax.swing.JButton btnVolverM;
     public static javax.swing.JComboBox comboTipoM;
     public static javax.swing.JButton errorApellidosM;
@@ -217,7 +202,6 @@ public class Vtna_cli_Modif extends javax.swing.JFrame {
     private javax.swing.JLabel etiDireccionM;
     public static javax.swing.JLabel etiEmailErrorM;
     private javax.swing.JLabel etiEmailM;
-    public static javax.swing.JLabel etiGuardadoM;
     public static javax.swing.JLabel etiNombreErrorM;
     public static javax.swing.JLabel etiTelefonoErrorM;
     public static javax.swing.JLabel etiTipoM;

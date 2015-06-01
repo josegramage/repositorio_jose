@@ -43,8 +43,10 @@ import java.util.List;
 import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import java.awt.Image;
+import java.awt.Point;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.JTable;
 import proyectofinal_josegramage.Modulos.Clientes.Clases.Cliente;
 import proyectofinal_josegramage.Modulos.Clientes.Vista.Vtna_cli_MiPerfil;
 import proyectofinal_josegramage.Modulos.Inicio.Controlador.Controlador_Inicio;
@@ -80,7 +82,6 @@ public class Controlador_Cliente implements ActionListener, KeyListener, MouseLi
         _BTN_PERFIL,
         _BTN_PERFIL_EDITAR,
         _BTN_PERFIL_SALIR,
-        _DOBLECLICK_TABLE,
         // Ventana crear
         _TXT_NOMBRE,
         _TXT_APELLIDOS,
@@ -124,7 +125,6 @@ public class Controlador_Cliente implements ActionListener, KeyListener, MouseLi
         _BTN_VOLVER_MP,
         _BTN_CARGAR_IMG_MP,
         _BTN_ELIMINAR_MP,
-
     }
 
     public Controlador_Cliente(JFrame pager, int i) {
@@ -242,10 +242,6 @@ public class Controlador_Cliente implements ActionListener, KeyListener, MouseLi
             Singletons.efPager.btnPerfilSalir.setName("_BTN_PERFIL_SALIR");
             Singletons.efPager.btnPerfilSalir.addActionListener(this);
             Singletons.efPager.btnPerfilSalir.addMouseListener(this);
-            
-            Singletons.efPager.TABLA.setName("_DOBLECLICK_TABLE");
-            Singletons.efPager.btnPerfilSalir.addMouseListener(this);
-
         }
 
         //     Crear empleado
@@ -306,11 +302,6 @@ public class Controlador_Cliente implements ActionListener, KeyListener, MouseLi
             Singletons.efCrear.btnVolver.setActionCommand("_BTN_VOLVER");
             Singletons.efCrear.btnVolver.addActionListener(this);
 
-            Singletons.efCrear.btnNuevo.setActionCommand("_BTN_NUEVO");
-            Singletons.efCrear.btnNuevo.setName("_BTN_NUEVO");
-            Singletons.efCrear.btnNuevo.addActionListener(this);
-            Singletons.efCrear.btnNuevo.addMouseListener(this);
-
             Singletons.efCrear.comboTipo.setActionCommand("_COMBO_TIPO");
 
         }
@@ -323,7 +314,6 @@ public class Controlador_Cliente implements ActionListener, KeyListener, MouseLi
 
             }
 
-            //        ClienteDAO.modificarLogeado();
             ClienteBLL.ocultaErrorM();
 
             Singletons.efModif.txtNombreM.setName("_TXT_NOMBRE_M");
@@ -366,9 +356,6 @@ public class Controlador_Cliente implements ActionListener, KeyListener, MouseLi
 
             Singletons.efModif.btnAceptarM.setActionCommand("_BTN_ACEPTAR_M");
             Singletons.efModif.btnAceptarM.addActionListener(this);
-
-            Singletons.efModif.btnCancelarM.setActionCommand("_BTN_CANCELAR_M");
-            Singletons.efModif.btnCancelarM.addActionListener(this);
 
             Singletons.efModif.btnVolverM.setActionCommand("_BTN_VOLVER_M");
             Singletons.efModif.btnVolverM.addActionListener(this);
@@ -474,6 +461,7 @@ public class Controlador_Cliente implements ActionListener, KeyListener, MouseLi
                         selection = Vtna_cli_Pager.TABLA.getSelectedRow();
                         selection1 = inicio + selection;
                         if (Singletons.cli != null) {
+
                             Singletons.efPager.dispose();
                             new Controlador_Cliente(new Vtna_cli_Modif(), 2).iniciar(2);
                             JPanel panel_modif = new JPanel();
@@ -584,6 +572,7 @@ public class Controlador_Cliente implements ActionListener, KeyListener, MouseLi
 
             case _BTN_ACEPTAR:
                 ClienteBLL.crearCliente();
+
                 break;
 
             case _BTN_CANCELAR:
@@ -624,27 +613,7 @@ public class Controlador_Cliente implements ActionListener, KeyListener, MouseLi
                 break;
 
             case _BTN_ACEPTAR_M:
-
                 ClienteBLL.ModificarPagerAdmin();
-
-                new Controlador_Cliente(new Vtna_cli_Pager(), 0).iniciar(0);
-                Singletons.efModif.dispose();
-                JPanel panelPagerM = new JPanel();
-                panelPagerM.add(Singletons.efPager.panelPager);
-                Singletons.ini.internalFrame.setContentPane(panelPagerM);
-
-                Singletons.ini.eti_Entrar_Usuario.setText(Singletons.cliLog.getLogin());
-                if (Singletons.cliLog.getAvatar().isEmpty()) {
-                    FileUploader.leer_imag_defecto(2);
-                } else {
-                    FileUploader.leer_imag(0);
-                }
-                //            ((SimpleTableModel_cliente) Singletons.efPager.TABLA.getModel()).cargar();
-                break;
-
-            case _BTN_CANCELAR_M:
-
-                ClienteBLL.ocultaErrorM();
                 break;
 
             case _TXT_LOGIN_M:
@@ -656,7 +625,6 @@ public class Controlador_Cliente implements ActionListener, KeyListener, MouseLi
                 break;
 
             case _BTN_VOLVER_M:
-
                 if (Singletons.cliLog.getTipo().equals("admin")) {
                     new Controlador_Cliente(new Vtna_cli_Pager(), 0).iniciar(0);
                     Singletons.efModif.dispose();
@@ -671,12 +639,10 @@ public class Controlador_Cliente implements ActionListener, KeyListener, MouseLi
                     panel_Inicio.add(Singletons.iniPanel.panelInicio);
                     Singletons.ini.internalFrame.setContentPane(panel_Inicio);
                 }
-
                 break;
 
             case _BTN_CARGAR_IMG_M:
                 FileUploader.pintar_guardar_img(Singletons.efModif.etiAvatarM, 90, 90, 1);
-
                 break;
 
             // ------- MODIFICAR CLIENTE MI PERFIL-------------------            
@@ -701,38 +667,7 @@ public class Controlador_Cliente implements ActionListener, KeyListener, MouseLi
                 break;
 
             case _BTN_ACEPTAR_MP:
-                if (Singletons.cliLog.getTipo().equals("admin")) {
-                    ClienteBLL.ModificarPagerMP();
-
-                    Singletons.cliMP.dispose();
-                    new Controlador_Menu(new Vtna_Menu_Admin(), 0).iniciar(0);
-                    JPanel pmenu = new JPanel();
-                    pmenu.add(Singletons.menu.panelMenu);
-                    Singletons.ini.internalFrame.setContentPane(pmenu);
-
-                    Singletons.ini.eti_Entrar_Usuario.setText(Singletons.cliLog.getLogin());
-                    if (Singletons.cliLog.getAvatar().isEmpty()) {
-                        FileUploader.leer_imag_defecto(2);
-                    } else {
-                        FileUploader.leer_imag(0);
-                    }
-
-                } else if (Singletons.cliLog.getTipo().equals("usuario")) {
-                    ClienteBLL.ModificarPagerMP();
-
-                    Singletons.ini.eti_Entrar_Usuario.setText(Singletons.cliLog.getLogin());
-                    if (Singletons.cliLog.getAvatar().isEmpty()) {
-                        FileUploader.leer_imag_defecto(2);
-                    } else {
-                        FileUploader.leer_imag(0);         
-                    }
-
-                    Singletons.cliMP.dispose();
-                    new Controlador_Inicio(new Vtna_panel_Inicio(), 1).iniciar(1);
-                    JPanel panel_Inicio = new JPanel();
-                    panel_Inicio.add(Singletons.iniPanel.panelInicio);
-                    Singletons.ini.internalFrame.setContentPane(panel_Inicio);
-                }
+                ClienteBLL.ModificarPagerMP();
                 break;
 
             case _TXT_LOGIN_MP:
@@ -759,7 +694,6 @@ public class Controlador_Cliente implements ActionListener, KeyListener, MouseLi
                     panel_Inicio.add(Singletons.iniPanel.panelInicio);
                     Singletons.ini.internalFrame.setContentPane(panel_Inicio);
                 }
-
                 break;
 
             case _BTN_CARGAR_IMG_MP:
@@ -768,23 +702,24 @@ public class Controlador_Cliente implements ActionListener, KeyListener, MouseLi
                 break;
 
             case _BTN_SALIR_MP:
-                
+
                 Singletons.conectado = false;
-                
+
                 Singletons.ini.eti_Entrar_Usuario.setText("Entrar");
                 Singletons.ini.eti_Reg_Perfil.setText("Regístrate");
                 FileUploader.leer_imag_defecto(5);
                 Singletons.ini.etiAdmin.setVisible(false);
-                
+
                 new Controlador_Inicio(new Vtna_panel_Inicio(), 1).iniciar(1);
 
                 JPanel panel_Inicio = new JPanel();
                 panel_Inicio.add(Singletons.iniPanel.panelInicio);
                 Singletons.ini.internalFrame.setContentPane(panel_Inicio);
-                
+
                 break;
 
             case _BTN_ELIMINAR_MP:
+                ClienteBLL.EliminarMP();
 
                 break;
 
@@ -805,7 +740,7 @@ public class Controlador_Cliente implements ActionListener, KeyListener, MouseLi
                 ((SimpleTableModel_cliente) Singletons.efPager.TABLA.getModel()).filtrar();
                 break;
 
-            // ----------  Crear Empleado  --------------
+            // ----------  Crear CLIENTE  --------------
             case _TXT_NOMBRE:
                 ClienteBLL.pideNombreKey();
                 break;
@@ -838,7 +773,7 @@ public class Controlador_Cliente implements ActionListener, KeyListener, MouseLi
                 ClienteBLL.pidePasswordKey();
                 break;
 
-            // ------------  Modificar Empleado --------------     
+            // ------------  Modificar cliente --------------     
             case _TXT_NOMBRE_M:
                 ClienteBLL.pideNombreKeyM();
                 break;
@@ -867,7 +802,7 @@ public class Controlador_Cliente implements ActionListener, KeyListener, MouseLi
                 ClienteBLL.pidePasswordKeyM();
                 break;
 
-            // ------------  Modificar Empleado MI PERFIL--------------     
+            // ------------  Modificar cliente MI PERFIL--------------     
             case _TXT_NOMBRE_MP:
                 ClienteBLL.pideNombreKeyMP();
                 break;
@@ -904,7 +839,7 @@ public class Controlador_Cliente implements ActionListener, KeyListener, MouseLi
                 ((SimpleTableModel_cliente) Singletons.efPager.TABLA.getModel()).filtrar();
                 break;
 
-            // ----------  Crear Empleado  --------------
+            // ----------  Crear cliente  --------------
             case _TXT_NOMBRE:
                 ClienteBLL.pideNombreKey();
                 break;
@@ -937,7 +872,7 @@ public class Controlador_Cliente implements ActionListener, KeyListener, MouseLi
                 ClienteBLL.pidePasswordKey();
                 break;
 
-            // ------------  Modificar Empleado --------------     
+            // ------------  Modificar cliente --------------     
             case _TXT_NOMBRE_M:
                 ClienteBLL.pideNombreKeyM();
                 break;
@@ -981,21 +916,8 @@ public class Controlador_Cliente implements ActionListener, KeyListener, MouseLi
                 } catch (Exception e) {
                 }
                 break;
-                
-       /*         case _TAULA:
-                taula = (JTable) me.getSource();
-                Point point = me.getPoint();
-                int row = taula.rowAtPoint(point);
-                if (me.getClickCount() == 2) {
-                    int sel = posicioAbsoluta();
-                    String dni = (String) taula.getModel().getValueAt(sel, 0);
-                    SingletonEF.ef = new EmpleatFix(dni);
-                    frmIntEF.setEnabled(false);
-                    new ControladorEF(new FrmModiEF(), 2).iniciar(2);
-                }
-                break;
-        */
-                }
+
+        }
     }
 
     @Override

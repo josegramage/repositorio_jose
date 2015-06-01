@@ -145,7 +145,6 @@ public class SimpleTableModel_juegos extends AbstractTableModel {
             }
             Vtna_jue_Pager.etiFILTRAR.setText(String.valueOf(cont));
             System.out.println("nombre seleccionado: " + nombre);
-            //JOptionPane.showMessageDialog(null, cont);
             pagina_J.initLinkBox();
         }
     }

@@ -32,10 +32,11 @@ public class Vtna_Menu_Admin extends javax.swing.JFrame {
         panelMenu = new javax.swing.JPanel();
         btnClientesA = new javax.swing.JButton();
         btnConfigA = new javax.swing.JButton();
-        etiImagen = new javax.swing.JLabel();
         btnProductosA = new javax.swing.JButton();
         btnJuegosA = new javax.swing.JButton();
         btnEstadA = new javax.swing.JButton();
+        panelMenuAdmin = new javax.swing.JInternalFrame();
+        jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -57,10 +58,6 @@ public class Vtna_Menu_Admin extends javax.swing.JFrame {
         });
         panelMenu.add(btnConfigA, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 310, 110, -1));
 
-        etiImagen.setIcon(new javax.swing.ImageIcon(getClass().getResource("/proyectofinal_josegramage/Img/fondos/img_menu_admin.jpg"))); // NOI18N
-        etiImagen.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        panelMenu.add(etiImagen, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 100, 390, 230));
-
         btnProductosA.setText("Productos");
         panelMenu.add(btnProductosA, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 200, 110, -1));
 
@@ -69,6 +66,26 @@ public class Vtna_Menu_Admin extends javax.swing.JFrame {
 
         btnEstadA.setText("Estadisticas");
         panelMenu.add(btnEstadA, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 253, 110, -1));
+
+        panelMenuAdmin.setVisible(true);
+
+        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/proyectofinal_josegramage/Img/fondos/img_menu_admin.jpg"))); // NOI18N
+
+        javax.swing.GroupLayout panelMenuAdminLayout = new javax.swing.GroupLayout(panelMenuAdmin.getContentPane());
+        panelMenuAdmin.getContentPane().setLayout(panelMenuAdminLayout);
+        panelMenuAdminLayout.setHorizontalGroup(
+            panelMenuAdminLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 404, Short.MAX_VALUE)
+        );
+        panelMenuAdminLayout.setVerticalGroup(
+            panelMenuAdminLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelMenuAdminLayout.createSequentialGroup()
+                .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+
+        panelMenu.add(panelMenuAdmin, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 90, 420, 260));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -105,7 +122,8 @@ public class Vtna_Menu_Admin extends javax.swing.JFrame {
     public static javax.swing.JButton btnEstadA;
     public static javax.swing.JButton btnJuegosA;
     public static javax.swing.JButton btnProductosA;
-    private javax.swing.JLabel etiImagen;
+    private javax.swing.JLabel jLabel1;
     public static javax.swing.JPanel panelMenu;
+    public static javax.swing.JInternalFrame panelMenuAdmin;
     // End of variables declaration//GEN-END:variables
 }

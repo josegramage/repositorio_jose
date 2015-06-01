@@ -63,10 +63,7 @@ public class LoginDAO {
 
                 resultado = true;
                 Singletons.conectado = true;
-                
-               con.prepareStatement("UPDATE proyectofinal_josegramage.clientes SET estado='activado' WHERE login=? AND password=?");
-                
-                
+           
             }
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, "Error Logger1");
@@ -173,48 +170,34 @@ public class LoginDAO {
     }
     
     
-    
-    public String ActivarUsuarioDAO(Connection con, String dni) {
+    public int activarUsuarioDAO(Connection con, String login) {
 
-        String estado = null;
-        ResultSet rs = null;
         PreparedStatement stmt = null;
+        int correcto = 0;
 
         try {
-            stmt = con.prepareStatement("UPDATE proyectofinal_josegramage.clientes SET estado='activado' WHERE dni=?");
+            stmt = con.prepareStatement("UPDATE proyectofinal_josegramage.clientes SET estado='activado' WHERE login=?");
+            
+            stmt.setString(1, login);
+                        
+            correcto = stmt.executeUpdate();
 
-            stmt.setString(1, dni);
-
-            rs = stmt.executeQuery();
-
-            while (rs.next()) {
-
-                estado = rs.getString("Estado");
-
-            }
         } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null, "Error Logger");
+            JOptionPane.showMessageDialog(null, "error activar1");
         } finally {
-            if (rs != null) {
-                try {
-                    rs.close();
-                } catch (SQLException ex) {
-                    JOptionPane.showMessageDialog(null, "Error Logger");
-                }
-            }
             if (stmt != null) {
                 try {
                     stmt.close();
                 } catch (SQLException ex) {
-                    JOptionPane.showMessageDialog(null, "Error Logger");
+
                 }
             }
         }
-        return estado;
-    }
+        return correcto;
+    }  
     
-        
     
+   
     // -------------------------------------------------------------------------------
     //  PARA EL ALTA DEL CLIENTE
     // -------------------------------------------------------------------------------
@@ -379,15 +362,16 @@ public class LoginDAO {
         if (Singletons.alta.txtEmailL.getText().isEmpty()) {
             JOptionPane.showMessageDialog(null, "El email no puede estar en blanco", "Error", JOptionPane.INFORMATION_MESSAGE);
             Singletons.alta.errorEmail.setVisible(true);
+            Singletons.alta.etiEmailError.setVisible(true);
         }
 
         if (Validate.validaEmail(email) != true) {
             Singletons.alta.errorEmail.setVisible(true);
-            Singletons.alta.errorEmail.setVisible(true);
+            Singletons.alta.etiEmailError.setVisible(true);
             Singletons.alta.txtEmailL.requestFocus();
         } else {
             Singletons.alta.errorEmail.setVisible(false);
-            Singletons.alta.errorEmail.setVisible(false);
+           Singletons.alta.etiEmailError.setVisible(false);
             Singletons.alta.txtFnacimiento.requestFocus();
         }
         return email;
@@ -450,6 +434,7 @@ public class LoginDAO {
 
         if (Singletons.alta.txtFnacimiento.getDate() == null) {
             JOptionPane.showMessageDialog(null, "Selecciona una fecha de nacimiento");
+            Singletons.alta.errorFnacimiento.setVisible(true);
         } else {
             fecha1 = ((JTextFieldDateEditor) Singletons.alta.txtFnacimiento.getDateEditor()).getText();
 
@@ -482,9 +467,9 @@ public class LoginDAO {
         dni = pideDni();
         telefono = pideTelefono();
         direccion = pideDireccion();
-        Fnacimiento = pideFnacimiento();
-        Fecha Fechaalta = Fecha.fechaHoy();
         email = pideEmail();
+        Fnacimiento = pideFnacimiento();     
+       
         login = Funciones.getCadenaAleatoria1(6);
         password = Encriptador.getCadenaAleatoria(10);
         
@@ -495,13 +480,14 @@ public class LoginDAO {
             "\"'Nuestra memoria no es más que una imagen de la realidad, por lo que nuestra realidad es sólo nuestra imaginación'. Michael Ende.";
         
 
-        if ((Singletons.alta.errorNombre.isVisible() == false) && (Singletons.alta.errorDni.isVisible() == false) && (Singletons.alta.errorApellidos.isVisible() == false)
-                && (Singletons.alta.errorTelf.isVisible() == false) && (Singletons.alta.errorFnacimiento.isVisible() == false)) {
-
+        if ((Singletons.alta.errorNombre.isVisible() == false) && (Singletons.alta.errorDni.isVisible() == false)&& (Singletons.alta.etiDniError.isVisible() == false) && (Singletons.alta.errorApellidos.isVisible() == false)
+                && (Singletons.alta.errorTelf.isVisible() == false) && (Singletons.alta.errorFnacimiento.isVisible() == false) && (Singletons.alta.errorDireccion.isVisible() == false)&& (Singletons.alta.errorEmail.isVisible() == false)) {
+            // la fecha de alta es el chivato porque se genera automaticamente
+            Fecha Fechaalta = Fecha.fechaHoy();
             Singletons.cli = new Cliente(nombre, apellidos, dni, telefono, direccion, email, Fnacimiento, Fechaalta, login, password, estado, tipo, avatar);
 
             JavaMail mail = new JavaMail(email, password, asunto, mensaje);
-            String error = mail.send();
+           String error = mail.send();
             
             if (error.equals("")) {
                 JOptionPane.showMessageDialog(null, "Se ha enviado un email con su nombre de usuario y contraseña," + "\n podrá cambiarlos en su perfil", "Email enviado", JOptionPane.INFORMATION_MESSAGE);
@@ -510,7 +496,10 @@ public class LoginDAO {
             + password +"\n Podrás cambiarlos en tu perfil");
             } else {
                 JOptionPane.showMessageDialog(null, "Error de envio:\n" + error, "Error", JOptionPane.ERROR_MESSAGE);
-            }   
+            } 
+            
+        } else {
+            JOptionPane.showMessageDialog(null, "Complete correctamente los datos");
         }
     }
 
@@ -522,10 +511,13 @@ public class LoginDAO {
         Singletons.alta.txtTelefonoL.setText("");
         Singletons.alta.txtDireccionL.setText("");
         Singletons.alta.txtFnacimiento.setDate(null);
+        Singletons.alta.txtEmailL.setText("");
         Singletons.alta.errorNombre.setVisible(false);
         Singletons.alta.errorApellidos.setVisible(false);
         Singletons.alta.errorDni.setVisible(false);
         Singletons.alta.errorTelf.setVisible(false);
+        Singletons.alta.etiEmailError.setVisible(false);
+        Singletons.alta.errorEmail.setVisible(false);
         Singletons.alta.errorFnacimiento.setVisible(false);
         Singletons.alta.errorDireccion.setVisible(false);
         Singletons.alta.etiNombreError.setVisible(false);

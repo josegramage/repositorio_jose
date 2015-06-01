@@ -38,6 +38,7 @@ import proyectofinal_josegramage.Librerias.FrasesCelebres;
 import proyectofinal_josegramage.Modulos.Clientes.Modelo.BLL.ClienteBLL_bd;
 import proyectofinal_josegramage.Modulos.Clientes.Vista.Vtna_cli_MiPerfil;
 import proyectofinal_josegramage.Modulos.Clientes.Vista.Vtna_cli_Modif;
+import proyectofinal_josegramage.Modulos.Inicio.Vista.Vtna_Historia;
 import proyectofinal_josegramage.Modulos.Inicio.Vista.Vtna_Inicio;
 import proyectofinal_josegramage.Modulos.Inicio.Vista.Vtna_panel_Inicio;
 import proyectofinal_josegramage.Modulos.Juegos.Controlador.Controlador_Juegos;
@@ -60,6 +61,7 @@ public class Controlador_Inicio implements ActionListener, MouseListener {
         _JUEGOS,
         _HISTORIA,
         _NOSOTROS,
+        _MENU_ADMIN,
         // panel Login
         _BTN_ENTRAR_USUARIO,
         _BTN_REG_PERFIL,
@@ -82,6 +84,7 @@ public class Controlador_Inicio implements ActionListener, MouseListener {
         }
 
         if (i == 3) {
+            Singletons.histo = (Vtna_Historia) inicio;
 
         }
 
@@ -111,11 +114,11 @@ public class Controlador_Inicio implements ActionListener, MouseListener {
             //     Singletons.ini.add(Singletons.ini.panelLogin);
 
             ((BasicInternalFrameUI) Singletons.ini.internalFrame.getUI()).setNorthPane(null);
-            
+
             Singletons.ini.etiAdmin.setVisible(false);
             FrasesCelebres.ponerFrases();
-            
-            Image icono = Toolkit.getDefaultToolkit().getImage("src/proyectofinal_josegramage/Img/icono_bajo.jpg");
+
+            Image icono = Toolkit.getDefaultToolkit().getImage("src/proyectofinal_josegramage/Img/icono_bajo.png");
             Singletons.ini.setIconImage(icono);
 
             Singletons.ini.addWindowListener(new WindowAdapter() {
@@ -133,8 +136,8 @@ public class Controlador_Inicio implements ActionListener, MouseListener {
             } else {
                 Singletons.ini.eti_Entrar_Usuario.setText("Entrar");
                 Singletons.ini.eti_Reg_Perfil.setText("Regístrate");
-                
-                                  }
+
+            }
 
             Singletons.ini.etiInicio.setName("_INICIO");
             Singletons.ini.etiInicio.addMouseListener(this);
@@ -163,6 +166,10 @@ public class Controlador_Inicio implements ActionListener, MouseListener {
             Singletons.ini.eti_Reg_Perfil.setName("_BTN_REG_PERFIL");
             Singletons.ini.eti_Reg_Perfil.addMouseListener(this);
             Singletons.ini.eti_Reg_Perfil.setForeground(Color.black);
+
+            Singletons.ini.etiAdmin.setName("_MENU_ADMIN");
+            Singletons.ini.etiAdmin.addMouseListener(this);
+            Singletons.ini.etiAdmin.setForeground(Color.black);
 
         }
 
@@ -211,7 +218,7 @@ public class Controlador_Inicio implements ActionListener, MouseListener {
                     JPanel p4 = new JPanel();
                     p4.add(Singletons.login.panelLogin);
                     Singletons.ini.internalFrame.setContentPane(p4);
-                                        
+
                 }
                 break;
 
@@ -234,7 +241,7 @@ public class Controlador_Inicio implements ActionListener, MouseListener {
                     } else {
                         FileUploader.leer_imag(1);
                     }
-                    
+
                 } else {
                     new Controlador_Login(new Vtna_SignUP(), 1).iniciar(1);
                     JPanel p4 = new JPanel();
@@ -242,15 +249,14 @@ public class Controlador_Inicio implements ActionListener, MouseListener {
                     Singletons.ini.internalFrame.setContentPane(p4);
                 }
                 break;
-                
-                
+
             case _INICIO:
                 new Controlador_Inicio(new Vtna_panel_Inicio(), 1).iniciar(1);
 
                 JPanel panel_Inicio = new JPanel();
                 panel_Inicio.add(Singletons.iniPanel.panelInicio);
                 Singletons.ini.internalFrame.setContentPane(panel_Inicio);
-          
+
                 break;
 
             case _PRODUCTOS:
@@ -259,39 +265,30 @@ public class Controlador_Inicio implements ActionListener, MouseListener {
 
             case _JUEGOS:
                 new Controlador_Juegos(new Vtna_jue_Pager(), 0).iniciar(0);
-               
+
                 JPanel pJuegos = new JPanel();
                 pJuegos.add(Singletons.juePager.panelPager);
-                Singletons.ini.internalFrame.setContentPane(pJuegos);            
-          /*      
-                if (Singletons.conectado = false){
-                      JOptionPane.showMessageDialog(null,"conectado false");
-                      Singletons.juePager.btnAgregar.setVisible(false);
-                      Singletons.juePager.btnCambiar.setVisible(false);
-                      Singletons.juePager.btnEliminar.setVisible(false);
-                      Singletons.juePager.btnMenu.setVisible(false);
-                      Singletons.juePager.btnInfo.setVisible(false);
-                      
-                  }else {    
-                      if (Singletons.cliLog.getTipo().equals("usuario")){
-                      JOptionPane.showMessageDialog(null,"usuario");
-                      Singletons.juePager.btnAgregar.setVisible(false);
-                      Singletons.juePager.btnCambiar.setVisible(false);
-                      Singletons.juePager.btnEliminar.setVisible(false);
-                      Singletons.juePager.btnMenu.setVisible(false);
-                      Singletons.juePager.btnInfo.setVisible(false);           
-            }            
-                }
-                  */
-                  
+                Singletons.ini.internalFrame.setContentPane(pJuegos);
                 break;
 
             case _HISTORIA:
-                JOptionPane.showMessageDialog(null, "En construcción");
+                new Controlador_Inicio(new Vtna_Historia(), 3).iniciar(3);
+
+                JPanel pHistoria = new JPanel();
+                pHistoria.add(Singletons.histo.panelHistoria);
+                Singletons.ini.internalFrame.setContentPane(pHistoria);
                 break;
 
             case _NOSOTROS:
-          JOptionPane.showMessageDialog(null, "En construcción");
+                JOptionPane.showMessageDialog(null, "En construcción");
+                break;
+
+            case _MENU_ADMIN:
+                new Controlador_Menu(new Vtna_Menu_Admin(), 0).iniciar(0);
+                JPanel p4 = new JPanel();
+                p4.add(Singletons.menu.panelMenu);
+                Singletons.ini.internalFrame.setContentPane(p4);
+
                 break;
         }
     }
@@ -304,8 +301,8 @@ public class Controlador_Inicio implements ActionListener, MouseListener {
     @Override
     public void mouseReleased(MouseEvent e) {
         switch (Accion.valueOf(e.getComponent().getName())) {
-           
-        }       
+
+        }
     }
 
     @Override
@@ -326,6 +323,10 @@ public class Controlador_Inicio implements ActionListener, MouseListener {
 
             case _HISTORIA:
                 Singletons.ini.etiHistoria.setForeground(Color.blue);
+                break;
+
+            case _MENU_ADMIN:
+                Singletons.ini.etiAdmin.setForeground(Color.blue);
                 break;
 
             case _NOSOTROS:
@@ -365,6 +366,10 @@ public class Controlador_Inicio implements ActionListener, MouseListener {
 
             case _NOSOTROS:
                 Singletons.ini.etiNosotros.setForeground(Color.black);
+                break;
+
+            case _MENU_ADMIN:
+                Singletons.ini.etiAdmin.setForeground(Color.black);
                 break;
 
             case _BTN_ENTRAR_USUARIO:

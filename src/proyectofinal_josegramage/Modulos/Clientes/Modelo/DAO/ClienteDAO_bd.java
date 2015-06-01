@@ -5,6 +5,7 @@
  */
 package proyectofinal_josegramage.Modulos.Clientes.Modelo.DAO;
 
+import com.mysql.jdbc.CallableStatement;
 import proyectofinal_josegramage.Librerias.Singletons;
 import proyectofinal_josegramage.Clases.Fecha;
 import java.sql.Connection;
@@ -184,7 +185,7 @@ public class ClienteDAO_bd {
             stmt = con.prepareStatement("DELETE FROM proyectofinal_josegramage.clientes WHERE Dni=?");
             stmt.setString(1, cli.getDni());
             stmt.executeUpdate();
-            JOptionPane.showMessageDialog(null, "Cliente eliminado con éxito");
+            JOptionPane.showMessageDialog(null, "Cuenta eliminada con éxito");
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, "Ha habido un error al eliminar el usuario!");
         } finally {
@@ -256,4 +257,46 @@ public class ClienteDAO_bd {
             JOptionPane.showMessageDialog(null, "Error en el Logger");
         }
     }
+    
+    
+    
+     public void clienteMenorMayorDAO(Connection con) {
+
+        com.mysql.jdbc.CallableStatement cstmt = null;
+        String cadena = "";
+
+        try {
+            cstmt = (com.mysql.jdbc.CallableStatement) con.prepareCall("{call mayor_menor_cliente(?,?)}");
+            cstmt.registerOutParameter(1, java.sql.Types.INTEGER);
+            cstmt.registerOutParameter(2, java.sql.Types.INTEGER);
+            cstmt.execute();
+            cadena = cadena + "Cliente joven: " + cstmt.getInt(1) + " años" + "\n";
+            cadena = cadena + "Cliente mayor: " + cstmt.getInt(2) + " años";
+            JOptionPane.showMessageDialog(null, cadena, "Cliente joven/mayor", 1);
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Error Logger!");
+        }
+    }
+
+    public void EdadMediaDAO(Connection con) {
+
+        CallableStatement cstmt = null;
+        String cadena = "";
+        try {
+            cstmt = (CallableStatement) con.prepareCall("{call media_edad_clientes(?)}");
+            cstmt.registerOutParameter(1, java.sql.Types.DOUBLE);
+            cstmt.execute();
+            cadena = cadena + "Edad media: " + (int) cstmt.getDouble(1) + " años";
+            JOptionPane.showMessageDialog(null, cadena, "Edad media", 1);
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Error Logger!");
+        }
+    }
+    
+    
+    
+    
+    
+    
+    
 }

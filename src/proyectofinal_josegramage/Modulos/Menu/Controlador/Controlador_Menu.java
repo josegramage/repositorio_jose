@@ -30,8 +30,11 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.SwingUtilities;
 import javax.swing.UIManager;
+import javax.swing.plaf.basic.BasicInternalFrameUI;
+import proyectofinal_josegramage.Modulos.Clientes.Modelo.BLL.ClienteBLL_bd;
 import proyectofinal_josegramage.Modulos.Juegos.Controlador.Controlador_Juegos;
 import proyectofinal_josegramage.Modulos.Juegos.Vista.Vtna_jue_Pager;
+import proyectofinal_josegramage.Modulos.Menu.Vista.Vtna_Estad;
 
 /**
  *
@@ -62,6 +65,9 @@ public class Controlador_Menu implements ActionListener, MouseListener {
         _apariencia1,
         _apariencia2,
         _apariencia3,
+        // estadisticas
+        _BTN_MAX_MIN,
+        _BTN_EDAD_MEDIA,
 
     }
 
@@ -81,7 +87,8 @@ public class Controlador_Menu implements ActionListener, MouseListener {
         }
 
         if (i == 3) {
-
+            Singletons.estad = (Vtna_Estad) menu;
+            
         }
 
         if (i == 4) {
@@ -95,6 +102,9 @@ public class Controlador_Menu implements ActionListener, MouseListener {
 
         if (i == 0) {   //  vtna_menu
 
+                       
+             ((BasicInternalFrameUI) Singletons.menu.panelMenuAdmin.getUI()).setNorthPane(null);
+            
             Singletons.menu.btnClientesA.setActionCommand("_BTN_CLIENTES");
             Singletons.menu.btnClientesA.setName("_BTN_CLIENTES");
             Singletons.menu.btnClientesA.addActionListener(this);
@@ -171,8 +181,21 @@ public class Controlador_Menu implements ActionListener, MouseListener {
             Singletons.config.fecha6.setActionCommand("_fecha6");
             Singletons.config.fecha6.addActionListener(this);
         }
+        
+        if (i == 2) {   //  vtna_menu
+           
+            Vtna_Estad.btnMaxMin.setActionCommand("_BTN_MAX_MIN");
+            Vtna_Estad.btnMaxMin.setName("_BTN_MAX_MIN");
+            Vtna_Estad.btnMaxMin.addActionListener(this);
+            Vtna_Estad.btnMaxMin.addMouseListener(this);
 
-    }
+            Vtna_Estad.btnEdadMedia.setActionCommand("_BTN_EDAD_MEDIA");
+            Vtna_Estad.btnEdadMedia.setName("_BTN_EDAD_MEDIA");
+            Vtna_Estad.btnEdadMedia.addActionListener(this);
+            Vtna_Estad.btnEdadMedia.addMouseListener(this);
+        
+        }
+            }
 
     @Override
     public void actionPerformed(ActionEvent ae) {
@@ -209,7 +232,10 @@ public class Controlador_Menu implements ActionListener, MouseListener {
                 break;
 
             case _BTN_ESTADISTICA:
-                JOptionPane.showMessageDialog(null, "En construcción");
+                new Controlador_Menu(new Vtna_Estad(), 3).iniciar(2);
+                JPanel pEstad = new JPanel();
+                pEstad.add(Singletons.estad.panelEstad);
+                Singletons.menu.panelMenuAdmin.setContentPane(pEstad);
                 break;
 
             // ----------- Configuracion ----------------            
@@ -292,7 +318,18 @@ public class Controlador_Menu implements ActionListener, MouseListener {
                 Main.conf.setFormatoFecha("6");
                 break;
 
-            // throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+            // ----------- Estadistica ---------------- 
+               case  _BTN_MAX_MIN:
+                ClienteBLL_bd _cliente = new ClienteBLL_bd();
+                _cliente.clienteMenorMayorBLL();
+                break;
+                   
+                case _BTN_EDAD_MEDIA:
+                ClienteBLL_bd _cliente2 = new ClienteBLL_bd();
+                _cliente2.EdadMediaBLL();
+                break;
+                  
+
         }
     }
 

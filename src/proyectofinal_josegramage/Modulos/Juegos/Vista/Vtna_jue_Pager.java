@@ -31,11 +31,11 @@ public class Vtna_jue_Pager extends javax.swing.JFrame implements ActionListener
         jPanel1 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         TABLA = new javax.swing.JTable();
+        panelBoton = new javax.swing.JPanel();
         btnAgregar = new javax.swing.JButton();
         btnCambiar = new javax.swing.JButton();
         btnEliminar = new javax.swing.JButton();
         btnMenu = new javax.swing.JButton();
-        btnInfo = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
         ANTERIOR = new javax.swing.JButton();
         SIGUIENTE = new javax.swing.JButton();
@@ -50,6 +50,22 @@ public class Vtna_jue_Pager extends javax.swing.JFrame implements ActionListener
         etiFILTRAR = new javax.swing.JLabel();
         btnAbrir = new javax.swing.JButton();
         btnGuardar = new javax.swing.JButton();
+        imgPager = new javax.swing.JLabel();
+        panelBarrera = new javax.swing.JPanel();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
+        jLabel7 = new javax.swing.JLabel();
+        jLabel8 = new javax.swing.JLabel();
+        etiNombreP = new javax.swing.JTextField();
+        etiCompanyiaP = new javax.swing.JTextField();
+        etiTipoP = new javax.swing.JTextField();
+        etiFechaP = new javax.swing.JTextField();
+        etiPrecioP = new javax.swing.JTextField();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        etiDescripcionP = new javax.swing.JTextPane();
+        btnComprar = new javax.swing.JButton();
 
         menuLogin.setBorderPainted(false);
 
@@ -64,9 +80,12 @@ public class Vtna_jue_Pager extends javax.swing.JFrame implements ActionListener
         setTitle("Paginacion");
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        panelPager.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
         jPanel1.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        TABLA.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         TABLA.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {},
@@ -81,26 +100,45 @@ public class Vtna_jue_Pager extends javax.swing.JFrame implements ActionListener
         ));
         jScrollPane1.setViewportView(TABLA);
 
-        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(12, 13, 592, 233));
+        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(12, 13, 550, 170));
 
         btnAgregar.setText("Agregar");
-        jPanel1.add(btnAgregar, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 13, 115, 42));
 
         btnCambiar.setText("Cambiar");
-        jPanel1.add(btnCambiar, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 61, 115, 42));
 
         btnEliminar.setText("Eliminar");
-        jPanel1.add(btnEliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 109, 115, 42));
 
         btnMenu.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
         btnMenu.setText(" MENU  ");
-        jPanel1.add(btnMenu, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 204, 115, 42));
 
-        btnInfo.setText("  + Info  ");
-        btnInfo.setMaximumSize(new java.awt.Dimension(113, 48));
-        btnInfo.setMinimumSize(new java.awt.Dimension(113, 48));
-        btnInfo.setPreferredSize(new java.awt.Dimension(115, 49));
-        jPanel1.add(btnInfo, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 157, -1, 41));
+        javax.swing.GroupLayout panelBotonLayout = new javax.swing.GroupLayout(panelBoton);
+        panelBoton.setLayout(panelBotonLayout);
+        panelBotonLayout.setHorizontalGroup(
+            panelBotonLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelBotonLayout.createSequentialGroup()
+                .addGroup(panelBotonLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(btnAgregar, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnCambiar, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnMenu, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(0, 5, Short.MAX_VALUE))
+        );
+        panelBotonLayout.setVerticalGroup(
+            panelBotonLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelBotonLayout.createSequentialGroup()
+                .addComponent(btnAgregar, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(1, 1, 1)
+                .addComponent(btnCambiar, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(1, 1, 1)
+                .addComponent(btnEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(btnMenu, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(20, 20, 20))
+        );
+
+        jPanel1.add(panelBoton, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 10, 120, 170));
+
+        panelPager.add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(11, 12, 700, 190));
 
         jPanel2.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -122,102 +160,110 @@ public class Vtna_jue_Pager extends javax.swing.JFrame implements ActionListener
         ultimo.setText(">|");
         jPanel2.add(ultimo, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 10, -1, -1));
 
+        panelPager.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 210, 540, 43));
+
+        jPanel4.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
         jPanel4Layout.setHorizontalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 570, Short.MAX_VALUE)
+            .addGap(0, 536, Short.MAX_VALUE)
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 34, Short.MAX_VALUE)
         );
 
+        panelPager.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 260, 540, -1));
+        panelPager.add(panelFiltrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 300, 213, -1));
+
         jLabel1.setText("Filtrar nombre:");
+        panelPager.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 300, 75, -1));
 
         jComboBox1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "5", "10", "15", "20", "50", "100" }));
+        panelPager.add(jComboBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 230, 140, -1));
 
         jLabel2.setText("Show entries:");
+        panelPager.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 210, 148, -1));
 
         etiFILTRAR.setText("EtiquetaFILTRAR");
+        panelPager.add(etiFILTRAR, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 300, -1, -1));
 
         btnAbrir.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         btnAbrir.setText("ABRIR");
         btnAbrir.setMaximumSize(new java.awt.Dimension(93, 23));
         btnAbrir.setMinimumSize(new java.awt.Dimension(93, 23));
         btnAbrir.setPreferredSize(new java.awt.Dimension(93, 23));
+        panelPager.add(btnAbrir, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 290, 140, -1));
 
         btnGuardar.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         btnGuardar.setText("GUARDAR");
+        panelPager.add(btnGuardar, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 260, 140, -1));
 
-        javax.swing.GroupLayout panelPagerLayout = new javax.swing.GroupLayout(panelPager);
-        panelPager.setLayout(panelPagerLayout);
-        panelPagerLayout.setHorizontalGroup(
-            panelPagerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panelPagerLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(panelPagerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(panelPagerLayout.createSequentialGroup()
-                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addGroup(panelPagerLayout.createSequentialGroup()
-                        .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 540, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(panelPagerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(panelPagerLayout.createSequentialGroup()
-                                .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addContainerGap())
-                            .addGroup(panelPagerLayout.createSequentialGroup()
-                                .addComponent(jComboBox1, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addGap(37, 37, 37))))))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelPagerLayout.createSequentialGroup()
-                .addGroup(panelPagerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(panelPagerLayout.createSequentialGroup()
-                        .addGap(23, 23, 23)
-                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(panelFiltrar, javax.swing.GroupLayout.PREFERRED_SIZE, 213, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(etiFILTRAR)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(panelPagerLayout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
-                .addGroup(panelPagerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btnGuardar, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnAbrir, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(36, 36, 36))
+        imgPager.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        panelPager.add(imgPager, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 350, 111, 111));
+
+        javax.swing.GroupLayout panelBarreraLayout = new javax.swing.GroupLayout(panelBarrera);
+        panelBarrera.setLayout(panelBarreraLayout);
+        panelBarreraLayout.setHorizontalGroup(
+            panelBarreraLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 100, Short.MAX_VALUE)
         );
-        panelPagerLayout.setVerticalGroup(
-            panelPagerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelPagerLayout.createSequentialGroup()
-                .addGap(11, 11, 11)
-                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(panelPagerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(panelPagerLayout.createSequentialGroup()
-                        .addComponent(jLabel2)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(panelPagerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(panelPagerLayout.createSequentialGroup()
-                        .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(28, 28, 28))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelPagerLayout.createSequentialGroup()
-                        .addComponent(btnGuardar)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
-                .addGroup(panelPagerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel1)
-                    .addComponent(panelFiltrar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(etiFILTRAR)
-                    .addComponent(btnAbrir, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(21, 21, 21))
+        panelBarreraLayout.setVerticalGroup(
+            panelBarreraLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 0, Short.MAX_VALUE)
         );
 
-        getContentPane().add(panelPager, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 80, 770, 440));
+        panelPager.add(panelBarrera, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 470, -1, 10));
+
+        jLabel3.setText("Nombre:");
+        panelPager.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 330, -1, -1));
+
+        jLabel4.setText("Compañia:");
+        panelPager.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 380, 70, -1));
+
+        jLabel5.setText("Tipo:");
+        panelPager.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 330, -1, -1));
+
+        jLabel6.setText("Fecha de alta:");
+        panelPager.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 430, -1, -1));
+
+        jLabel7.setText("Descripcion:");
+        panelPager.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 380, -1, -1));
+
+        jLabel8.setText("Precio:");
+        panelPager.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 330, -1, -1));
+
+        etiNombreP.setEditable(false);
+        etiNombreP.setBackground(new java.awt.Color(255, 255, 255));
+        panelPager.add(etiNombreP, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 350, 110, -1));
+
+        etiCompanyiaP.setEditable(false);
+        etiCompanyiaP.setBackground(new java.awt.Color(255, 255, 255));
+        panelPager.add(etiCompanyiaP, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 400, 110, -1));
+
+        etiTipoP.setEditable(false);
+        etiTipoP.setBackground(new java.awt.Color(255, 255, 255));
+        panelPager.add(etiTipoP, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 350, 120, -1));
+
+        etiFechaP.setEditable(false);
+        etiFechaP.setBackground(new java.awt.Color(255, 255, 255));
+        panelPager.add(etiFechaP, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 450, 120, -1));
+
+        etiPrecioP.setEditable(false);
+        etiPrecioP.setBackground(new java.awt.Color(255, 255, 255));
+        panelPager.add(etiPrecioP, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 350, 120, -1));
+
+        etiDescripcionP.setEditable(false);
+        jScrollPane2.setViewportView(etiDescripcionP);
+
+        panelPager.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 400, 170, 70));
+
+        btnComprar.setText("COMPRAR");
+        panelPager.add(btnComprar, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 420, -1, -1));
+
+        getContentPane().add(panelPager, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 20, 720, 560));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -231,22 +277,38 @@ public class Vtna_jue_Pager extends javax.swing.JFrame implements ActionListener
     public static javax.swing.JButton btnAbrir;
     public static javax.swing.JButton btnAgregar;
     public static javax.swing.JButton btnCambiar;
+    public static javax.swing.JButton btnComprar;
     public static javax.swing.JButton btnEliminar;
     public static javax.swing.JButton btnGuardar;
-    public static javax.swing.JButton btnInfo;
     public static javax.swing.JButton btnMenu;
     public static javax.swing.JMenuItem btnPerfilEditar;
     public static javax.swing.JMenuItem btnPerfilSalir;
+    public static javax.swing.JTextField etiCompanyiaP;
+    public static javax.swing.JTextPane etiDescripcionP;
     public static javax.swing.JLabel etiFILTRAR;
+    public static javax.swing.JTextField etiFechaP;
+    public static javax.swing.JTextField etiNombreP;
+    public static javax.swing.JTextField etiPrecioP;
+    public static javax.swing.JTextField etiTipoP;
+    public static javax.swing.JLabel imgPager;
     public static javax.swing.JComboBox jComboBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     public static javax.swing.JPanel jPanel4;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JPopupMenu.Separator jSeparator2;
     private javax.swing.JPopupMenu menuLogin;
+    private javax.swing.JPanel panelBarrera;
+    public static javax.swing.JPanel panelBoton;
     public static javax.swing.JTextField panelFiltrar;
     public static javax.swing.JPanel panelPager;
     public static javax.swing.JButton primero;

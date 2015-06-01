@@ -22,6 +22,7 @@ import proyectofinal_josegramage.Modulos.Clientes.Clases.Cliente;
 import proyectofinal_josegramage.Modulos.Clientes.Clases.Cliente;
 import proyectofinal_josegramage.Modulos.Clientes.Clases.SimpleTableModel_cliente;
 import proyectofinal_josegramage.Modulos.Clientes.Vista.Vtna_cli_MiPerfil;
+import proyectofinal_josegramage.Modulos.Inicio.Vista.Vtna_Historia;
 import proyectofinal_josegramage.Modulos.Inicio.Vista.Vtna_Inicio;
 import proyectofinal_josegramage.Modulos.Inicio.Vista.Vtna_panel_Inicio;
 import proyectofinal_josegramage.Modulos.Juegos.Clases.Juego;
@@ -31,6 +32,7 @@ import proyectofinal_josegramage.Modulos.Juegos.Vista.Vtna_jue_Crear;
 import proyectofinal_josegramage.Modulos.Juegos.Vista.Vtna_jue_Modif;
 import proyectofinal_josegramage.Modulos.Juegos.Vista.Vtna_jue_Pager;
 import proyectofinal_josegramage.Modulos.Login.Vista.Vtna_SignUP;
+import proyectofinal_josegramage.Modulos.Menu.Vista.Vtna_Estad;
 
 /**
  *
@@ -50,6 +52,8 @@ public class Singletons {
     public static Vtna_panel_Inicio iniPanel;
     public static Vtna_Menu_Admin menu;
     public static Vtna_Config config;
+    public static Vtna_Estad estad;
+    public static Vtna_Historia histo;
     
     //PAGER CLIENTE
     public static Vtna_cli_Pager efPager;

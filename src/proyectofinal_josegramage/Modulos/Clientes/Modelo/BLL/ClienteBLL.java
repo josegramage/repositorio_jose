@@ -16,7 +16,13 @@ import proyectofinal_josegramage.Modulos.Clientes.Vista.Vtna_cli_Pager;
 import proyectofinal_josegramage.Utiles.Menus;
 import java.util.ArrayList;
 import java.util.Iterator;
+import javax.swing.JPanel;
+import proyectofinal_josegramage.Modulos.Clientes.Controlador.Controlador_Cliente;
+import proyectofinal_josegramage.Modulos.Inicio.Controlador.Controlador_Inicio;
+import proyectofinal_josegramage.Modulos.Inicio.Vista.Vtna_panel_Inicio;
 import proyectofinal_josegramage.Modulos.Login.Modelo.DAO.LoginDAO;
+import proyectofinal_josegramage.Modulos.Menu.Controlador.Controlador_Menu;
+import proyectofinal_josegramage.Modulos.Menu.Vista.Vtna_Menu_Admin;
 
 public class ClienteBLL {
 
@@ -93,11 +99,17 @@ public class ClienteBLL {
     public static void crearCliente() {
 
         ClienteDAO.CreaCliente();
-
-        if (Singletons.cli != null) {
+//la fecha de alta se genera automaticamente asi que me sirve de chivato
+        if (Singletons.cli.getFechaalta() != null) {
             Singletons.cliArray.add(Singletons.cli);
             ClienteBLL_bd.nuevoUsuarioBLL();
-            ((SimpleTableModel_cliente) Singletons.efPager.TABLA.getModel()).cargar();
+    //        ((SimpleTableModel_cliente) Singletons.efPager.TABLA.getModel()).cargar();
+
+            new Controlador_Cliente(new Vtna_cli_Pager(), 0).iniciar(0);
+            Singletons.efCrear.dispose();
+            JPanel panelPag = new JPanel();
+            panelPag.add(Singletons.efPager.panelPager);
+            Singletons.ini.internalFrame.setContentPane(panelPag);
         }
     }
 
@@ -164,7 +176,7 @@ public class ClienteBLL {
     public static void pideLogin() {
         ClienteDAO.pideLogin();
     }
-    
+
     public static void pideLoginKey() {
         ClienteDAO.pideLoginKey();
     }
@@ -172,16 +184,16 @@ public class ClienteBLL {
     public static void pideLoginM() {
         ClienteDAO.pideLoginM();
     }
-    
-     public static void pideLoginKeyM() {
+
+    public static void pideLoginKeyM() {
         ClienteDAO.pideLoginKeyM();
     }
 
     public static void pidePassword() {
         ClienteDAO.pidePassword();
     }
-    
-        public static void pidePasswordKey() {
+
+    public static void pidePasswordKey() {
         ClienteDAO.pidePasswordKey();
     }
 
@@ -204,49 +216,49 @@ public class ClienteBLL {
     //modificar Admin
     public static void ModificarPagerAdmin() {
 
-     
-            if (Vtna_cli_Modif.errorNombreM.isVisible() == false) {
-                Singletons.cli.setNombre(ClienteDAO.pideNombreM());
-            }
-            if (Vtna_cli_Modif.errorApellidosM.isVisible() == false) {
-                Singletons.cli.setApellidos(ClienteDAO.pideApellidosM());
-            }
-            if (Vtna_cli_Modif.errorTelfM.isVisible() == false) {
-                Singletons.cli.setTelefono(ClienteDAO.pideTelefonoM());
-            }
-            if (Vtna_cli_Modif.errorEmailM.isVisible() == false) {
-                Singletons.cli.setEmail(ClienteDAO.pideEmailM());
-            }
-            if (Vtna_cli_Modif.errorFnacimientoM.isVisible() == false) {
-                Singletons.cli.setFnacimiento(ClienteDAO.pideFnacimientoM());
-            }
-            if (Vtna_cli_Modif.errorDireccionM.isVisible() == false) {
-                Singletons.cli.setDireccion(ClienteDAO.pideDireccionM());
-            }
+        if (Vtna_cli_Modif.errorNombreM.isVisible() == false) {
+            Singletons.cli.setNombre(ClienteDAO.pideNombreM());
+        }
+        if (Vtna_cli_Modif.errorApellidosM.isVisible() == false) {
+            Singletons.cli.setApellidos(ClienteDAO.pideApellidosM());
+        }
+        if (Vtna_cli_Modif.errorTelfM.isVisible() == false) {
+            Singletons.cli.setTelefono(ClienteDAO.pideTelefonoM());
+        }
+        if (Vtna_cli_Modif.errorEmailM.isVisible() == false) {
+            Singletons.cli.setEmail(ClienteDAO.pideEmailM());
+        }
+        if (Vtna_cli_Modif.errorFnacimientoM.isVisible() == false) {
+            Singletons.cli.setFnacimiento(ClienteDAO.pideFnacimientoM());
+        }
+        if (Vtna_cli_Modif.errorDireccionM.isVisible() == false) {
+            Singletons.cli.setDireccion(ClienteDAO.pideDireccionM());
+        }
 
-            Singletons.cli.setLogin(ClienteDAO.pideLoginM());
-            Singletons.cli.setPassword(ClienteDAO.pidePasswordM());
-            Singletons.cli.setTipo(ClienteDAO.pideTipoM());
+        Singletons.cli.setLogin(ClienteDAO.pideLoginM());
+        Singletons.cli.setPassword(ClienteDAO.pidePasswordM());
+        Singletons.cli.setTipo(ClienteDAO.pideTipoM());
 
-            if (Singletons.PATH_auto != null) {
-                Singletons.cli.setAvatar(Singletons.PATH_auto);
-            }
+        if (Singletons.PATH_auto != null) {
+            Singletons.cli.setAvatar(Singletons.PATH_auto);
+        }
 
-            if ((Vtna_cli_Modif.errorNombreM.isVisible() == false) && (Vtna_cli_Modif.errorApellidosM.isVisible() == false) && (Vtna_cli_Modif.errorTelfM.isVisible() == false)
-                    && (Vtna_cli_Modif.errorFnacimientoM.isVisible() == false) && (Singletons.efModif.errorPasswordM.isVisible() == false) && (Vtna_cli_Modif.errorDireccionM.isVisible() == false)) {
+        if ((Vtna_cli_Modif.errorNombreM.isVisible() == false) && (Vtna_cli_Modif.errorApellidosM.isVisible() == false) && (Vtna_cli_Modif.errorTelfM.isVisible() == false)
+                && (Vtna_cli_Modif.errorFnacimientoM.isVisible() == false) && (Singletons.efModif.errorPasswordM.isVisible() == false) && (Vtna_cli_Modif.errorDireccionM.isVisible() == false)) {
 
-                Singletons.cliArray.set(Singletons.pos, Singletons.cli);
-                ClienteBLL_bd.modificarClienteBLL();
+            Singletons.cliArray.set(Singletons.pos, Singletons.cli);
+            ClienteBLL_bd.modificarClienteBLL();
 
-         //       ((SimpleTableModel_cliente) Singletons.efPager.TABLA.getModel()).cargar();
+      //      ((SimpleTableModel_cliente) Singletons.efPager.TABLA.getModel()).cargar();
 
-                Vtna_cli_Modif.btnOKM.setVisible(true);
-                Vtna_cli_Modif.etiGuardadoM.setVisible(true);
-                ClienteDAO.noEditableM();
-            }
+            new Controlador_Cliente(new Vtna_cli_Pager(), 0).iniciar(0);
+            Singletons.efModif.dispose();
+            JPanel panelPagerM = new JPanel();
+            panelPagerM.add(Singletons.efPager.panelPager);
+            Singletons.ini.internalFrame.setContentPane(panelPagerM);
+        }
     }
 
-   
     public static int buscar(Cliente ef) {//Buscar
         int aux = -1;
 
@@ -275,7 +287,7 @@ public class ClienteBLL {
                 if (opc == 0) {
                     ((SimpleTableModel_cliente) Vtna_cli_Pager.TABLA.getModel()).removeRow(selection1);
                     ClienteBLL_bd.borrarUsuarioBLL();
-                    ((SimpleTableModel_cliente) Singletons.efPager.TABLA.getModel()).cargar();
+             //       ((SimpleTableModel_cliente) Singletons.efPager.TABLA.getModel()).cargar();
                 }
             }
         } else {
@@ -359,11 +371,8 @@ public class ClienteBLL {
             }
         } while (op2 < 1);
     }
-    
-    
-       ////// M O D I F I C A R   M I  P E R F I L  ///////////////
-    
-    
+
+    ////// M O D I F I C A R   M I  P E R F I L  ///////////////
     public static void pideNombreMP() {
         ClienteDAO.pideNombreMP();
     }
@@ -428,9 +437,7 @@ public class ClienteBLL {
         ClienteDAO.modificarLogeadoMP();
     }
 
-
     // Modificar usuario
-
     public static void ModificarPagerMP() {
 
         if (Singletons.cliMP.errorNombreM.isVisible() == false) {
@@ -456,7 +463,11 @@ public class ClienteBLL {
         Singletons.cliLog.setPassword(ClienteDAO.pidePasswordMP());
         Singletons.cliLog.setTipo(ClienteDAO.pideTipoMP());
 
-          if (Singletons.cliLog.getAvatar().isEmpty()) {
+  /*      if (Singletons.cliLog.getAvatar().isEmpty()) {
+            Singletons.cliLog.setAvatar(Singletons.PATH_auto);
+        }
+    */    
+        if (Singletons.PATH_auto != null) {
             Singletons.cliLog.setAvatar(Singletons.PATH_auto);
         }
 
@@ -465,11 +476,50 @@ public class ClienteBLL {
 
             Singletons.cliArray.set(Singletons.pos, Singletons.cliLog);
             ClienteBLL_bd.modificarClienteLogeado();
-            //      ((SimpleTableModel_cliente) Singletons.efPager.TABLA.getModel()).cargar();
+            
+            Singletons.ini.eti_Entrar_Usuario.setText(Singletons.cliLog.getLogin());
+             if (Singletons.cliLog.getAvatar().isEmpty()) {
+                    FileUploader.leer_imag_defecto(2);
+                } else {
+                    FileUploader.leer_imag(0);
+                }
 
-            Singletons.cliMP.btnOKM.setVisible(true);
-            Singletons.cliMP.etiGuardadoM.setVisible(true);
-          
+            if (Singletons.cliLog.getTipo().equals("admin")) {
+                Singletons.cliMP.dispose();
+                new Controlador_Menu(new Vtna_Menu_Admin(), 0).iniciar(0);
+                JPanel pmenu = new JPanel();
+                pmenu.add(Singletons.menu.panelMenu);
+                Singletons.ini.internalFrame.setContentPane(pmenu);
+
+            } else if (Singletons.cliLog.getTipo().equals("usuario")) {
+                Singletons.cliMP.dispose();
+                new Controlador_Inicio(new Vtna_panel_Inicio(), 1).iniciar(1);
+                JPanel panel_Inicio = new JPanel();
+                panel_Inicio.add(Singletons.iniPanel.panelInicio);
+                Singletons.ini.internalFrame.setContentPane(panel_Inicio);
+            }
+        }
+    }
+
+    public static void EliminarMP() {
+
+        int confirmado = JOptionPane.showConfirmDialog(null, "¿Estás seguro de eliminar tu cuenta?", "Info", JOptionPane.WARNING_MESSAGE);
+        if (JOptionPane.OK_OPTION == confirmado) {
+            ClienteBLL_bd.borrarUsuarioMiPerfil();
+
+            new Controlador_Inicio(new Vtna_panel_Inicio(), 1).iniciar(1);
+
+            JPanel panel_Inicio2 = new JPanel();
+            panel_Inicio2.add(Singletons.iniPanel.panelInicio);
+            Singletons.ini.internalFrame.setContentPane(panel_Inicio2);
+
+            Singletons.conectado = false;
+
+            Singletons.ini.eti_Entrar_Usuario.setText("Entrar");
+            Singletons.ini.eti_Reg_Perfil.setText("Regístrate");
+            FileUploader.leer_imag_defecto(5);
+            Singletons.ini.etiAdmin.setVisible(false);
+        } else {
         }
     }
 }

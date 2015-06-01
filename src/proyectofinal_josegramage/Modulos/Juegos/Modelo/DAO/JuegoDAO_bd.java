@@ -112,7 +112,7 @@ public class JuegoDAO_bd {
             stmt.setString(8, Singletons.jue.getDescripcion());
 
             stmt.setString(9, Singletons.jue.getRef());
-   
+
             stmt.executeUpdate();
 
         } catch (SQLException ex) {
