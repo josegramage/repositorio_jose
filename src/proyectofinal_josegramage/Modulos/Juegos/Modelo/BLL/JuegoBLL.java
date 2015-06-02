@@ -100,16 +100,15 @@ public class JuegoBLL {
         if (Singletons.jue.getFecha_alta() != null) {
             Singletons.jueArray.add(Singletons.jue);
             JuegoBLL_bd.nuevoJuegoBLL();
-       //     ((SimpleTableModel_juegos) Singletons.juePager.TABLA.getModel()).cargar();
-             new Controlador_Juegos(new Vtna_jue_Pager(), 0).iniciar(0);
-                Singletons.jueCrear.dispose();
-                JPanel panelPager = new JPanel();
-                panelPager.add(Singletons.juePager.panelPager);
-                Singletons.ini.internalFrame.setContentPane(panelPager);
+            //     ((SimpleTableModel_juegos) Singletons.juePager.TABLA.getModel()).cargar();
+            new Controlador_Juegos(new Vtna_jue_Pager(), 0).iniciar(0);
+            Singletons.jueCrear.dispose();
+            JPanel panelPager = new JPanel();
+            panelPager.add(Singletons.juePager.panelPager);
+            Singletons.ini.internalFrame.setContentPane(panelPager);
         }
     }
 
-   
     public static void limpiar() {
         JuegoDAO.limpiar();
     }
@@ -161,7 +160,7 @@ public class JuegoBLL {
     public static void pideDescripcionM() {
         JuegoDAO.pideDescripcionM();
     }
-    
+
     public static void pideDescripcionKeyM() {
         JuegoDAO.pideDescripcionKeyM();
     }
@@ -195,15 +194,14 @@ public class JuegoBLL {
         if (Singletons.jue.getImagen().isEmpty()) {
             Singletons.jue.setImagen(Singletons.PATH_auto_Img);
         }
-        
-      
+
         if ((Vtna_jue_Modif.errorNombreM.isVisible() == false) && (Vtna_jue_Modif.errorCompanyiaM.isVisible() == false) && (Vtna_jue_Modif.errorTipoM.isVisible() == false)
-           && (Vtna_jue_Modif.errorPrecioM.isVisible() == false)) {
+                && (Vtna_jue_Modif.errorPrecioM.isVisible() == false)) {
 
             Singletons.jueArray.set(Singletons.posJ, Singletons.jue);
             JuegoBLL_bd.modificarJuegoBLL();
-        ((SimpleTableModel_juegos) Singletons.juePager.TABLA.getModel()).cargar();
-         }
+            ((SimpleTableModel_juegos) Singletons.juePager.TABLA.getModel()).cargar();
+        }
     }
 
     public static int buscar(Juego jue) {//Buscar
@@ -230,7 +228,7 @@ public class JuegoBLL {
             } else {
                 nombre = (String) Vtna_jue_Pager.TABLA.getModel().getValueAt(selection1, 1);
                 companyia = (String) Vtna_jue_Pager.TABLA.getModel().getValueAt(selection1, 2);
-                opc = JOptionPane.showConfirmDialog(null, "¿Deseas eliminar a " + nombre + " " + companyia + "?", "Info", JOptionPane.WARNING_MESSAGE);
+                opc = JOptionPane.showConfirmDialog(null, "¿Deseas eliminar a " + nombre + " de " + companyia + "?", "Info", JOptionPane.WARNING_MESSAGE);
                 if (opc == 0) {
                     ((SimpleTableModel_juegos) Vtna_jue_Pager.TABLA.getModel()).removeRow(selection1);
                     JuegoBLL_bd.borrarJuegoBLL();
@@ -242,7 +240,6 @@ public class JuegoBLL {
         }
     }
 
-    
     public static void InfoPager() {
         imprimir(Singletons.jueArray);
     }
@@ -259,47 +256,18 @@ public class JuegoBLL {
         JOptionPane.showMessageDialog(null, cad);
     }
 
- /*   public static void abrir() {//Abrir en el formato elegido por el usuario previamente en configuracion
-
-        if (Main.conf.getGuardar() == "1") {
-            Singletons.jueArray = proyectofinal_josegramage.Librerias.Json.abrirJSON();
-          } else if (Main.conf.getGuardar() == "2") {
-            Singletons.jueArray = proyectofinal_josegramage.Librerias.Txt.abrirTXTempfijo();
-                  } else if (Main.conf.getGuardar() == "3") {
-            Singletons.jueArray = proyectofinal_josegramage.Librerias.Xml.abrirXMLempfijo();
-               }
-    }
-*/
     public static void guardar() {//Guardar en el formato elegido por el usuario previamente en configuracion
         if (Singletons.jueArray.size() != 0) {
 
             if (Main.conf.getGuardar() == "1") {
                 proyectofinal_josegramage.Librerias.Json.guardarJSON();//Genera un archivo json con todos los datos del Arraylist de empleados fijos
-                      } else if (Main.conf.getGuardar() == "2") {
-                proyectofinal_josegramage.Librerias.Txt.guardarTXTempfijo();//Lo mismo que antes pero con un txt
-           
+            } else if (Main.conf.getGuardar() == "2") {
+                proyectofinal_josegramage.Librerias.Txt.guardarTXTjuego();//Lo mismo que antes pero con un txt
             } else if (Main.conf.getGuardar() == "3") {
-                proyectofinal_josegramage.Librerias.Xml.guardarXMLempfijo();//�dem pero para un xml
-
+                proyectofinal_josegramage.Librerias.Xml.guardarXMLjuego();//�dem pero para un xml
             }
         } else {
             JOptionPane.showMessageDialog(null, "ArrayList vacio", "Error", JOptionPane.ERROR_MESSAGE);
         }
-    }
- 
-
-    public static void GuardarAntesSalir() {
-        int op2 = 0;
-        do {
-            op2 = Menus.GuardarSalirSiNo(0);
-            switch (op2) {
-                case 0:
-                    Main.conf.setGuardar(Menus.menuFormatoGuardar());
-                    guardar();
-                    break;
-                case 1:
-                    break;
-            }
-        } while (op2 < 1);
     }
 }

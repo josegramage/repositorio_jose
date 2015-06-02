@@ -5,11 +5,9 @@
  */
 package proyectofinal_josegramage.Modulos.Login.Controlador;
 
-import proyectofinal_josegramage.Clases.JPanel_Fondo;
-import proyectofinal_josegramage.Modulos.Clientes.Controlador.Controlador_Cliente;
-import proyectofinal_josegramage.Modulos.Clientes.Modelo.BLL.ClienteBLL;
+
 import proyectofinal_josegramage.Librerias.Singletons;
-import proyectofinal_josegramage.Modulos.Clientes.Vista.Vtna_cli_Crear;
+
 import proyectofinal_josegramage.Modulos.Menu.Controlador.Controlador_Menu;
 import proyectofinal_josegramage.Modulos.Menu.Vista.Vtna_Menu_Admin;
 import proyectofinal_josegramage.Modulos.Login.Modelo.BLL.LoginBLL;
@@ -88,17 +86,19 @@ public class Controlador_Login implements ActionListener, MouseListener, KeyList
             Singletons.login.etiUsuarioError.setVisible(false);
             Singletons.login.etiPasswordError.setVisible(false);
 
-            Singletons.login.txtUsuario.requestFocus();
+            Singletons.login.txtPassword.requestFocus();
 
             Singletons.login.btnAceptar.setActionCommand("_BTN_ACEPTAR_login");
             Singletons.login.btnAceptar.setName("_BTN_ACEPTAR_login");
             Singletons.login.btnAceptar.addActionListener(this);
             Singletons.login.btnAceptar.addMouseListener(this);
 
+            Singletons.login.txtUsuario.setActionCommand("_TXT_LOGIN");
             Singletons.login.txtUsuario.setName("_TXT_LOGIN");
             Singletons.login.txtUsuario.addMouseListener(this);
             Singletons.login.txtUsuario.addKeyListener(this);
 
+            Singletons.login.txtPassword.setActionCommand("_TXT_PASSWORD");
             Singletons.login.txtPassword.setName("_TXT_PASSWORD");
             Singletons.login.txtPassword.addKeyListener(this);
             Singletons.login.txtPassword.addMouseListener(this);
@@ -176,13 +176,13 @@ public class Controlador_Login implements ActionListener, MouseListener, KeyList
                 String usuario = Vtna_SignIN.txtUsuario.getText();
                 String password = Vtna_SignIN.txtPassword.getText();
                 boolean login;
-                
+
                 LoginBLL _login = new LoginBLL();
 
                 login = _login.loginUsuarioBLL(usuario, password);
-                
+
                 LoginBLL.activarUsuarioBLL(usuario);
-                
+
                 if (login == true) {
                     Singletons.conectado = true;
 
@@ -211,7 +211,6 @@ public class Controlador_Login implements ActionListener, MouseListener, KeyList
                         JPanel panel_Inicio = new JPanel();
                         panel_Inicio.add(Singletons.iniPanel.panelInicio);
                         Singletons.ini.internalFrame.setContentPane(panel_Inicio);
-
                     }
 
                 } else {
@@ -220,6 +219,14 @@ public class Controlador_Login implements ActionListener, MouseListener, KeyList
 
                     return;
                 }
+                break;
+
+            case _TXT_LOGIN:
+                LoginBLL.pideLogin();
+                break;
+
+            case _TXT_PASSWORD:
+                LoginBLL.pidePassword();
                 break;
 
             // ------------ alta cliente --------------
@@ -249,13 +256,13 @@ public class Controlador_Login implements ActionListener, MouseListener, KeyList
 
             case _BTN_ACEPTAR_alta:
                 LoginBLL.AltaUsuario();
-                
-                if (Singletons.cli.getFechaalta()!= null) {
-                Singletons.alta.dispose();
-                new Controlador_Login(new Vtna_SignIN(), 0).iniciar(0);
-                JPanel p4 = new JPanel();
-                p4.add(Singletons.login.panelLogin);
-                Singletons.ini.internalFrame.setContentPane(p4);
+
+                if (Singletons.cli.getFechaalta() != null) {
+                    Singletons.alta.dispose();
+                    new Controlador_Login(new Vtna_SignIN(), 0).iniciar(0);
+                    JPanel p4 = new JPanel();
+                    p4.add(Singletons.login.panelLogin);
+                    Singletons.ini.internalFrame.setContentPane(p4);
                 }
                 break;
 
@@ -403,12 +410,52 @@ public class Controlador_Login implements ActionListener, MouseListener, KeyList
                 LoginBLL.pideEmailKey();
                 break;
 
+            case _TXT_LOGIN:
+                LoginBLL.pideLoginKey();
+                break;
+
+            case _TXT_PASSWORD:
+                LoginBLL.pidePasswordKey();
+                break;
+
         }
     }
 
     @Override
-    public void keyPressed(KeyEvent e) {
-        //    throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public void keyPressed(KeyEvent ke) {
+        switch (Accion.valueOf(ke.getComponent().getName())) {
+            case _TXT_NOMBRE:
+                LoginBLL.pideNombreKey();
+                break;
+
+            case _TXT_APELLIDOS:
+                LoginBLL.pideApellidosKey();
+                break;
+
+            case _TXT_DNI:
+                LoginBLL.pideDniKey();
+                break;
+
+            case _TXT_TELEFONO:
+                LoginBLL.pideTelefonoKey();
+                break;
+
+            case _TXT_DIRECCION:
+                LoginBLL.pideDireccionKey();
+                break;
+
+            case _TXT_EMAIL:
+                LoginBLL.pideEmailKey();
+                break;
+
+            case _TXT_LOGIN:
+                LoginBLL.pideLoginKey();
+                break;
+
+            case _TXT_PASSWORD:
+                LoginBLL.pidePasswordKey();
+                break;
+        }
     }
 
     @Override
@@ -436,6 +483,14 @@ public class Controlador_Login implements ActionListener, MouseListener, KeyList
 
             case _TXT_EMAIL:
                 LoginBLL.pideEmailKey();
+                break;
+
+            case _TXT_LOGIN:
+                LoginBLL.pideLoginKey();
+                break;
+
+            case _TXT_PASSWORD:
+                LoginBLL.pidePasswordKey();
                 break;
         }
     }

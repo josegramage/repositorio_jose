@@ -48,7 +48,6 @@ public class Vtna_cli_MiPerfil extends javax.swing.JFrame {
         txtApellidosMP = new javax.swing.JTextField();
         txtEmailMP = new javax.swing.JTextField();
         txtLoginMP = new javax.swing.JTextField();
-        txtPasswordMP = new javax.swing.JTextField();
         txtFnacimientoMP = new com.toedter.calendar.JDateChooser();
         btnAceptarM = new javax.swing.JButton();
         errorNombreM = new javax.swing.JButton();
@@ -67,6 +66,7 @@ public class Vtna_cli_MiPerfil extends javax.swing.JFrame {
         btnEliminar_MP = new javax.swing.JButton();
         btnSalir_MP = new javax.swing.JButton();
         jLabel6 = new javax.swing.JLabel();
+        txtPasswordMP = new javax.swing.JPasswordField();
 
         panelModif_MP.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -128,7 +128,6 @@ public class Vtna_cli_MiPerfil extends javax.swing.JFrame {
         panelModif_MP.add(txtApellidosMP, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 110, 129, -1));
         panelModif_MP.add(txtEmailMP, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 200, 130, -1));
         panelModif_MP.add(txtLoginMP, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 270, 120, -1));
-        panelModif_MP.add(txtPasswordMP, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 270, 130, -1));
 
         txtFnacimientoMP.setDateFormatString("dd/MM/yyyy");
         panelModif_MP.add(txtFnacimientoMP, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 230, -1, -1));
@@ -182,6 +181,7 @@ public class Vtna_cli_MiPerfil extends javax.swing.JFrame {
         jLabel6.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel6.setText("Mi perfil");
         panelModif_MP.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 30, 80, 20));
+        panelModif_MP.add(txtPasswordMP, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 270, 100, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -242,7 +242,7 @@ public class Vtna_cli_MiPerfil extends javax.swing.JFrame {
     public static com.toedter.calendar.JDateChooser txtFnacimientoMP;
     public static javax.swing.JTextField txtLoginMP;
     public static javax.swing.JTextField txtNombreMP;
-    public static javax.swing.JTextField txtPasswordMP;
+    public static javax.swing.JPasswordField txtPasswordMP;
     public static javax.swing.JTextField txtTelefonoMP;
     // End of variables declaration//GEN-END:variables
 }

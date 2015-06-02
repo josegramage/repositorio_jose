@@ -47,7 +47,6 @@ public class Vtna_cli_Modif extends javax.swing.JFrame {
         txtApellidosM = new javax.swing.JTextField();
         txtEmailM = new javax.swing.JTextField();
         txtLoginM = new javax.swing.JTextField();
-        txtPasswordM = new javax.swing.JTextField();
         txtFnacimientoM = new com.toedter.calendar.JDateChooser();
         btnAceptarM = new javax.swing.JButton();
         errorNombreM = new javax.swing.JButton();
@@ -63,6 +62,7 @@ public class Vtna_cli_Modif extends javax.swing.JFrame {
         txtTelefonoM = new javax.swing.JTextField();
         txtDireccionM = new javax.swing.JTextField();
         errorLoginM = new javax.swing.JButton();
+        txtPasswordM = new javax.swing.JPasswordField();
 
         panelModif.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -119,7 +119,6 @@ public class Vtna_cli_Modif extends javax.swing.JFrame {
         panelModif.add(txtApellidosM, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 60, 129, -1));
         panelModif.add(txtEmailM, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 150, 130, -1));
         panelModif.add(txtLoginM, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 220, 100, -1));
-        panelModif.add(txtPasswordM, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 220, 130, -1));
 
         txtFnacimientoM.setDateFormatString("dd/MM/yyyy");
         panelModif.add(txtFnacimientoM, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 180, -1, -1));
@@ -152,7 +151,7 @@ public class Vtna_cli_Modif extends javax.swing.JFrame {
         panelModif.add(btnCambiarImgM, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 125, 90, -1));
 
         errorPasswordM.setIcon(new javax.swing.ImageIcon(getClass().getResource("/proyectofinal_josegramage/Img/iconos/error.png"))); // NOI18N
-        panelModif.add(errorPasswordM, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 220, 20, 20));
+        panelModif.add(errorPasswordM, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 220, 20, 20));
 
         errorDireccionM.setIcon(new javax.swing.ImageIcon(getClass().getResource("/proyectofinal_josegramage/Img/iconos/error.png"))); // NOI18N
         panelModif.add(errorDireccionM, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 120, 22, 20));
@@ -164,6 +163,7 @@ public class Vtna_cli_Modif extends javax.swing.JFrame {
 
         errorLoginM.setIcon(new javax.swing.ImageIcon(getClass().getResource("/proyectofinal_josegramage/Img/iconos/error.png"))); // NOI18N
         panelModif.add(errorLoginM, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 220, 22, 20));
+        panelModif.add(txtPasswordM, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 220, 100, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -218,7 +218,7 @@ public class Vtna_cli_Modif extends javax.swing.JFrame {
     public static com.toedter.calendar.JDateChooser txtFnacimientoM;
     public static javax.swing.JTextField txtLoginM;
     public static javax.swing.JTextField txtNombreM;
-    public static javax.swing.JTextField txtPasswordM;
+    public static javax.swing.JPasswordField txtPasswordM;
     public static javax.swing.JTextField txtTelefonoM;
     // End of variables declaration//GEN-END:variables
 }

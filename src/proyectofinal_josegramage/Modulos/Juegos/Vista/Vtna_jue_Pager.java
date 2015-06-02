@@ -48,7 +48,6 @@ public class Vtna_jue_Pager extends javax.swing.JFrame implements ActionListener
         jComboBox1 = new javax.swing.JComboBox();
         jLabel2 = new javax.swing.JLabel();
         etiFILTRAR = new javax.swing.JLabel();
-        btnAbrir = new javax.swing.JButton();
         btnGuardar = new javax.swing.JButton();
         imgPager = new javax.swing.JLabel();
         panelBarrera = new javax.swing.JPanel();
@@ -190,13 +189,6 @@ public class Vtna_jue_Pager extends javax.swing.JFrame implements ActionListener
         etiFILTRAR.setText("EtiquetaFILTRAR");
         panelPager.add(etiFILTRAR, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 300, -1, -1));
 
-        btnAbrir.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        btnAbrir.setText("ABRIR");
-        btnAbrir.setMaximumSize(new java.awt.Dimension(93, 23));
-        btnAbrir.setMinimumSize(new java.awt.Dimension(93, 23));
-        btnAbrir.setPreferredSize(new java.awt.Dimension(93, 23));
-        panelPager.add(btnAbrir, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 290, 140, -1));
-
         btnGuardar.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         btnGuardar.setText("GUARDAR");
         panelPager.add(btnGuardar, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 260, 140, -1));
@@ -274,7 +266,6 @@ public class Vtna_jue_Pager extends javax.swing.JFrame implements ActionListener
     public static javax.swing.JTextField CAJA;
     public static javax.swing.JButton SIGUIENTE;
     public static javax.swing.JTable TABLA;
-    public static javax.swing.JButton btnAbrir;
     public static javax.swing.JButton btnAgregar;
     public static javax.swing.JButton btnCambiar;
     public static javax.swing.JButton btnComprar;

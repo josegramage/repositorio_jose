@@ -73,7 +73,6 @@ public class Controlador_Cliente implements ActionListener, KeyListener, MouseLi
         _PANEL_FILTRAR,
         _TABLA_CLICK,
         _BTN_GUARDAR,
-        _BTN_ABRIR,
         _BTN_AGREGAR,
         _BTN_CAMBIAR,
         _BTN_ELIMINAR,
@@ -204,9 +203,6 @@ public class Controlador_Cliente implements ActionListener, KeyListener, MouseLi
 
             Singletons.efPager.btnGuardar.setActionCommand("_BTN_GUARDAR");
             Singletons.efPager.btnGuardar.addActionListener(this);
-
-            Singletons.efPager.btnAbrir.setActionCommand("_BTN_ABRIR");
-            Singletons.efPager.btnAbrir.addActionListener(this);
 
             Singletons.efPager.btnAgregar.setActionCommand("_BTN_AGREGAR");
             Singletons.efPager.btnAgregar.setName("_BTN_AGREGAR");
@@ -505,10 +501,6 @@ public class Controlador_Cliente implements ActionListener, KeyListener, MouseLi
             case _BTN_GUARDAR:
                 Main.conf.setGuardar(Menus.menuFormatoGuardar());
                 ClienteBLL.guardar();
-                break;
-
-            case _BTN_ABRIR:
-                ClienteBLL.abrir();
                 break;
 
             case _BTN_ANTERIOR:

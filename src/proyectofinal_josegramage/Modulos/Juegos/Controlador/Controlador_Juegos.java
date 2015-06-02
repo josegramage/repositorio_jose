@@ -67,7 +67,6 @@ public class Controlador_Juegos implements ActionListener, KeyListener, MouseLis
         _PANEL_FILTRAR,
         _TABLA_CLICK,
         _BTN_GUARDAR,
-        _BTN_ABRIR,
         _BTN_AGREGAR,
         _BTN_CAMBIAR,
         _BTN_ELIMINAR,
@@ -155,7 +154,6 @@ public class Controlador_Juegos implements ActionListener, KeyListener, MouseLis
                     Singletons.juePager.btnCambiar.setVisible(false);
                     Singletons.juePager.btnEliminar.setVisible(false);
                     Singletons.juePager.btnMenu.setVisible(false);
-                    Singletons.juePager.btnAbrir.setVisible(false);
                 }
 
             } else {
@@ -163,7 +161,6 @@ public class Controlador_Juegos implements ActionListener, KeyListener, MouseLis
                 Singletons.juePager.btnCambiar.setVisible(false);
                 Singletons.juePager.btnEliminar.setVisible(false);
                 Singletons.juePager.btnMenu.setVisible(false);
-                Singletons.juePager.btnAbrir.setVisible(false);
             }
 
             Singletons.juePager.ANTERIOR.setActionCommand("_BTN_ANTERIOR");
@@ -192,9 +189,6 @@ public class Controlador_Juegos implements ActionListener, KeyListener, MouseLis
 
             Singletons.juePager.btnGuardar.setActionCommand("_BTN_GUARDAR");
             Singletons.juePager.btnGuardar.addActionListener(this);
-
-            Singletons.juePager.btnAbrir.setActionCommand("_BTN_ABRIR");
-            Singletons.juePager.btnAbrir.addActionListener(this);
 
             Singletons.juePager.btnAgregar.setActionCommand("_BTN_AGREGAR");
             Singletons.juePager.btnAgregar.setName("_BTN_AGREGAR");
@@ -378,11 +372,6 @@ public class Controlador_Juegos implements ActionListener, KeyListener, MouseLis
                 JuegoBLL.guardar();
                 break;
 
-            case _BTN_ABRIR:
-                JOptionPane.showMessageDialog(null, "Funcion no disponible");
-                //          JuegoBLL.abrir();
-                break;
-
             case _BTN_ANTERIOR:
                 pagina_J.currentPageIndex -= 1;
                 pagina_J.initLinkBox();
@@ -497,7 +486,7 @@ public class Controlador_Juegos implements ActionListener, KeyListener, MouseLis
                 panelPagerM.add(Singletons.juePager.panelPager);
                 Singletons.ini.internalFrame.setContentPane(panelPagerM);
 
-           //     ((SimpleTableModel_juegos) Singletons.juePager.TABLA.getModel()).cargar();
+            //     ((SimpleTableModel_juegos) Singletons.juePager.TABLA.getModel()).cargar();
             case _BTN_CANCELAR_M:
                 JuegoBLL.ocultaErrorM();
                 break;

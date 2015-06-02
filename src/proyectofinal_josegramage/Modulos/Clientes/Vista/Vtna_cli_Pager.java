@@ -48,7 +48,6 @@ public class Vtna_cli_Pager extends javax.swing.JFrame implements ActionListener
         jComboBox1 = new javax.swing.JComboBox();
         jLabel2 = new javax.swing.JLabel();
         etiFILTRAR = new javax.swing.JLabel();
-        btnAbrir = new javax.swing.JButton();
         btnGuardar = new javax.swing.JButton();
 
         menuLogin.setBorderPainted(false);
@@ -168,12 +167,6 @@ public class Vtna_cli_Pager extends javax.swing.JFrame implements ActionListener
 
         etiFILTRAR.setText("EtiquetaFILTRAR");
 
-        btnAbrir.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        btnAbrir.setText("ABRIR");
-        btnAbrir.setMaximumSize(new java.awt.Dimension(93, 23));
-        btnAbrir.setMinimumSize(new java.awt.Dimension(93, 23));
-        btnAbrir.setPreferredSize(new java.awt.Dimension(93, 23));
-
         btnGuardar.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         btnGuardar.setText("GUARDAR");
 
@@ -211,9 +204,7 @@ public class Vtna_cli_Pager extends javax.swing.JFrame implements ActionListener
                         .addContainerGap()
                         .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
-                .addGroup(panelPagerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btnGuardar, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnAbrir, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(btnGuardar, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(36, 36, 36))
         );
         panelPagerLayout.setVerticalGroup(
@@ -239,9 +230,8 @@ public class Vtna_cli_Pager extends javax.swing.JFrame implements ActionListener
                 .addGroup(panelPagerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
                     .addComponent(panelFiltrar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(etiFILTRAR)
-                    .addComponent(btnAbrir, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(21, 21, 21))
+                    .addComponent(etiFILTRAR))
+                .addGap(22, 22, 22))
         );
 
         getContentPane().add(panelPager, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 80, 770, 440));
@@ -255,7 +245,6 @@ public class Vtna_cli_Pager extends javax.swing.JFrame implements ActionListener
     public static javax.swing.JTextField CAJA;
     public static javax.swing.JButton SIGUIENTE;
     public static javax.swing.JTable TABLA;
-    public static javax.swing.JButton btnAbrir;
     public static javax.swing.JButton btnAgregar;
     public static javax.swing.JButton btnCambiar;
     public static javax.swing.JButton btnEliminar;

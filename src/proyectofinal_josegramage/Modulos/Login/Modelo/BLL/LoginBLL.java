@@ -75,6 +75,22 @@ public class LoginBLL {
 
         return _resul;
     }
+     
+     public static void pideLogin() {
+        LoginDAO.pideLogin();
+    }
+
+    public static void pideLoginKey() {
+        LoginDAO.pideLoginKey();
+    }
+
+    public static void pidePassword() {
+        LoginDAO.pidePassword();
+    }
+
+    public static void pidePasswordKey() {
+        LoginDAO.pidePasswordKey();
+    }
     
     
     public int RecuperarPassword() {

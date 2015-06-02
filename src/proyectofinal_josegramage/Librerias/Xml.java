@@ -21,7 +21,7 @@ import proyectofinal_josegramage.Modulos.Clientes.Clases.Cliente;
 public class Xml {
 	private static final String ENCODING = "UTF-8";
 
-	public static void guardarXMLempfijo() {
+	public static void guardarXMLcliente() {
 		String PATH;
 
 		try {
@@ -64,6 +64,51 @@ public class Xml {
 			JOptionPane.showMessageDialog(null, "Error al grabar el XML", "Error", JOptionPane.ERROR_MESSAGE);
 		}
 	}
+        
+        public static void guardarXMLjuego() {
+		String PATH;
+
+		try {
+			OutputStream os = new ByteArrayOutputStream();
+			OutputStreamWriter osw = new OutputStreamWriter(os);
+			XStream xstream = new XStream();
+
+			// Annotations.configureAliases(xstream, Actividades.class);
+			String header = "<?xml version=\"1.0\" encoding=\"" + ENCODING + "\"?>\n";
+			xstream.toXML(Singletons.jueArray, osw);
+			StringBuffer xml = new StringBuffer();
+			xml.append(header);
+			xml.append(os.toString());
+
+			JFileChooser fileChooser = new JFileChooser();
+
+			fileChooser.setAcceptAllFileFilterUsed(false);
+			fileChooser.addChoosableFileFilter(new FileNameExtensionFilter("XML (*.xml)", "xml"));
+
+			int seleccion = fileChooser.showSaveDialog(null);
+
+			if (seleccion == JFileChooser.APPROVE_OPTION) {
+				File JFC = fileChooser.getSelectedFile();
+				PATH = JFC.getAbsolutePath();
+
+				if (!PATH.endsWith(".xml")) {
+					PATH = PATH + ".xml";
+				}
+
+				FileWriter fileXml = new FileWriter(PATH);
+				fileXml.write(xml.toString());
+				fileXml.close();
+				osw.close();
+				os.close();
+
+				JOptionPane.showMessageDialog(null, "Archivo XML guardado con exito", "Archivo XML",
+						JOptionPane.INFORMATION_MESSAGE);
+			}
+		} catch (HeadlessException | IOException e) {
+			JOptionPane.showMessageDialog(null, "Error al grabar el XML", "Error", JOptionPane.ERROR_MESSAGE);
+		}
+	}
+        
 
 	public static ArrayList<Cliente> abrirXMLempfijo() {
 		String PATH;

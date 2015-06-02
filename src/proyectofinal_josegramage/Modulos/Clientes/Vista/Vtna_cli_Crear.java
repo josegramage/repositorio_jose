@@ -53,7 +53,6 @@ public class Vtna_cli_Crear extends javax.swing.JFrame {
         etiPassword = new javax.swing.JLabel();
         btnVolver = new javax.swing.JButton();
         txtLogin = new javax.swing.JTextField();
-        txtPassword = new javax.swing.JTextField();
         errorDireccion = new javax.swing.JButton();
         etiDireccionError = new javax.swing.JLabel();
         etiAvatar = new javax.swing.JLabel();
@@ -68,6 +67,7 @@ public class Vtna_cli_Crear extends javax.swing.JFrame {
         txtDireccion = new javax.swing.JTextField();
         txtTelefono = new javax.swing.JTextField();
         errorPassword = new javax.swing.JButton();
+        txtPassword = new javax.swing.JPasswordField();
 
         panelCrear.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -142,7 +142,6 @@ public class Vtna_cli_Crear extends javax.swing.JFrame {
         btnVolver.setText("VOLVER");
         panelCrear.add(btnVolver, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 330, 180, -1));
         panelCrear.add(txtLogin, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 240, 110, -1));
-        panelCrear.add(txtPassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 240, 110, -1));
 
         errorDireccion.setIcon(new javax.swing.ImageIcon(getClass().getResource("/proyectofinal_josegramage/Img/iconos/error.png"))); // NOI18N
         panelCrear.add(errorDireccion, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 150, 22, 20));
@@ -182,6 +181,7 @@ public class Vtna_cli_Crear extends javax.swing.JFrame {
 
         errorPassword.setIcon(new javax.swing.ImageIcon(getClass().getResource("/proyectofinal_josegramage/Img/iconos/error.png"))); // NOI18N
         panelCrear.add(errorPassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 240, 22, 20));
+        panelCrear.add(txtPassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 240, 110, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -246,7 +246,7 @@ public class Vtna_cli_Crear extends javax.swing.JFrame {
     public static com.toedter.calendar.JDateChooser txtFnacimiento;
     public static javax.swing.JTextField txtLogin;
     public static javax.swing.JTextField txtNombre;
-    public static javax.swing.JTextField txtPassword;
+    public static javax.swing.JPasswordField txtPassword;
     public static javax.swing.JTextField txtTelefono;
     // End of variables declaration//GEN-END:variables
 }

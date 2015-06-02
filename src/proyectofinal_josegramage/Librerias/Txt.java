@@ -19,7 +19,7 @@ import proyectofinal_josegramage.Modulos.Clientes.Clases.Cliente;
 
 public class Txt {
 
-	public static void guardarTXTempfijo() {
+	public static void guardarTXTcliente() {
 		String PATH = null;
 		try {
 			File f;
@@ -36,6 +36,32 @@ public class Txt {
 				FileOutputStream fo = new FileOutputStream(f);
 				ObjectOutputStream o = new ObjectOutputStream(fo);
 				o.writeObject(Singletons.cliArray);
+				o.close();
+				JOptionPane.showMessageDialog(null, "Archivo TXT guardado con exito", "Archivo TXT",
+						JOptionPane.INFORMATION_MESSAGE);
+			}
+		} catch (Exception e) {
+			JOptionPane.showMessageDialog(null, "Error al grabar el TXT", "Error", JOptionPane.ERROR_MESSAGE);
+		}
+	}
+        
+        public static void guardarTXTjuego() {
+		String PATH = null;
+		try {
+			File f;
+			JFileChooser fileChooser = new JFileChooser();
+			fileChooser.setAcceptAllFileFilterUsed(false);
+			fileChooser.addChoosableFileFilter(new FileNameExtensionFilter("TXT (*.txt)", "txt"));
+			int seleccion = fileChooser.showSaveDialog(null);
+			if (seleccion == JFileChooser.APPROVE_OPTION) {
+				File JFC = fileChooser.getSelectedFile();
+				PATH = JFC.getAbsolutePath();
+				PATH = PATH + ".txt";
+				f = new File(PATH);
+
+				FileOutputStream fo = new FileOutputStream(f);
+				ObjectOutputStream o = new ObjectOutputStream(fo);
+				o.writeObject(Singletons.jueArray);
 				o.close();
 				JOptionPane.showMessageDialog(null, "Archivo TXT guardado con exito", "Archivo TXT",
 						JOptionPane.INFORMATION_MESSAGE);
